@@ -1,0 +1,1862 @@
+
+
+Microchip Technology PIC18 LITE Macro Assembler V1.35 build -356382666 
+                                                                                               Tue Aug 25 16:21:24 2015
+
+Microchip Technology Omniscient Code Generator v1.35 (Free mode) build 201507080246
+     1                           	processor	18F4550
+     2                           	fnconf	rparam,??,?,0
+     3                           	opt	pw 120
+     4                           	opt	lm
+     5                           	psect	cinit,global,reloc=2,class=CODE,delta=1
+     6                           	psect	bssCOMRAM,global,class=COMRAM,space=1,delta=1
+     7                           	psect	cstackCOMRAM,global,class=COMRAM,space=1,delta=1
+     8                           	psect	text0,global,reloc=2,class=CODE,delta=1
+     9                           	psect	text1,global,reloc=2,class=CODE,delta=1
+    10                           	psect	text2,global,reloc=2,class=CODE,delta=1
+    11                           	psect	text3,global,reloc=2,class=CODE,delta=1
+    12                           	psect	text4,global,reloc=2,class=CODE,delta=1
+    13                           	psect	text5,global,reloc=2,class=CODE,delta=1
+    14                           	psect	text6,global,reloc=2,class=CODE,delta=1
+    15                           	psect	text7,global,reloc=2,class=CODE,delta=1
+    16                           	psect	text8,global,reloc=2,class=CODE,delta=1
+    17                           	psect	text9,global,reloc=2,class=CODE,delta=1
+    18                           	psect	text10,global,reloc=2,class=CODE,delta=1
+    19                           	psect	text11,global,reloc=2,class=CODE,delta=1
+    20                           	psect	text12,global,reloc=2,class=CODE,delta=1
+    21                           	psect	intsave_regs,global,class=BIGRAM,space=1,delta=1
+    22                           	psect	rparam,global,class=COMRAM,space=1,delta=1
+    23  0000                     _ADCON1	set	4033
+    24  0000                     _PIR1	set	3998
+    25  0000                     _PORTD	set	3971
+    26  0000                     _T1CON	set	4045
+    27  0000                     _TMR1H	set	4047
+    28  0000                     _TMR1L	set	4046
+    29  0000                     _TRISB	set	3987
+    30  0000                     _TRISD	set	3989
+    31  0000                     _GIE	set	32663
+    32  0000                     _PEIE	set	32662
+    33  0000                     _RB3	set	31755
+    34  0000                     _RB4	set	31756
+    35  0000                     _RB5	set	31757
+    36  0000                     _RD7	set	31775
+    37  0000                     _TMR1IE	set	31976
+    38  0000                     _TMR1IF	set	31984
+    39  0000                     _TRISD7	set	31919
+    40                           
+    41                           ; #config settings
+    42  0000                     
+    43                           	psect	cinit
+    44  007A54                     __pcinit:
+    45                           	opt stack 0
+    46  007A54                     start_initialization:
+    47                           	opt stack 0
+    48  007A54                     __initialization:
+    49                           	opt stack 0
+    50                           
+    51                           ; Clear objects allocated to COMRAM (5 bytes)
+    52  007A54  6A24               	clrf	(__pbssCOMRAM+4)& (0+255),c
+    53  007A56  6A23               	clrf	(__pbssCOMRAM+3)& (0+255),c
+    54  007A58  6A22               	clrf	(__pbssCOMRAM+2)& (0+255),c
+    55  007A5A  6A21               	clrf	(__pbssCOMRAM+1)& (0+255),c
+    56  007A5C  6A20               	clrf	__pbssCOMRAM& (0+255),c
+    57  007A5E                     end_of_initialization:
+    58                           	opt stack 0
+    59  007A5E                     __end_of__initialization:
+    60                           	opt stack 0
+    61  007A5E  0100               	movlb	0
+    62  007A60  EFB9  F03E         	goto	_main	;jump to C main() function
+    63                           
+    64                           	psect	bssCOMRAM
+    65  000020                     __pbssCOMRAM:
+    66                           	opt stack 0
+    67  000020                     _tttt:
+    68                           	opt stack 0
+    69  000020                     	ds	2
+    70  000022                     _ycon:
+    71                           	opt stack 0
+    72  000022                     	ds	2
+    73  000024                     _a:
+    74                           	opt stack 0
+    75  000024                     	ds	1
+    76                           
+    77                           	psect	cstackCOMRAM
+    78  000001                     __pcstackCOMRAM:
+    79                           	opt stack 0
+    80  000001                     ?___lwmod:
+    81                           	opt stack 0
+    82  000001                     ?___almod:
+    83                           	opt stack 0
+    84  000001                     lcd_write_com@combuf:
+    85                           	opt stack 0
+    86  000001                     lcd_write_data@databuf:
+    87                           	opt stack 0
+    88  000001                     delay@t:
+    89                           	opt stack 0
+    90  000001                     ___lwmod@dividend:
+    91                           	opt stack 0
+    92  000001                     ___almod@dividend:
+    93                           	opt stack 0
+    94                           
+    95                           ; 4 bytes @ 0x0
+    96  000001                     	ds	1
+    97  000002                     lcd_write_com_busy@combuf:
+    98                           	opt stack 0
+    99                           
+   100                           ; 1 bytes @ 0x1
+   101  000002                     	ds	1
+   102  000003                     lcd_write_address@y:
+   103                           	opt stack 0
+   104  000003                     delay@i:
+   105                           	opt stack 0
+   106  000003                     ___lwmod@divisor:
+   107                           	opt stack 0
+   108                           
+   109                           ; 2 bytes @ 0x2
+   110  000003                     	ds	1
+   111  000004                     lcd_write_address@x:
+   112                           	opt stack 0
+   113                           
+   114                           ; 1 bytes @ 0x3
+   115  000004                     	ds	1
+   116  000005                     ___lwmod@counter:
+   117                           	opt stack 0
+   118  000005                     delay@j:
+   119                           	opt stack 0
+   120  000005                     ___almod@divisor:
+   121                           	opt stack 0
+   122                           
+   123                           ; 4 bytes @ 0x4
+   124  000005                     	ds	1
+   125  000006                     ?___lwdiv:
+   126                           	opt stack 0
+   127  000006                     ___lwdiv@dividend:
+   128                           	opt stack 0
+   129                           
+   130                           ; 2 bytes @ 0x5
+   131  000006                     	ds	1
+   132  000007                     
+   133                           ; 0 bytes @ 0x6
+   134  000007                     	ds	1
+   135  000008                     ___lwdiv@divisor:
+   136                           	opt stack 0
+   137                           
+   138                           ; 2 bytes @ 0x7
+   139  000008                     	ds	1
+   140  000009                     ___almod@counter:
+   141                           	opt stack 0
+   142                           
+   143                           ; 1 bytes @ 0x8
+   144  000009                     	ds	1
+   145  00000A                     ___almod@sign:
+   146                           	opt stack 0
+   147  00000A                     ___lwdiv@quotient:
+   148                           	opt stack 0
+   149                           
+   150                           ; 2 bytes @ 0x9
+   151  00000A                     	ds	1
+   152  00000B                     ?___aldiv:
+   153                           	opt stack 0
+   154  00000B                     ___aldiv@dividend:
+   155                           	opt stack 0
+   156                           
+   157                           ; 4 bytes @ 0xA
+   158  00000B                     	ds	1
+   159  00000C                     ___lwdiv@counter:
+   160                           	opt stack 0
+   161                           
+   162                           ; 1 bytes @ 0xB
+   163  00000C                     	ds	3
+   164  00000F                     ___aldiv@divisor:
+   165                           	opt stack 0
+   166                           
+   167                           ; 4 bytes @ 0xE
+   168  00000F                     	ds	4
+   169  000013                     ___aldiv@counter:
+   170                           	opt stack 0
+   171                           
+   172                           ; 1 bytes @ 0x12
+   173  000013                     	ds	1
+   174  000014                     ___aldiv@sign:
+   175                           	opt stack 0
+   176                           
+   177                           ; 1 bytes @ 0x13
+   178  000014                     	ds	1
+   179  000015                     ___aldiv@quotient:
+   180                           	opt stack 0
+   181                           
+   182                           ; 4 bytes @ 0x14
+   183  000015                     	ds	4
+   184  000019                     lcd_write_char@y:
+   185                           	opt stack 0
+   186                           
+   187                           ; 1 bytes @ 0x18
+   188  000019                     	ds	1
+   189  00001A                     lcd_write_char@buf:
+   190                           	opt stack 0
+   191                           
+   192                           ; 1 bytes @ 0x19
+   193  00001A                     	ds	1
+   194  00001B                     lcd_write_char@x:
+   195                           	opt stack 0
+   196                           
+   197                           ; 1 bytes @ 0x1A
+   198  00001B                     	ds	1
+   199  00001C                     _main$606:
+   200                           	opt stack 0
+   201                           
+   202                           ; 4 bytes @ 0x1B
+   203  00001C                     	ds	4
+   204                           
+   205 ;;
+   206 ;;Main: autosize = 0, tempsize = 0, incstack = 0, save=0
+   207 ;;
+   208 ;; *************** function _main *****************
+   209 ;; Defined at:
+   210 ;;		line 93 in file "newfile.c"
+   211 ;; Parameters:    Size  Location     Type
+   212 ;;		None
+   213 ;; Auto vars:     Size  Location     Type
+   214 ;;		None
+   215 ;; Return value:  Size  Location     Type
+   216 ;;		None               void
+   217 ;; Registers used:
+   218 ;;		wreg, status,2, status,0, cstack
+   219 ;; Tracked objects:
+   220 ;;		On entry : 0/0
+   221 ;;		On exit  : 0/0
+   222 ;;		Unchanged: 0/0
+   223 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
+   224 ;;      Params:         0       0       0       0       0       0       0       0       0
+   225 ;;      Locals:         4       0       0       0       0       0       0       0       0
+   226 ;;      Temps:          0       0       0       0       0       0       0       0       0
+   227 ;;      Totals:         4       0       0       0       0       0       0       0       0
+   228 ;;Total ram usage:        4 bytes
+   229 ;; Hardware stack levels required when called:    4
+   230 ;; This function calls:
+   231 ;;		___aldiv
+   232 ;;		___almod
+   233 ;;		___lwdiv
+   234 ;;		___lwmod
+   235 ;;		_lcd_write_char
+   236 ;;		_lcdreset
+   237 ;; This function is called by:
+   238 ;;		Startup code after reset
+   239 ;; This function uses a non-reentrant model
+   240 ;;
+   241                           
+   242                           	psect	text0
+   243  007D72                     __ptext0:
+   244                           	opt stack 0
+   245  007D72                     _main:
+   246                           	opt stack 27
+   247                           
+   248                           ;newfile.c: 95: T1CON=0X01;
+   249                           
+   250                           ;incstack = 0
+   251  007D72  0E01               	movlw	1
+   252  007D74  6ECD               	movwf	4045,c	;volatile
+   253                           
+   254                           ;newfile.c: 96: TMR1IF=0;
+   255  007D76  909E               	bcf	3998,0,c	;volatile
+   256                           
+   257                           ;newfile.c: 97: TMR1IE=1;
+   258  007D78  809D               	bsf	3997,0,c	;volatile
+   259                           
+   260                           ;newfile.c: 98: TMR1H=0xFF;
+   261  007D7A  68CF               	setf	4047,c	;volatile
+   262                           
+   263                           ;newfile.c: 99: TMR1L=0x13;
+   264  007D7C  0E13               	movlw	19
+   265  007D7E  6ECE               	movwf	4046,c	;volatile
+   266                           
+   267                           ;newfile.c: 100: PIR1=0;
+   268  007D80  0E00               	movlw	0
+   269  007D82  6E9E               	movwf	3998,c	;volatile
+   270                           
+   271                           ;newfile.c: 101: PEIE=1;
+   272  007D84  8CF2               	bsf	intcon,6,c	;volatile
+   273                           
+   274                           ;newfile.c: 102: GIE=1;
+   275  007D86  8EF2               	bsf	intcon,7,c	;volatile
+   276                           
+   277                           ;newfile.c: 103: ADCON1=0X0f;
+   278  007D88  0E0F               	movlw	15
+   279  007D8A  6EC1               	movwf	4033,c	;volatile
+   280                           
+   281                           ;newfile.c: 104: TRISB=0B11000111;
+   282  007D8C  0EC7               	movlw	199
+   283  007D8E  6E93               	movwf	3987,c	;volatile
+   284                           
+   285                           ;newfile.c: 105: TRISD=0B00000000;
+   286  007D90  0E00               	movlw	0
+   287  007D92  6E95               	movwf	3989,c	;volatile
+   288                           
+   289                           ;newfile.c: 106: lcdreset();
+   290  007D94  ECD2  F03D         	call	_lcdreset	;wreg free
+   291                           
+   292                           ;newfile.c: 108: if(TMR1IF==1)
+   293  007D98  A09E               	btfss	3998,0,c	;volatile
+   294  007D9A  EF00  F000         	goto	start
+   295                           
+   296                           ;newfile.c: 109: {
+   297                           ;newfile.c: 110: TMR1H=0XFF;
+   298  007D9E  68CF               	setf	4047,c	;volatile
+   299                           
+   300                           ;newfile.c: 111: TMR1L=0x13;
+   301  007DA0  0E13               	movlw	19
+   302  007DA2  6ECE               	movwf	4046,c	;volatile
+   303                           
+   304                           ;newfile.c: 112: TMR1IF=0;
+   305  007DA4  909E               	bcf	3998,0,c	;volatile
+   306                           
+   307                           ;newfile.c: 113: if(++ycon>3999)ycon=0;
+   308  007DA6  4A22               	infsnz	_ycon,f,c
+   309  007DA8  2A23               	incf	_ycon+1,f,c
+   310  007DAA  0EA0               	movlw	160
+   311  007DAC  5C22               	subwf	_ycon,w,c
+   312  007DAE  0E0F               	movlw	15
+   313  007DB0  5823               	subwfb	_ycon+1,w,c
+   314  007DB2  A0D8               	btfss	status,0,c
+   315  007DB4  D004               	goto	l1155
+   316  007DB6  0E00               	movlw	0
+   317  007DB8  6E23               	movwf	_ycon+1,c
+   318  007DBA  0E00               	movlw	0
+   319  007DBC  6E22               	movwf	_ycon,c
+   320  007DBE                     l1155:
+   321  007DBE  4A20               	infsnz	_tttt,f,c
+   322  007DC0  2A21               	incf	_tttt+1,f,c
+   323                           
+   324                           ;newfile.c: 115: lcd_write_char(0,0,0x0a);
+   325  007DC2  0E00               	movlw	0
+   326  007DC4  6E19               	movwf	lcd_write_char@y,c
+   327  007DC6  0E0A               	movlw	10
+   328  007DC8  6E1A               	movwf	lcd_write_char@buf,c
+   329  007DCA  0E00               	movlw	0
+   330  007DCC  EC44  F03D         	call	_lcd_write_char
+   331                           
+   332                           ;newfile.c: 116: lcd_write_char(4,0,'M');
+   333  007DD0  0E00               	movlw	0
+   334  007DD2  6E19               	movwf	lcd_write_char@y,c
+   335  007DD4  0E4D               	movlw	77
+   336  007DD6  6E1A               	movwf	lcd_write_char@buf,c
+   337  007DD8  0E04               	movlw	4
+   338  007DDA  EC44  F03D         	call	_lcd_write_char
+   339                           
+   340                           ;newfile.c: 117: lcd_write_char(5,0,'y');
+   341  007DDE  0E00               	movlw	0
+   342  007DE0  6E19               	movwf	lcd_write_char@y,c
+   343  007DE2  0E79               	movlw	121
+   344  007DE4  6E1A               	movwf	lcd_write_char@buf,c
+   345  007DE6  0E05               	movlw	5
+   346  007DE8  EC44  F03D         	call	_lcd_write_char
+   347                           
+   348                           ;newfile.c: 118: lcd_write_char(7,0,'C');
+   349  007DEC  0E00               	movlw	0
+   350  007DEE  6E19               	movwf	lcd_write_char@y,c
+   351  007DF0  0E43               	movlw	67
+   352  007DF2  6E1A               	movwf	lcd_write_char@buf,c
+   353  007DF4  0E07               	movlw	7
+   354  007DF6  EC44  F03D         	call	_lcd_write_char
+   355                           
+   356                           ;newfile.c: 119: lcd_write_char(8,0,'l');
+   357  007DFA  0E00               	movlw	0
+   358  007DFC  6E19               	movwf	lcd_write_char@y,c
+   359  007DFE  0E6C               	movlw	108
+   360  007E00  6E1A               	movwf	lcd_write_char@buf,c
+   361  007E02  0E08               	movlw	8
+   362  007E04  EC44  F03D         	call	_lcd_write_char
+   363                           
+   364                           ;newfile.c: 120: lcd_write_char(9,0,'o');
+   365  007E08  0E00               	movlw	0
+   366  007E0A  6E19               	movwf	lcd_write_char@y,c
+   367  007E0C  0E6F               	movlw	111
+   368  007E0E  6E1A               	movwf	lcd_write_char@buf,c
+   369  007E10  0E09               	movlw	9
+   370  007E12  EC44  F03D         	call	_lcd_write_char
+   371                           
+   372                           ;newfile.c: 121: lcd_write_char(10,0,'c');
+   373  007E16  0E00               	movlw	0
+   374  007E18  6E19               	movwf	lcd_write_char@y,c
+   375  007E1A  0E63               	movlw	99
+   376  007E1C  6E1A               	movwf	lcd_write_char@buf,c
+   377  007E1E  0E0A               	movlw	10
+   378  007E20  EC44  F03D         	call	_lcd_write_char
+   379                           
+   380                           ;newfile.c: 122: lcd_write_char(11,0,'k');
+   381  007E24  0E00               	movlw	0
+   382  007E26  6E19               	movwf	lcd_write_char@y,c
+   383  007E28  0E6B               	movlw	107
+   384  007E2A  6E1A               	movwf	lcd_write_char@buf,c
+   385  007E2C  0E0B               	movlw	11
+   386  007E2E  EC44  F03D         	call	_lcd_write_char
+   387                           
+   388                           ;newfile.c: 123: lcd_write_char(15,0,0x0a);
+   389  007E32  0E00               	movlw	0
+   390  007E34  6E19               	movwf	lcd_write_char@y,c
+   391  007E36  0E0A               	movlw	10
+   392  007E38  6E1A               	movwf	lcd_write_char@buf,c
+   393  007E3A  0E0F               	movlw	15
+   394  007E3C  EC44  F03D         	call	_lcd_write_char
+   395                           
+   396                           ;newfile.c: 124: lcd_write_char(0,1,0x0a);
+   397  007E40  0E01               	movlw	1
+   398  007E42  6E19               	movwf	lcd_write_char@y,c
+   399  007E44  0E0A               	movlw	10
+   400  007E46  6E1A               	movwf	lcd_write_char@buf,c
+   401  007E48  0E00               	movlw	0
+   402  007E4A  EC44  F03D         	call	_lcd_write_char
+   403                           
+   404                           ;newfile.c: 125: lcd_write_char(4,1,(tttt/216000)/36000+0x30);
+   405  007E4E  0EC0               	movlw	192
+   406  007E50  6E0F               	movwf	___aldiv@divisor,c
+   407  007E52  0E4B               	movlw	75
+   408  007E54  6E10               	movwf	___aldiv@divisor+1,c
+   409  007E56  0E03               	movlw	3
+   410  007E58  6E11               	movwf	___aldiv@divisor+2,c
+   411  007E5A  0E00               	movlw	0
+   412  007E5C  6E12               	movwf	___aldiv@divisor+3,c
+   413  007E5E  C020  F00B         	movff	_tttt,___aldiv@dividend
+   414  007E62  C021  F00C         	movff	_tttt+1,___aldiv@dividend+1
+   415  007E66  6A0D               	clrf	___aldiv@dividend+2,c
+   416  007E68  6A0E               	clrf	___aldiv@dividend+3,c
+   417  007E6A  EC53  F03E         	call	___aldiv	;wreg free
+   418  007E6E  C00B  F01C         	movff	?___aldiv,_main$606
+   419  007E72  C00C  F01D         	movff	?___aldiv+1,_main$606+1
+   420  007E76  C00D  F01E         	movff	?___aldiv+2,_main$606+2
+   421  007E7A  C00E  F01F         	movff	?___aldiv+3,_main$606+3
+   422                           
+   423                           ;newfile.c: 125: lcd_write_char(4,1,(tttt/216000)/36000+0x30);
+   424  007E7E  0E01               	movlw	1
+   425  007E80  6E19               	movwf	lcd_write_char@y,c
+   426  007E82  C01C  F00B         	movff	_main$606,___aldiv@dividend
+   427  007E86  C01D  F00C         	movff	_main$606+1,___aldiv@dividend+1
+   428  007E8A  C01E  F00D         	movff	_main$606+2,___aldiv@dividend+2
+   429  007E8E  C01F  F00E         	movff	_main$606+3,___aldiv@dividend+3
+   430  007E92  0EA0               	movlw	160
+   431  007E94  6E0F               	movwf	___aldiv@divisor,c
+   432  007E96  0E8C               	movlw	140
+   433  007E98  6E10               	movwf	___aldiv@divisor+1,c
+   434  007E9A  0E00               	movlw	0
+   435  007E9C  6E11               	movwf	___aldiv@divisor+2,c
+   436  007E9E  0E00               	movlw	0
+   437  007EA0  6E12               	movwf	___aldiv@divisor+3,c
+   438  007EA2  EC53  F03E         	call	___aldiv	;wreg free
+   439  007EA6  500B               	movf	?___aldiv,w,c
+   440  007EA8  0F30               	addlw	48
+   441  007EAA  6E1A               	movwf	lcd_write_char@buf,c
+   442  007EAC  0E04               	movlw	4
+   443  007EAE  EC44  F03D         	call	_lcd_write_char
+   444                           
+   445                           ;newfile.c: 126: lcd_write_char(5,1,(tttt%216000)/3600+0x30);
+   446  007EB2  0E01               	movlw	1
+   447  007EB4  6E19               	movwf	lcd_write_char@y,c
+   448  007EB6  0EC0               	movlw	192
+   449  007EB8  6E05               	movwf	___almod@divisor,c
+   450  007EBA  0E4B               	movlw	75
+   451  007EBC  6E06               	movwf	___almod@divisor+1,c
+   452  007EBE  0E03               	movlw	3
+   453  007EC0  6E07               	movwf	___almod@divisor+2,c
+   454  007EC2  0E00               	movlw	0
+   455  007EC4  6E08               	movwf	___almod@divisor+3,c
+   456  007EC6  C020  F001         	movff	_tttt,___almod@dividend
+   457  007ECA  C021  F002         	movff	_tttt+1,___almod@dividend+1
+   458  007ECE  6A03               	clrf	___almod@dividend+2,c
+   459  007ED0  6A04               	clrf	___almod@dividend+3,c
+   460  007ED2  ECFD  F03D         	call	___almod	;wreg free
+   461  007ED6  C001  F00B         	movff	?___almod,___aldiv@dividend
+   462  007EDA  C002  F00C         	movff	?___almod+1,___aldiv@dividend+1
+   463  007EDE  C003  F00D         	movff	?___almod+2,___aldiv@dividend+2
+   464  007EE2  C004  F00E         	movff	?___almod+3,___aldiv@dividend+3
+   465  007EE6  0E10               	movlw	16
+   466  007EE8  6E0F               	movwf	___aldiv@divisor,c
+   467  007EEA  0E0E               	movlw	14
+   468  007EEC  6E10               	movwf	___aldiv@divisor+1,c
+   469  007EEE  0E00               	movlw	0
+   470  007EF0  6E11               	movwf	___aldiv@divisor+2,c
+   471  007EF2  0E00               	movlw	0
+   472  007EF4  6E12               	movwf	___aldiv@divisor+3,c
+   473  007EF6  EC53  F03E         	call	___aldiv	;wreg free
+   474  007EFA  500B               	movf	?___aldiv,w,c
+   475  007EFC  0F30               	addlw	48
+   476  007EFE  6E1A               	movwf	lcd_write_char@buf,c
+   477  007F00  0E05               	movlw	5
+   478  007F02  EC44  F03D         	call	_lcd_write_char
+   479                           
+   480                           ;newfile.c: 127: lcd_write_char(6,1,0x3a);
+   481  007F06  0E01               	movlw	1
+   482  007F08  6E19               	movwf	lcd_write_char@y,c
+   483  007F0A  0E3A               	movlw	58
+   484  007F0C  6E1A               	movwf	lcd_write_char@buf,c
+   485  007F0E  0E06               	movlw	6
+   486  007F10  EC44  F03D         	call	_lcd_write_char
+   487                           
+   488                           ;newfile.c: 128: lcd_write_char(7,1,(tttt%3600)/600+0x30);
+   489  007F14  0E01               	movlw	1
+   490  007F16  6E19               	movwf	lcd_write_char@y,c
+   491  007F18  0E0E               	movlw	14
+   492  007F1A  6E04               	movwf	___lwmod@divisor+1,c
+   493  007F1C  0E10               	movlw	16
+   494  007F1E  6E03               	movwf	___lwmod@divisor,c
+   495  007F20  C020  F001         	movff	_tttt,___lwmod@dividend
+   496  007F24  C021  F002         	movff	_tttt+1,___lwmod@dividend+1
+   497  007F28  EC88  F03D         	call	___lwmod	;wreg free
+   498  007F2C  C001  F006         	movff	?___lwmod,___lwdiv@dividend
+   499  007F30  C002  F007         	movff	?___lwmod+1,___lwdiv@dividend+1
+   500  007F34  0E02               	movlw	2
+   501  007F36  6E09               	movwf	___lwdiv@divisor+1,c
+   502  007F38  0E58               	movlw	88
+   503  007F3A  6E08               	movwf	___lwdiv@divisor,c
+   504  007F3C  ECA9  F03D         	call	___lwdiv	;wreg free
+   505  007F40  5006               	movf	?___lwdiv,w,c
+   506  007F42  0F30               	addlw	48
+   507  007F44  6E1A               	movwf	lcd_write_char@buf,c
+   508  007F46  0E07               	movlw	7
+   509  007F48  EC44  F03D         	call	_lcd_write_char
+   510                           
+   511                           ;newfile.c: 129: lcd_write_char(8,1,(tttt%3600)/60+0x30);
+   512  007F4C  0E01               	movlw	1
+   513  007F4E  6E19               	movwf	lcd_write_char@y,c
+   514  007F50  0E0E               	movlw	14
+   515  007F52  6E04               	movwf	___lwmod@divisor+1,c
+   516  007F54  0E10               	movlw	16
+   517  007F56  6E03               	movwf	___lwmod@divisor,c
+   518  007F58  C020  F001         	movff	_tttt,___lwmod@dividend
+   519  007F5C  C021  F002         	movff	_tttt+1,___lwmod@dividend+1
+   520  007F60  EC88  F03D         	call	___lwmod	;wreg free
+   521  007F64  C001  F006         	movff	?___lwmod,___lwdiv@dividend
+   522  007F68  C002  F007         	movff	?___lwmod+1,___lwdiv@dividend+1
+   523  007F6C  0E00               	movlw	0
+   524  007F6E  6E09               	movwf	___lwdiv@divisor+1,c
+   525  007F70  0E3C               	movlw	60
+   526  007F72  6E08               	movwf	___lwdiv@divisor,c
+   527  007F74  ECA9  F03D         	call	___lwdiv	;wreg free
+   528  007F78  5006               	movf	?___lwdiv,w,c
+   529  007F7A  0F30               	addlw	48
+   530  007F7C  6E1A               	movwf	lcd_write_char@buf,c
+   531  007F7E  0E08               	movlw	8
+   532  007F80  EC44  F03D         	call	_lcd_write_char
+   533                           
+   534                           ;newfile.c: 130: lcd_write_char(9,1,0x3a);
+   535  007F84  0E01               	movlw	1
+   536  007F86  6E19               	movwf	lcd_write_char@y,c
+   537  007F88  0E3A               	movlw	58
+   538  007F8A  6E1A               	movwf	lcd_write_char@buf,c
+   539  007F8C  0E09               	movlw	9
+   540  007F8E  EC44  F03D         	call	_lcd_write_char
+   541                           
+   542                           ;newfile.c: 131: lcd_write_char(10,1,(tttt%60)/10+0x30);
+   543  007F92  0E01               	movlw	1
+   544  007F94  6E19               	movwf	lcd_write_char@y,c
+   545  007F96  0E00               	movlw	0
+   546  007F98  6E04               	movwf	___lwmod@divisor+1,c
+   547  007F9A  0E3C               	movlw	60
+   548  007F9C  6E03               	movwf	___lwmod@divisor,c
+   549  007F9E  C020  F001         	movff	_tttt,___lwmod@dividend
+   550  007FA2  C021  F002         	movff	_tttt+1,___lwmod@dividend+1
+   551  007FA6  EC88  F03D         	call	___lwmod	;wreg free
+   552  007FAA  C001  F006         	movff	?___lwmod,___lwdiv@dividend
+   553  007FAE  C002  F007         	movff	?___lwmod+1,___lwdiv@dividend+1
+   554  007FB2  0E00               	movlw	0
+   555  007FB4  6E09               	movwf	___lwdiv@divisor+1,c
+   556  007FB6  0E0A               	movlw	10
+   557  007FB8  6E08               	movwf	___lwdiv@divisor,c
+   558  007FBA  ECA9  F03D         	call	___lwdiv	;wreg free
+   559  007FBE  5006               	movf	?___lwdiv,w,c
+   560  007FC0  0F30               	addlw	48
+   561  007FC2  6E1A               	movwf	lcd_write_char@buf,c
+   562  007FC4  0E0A               	movlw	10
+   563  007FC6  EC44  F03D         	call	_lcd_write_char
+   564                           
+   565                           ;newfile.c: 132: lcd_write_char(11,1,(tttt%10)+0x30);
+   566  007FCA  0E01               	movlw	1
+   567  007FCC  6E19               	movwf	lcd_write_char@y,c
+   568  007FCE  C020  F001         	movff	_tttt,___lwmod@dividend
+   569  007FD2  C021  F002         	movff	_tttt+1,___lwmod@dividend+1
+   570  007FD6  0E00               	movlw	0
+   571  007FD8  6E04               	movwf	___lwmod@divisor+1,c
+   572  007FDA  0E0A               	movlw	10
+   573  007FDC  6E03               	movwf	___lwmod@divisor,c
+   574  007FDE  EC88  F03D         	call	___lwmod	;wreg free
+   575  007FE2  5001               	movf	?___lwmod,w,c
+   576  007FE4  0F30               	addlw	48
+   577  007FE6  6E1A               	movwf	lcd_write_char@buf,c
+   578  007FE8  0E0B               	movlw	11
+   579  007FEA  EC44  F03D         	call	_lcd_write_char
+   580                           
+   581                           ;newfile.c: 133: lcd_write_char(15,1,0x0a);
+   582  007FEE  0E01               	movlw	1
+   583  007FF0  6E19               	movwf	lcd_write_char@y,c
+   584  007FF2  0E0A               	movlw	10
+   585  007FF4  6E1A               	movwf	lcd_write_char@buf,c
+   586  007FF6  0E0F               	movlw	15
+   587  007FF8  EC44  F03D         	call	_lcd_write_char
+   588  007FFC  EF00  F000         	goto	start
+   589  008000                     __end_of_main:
+   590                           	opt stack 0
+   591                           intcon	equ	0xFF2
+   592                           status	equ	0xFD8
+   593                           
+   594 ;; *************** function _lcdreset *****************
+   595 ;; Defined at:
+   596 ;;		line 72 in file "newfile.c"
+   597 ;; Parameters:    Size  Location     Type
+   598 ;;		None
+   599 ;; Auto vars:     Size  Location     Type
+   600 ;;		None
+   601 ;; Return value:  Size  Location     Type
+   602 ;;		None               void
+   603 ;; Registers used:
+   604 ;;		wreg, status,2, status,0, cstack
+   605 ;; Tracked objects:
+   606 ;;		On entry : 0/0
+   607 ;;		On exit  : 0/0
+   608 ;;		Unchanged: 0/0
+   609 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
+   610 ;;      Params:         0       0       0       0       0       0       0       0       0
+   611 ;;      Locals:         0       0       0       0       0       0       0       0       0
+   612 ;;      Temps:          0       0       0       0       0       0       0       0       0
+   613 ;;      Totals:         0       0       0       0       0       0       0       0       0
+   614 ;;Total ram usage:        0 bytes
+   615 ;; Hardware stack levels used:    1
+   616 ;; Hardware stack levels required when called:    2
+   617 ;; This function calls:
+   618 ;;		_delay
+   619 ;;		_lcd_write_com
+   620 ;;		_lcd_write_com_busy
+   621 ;; This function is called by:
+   622 ;;		_main
+   623 ;; This function uses a non-reentrant model
+   624 ;;
+   625                           
+   626                           	psect	text1
+   627  007BA4                     __ptext1:
+   628                           	opt stack 0
+   629  007BA4                     _lcdreset:
+   630                           	opt stack 28
+   631                           
+   632                           ;newfile.c: 74: delay(150);
+   633                           
+   634                           ;incstack = 0
+   635  007BA4  0E00               	movlw	0
+   636  007BA6  6E02               	movwf	delay@t+1,c
+   637  007BA8  0E96               	movlw	150
+   638  007BAA  6E01               	movwf	delay@t,c
+   639  007BAC  EC6C  F03D         	call	_delay	;wreg free
+   640                           
+   641                           ;newfile.c: 75: lcd_write_com(0x38);
+   642  007BB0  0E38               	movlw	56
+   643  007BB2  EC3B  F03D         	call	_lcd_write_com
+   644                           
+   645                           ;newfile.c: 76: delay(50);
+   646  007BB6  0E00               	movlw	0
+   647  007BB8  6E02               	movwf	delay@t+1,c
+   648  007BBA  0E32               	movlw	50
+   649  007BBC  6E01               	movwf	delay@t,c
+   650  007BBE  EC6C  F03D         	call	_delay	;wreg free
+   651                           
+   652                           ;newfile.c: 77: lcd_write_com(0x38);
+   653  007BC2  0E38               	movlw	56
+   654  007BC4  EC3B  F03D         	call	_lcd_write_com
+   655                           
+   656                           ;newfile.c: 78: delay(50);
+   657  007BC8  0E00               	movlw	0
+   658  007BCA  6E02               	movwf	delay@t+1,c
+   659  007BCC  0E32               	movlw	50
+   660  007BCE  6E01               	movwf	delay@t,c
+   661  007BD0  EC6C  F03D         	call	_delay	;wreg free
+   662                           
+   663                           ;newfile.c: 79: lcd_write_com(0x38);
+   664  007BD4  0E38               	movlw	56
+   665  007BD6  EC3B  F03D         	call	_lcd_write_com
+   666                           
+   667                           ;newfile.c: 80: lcd_write_com_busy(0x38);
+   668  007BDA  0E38               	movlw	56
+   669  007BDC  EC23  F03D         	call	_lcd_write_com_busy
+   670                           
+   671                           ;newfile.c: 81: lcd_write_com_busy(0x08);
+   672  007BE0  0E08               	movlw	8
+   673  007BE2  EC23  F03D         	call	_lcd_write_com_busy
+   674                           
+   675                           ;newfile.c: 82: lcd_write_com_busy(0x01);
+   676  007BE6  0E01               	movlw	1
+   677  007BE8  EC23  F03D         	call	_lcd_write_com_busy
+   678                           
+   679                           ;newfile.c: 83: lcd_write_com_busy(0x06);
+   680  007BEC  0E06               	movlw	6
+   681  007BEE  EC23  F03D         	call	_lcd_write_com_busy
+   682                           
+   683                           ;newfile.c: 84: lcd_write_com_busy(0x0c);
+   684  007BF2  0E0C               	movlw	12
+   685  007BF4  EC23  F03D         	call	_lcd_write_com_busy
+   686  007BF8  0012               	return		;funcret
+   687  007BFA                     __end_of_lcdreset:
+   688                           	opt stack 0
+   689                           intcon	equ	0xFF2
+   690                           status	equ	0xFD8
+   691                           
+   692 ;; *************** function _delay *****************
+   693 ;; Defined at:
+   694 ;;		line 12 in file "newfile.c"
+   695 ;; Parameters:    Size  Location     Type
+   696 ;;  t               2    0[COMRAM] unsigned int 
+   697 ;; Auto vars:     Size  Location     Type
+   698 ;;  j               2    4[COMRAM] unsigned int 
+   699 ;;  i               2    2[COMRAM] unsigned int 
+   700 ;; Return value:  Size  Location     Type
+   701 ;;		None               void
+   702 ;; Registers used:
+   703 ;;		wreg, status,2, status,0
+   704 ;; Tracked objects:
+   705 ;;		On entry : 0/0
+   706 ;;		On exit  : 0/0
+   707 ;;		Unchanged: 0/0
+   708 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
+   709 ;;      Params:         2       0       0       0       0       0       0       0       0
+   710 ;;      Locals:         4       0       0       0       0       0       0       0       0
+   711 ;;      Temps:          0       0       0       0       0       0       0       0       0
+   712 ;;      Totals:         6       0       0       0       0       0       0       0       0
+   713 ;;Total ram usage:        6 bytes
+   714 ;; Hardware stack levels used:    1
+   715 ;; This function calls:
+   716 ;;		Nothing
+   717 ;; This function is called by:
+   718 ;;		_lcdreset
+   719 ;; This function uses a non-reentrant model
+   720 ;;
+   721                           
+   722                           	psect	text2
+   723  007AD8                     __ptext2:
+   724                           	opt stack 0
+   725  007AD8                     _delay:
+   726                           	opt stack 29
+   727                           
+   728                           ;newfile.c: 14: unsigned int i,j;
+   729                           ;newfile.c: 15: for(i=0;i<t;i++)
+   730                           
+   731                           ;incstack = 0
+   732  007AD8  0E00               	movlw	0
+   733  007ADA  6E04               	movwf	delay@i+1,c
+   734  007ADC  0E00               	movlw	0
+   735  007ADE  6E03               	movwf	delay@i,c
+   736  007AE0  D010               	goto	l965
+   737  007AE2                     l953:
+   738                           
+   739                           ;newfile.c: 16: {
+   740                           ;newfile.c: 17: for(j=0;j<10;j++)
+   741  007AE2  0E00               	movlw	0
+   742  007AE4  6E06               	movwf	delay@j+1,c
+   743  007AE6  0E00               	movlw	0
+   744  007AE8  6E05               	movwf	delay@j,c
+   745  007AEA                     l955:
+   746  007AEA  5006               	movf	delay@j+1,w,c
+   747  007AEC  E108               	bnz	l963
+   748  007AEE  0E0A               	movlw	10
+   749  007AF0  5C05               	subwf	delay@j,w,c
+   750  007AF2  B0D8               	btfsc	status,0,c
+   751  007AF4  D004               	goto	l963
+   752  007AF6  0004               	clrwdt		;# 
+   753  007AF8  4A05               	infsnz	delay@j,f,c
+   754  007AFA  2A06               	incf	delay@j+1,f,c
+   755  007AFC  D7F6               	goto	l955
+   756  007AFE                     l963:
+   757  007AFE  4A03               	infsnz	delay@i,f,c
+   758  007B00  2A04               	incf	delay@i+1,f,c
+   759  007B02                     l965:
+   760  007B02  5001               	movf	delay@t,w,c
+   761  007B04  5C03               	subwf	delay@i,w,c
+   762  007B06  5002               	movf	delay@t+1,w,c
+   763  007B08  5804               	subwfb	delay@i+1,w,c
+   764  007B0A  B0D8               	btfsc	status,0,c
+   765  007B0C  0012               	return	
+   766  007B0E  D7E9               	goto	l953
+   767  007B10                     __end_of_delay:
+   768                           	opt stack 0
+   769                           intcon	equ	0xFF2
+   770                           status	equ	0xFD8
+   771                           
+   772 ;; *************** function _lcd_write_char *****************
+   773 ;; Defined at:
+   774 ;;		line 87 in file "newfile.c"
+   775 ;; Parameters:    Size  Location     Type
+   776 ;;  x               1    wreg     unsigned char 
+   777 ;;  y               1   24[COMRAM] unsigned char 
+   778 ;;  buf             1   25[COMRAM] unsigned char 
+   779 ;; Auto vars:     Size  Location     Type
+   780 ;;  x               1   26[COMRAM] unsigned char 
+   781 ;; Return value:  Size  Location     Type
+   782 ;;		None               void
+   783 ;; Registers used:
+   784 ;;		wreg, status,2, status,0, cstack
+   785 ;; Tracked objects:
+   786 ;;		On entry : 0/0
+   787 ;;		On exit  : 0/0
+   788 ;;		Unchanged: 0/0
+   789 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
+   790 ;;      Params:         2       0       0       0       0       0       0       0       0
+   791 ;;      Locals:         1       0       0       0       0       0       0       0       0
+   792 ;;      Temps:          0       0       0       0       0       0       0       0       0
+   793 ;;      Totals:         3       0       0       0       0       0       0       0       0
+   794 ;;Total ram usage:        3 bytes
+   795 ;; Hardware stack levels used:    1
+   796 ;; Hardware stack levels required when called:    3
+   797 ;; This function calls:
+   798 ;;		_lcd_write_address
+   799 ;;		_lcd_write_data
+   800 ;; This function is called by:
+   801 ;;		_main
+   802 ;; This function uses a non-reentrant model
+   803 ;;
+   804                           
+   805                           	psect	text3
+   806  007A88                     __ptext3:
+   807                           	opt stack 0
+   808  007A88                     _lcd_write_char:
+   809                           	opt stack 27
+   810                           
+   811                           ;incstack = 0
+   812                           ;lcd_write_char@x stored from wreg
+   813  007A88  6E1B               	movwf	lcd_write_char@x,c
+   814                           
+   815                           ;newfile.c: 89: lcd_write_address(x,y);
+   816  007A8A  C019  F003         	movff	lcd_write_char@y,lcd_write_address@y
+   817  007A8E  501B               	movf	lcd_write_char@x,w,c
+   818  007A90  EC59  F03D         	call	_lcd_write_address
+   819                           
+   820                           ;newfile.c: 90: lcd_write_data(buf);
+   821  007A94  501A               	movf	lcd_write_char@buf,w,c
+   822  007A96  EC4E  F03D         	call	_lcd_write_data
+   823  007A9A  0012               	return		;funcret
+   824  007A9C                     __end_of_lcd_write_char:
+   825                           	opt stack 0
+   826                           intcon	equ	0xFF2
+   827                           status	equ	0xFD8
+   828                           
+   829 ;; *************** function _lcd_write_data *****************
+   830 ;; Defined at:
+   831 ;;		line 51 in file "newfile.c"
+   832 ;; Parameters:    Size  Location     Type
+   833 ;;  databuf         1    wreg     unsigned char 
+   834 ;; Auto vars:     Size  Location     Type
+   835 ;;  databuf         1    0[COMRAM] unsigned char 
+   836 ;; Return value:  Size  Location     Type
+   837 ;;		None               void
+   838 ;; Registers used:
+   839 ;;		wreg, cstack
+   840 ;; Tracked objects:
+   841 ;;		On entry : 0/0
+   842 ;;		On exit  : 0/0
+   843 ;;		Unchanged: 0/0
+   844 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
+   845 ;;      Params:         0       0       0       0       0       0       0       0       0
+   846 ;;      Locals:         1       0       0       0       0       0       0       0       0
+   847 ;;      Temps:          0       0       0       0       0       0       0       0       0
+   848 ;;      Totals:         1       0       0       0       0       0       0       0       0
+   849 ;;Total ram usage:        1 bytes
+   850 ;; Hardware stack levels used:    1
+   851 ;; Hardware stack levels required when called:    1
+   852 ;; This function calls:
+   853 ;;		_lcd_wait_busy
+   854 ;; This function is called by:
+   855 ;;		_lcd_write_char
+   856 ;; This function uses a non-reentrant model
+   857 ;;
+   858                           
+   859                           	psect	text4
+   860  007A9C                     __ptext4:
+   861                           	opt stack 0
+   862  007A9C                     _lcd_write_data:
+   863                           	opt stack 28
+   864                           
+   865                           ;incstack = 0
+   866                           ;lcd_write_data@databuf stored from wreg
+   867  007A9C  6E01               	movwf	lcd_write_data@databuf,c
+   868                           
+   869                           ;newfile.c: 53: lcd_wait_busy();
+   870  007A9E  EC32  F03D         	call	_lcd_wait_busy	;wreg free
+   871                           
+   872                           ;newfile.c: 54: RB5=1;
+   873  007AA2  8A81               	bsf	3969,5,c	;volatile
+   874                           
+   875                           ;newfile.c: 55: RB4=0;
+   876  007AA4  9881               	bcf	3969,4,c	;volatile
+   877                           
+   878                           ;newfile.c: 56: PORTD=databuf;
+   879  007AA6  C001  FF83         	movff	lcd_write_data@databuf,3971	;volatile
+   880                           
+   881                           ;newfile.c: 57: RB3=1;
+   882  007AAA  8681               	bsf	3969,3,c	;volatile
+   883  007AAC  F000               	nop		;# 
+   884                           
+   885                           ;newfile.c: 59: RB3=0;
+   886  007AAE  9681               	bcf	3969,3,c	;volatile
+   887  007AB0  0012               	return		;funcret
+   888  007AB2                     __end_of_lcd_write_data:
+   889                           	opt stack 0
+   890                           intcon	equ	0xFF2
+   891                           status	equ	0xFD8
+   892                           
+   893 ;; *************** function _lcd_write_address *****************
+   894 ;; Defined at:
+   895 ;;		line 62 in file "newfile.c"
+   896 ;; Parameters:    Size  Location     Type
+   897 ;;  x               1    wreg     unsigned char 
+   898 ;;  y               1    2[COMRAM] unsigned char 
+   899 ;; Auto vars:     Size  Location     Type
+   900 ;;  x               1    3[COMRAM] unsigned char 
+   901 ;; Return value:  Size  Location     Type
+   902 ;;		None               void
+   903 ;; Registers used:
+   904 ;;		wreg, status,2, status,0, cstack
+   905 ;; Tracked objects:
+   906 ;;		On entry : 0/0
+   907 ;;		On exit  : 0/0
+   908 ;;		Unchanged: 0/0
+   909 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
+   910 ;;      Params:         1       0       0       0       0       0       0       0       0
+   911 ;;      Locals:         1       0       0       0       0       0       0       0       0
+   912 ;;      Temps:          0       0       0       0       0       0       0       0       0
+   913 ;;      Totals:         2       0       0       0       0       0       0       0       0
+   914 ;;Total ram usage:        2 bytes
+   915 ;; Hardware stack levels used:    1
+   916 ;; Hardware stack levels required when called:    2
+   917 ;; This function calls:
+   918 ;;		_lcd_write_com_busy
+   919 ;; This function is called by:
+   920 ;;		_lcd_write_char
+   921 ;; This function uses a non-reentrant model
+   922 ;;
+   923                           
+   924                           	psect	text5
+   925  007AB2                     __ptext5:
+   926                           	opt stack 0
+   927  007AB2                     _lcd_write_address:
+   928                           	opt stack 27
+   929                           
+   930                           ;incstack = 0
+   931                           ;lcd_write_address@x stored from wreg
+   932  007AB2  6E04               	movwf	lcd_write_address@x,c
+   933                           
+   934                           ;newfile.c: 64: x&=0x0f;
+   935  007AB4  0E0F               	movlw	15
+   936  007AB6  1604               	andwf	lcd_write_address@x,f,c
+   937                           
+   938                           ;newfile.c: 65: y&=0x01;
+   939  007AB8  0E01               	movlw	1
+   940  007ABA  1603               	andwf	lcd_write_address@y,f,c
+   941                           
+   942                           ;newfile.c: 66: if(y==0x00)
+   943  007ABC  5003               	movf	lcd_write_address@y,w,c
+   944  007ABE  A4D8               	btfss	status,2,c
+   945  007AC0  D005               	goto	l985
+   946                           
+   947                           ;newfile.c: 67: lcd_write_com_busy(x|0x80);
+   948  007AC2  5004               	movf	lcd_write_address@x,w,c
+   949  007AC4  0980               	iorlw	128
+   950  007AC6  EC23  F03D         	call	_lcd_write_com_busy
+   951  007ACA  0012               	return	
+   952  007ACC                     l985:
+   953                           
+   954                           ;newfile.c: 68: else
+   955                           ;newfile.c: 69: lcd_write_com_busy((x+0x40)|0x80);
+   956  007ACC  5004               	movf	lcd_write_address@x,w,c
+   957  007ACE  0F40               	addlw	64
+   958  007AD0  0980               	iorlw	128
+   959  007AD2  EC23  F03D         	call	_lcd_write_com_busy
+   960  007AD6  0012               	return	
+   961  007AD8                     __end_of_lcd_write_address:
+   962                           	opt stack 0
+   963                           intcon	equ	0xFF2
+   964                           status	equ	0xFD8
+   965                           
+   966 ;; *************** function _lcd_write_com_busy *****************
+   967 ;; Defined at:
+   968 ;;		line 45 in file "newfile.c"
+   969 ;; Parameters:    Size  Location     Type
+   970 ;;  combuf          1    wreg     unsigned char 
+   971 ;; Auto vars:     Size  Location     Type
+   972 ;;  combuf          1    1[COMRAM] unsigned char 
+   973 ;; Return value:  Size  Location     Type
+   974 ;;		None               void
+   975 ;; Registers used:
+   976 ;;		wreg, status,2, cstack
+   977 ;; Tracked objects:
+   978 ;;		On entry : 0/0
+   979 ;;		On exit  : 0/0
+   980 ;;		Unchanged: 0/0
+   981 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
+   982 ;;      Params:         0       0       0       0       0       0       0       0       0
+   983 ;;      Locals:         1       0       0       0       0       0       0       0       0
+   984 ;;      Temps:          0       0       0       0       0       0       0       0       0
+   985 ;;      Totals:         1       0       0       0       0       0       0       0       0
+   986 ;;Total ram usage:        1 bytes
+   987 ;; Hardware stack levels used:    1
+   988 ;; Hardware stack levels required when called:    1
+   989 ;; This function calls:
+   990 ;;		_lcd_wait_busy
+   991 ;;		_lcd_write_com
+   992 ;; This function is called by:
+   993 ;;		_lcd_write_address
+   994 ;;		_lcdreset
+   995 ;; This function uses a non-reentrant model
+   996 ;;
+   997                           
+   998                           	psect	text6
+   999  007A46                     __ptext6:
+  1000                           	opt stack 0
+  1001  007A46                     _lcd_write_com_busy:
+  1002                           	opt stack 28
+  1003                           
+  1004                           ;incstack = 0
+  1005                           ;lcd_write_com_busy@combuf stored from wreg
+  1006  007A46  6E02               	movwf	lcd_write_com_busy@combuf,c
+  1007                           
+  1008                           ;newfile.c: 47: lcd_wait_busy();
+  1009  007A48  EC32  F03D         	call	_lcd_wait_busy	;wreg free
+  1010                           
+  1011                           ;newfile.c: 48: lcd_write_com(combuf);
+  1012  007A4C  5002               	movf	lcd_write_com_busy@combuf,w,c
+  1013  007A4E  EC3B  F03D         	call	_lcd_write_com
+  1014  007A52  0012               	return		;funcret
+  1015  007A54                     __end_of_lcd_write_com_busy:
+  1016                           	opt stack 0
+  1017                           intcon	equ	0xFF2
+  1018                           status	equ	0xFD8
+  1019                           
+  1020 ;; *************** function _lcd_write_com *****************
+  1021 ;; Defined at:
+  1022 ;;		line 35 in file "newfile.c"
+  1023 ;; Parameters:    Size  Location     Type
+  1024 ;;  combuf          1    wreg     unsigned char 
+  1025 ;; Auto vars:     Size  Location     Type
+  1026 ;;  combuf          1    0[COMRAM] unsigned char 
+  1027 ;; Return value:  Size  Location     Type
+  1028 ;;		None               void
+  1029 ;; Registers used:
+  1030 ;;		wreg
+  1031 ;; Tracked objects:
+  1032 ;;		On entry : 0/0
+  1033 ;;		On exit  : 0/0
+  1034 ;;		Unchanged: 0/0
+  1035 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
+  1036 ;;      Params:         0       0       0       0       0       0       0       0       0
+  1037 ;;      Locals:         1       0       0       0       0       0       0       0       0
+  1038 ;;      Temps:          0       0       0       0       0       0       0       0       0
+  1039 ;;      Totals:         1       0       0       0       0       0       0       0       0
+  1040 ;;Total ram usage:        1 bytes
+  1041 ;; Hardware stack levels used:    1
+  1042 ;; This function calls:
+  1043 ;;		Nothing
+  1044 ;; This function is called by:
+  1045 ;;		_lcd_write_com_busy
+  1046 ;;		_lcdreset
+  1047 ;; This function uses a non-reentrant model
+  1048 ;;
+  1049                           
+  1050                           	psect	text7
+  1051  007A76                     __ptext7:
+  1052                           	opt stack 0
+  1053  007A76                     _lcd_write_com:
+  1054                           	opt stack 28
+  1055                           
+  1056                           ;incstack = 0
+  1057                           ;lcd_write_com@combuf stored from wreg
+  1058  007A76  6E01               	movwf	lcd_write_com@combuf,c
+  1059                           
+  1060                           ;newfile.c: 37: RB5=0;
+  1061  007A78  9A81               	bcf	3969,5,c	;volatile
+  1062                           
+  1063                           ;newfile.c: 38: RB4=0;
+  1064  007A7A  9881               	bcf	3969,4,c	;volatile
+  1065                           
+  1066                           ;newfile.c: 39: PORTD=combuf;
+  1067  007A7C  C001  FF83         	movff	lcd_write_com@combuf,3971	;volatile
+  1068                           
+  1069                           ;newfile.c: 40: RB3=1;
+  1070  007A80  8681               	bsf	3969,3,c	;volatile
+  1071  007A82  F000               	nop		;# 
+  1072                           
+  1073                           ;newfile.c: 42: RB3=0;
+  1074  007A84  9681               	bcf	3969,3,c	;volatile
+  1075  007A86  0012               	return		;funcret
+  1076  007A88                     __end_of_lcd_write_com:
+  1077                           	opt stack 0
+  1078                           intcon	equ	0xFF2
+  1079                           status	equ	0xFD8
+  1080                           
+  1081 ;; *************** function _lcd_wait_busy *****************
+  1082 ;; Defined at:
+  1083 ;;		line 24 in file "newfile.c"
+  1084 ;; Parameters:    Size  Location     Type
+  1085 ;;		None
+  1086 ;; Auto vars:     Size  Location     Type
+  1087 ;;		None
+  1088 ;; Return value:  Size  Location     Type
+  1089 ;;		None               void
+  1090 ;; Registers used:
+  1091 ;;		None
+  1092 ;; Tracked objects:
+  1093 ;;		On entry : 0/0
+  1094 ;;		On exit  : 0/0
+  1095 ;;		Unchanged: 0/0
+  1096 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
+  1097 ;;      Params:         0       0       0       0       0       0       0       0       0
+  1098 ;;      Locals:         0       0       0       0       0       0       0       0       0
+  1099 ;;      Temps:          0       0       0       0       0       0       0       0       0
+  1100 ;;      Totals:         0       0       0       0       0       0       0       0       0
+  1101 ;;Total ram usage:        0 bytes
+  1102 ;; Hardware stack levels used:    1
+  1103 ;; This function calls:
+  1104 ;;		Nothing
+  1105 ;; This function is called by:
+  1106 ;;		_lcd_write_com_busy
+  1107 ;;		_lcd_write_data
+  1108 ;; This function uses a non-reentrant model
+  1109 ;;
+  1110                           
+  1111                           	psect	text8
+  1112  007A64                     __ptext8:
+  1113                           	opt stack 0
+  1114  007A64                     _lcd_wait_busy:
+  1115                           	opt stack 28
+  1116                           
+  1117                           ;newfile.c: 26: TRISD7=1;
+  1118                           
+  1119                           ;incstack = 0
+  1120  007A64  8E95               	bsf	3989,7,c	;volatile
+  1121                           
+  1122                           ;newfile.c: 27: RB5=0;
+  1123  007A66  9A81               	bcf	3969,5,c	;volatile
+  1124                           
+  1125                           ;newfile.c: 28: RB4=1;
+  1126  007A68  8881               	bsf	3969,4,c	;volatile
+  1127                           
+  1128                           ;newfile.c: 29: RB3=1;
+  1129  007A6A  8681               	bsf	3969,3,c	;volatile
+  1130  007A6C                     l51:
+  1131  007A6C  BE83               	btfsc	3971,7,c	;volatile
+  1132  007A6E  D7FE               	goto	l51
+  1133                           
+  1134                           ;newfile.c: 31: RB3=0;
+  1135  007A70  9681               	bcf	3969,3,c	;volatile
+  1136                           
+  1137                           ;newfile.c: 32: TRISD7=0;
+  1138  007A72  9E95               	bcf	3989,7,c	;volatile
+  1139  007A74  0012               	return		;funcret
+  1140  007A76                     __end_of_lcd_wait_busy:
+  1141                           	opt stack 0
+  1142                           intcon	equ	0xFF2
+  1143                           status	equ	0xFD8
+  1144                           
+  1145 ;; *************** function ___lwmod *****************
+  1146 ;; Defined at:
+  1147 ;;		line 8 in file "C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\lwmod.c"
+  1148 ;; Parameters:    Size  Location     Type
+  1149 ;;  dividend        2    0[COMRAM] unsigned int 
+  1150 ;;  divisor         2    2[COMRAM] unsigned int 
+  1151 ;; Auto vars:     Size  Location     Type
+  1152 ;;  counter         1    4[COMRAM] unsigned char 
+  1153 ;; Return value:  Size  Location     Type
+  1154 ;;                  2    0[COMRAM] unsigned int 
+  1155 ;; Registers used:
+  1156 ;;		wreg, status,2, status,0
+  1157 ;; Tracked objects:
+  1158 ;;		On entry : 0/0
+  1159 ;;		On exit  : 0/0
+  1160 ;;		Unchanged: 0/0
+  1161 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
+  1162 ;;      Params:         4       0       0       0       0       0       0       0       0
+  1163 ;;      Locals:         1       0       0       0       0       0       0       0       0
+  1164 ;;      Temps:          0       0       0       0       0       0       0       0       0
+  1165 ;;      Totals:         5       0       0       0       0       0       0       0       0
+  1166 ;;Total ram usage:        5 bytes
+  1167 ;; Hardware stack levels used:    1
+  1168 ;; This function calls:
+  1169 ;;		Nothing
+  1170 ;; This function is called by:
+  1171 ;;		_main
+  1172 ;; This function uses a non-reentrant model
+  1173 ;;
+  1174                           
+  1175                           	psect	text9
+  1176  007B10                     __ptext9:
+  1177                           	opt stack 0
+  1178  007B10                     ___lwmod:
+  1179                           	opt stack 30
+  1180                           
+  1181                           ;incstack = 0
+  1182  007B10  5003               	movf	___lwmod@divisor,w,c
+  1183  007B12  1004               	iorwf	___lwmod@divisor+1,w,c
+  1184  007B14  B4D8               	btfsc	status,2,c
+  1185  007B16  D018               	goto	l492
+  1186  007B18  0E01               	movlw	1
+  1187  007B1A  6E05               	movwf	___lwmod@counter,c
+  1188  007B1C  D004               	goto	l1119
+  1189  007B1E                     l1117:
+  1190  007B1E  90D8               	bcf	status,0,c
+  1191  007B20  3603               	rlcf	___lwmod@divisor,f,c
+  1192  007B22  3604               	rlcf	___lwmod@divisor+1,f,c
+  1193  007B24  2A05               	incf	___lwmod@counter,f,c
+  1194  007B26                     l1119:
+  1195  007B26  AE04               	btfss	___lwmod@divisor+1,7,c
+  1196  007B28  D7FA               	goto	l1117
+  1197  007B2A                     l1121:
+  1198  007B2A  5003               	movf	___lwmod@divisor,w,c
+  1199  007B2C  5C01               	subwf	___lwmod@dividend,w,c
+  1200  007B2E  5004               	movf	___lwmod@divisor+1,w,c
+  1201  007B30  5802               	subwfb	___lwmod@dividend+1,w,c
+  1202  007B32  A0D8               	btfss	status,0,c
+  1203  007B34  D004               	goto	l1125
+  1204  007B36  5003               	movf	___lwmod@divisor,w,c
+  1205  007B38  5E01               	subwf	___lwmod@dividend,f,c
+  1206  007B3A  5004               	movf	___lwmod@divisor+1,w,c
+  1207  007B3C  5A02               	subwfb	___lwmod@dividend+1,f,c
+  1208  007B3E                     l1125:
+  1209  007B3E  90D8               	bcf	status,0,c
+  1210  007B40  3204               	rrcf	___lwmod@divisor+1,f,c
+  1211  007B42  3203               	rrcf	___lwmod@divisor,f,c
+  1212  007B44  2E05               	decfsz	___lwmod@counter,f,c
+  1213  007B46  D7F1               	goto	l1121
+  1214  007B48                     l492:
+  1215  007B48  C001  F001         	movff	___lwmod@dividend,?___lwmod
+  1216  007B4C  C002  F002         	movff	___lwmod@dividend+1,?___lwmod+1
+  1217  007B50  0012               	return		;funcret
+  1218  007B52                     __end_of___lwmod:
+  1219                           	opt stack 0
+  1220                           intcon	equ	0xFF2
+  1221                           status	equ	0xFD8
+  1222                           
+  1223 ;; *************** function ___lwdiv *****************
+  1224 ;; Defined at:
+  1225 ;;		line 8 in file "C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\lwdiv.c"
+  1226 ;; Parameters:    Size  Location     Type
+  1227 ;;  dividend        2    5[COMRAM] unsigned int 
+  1228 ;;  divisor         2    7[COMRAM] unsigned int 
+  1229 ;; Auto vars:     Size  Location     Type
+  1230 ;;  quotient        2    9[COMRAM] unsigned int 
+  1231 ;;  counter         1   11[COMRAM] unsigned char 
+  1232 ;; Return value:  Size  Location     Type
+  1233 ;;                  2    5[COMRAM] unsigned int 
+  1234 ;; Registers used:
+  1235 ;;		wreg, status,2, status,0
+  1236 ;; Tracked objects:
+  1237 ;;		On entry : 0/0
+  1238 ;;		On exit  : 0/0
+  1239 ;;		Unchanged: 0/0
+  1240 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
+  1241 ;;      Params:         4       0       0       0       0       0       0       0       0
+  1242 ;;      Locals:         3       0       0       0       0       0       0       0       0
+  1243 ;;      Temps:          0       0       0       0       0       0       0       0       0
+  1244 ;;      Totals:         7       0       0       0       0       0       0       0       0
+  1245 ;;Total ram usage:        7 bytes
+  1246 ;; Hardware stack levels used:    1
+  1247 ;; This function calls:
+  1248 ;;		Nothing
+  1249 ;; This function is called by:
+  1250 ;;		_main
+  1251 ;; This function uses a non-reentrant model
+  1252 ;;
+  1253                           
+  1254                           	psect	text10
+  1255  007B52                     __ptext10:
+  1256                           	opt stack 0
+  1257  007B52                     ___lwdiv:
+  1258                           	opt stack 30
+  1259                           
+  1260                           ;incstack = 0
+  1261  007B52  0E00               	movlw	0
+  1262  007B54  6E0B               	movwf	___lwdiv@quotient+1,c
+  1263  007B56  0E00               	movlw	0
+  1264  007B58  6E0A               	movwf	___lwdiv@quotient,c
+  1265  007B5A  5008               	movf	___lwdiv@divisor,w,c
+  1266  007B5C  1009               	iorwf	___lwdiv@divisor+1,w,c
+  1267  007B5E  B4D8               	btfsc	status,2,c
+  1268  007B60  D01C               	goto	l482
+  1269  007B62  0E01               	movlw	1
+  1270  007B64  6E0C               	movwf	___lwdiv@counter,c
+  1271  007B66  D004               	goto	l1099
+  1272  007B68                     l1097:
+  1273  007B68  90D8               	bcf	status,0,c
+  1274  007B6A  3608               	rlcf	___lwdiv@divisor,f,c
+  1275  007B6C  3609               	rlcf	___lwdiv@divisor+1,f,c
+  1276  007B6E  2A0C               	incf	___lwdiv@counter,f,c
+  1277  007B70                     l1099:
+  1278  007B70  AE09               	btfss	___lwdiv@divisor+1,7,c
+  1279  007B72  D7FA               	goto	l1097
+  1280  007B74                     l1101:
+  1281  007B74  90D8               	bcf	status,0,c
+  1282  007B76  360A               	rlcf	___lwdiv@quotient,f,c
+  1283  007B78  360B               	rlcf	___lwdiv@quotient+1,f,c
+  1284  007B7A  5008               	movf	___lwdiv@divisor,w,c
+  1285  007B7C  5C06               	subwf	___lwdiv@dividend,w,c
+  1286  007B7E  5009               	movf	___lwdiv@divisor+1,w,c
+  1287  007B80  5807               	subwfb	___lwdiv@dividend+1,w,c
+  1288  007B82  A0D8               	btfss	status,0,c
+  1289  007B84  D005               	goto	l1109
+  1290  007B86  5008               	movf	___lwdiv@divisor,w,c
+  1291  007B88  5E06               	subwf	___lwdiv@dividend,f,c
+  1292  007B8A  5009               	movf	___lwdiv@divisor+1,w,c
+  1293  007B8C  5A07               	subwfb	___lwdiv@dividend+1,f,c
+  1294  007B8E  800A               	bsf	___lwdiv@quotient,0,c
+  1295  007B90                     l1109:
+  1296  007B90  90D8               	bcf	status,0,c
+  1297  007B92  3209               	rrcf	___lwdiv@divisor+1,f,c
+  1298  007B94  3208               	rrcf	___lwdiv@divisor,f,c
+  1299  007B96  2E0C               	decfsz	___lwdiv@counter,f,c
+  1300  007B98  D7ED               	goto	l1101
+  1301  007B9A                     l482:
+  1302  007B9A  C00A  F006         	movff	___lwdiv@quotient,?___lwdiv
+  1303  007B9E  C00B  F007         	movff	___lwdiv@quotient+1,?___lwdiv+1
+  1304  007BA2  0012               	return		;funcret
+  1305  007BA4                     __end_of___lwdiv:
+  1306                           	opt stack 0
+  1307                           intcon	equ	0xFF2
+  1308                           status	equ	0xFD8
+  1309                           
+  1310 ;; *************** function ___almod *****************
+  1311 ;; Defined at:
+  1312 ;;		line 8 in file "C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\almod.c"
+  1313 ;; Parameters:    Size  Location     Type
+  1314 ;;  dividend        4    0[COMRAM] long 
+  1315 ;;  divisor         4    4[COMRAM] long 
+  1316 ;; Auto vars:     Size  Location     Type
+  1317 ;;  sign            1    9[COMRAM] unsigned char 
+  1318 ;;  counter         1    8[COMRAM] unsigned char 
+  1319 ;; Return value:  Size  Location     Type
+  1320 ;;                  4    0[COMRAM] long 
+  1321 ;; Registers used:
+  1322 ;;		wreg, status,2, status,0
+  1323 ;; Tracked objects:
+  1324 ;;		On entry : 0/0
+  1325 ;;		On exit  : 0/0
+  1326 ;;		Unchanged: 0/0
+  1327 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
+  1328 ;;      Params:         8       0       0       0       0       0       0       0       0
+  1329 ;;      Locals:         2       0       0       0       0       0       0       0       0
+  1330 ;;      Temps:          0       0       0       0       0       0       0       0       0
+  1331 ;;      Totals:        10       0       0       0       0       0       0       0       0
+  1332 ;;Total ram usage:       10 bytes
+  1333 ;; Hardware stack levels used:    1
+  1334 ;; This function calls:
+  1335 ;;		Nothing
+  1336 ;; This function is called by:
+  1337 ;;		_main
+  1338 ;; This function uses a non-reentrant model
+  1339 ;;
+  1340                           
+  1341                           	psect	text11
+  1342  007BFA                     __ptext11:
+  1343                           	opt stack 0
+  1344  007BFA                     ___almod:
+  1345                           	opt stack 30
+  1346                           
+  1347                           ;incstack = 0
+  1348  007BFA  0E00               	movlw	0
+  1349  007BFC  6E0A               	movwf	___almod@sign,c
+  1350  007BFE  AE04               	btfss	___almod@dividend+3,7,c
+  1351  007C00  D00A               	goto	l1063
+  1352  007C02  1E04               	comf	___almod@dividend+3,f,c
+  1353  007C04  1E03               	comf	___almod@dividend+2,f,c
+  1354  007C06  1E02               	comf	___almod@dividend+1,f,c
+  1355  007C08  6C01               	negf	___almod@dividend,c
+  1356  007C0A  0E00               	movlw	0
+  1357  007C0C  2202               	addwfc	___almod@dividend+1,f,c
+  1358  007C0E  2203               	addwfc	___almod@dividend+2,f,c
+  1359  007C10  2204               	addwfc	___almod@dividend+3,f,c
+  1360  007C12  0E01               	movlw	1
+  1361  007C14  6E0A               	movwf	___almod@sign,c
+  1362  007C16                     l1063:
+  1363  007C16  AE08               	btfss	___almod@divisor+3,7,c
+  1364  007C18  D008               	goto	l1067
+  1365  007C1A  1E08               	comf	___almod@divisor+3,f,c
+  1366  007C1C  1E07               	comf	___almod@divisor+2,f,c
+  1367  007C1E  1E06               	comf	___almod@divisor+1,f,c
+  1368  007C20  6C05               	negf	___almod@divisor,c
+  1369  007C22  0E00               	movlw	0
+  1370  007C24  2206               	addwfc	___almod@divisor+1,f,c
+  1371  007C26  2207               	addwfc	___almod@divisor+2,f,c
+  1372  007C28  2208               	addwfc	___almod@divisor+3,f,c
+  1373  007C2A                     l1067:
+  1374  007C2A  5005               	movf	___almod@divisor,w,c
+  1375  007C2C  1006               	iorwf	___almod@divisor+1,w,c
+  1376  007C2E  1007               	iorwf	___almod@divisor+2,w,c
+  1377  007C30  1008               	iorwf	___almod@divisor+3,w,c
+  1378  007C32  B4D8               	btfsc	status,2,c
+  1379  007C34  D024               	goto	l1083
+  1380  007C36  0E01               	movlw	1
+  1381  007C38  6E09               	movwf	___almod@counter,c
+  1382  007C3A  D006               	goto	l1073
+  1383  007C3C                     l1071:
+  1384  007C3C  90D8               	bcf	status,0,c
+  1385  007C3E  3605               	rlcf	___almod@divisor,f,c
+  1386  007C40  3606               	rlcf	___almod@divisor+1,f,c
+  1387  007C42  3607               	rlcf	___almod@divisor+2,f,c
+  1388  007C44  3608               	rlcf	___almod@divisor+3,f,c
+  1389  007C46  2A09               	incf	___almod@counter,f,c
+  1390  007C48                     l1073:
+  1391  007C48  AE08               	btfss	___almod@divisor+3,7,c
+  1392  007C4A  D7F8               	goto	l1071
+  1393  007C4C                     l1075:
+  1394  007C4C  5005               	movf	___almod@divisor,w,c
+  1395  007C4E  5C01               	subwf	___almod@dividend,w,c
+  1396  007C50  5006               	movf	___almod@divisor+1,w,c
+  1397  007C52  5802               	subwfb	___almod@dividend+1,w,c
+  1398  007C54  5007               	movf	___almod@divisor+2,w,c
+  1399  007C56  5803               	subwfb	___almod@dividend+2,w,c
+  1400  007C58  5008               	movf	___almod@divisor+3,w,c
+  1401  007C5A  5804               	subwfb	___almod@dividend+3,w,c
+  1402  007C5C  A0D8               	btfss	status,0,c
+  1403  007C5E  D008               	goto	l1079
+  1404  007C60  5005               	movf	___almod@divisor,w,c
+  1405  007C62  5E01               	subwf	___almod@dividend,f,c
+  1406  007C64  5006               	movf	___almod@divisor+1,w,c
+  1407  007C66  5A02               	subwfb	___almod@dividend+1,f,c
+  1408  007C68  5007               	movf	___almod@divisor+2,w,c
+  1409  007C6A  5A03               	subwfb	___almod@dividend+2,f,c
+  1410  007C6C  5008               	movf	___almod@divisor+3,w,c
+  1411  007C6E  5A04               	subwfb	___almod@dividend+3,f,c
+  1412  007C70                     l1079:
+  1413  007C70  90D8               	bcf	status,0,c
+  1414  007C72  3208               	rrcf	___almod@divisor+3,f,c
+  1415  007C74  3207               	rrcf	___almod@divisor+2,f,c
+  1416  007C76  3206               	rrcf	___almod@divisor+1,f,c
+  1417  007C78  3205               	rrcf	___almod@divisor,f,c
+  1418  007C7A  2E09               	decfsz	___almod@counter,f,c
+  1419  007C7C  D7E7               	goto	l1075
+  1420  007C7E                     l1083:
+  1421  007C7E  500A               	movf	___almod@sign,w,c
+  1422  007C80  B4D8               	btfsc	status,2,c
+  1423  007C82  D008               	goto	l1087
+  1424  007C84  1E04               	comf	___almod@dividend+3,f,c
+  1425  007C86  1E03               	comf	___almod@dividend+2,f,c
+  1426  007C88  1E02               	comf	___almod@dividend+1,f,c
+  1427  007C8A  6C01               	negf	___almod@dividend,c
+  1428  007C8C  0E00               	movlw	0
+  1429  007C8E  2202               	addwfc	___almod@dividend+1,f,c
+  1430  007C90  2203               	addwfc	___almod@dividend+2,f,c
+  1431  007C92  2204               	addwfc	___almod@dividend+3,f,c
+  1432  007C94                     l1087:
+  1433  007C94  C001  F001         	movff	___almod@dividend,?___almod
+  1434  007C98  C002  F002         	movff	___almod@dividend+1,?___almod+1
+  1435  007C9C  C003  F003         	movff	___almod@dividend+2,?___almod+2
+  1436  007CA0  C004  F004         	movff	___almod@dividend+3,?___almod+3
+  1437  007CA4  0012               	return	
+  1438  007CA6                     __end_of___almod:
+  1439                           	opt stack 0
+  1440                           intcon	equ	0xFF2
+  1441                           status	equ	0xFD8
+  1442                           
+  1443 ;; *************** function ___aldiv *****************
+  1444 ;; Defined at:
+  1445 ;;		line 8 in file "C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\aldiv.c"
+  1446 ;; Parameters:    Size  Location     Type
+  1447 ;;  dividend        4   10[COMRAM] long 
+  1448 ;;  divisor         4   14[COMRAM] long 
+  1449 ;; Auto vars:     Size  Location     Type
+  1450 ;;  quotient        4   20[COMRAM] long 
+  1451 ;;  sign            1   19[COMRAM] unsigned char 
+  1452 ;;  counter         1   18[COMRAM] unsigned char 
+  1453 ;; Return value:  Size  Location     Type
+  1454 ;;                  4   10[COMRAM] long 
+  1455 ;; Registers used:
+  1456 ;;		wreg, status,2, status,0
+  1457 ;; Tracked objects:
+  1458 ;;		On entry : 0/0
+  1459 ;;		On exit  : 0/0
+  1460 ;;		Unchanged: 0/0
+  1461 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
+  1462 ;;      Params:         8       0       0       0       0       0       0       0       0
+  1463 ;;      Locals:         6       0       0       0       0       0       0       0       0
+  1464 ;;      Temps:          0       0       0       0       0       0       0       0       0
+  1465 ;;      Totals:        14       0       0       0       0       0       0       0       0
+  1466 ;;Total ram usage:       14 bytes
+  1467 ;; Hardware stack levels used:    1
+  1468 ;; This function calls:
+  1469 ;;		Nothing
+  1470 ;; This function is called by:
+  1471 ;;		_main
+  1472 ;; This function uses a non-reentrant model
+  1473 ;;
+  1474                           
+  1475                           	psect	text12
+  1476  007CA6                     __ptext12:
+  1477                           	opt stack 0
+  1478  007CA6                     ___aldiv:
+  1479                           	opt stack 30
+  1480                           
+  1481                           ;incstack = 0
+  1482  007CA6  0E00               	movlw	0
+  1483  007CA8  6E14               	movwf	___aldiv@sign,c
+  1484  007CAA  AE12               	btfss	___aldiv@divisor+3,7,c
+  1485  007CAC  D00A               	goto	l1019
+  1486  007CAE  1E12               	comf	___aldiv@divisor+3,f,c
+  1487  007CB0  1E11               	comf	___aldiv@divisor+2,f,c
+  1488  007CB2  1E10               	comf	___aldiv@divisor+1,f,c
+  1489  007CB4  6C0F               	negf	___aldiv@divisor,c
+  1490  007CB6  0E00               	movlw	0
+  1491  007CB8  2210               	addwfc	___aldiv@divisor+1,f,c
+  1492  007CBA  2211               	addwfc	___aldiv@divisor+2,f,c
+  1493  007CBC  2212               	addwfc	___aldiv@divisor+3,f,c
+  1494  007CBE  0E01               	movlw	1
+  1495  007CC0  6E14               	movwf	___aldiv@sign,c
+  1496  007CC2                     l1019:
+  1497  007CC2  AE0E               	btfss	___aldiv@dividend+3,7,c
+  1498  007CC4  D00A               	goto	l1025
+  1499  007CC6  1E0E               	comf	___aldiv@dividend+3,f,c
+  1500  007CC8  1E0D               	comf	___aldiv@dividend+2,f,c
+  1501  007CCA  1E0C               	comf	___aldiv@dividend+1,f,c
+  1502  007CCC  6C0B               	negf	___aldiv@dividend,c
+  1503  007CCE  0E00               	movlw	0
+  1504  007CD0  220C               	addwfc	___aldiv@dividend+1,f,c
+  1505  007CD2  220D               	addwfc	___aldiv@dividend+2,f,c
+  1506  007CD4  220E               	addwfc	___aldiv@dividend+3,f,c
+  1507  007CD6  0E01               	movlw	1
+  1508  007CD8  1A14               	xorwf	___aldiv@sign,f,c
+  1509  007CDA                     l1025:
+  1510  007CDA  0E00               	movlw	0
+  1511  007CDC  6E15               	movwf	___aldiv@quotient,c
+  1512  007CDE  0E00               	movlw	0
+  1513  007CE0  6E16               	movwf	___aldiv@quotient+1,c
+  1514  007CE2  0E00               	movlw	0
+  1515  007CE4  6E17               	movwf	___aldiv@quotient+2,c
+  1516  007CE6  0E00               	movlw	0
+  1517  007CE8  6E18               	movwf	___aldiv@quotient+3,c
+  1518  007CEA  500F               	movf	___aldiv@divisor,w,c
+  1519  007CEC  1010               	iorwf	___aldiv@divisor+1,w,c
+  1520  007CEE  1011               	iorwf	___aldiv@divisor+2,w,c
+  1521  007CF0  1012               	iorwf	___aldiv@divisor+3,w,c
+  1522  007CF2  B4D8               	btfsc	status,2,c
+  1523  007CF4  D02A               	goto	l1047
+  1524  007CF6  0E01               	movlw	1
+  1525  007CF8  6E13               	movwf	___aldiv@counter,c
+  1526  007CFA  D006               	goto	l1033
+  1527  007CFC                     l1031:
+  1528  007CFC  90D8               	bcf	status,0,c
+  1529  007CFE  360F               	rlcf	___aldiv@divisor,f,c
+  1530  007D00  3610               	rlcf	___aldiv@divisor+1,f,c
+  1531  007D02  3611               	rlcf	___aldiv@divisor+2,f,c
+  1532  007D04  3612               	rlcf	___aldiv@divisor+3,f,c
+  1533  007D06  2A13               	incf	___aldiv@counter,f,c
+  1534  007D08                     l1033:
+  1535  007D08  AE12               	btfss	___aldiv@divisor+3,7,c
+  1536  007D0A  D7F8               	goto	l1031
+  1537  007D0C                     l1035:
+  1538  007D0C  90D8               	bcf	status,0,c
+  1539  007D0E  3615               	rlcf	___aldiv@quotient,f,c
+  1540  007D10  3616               	rlcf	___aldiv@quotient+1,f,c
+  1541  007D12  3617               	rlcf	___aldiv@quotient+2,f,c
+  1542  007D14  3618               	rlcf	___aldiv@quotient+3,f,c
+  1543  007D16  500F               	movf	___aldiv@divisor,w,c
+  1544  007D18  5C0B               	subwf	___aldiv@dividend,w,c
+  1545  007D1A  5010               	movf	___aldiv@divisor+1,w,c
+  1546  007D1C  580C               	subwfb	___aldiv@dividend+1,w,c
+  1547  007D1E  5011               	movf	___aldiv@divisor+2,w,c
+  1548  007D20  580D               	subwfb	___aldiv@dividend+2,w,c
+  1549  007D22  5012               	movf	___aldiv@divisor+3,w,c
+  1550  007D24  580E               	subwfb	___aldiv@dividend+3,w,c
+  1551  007D26  A0D8               	btfss	status,0,c
+  1552  007D28  D009               	goto	l1043
+  1553  007D2A  500F               	movf	___aldiv@divisor,w,c
+  1554  007D2C  5E0B               	subwf	___aldiv@dividend,f,c
+  1555  007D2E  5010               	movf	___aldiv@divisor+1,w,c
+  1556  007D30  5A0C               	subwfb	___aldiv@dividend+1,f,c
+  1557  007D32  5011               	movf	___aldiv@divisor+2,w,c
+  1558  007D34  5A0D               	subwfb	___aldiv@dividend+2,f,c
+  1559  007D36  5012               	movf	___aldiv@divisor+3,w,c
+  1560  007D38  5A0E               	subwfb	___aldiv@dividend+3,f,c
+  1561  007D3A  8015               	bsf	___aldiv@quotient,0,c
+  1562  007D3C                     l1043:
+  1563  007D3C  90D8               	bcf	status,0,c
+  1564  007D3E  3212               	rrcf	___aldiv@divisor+3,f,c
+  1565  007D40  3211               	rrcf	___aldiv@divisor+2,f,c
+  1566  007D42  3210               	rrcf	___aldiv@divisor+1,f,c
+  1567  007D44  320F               	rrcf	___aldiv@divisor,f,c
+  1568  007D46  2E13               	decfsz	___aldiv@counter,f,c
+  1569  007D48  D7E1               	goto	l1035
+  1570  007D4A                     l1047:
+  1571  007D4A  5014               	movf	___aldiv@sign,w,c
+  1572  007D4C  B4D8               	btfsc	status,2,c
+  1573  007D4E  D008               	goto	l1051
+  1574  007D50  1E18               	comf	___aldiv@quotient+3,f,c
+  1575  007D52  1E17               	comf	___aldiv@quotient+2,f,c
+  1576  007D54  1E16               	comf	___aldiv@quotient+1,f,c
+  1577  007D56  6C15               	negf	___aldiv@quotient,c
+  1578  007D58  0E00               	movlw	0
+  1579  007D5A  2216               	addwfc	___aldiv@quotient+1,f,c
+  1580  007D5C  2217               	addwfc	___aldiv@quotient+2,f,c
+  1581  007D5E  2218               	addwfc	___aldiv@quotient+3,f,c
+  1582  007D60                     l1051:
+  1583  007D60  C015  F00B         	movff	___aldiv@quotient,?___aldiv
+  1584  007D64  C016  F00C         	movff	___aldiv@quotient+1,?___aldiv+1
+  1585  007D68  C017  F00D         	movff	___aldiv@quotient+2,?___aldiv+2
+  1586  007D6C  C018  F00E         	movff	___aldiv@quotient+3,?___aldiv+3
+  1587  007D70  0012               	return	
+  1588  007D72                     __end_of___aldiv:
+  1589                           	opt stack 0
+  1590  0000                     intcon	equ	0xFF2
+  1591                           status	equ	0xFD8
+  1592                           intcon	equ	0xFF2
+  1593                           status	equ	0xFD8
+  1594                           
+  1595                           	psect	rparam
+  1596  0000                     intcon	equ	0xFF2
+  1597                           status	equ	0xFD8
+
+
+Data Sizes:
+    Strings     0
+    Constant    0
+    Data        0
+    BSS         5
+    Persistent  0
+    Stack       0
+
+Auto Spaces:
+    Space          Size  Autos    Used
+    COMRAM           95     31      36
+    BANK0           160      0       0
+    BANK1           256      0       0
+    BANK2           256      0       0
+    BANK3           256      0       0
+    BANK4           256      0       0
+    BANK5           256      0       0
+    BANK6           256      0       0
+    BANK7           256      0       0
+
+Pointer List with Targets:
+
+    None.
+
+Critical Paths under _main in COMRAM
+
+    _main->_lcd_write_char
+    _lcdreset->_delay
+    _lcd_write_char->___aldiv
+    _lcd_write_address->_lcd_write_com_busy
+    _lcd_write_com_busy->_lcd_write_com
+    ___lwdiv->___lwmod
+    ___aldiv->___almod
+
+Critical Paths under _main in BANK0
+
+    None.
+
+Critical Paths under _main in BANK1
+
+    None.
+
+Critical Paths under _main in BANK2
+
+    None.
+
+Critical Paths under _main in BANK3
+
+    None.
+
+Critical Paths under _main in BANK4
+
+    None.
+
+Critical Paths under _main in BANK5
+
+    None.
+
+Critical Paths under _main in BANK6
+
+    None.
+
+Critical Paths under _main in BANK7
+
+    None.
+
+Call Graph Tables:
+
+ ---------------------------------------------------------------------------------
+ (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
+ ---------------------------------------------------------------------------------
+ (0) _main                                                 4     4      0    4050
+                                             27 COMRAM     4     4      0
+                            ___aldiv
+                            ___almod
+                            ___lwdiv
+                            ___lwmod
+                     _lcd_write_char
+                           _lcdreset
+ ---------------------------------------------------------------------------------
+ (1) _lcdreset                                             0     0      0     287
+                              _delay
+                      _lcd_write_com
+                 _lcd_write_com_busy
+ ---------------------------------------------------------------------------------
+ (2) _delay                                                6     4      2     221
+                                              0 COMRAM     6     4      2
+ ---------------------------------------------------------------------------------
+ (1) _lcd_write_char                                       3     1      2    1877
+                                             24 COMRAM     3     1      2
+                            ___aldiv (ARG)
+                            ___almod (ARG)
+                            ___lwdiv (ARG)
+                            ___lwmod (ARG)
+                  _lcd_write_address
+                     _lcd_write_data
+ ---------------------------------------------------------------------------------
+ (2) _lcd_write_data                                       1     1      0      22
+                                              0 COMRAM     1     1      0
+                      _lcd_wait_busy
+ ---------------------------------------------------------------------------------
+ (2) _lcd_write_address                                    2     1      1     155
+                                              2 COMRAM     2     1      1
+                 _lcd_write_com_busy
+ ---------------------------------------------------------------------------------
+ (2) _lcd_write_com_busy                                   1     1      0      44
+                                              1 COMRAM     1     1      0
+                      _lcd_wait_busy
+                      _lcd_write_com
+ ---------------------------------------------------------------------------------
+ (3) _lcd_write_com                                        1     1      0      22
+                                              0 COMRAM     1     1      0
+ ---------------------------------------------------------------------------------
+ (3) _lcd_wait_busy                                        0     0      0       0
+ ---------------------------------------------------------------------------------
+ (1) ___lwmod                                              5     1      4     503
+                                              0 COMRAM     5     1      4
+ ---------------------------------------------------------------------------------
+ (1) ___lwdiv                                              7     3      4     420
+                                              5 COMRAM     7     3      4
+                            ___lwmod (ARG)
+ ---------------------------------------------------------------------------------
+ (1) ___almod                                             10     2      8     382
+                                              0 COMRAM    10     2      8
+ ---------------------------------------------------------------------------------
+ (1) ___aldiv                                             14     6      8     558
+                                             10 COMRAM    14     6      8
+                            ___almod (ARG)
+ ---------------------------------------------------------------------------------
+ Estimated maximum stack depth 3
+ ---------------------------------------------------------------------------------
+
+ Call Graph Graphs:
+
+ _main (ROOT)
+   ___aldiv
+     ___almod (ARG)
+   ___almod
+   ___lwdiv
+     ___lwmod (ARG)
+   ___lwmod
+   _lcd_write_char
+     ___aldiv (ARG)
+       ___almod (ARG)
+     ___almod (ARG)
+     ___lwdiv (ARG)
+       ___lwmod (ARG)
+     ___lwmod (ARG)
+     _lcd_write_address (ARG)
+       _lcd_write_com_busy
+         _lcd_wait_busy
+         _lcd_write_com
+     _lcd_write_data (ARG)
+       _lcd_wait_busy
+   _lcdreset
+     _delay
+     _lcd_write_com
+     _lcd_write_com_busy
+       _lcd_wait_busy
+       _lcd_write_com
+
+ Address spaces:
+Name               Size   Autos  Total    Cost      Usage
+BIGRAM             7FF      0       0      21        0.0%
+EEDATA             100      0       0       0        0.0%
+BITBANK7           100      0       0      18        0.0%
+BANK7              100      0       0      19        0.0%
+BITBANK6           100      0       0      16        0.0%
+BANK6              100      0       0      17        0.0%
+BITBANK5           100      0       0      14        0.0%
+BANK5              100      0       0      15        0.0%
+BITBANK4           100      0       0      12        0.0%
+BANK4              100      0       0      13        0.0%
+BITBANK3           100      0       0      10        0.0%
+BANK3              100      0       0      11        0.0%
+BITBANK2           100      0       0       8        0.0%
+BANK2              100      0       0       9        0.0%
+BITBANK1           100      0       0       6        0.0%
+BANK1              100      0       0       7        0.0%
+BITBANK0            A0      0       0       4        0.0%
+BANK0               A0      0       0       5        0.0%
+BITCOMRAM           5F      0       0       0        0.0%
+COMRAM              5F     1F      24       1       37.9%
+BITSFR               0      0       0      40        0.0%
+SFR                  0      0       0      40        0.0%
+STACK                0      0       0       2        0.0%
+NULL                 0      0       0       0        0.0%
+ABS                  0      0      24      20        0.0%
+DATA                 0      0      24       3        0.0%
+CODE                 0      0       0       0        0.0%
+
+
+Microchip Technology PIC18 Macro Assembler V1.35 build -356382666 
+Symbol Table                                                                                   Tue Aug 25 16:21:24 2015
+
+                          _a 0024                           l51 7A6C                  __CFG_BORV$1 000000  
+                        l482 7B9A                          l492 7B48                          l953 7AE2  
+                        l963 7AFE                          l955 7AEA                          l965 7B02  
+                        l985 7ACC                          _GIE 007F97                          _RB3 007C0B  
+                        _RB4 007C0C                          _RB5 007C0D                          _RD7 007C1F  
+             ?_lcd_wait_busy 0001                 __CFG_FOSC$HS 000000                 __CFG_LVP$OFF 000000  
+               __CFG_WDT$OFF 000000                         l1101 7B74                         l1031 7CFC  
+                       l1033 7D08                         l1025 7CDA                         l1121 7B2A  
+                       l1051 7D60                         l1043 7D3C                         l1035 7D0C  
+                       l1019 7CC2                         l1109 7B90                         l1125 7B3E  
+                       l1117 7B1E                         l1047 7D4A                         l1071 7C3C  
+                       l1063 7C16                         l1119 7B26                         l1073 7C48  
+                       l1075 7C4C                         l1083 7C7E                         l1067 7C2A  
+                       l1155 7DBE                         l1087 7C94                         l1079 7C70  
+                       l1097 7B68                         l1099 7B70                         _PEIE 007F96  
+                       _PIR1 000F9E              lcd_write_char@x 001B              lcd_write_char@y 0019  
+      lcd_write_data@databuf 0001       __end_of_lcd_write_char 7A9C       __end_of_lcd_write_data 7AB2  
+                       _main 7D72                         _ycon 0022                         _tttt 0020  
+             ?_lcd_write_com 0001                         start 0000                __CFG_MCLRE$ON 000000  
+               ___param_bank 000010              __end_of___aldiv 7D72              __end_of___almod 7CA6  
+                      ?_main 0001                        _T1CON 000FCD              __end_of___lwdiv 7BA4  
+            __end_of___lwmod 7B52                        _TMR1H 000FCF                        _TMR1L 000FCE  
+                      _PORTD 000F83                        _TRISB 000F93                        _TRISD 000F95  
+                      _delay 7AD8              ?_lcd_write_char 0019              ?_lcd_write_data 0001  
+                      status 000FD8   __size_of_lcd_write_address 0026              __initialization 7A54  
+               __end_of_main 8000              ??_lcd_wait_busy 0001                       ??_main 001C  
+              __activetblptr 000000                       ?_delay 0001                       _ADCON1 000FC1  
+                     _TMR1IE 007CE8                       _TMR1IF 007CF0              ??_lcd_write_com 0001  
+                     _TRISD7 007CAF            lcd_write_char@buf 001A               __CFG_XINST$OFF 000000  
+                  ??___aldiv 0013                    ??___almod 0009             __end_of_lcdreset 7BFA  
+                  ??___lwdiv 000A                    ??___lwmod 0005                       delay@i 0003  
+                     delay@j 0005                       delay@t 0001     lcd_write_com_busy@combuf 0002  
+                 __accesstop 0060      __end_of__initialization 7A5E              __CFG_PBADEN$OFF 000000  
+              ___rparam_used 000001  __size_of_lcd_write_com_busy 000E               __pcstackCOMRAM 0001  
+              __end_of_delay 7B10                      ??_delay 0003             ??_lcd_write_char 001B  
+           ??_lcd_write_data 0001           lcd_write_address@x 0004           lcd_write_address@y 0003  
+                  ?_lcdreset 0001                      __Hparam 0000                      __Lparam 0000  
+                    ___aldiv 7CA6                      ___almod 7BFA                      ___lwdiv 7B52  
+                    ___lwmod 7B10                      __pcinit 7A54                      __ramtop 0800  
+                    __ptext0 7D72                      __ptext1 7BA4                      __ptext2 7AD8  
+                    __ptext3 7A88                      __ptext4 7A9C                      __ptext5 7AB2  
+                    __ptext6 7A46                      __ptext7 7A76                      __ptext8 7A64  
+                    __ptext9 7B10             ___aldiv@dividend 000B         end_of_initialization 7A5E  
+                 ??_lcdreset 0007             ___aldiv@quotient 0015        __end_of_lcd_wait_busy 7A76  
+      __end_of_lcd_write_com 7A88          start_initialization 7A54   __end_of_lcd_write_com_busy 7A54  
+         __CFG_BOR$ON_ACTIVE 000000                  __pbssCOMRAM 0020            __size_of_lcdreset 0056  
+           ___lwdiv@dividend 0006                     ?___aldiv 000B                     ?___almod 0001  
+                   ?___lwdiv 0006                     ?___lwmod 0001             ___almod@dividend 0001  
+           ___lwdiv@quotient 000A               __size_of_delay 0038              ___aldiv@divisor 000F  
+            ___aldiv@counter 0013          lcd_write_com@combuf 0001      __size_of_lcd_write_char 0014  
+    __size_of_lcd_write_data 0016                     __Hrparam 0000                     __Lrparam 0000  
+           __size_of___aldiv 00CC             __size_of___almod 00AC             __size_of___lwdiv 0052  
+           __size_of___lwmod 0042                     _main$606 001C              ___lwdiv@divisor 0008  
+            ___lwdiv@counter 000C                     __ptext10 7B52                     __ptext11 7BFA  
+                   __ptext12 7CA6              ___almod@divisor 0005              ___almod@counter 0009  
+                   _lcdreset 7BA4                __size_of_main 028E       __size_of_lcd_wait_busy 0012  
+         _lcd_write_com_busy 7A46       __size_of_lcd_write_com 0012          ?_lcd_write_com_busy 0001  
+           ___lwmod@dividend 0001         ??_lcd_write_com_busy 0002            _lcd_write_address 7AB2  
+         ?_lcd_write_address 0003          ??_lcd_write_address 0004              ___lwmod@divisor 0003  
+              _lcd_wait_busy 7A64              ___lwmod@counter 0005                 ___aldiv@sign 0014  
+               ___almod@sign 000A               _lcd_write_char 7A88               _lcd_write_data 7A9C  
+  __end_of_lcd_write_address 7AD8                _lcd_write_com 7A76  

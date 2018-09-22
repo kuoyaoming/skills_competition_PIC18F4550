@@ -1,0 +1,595 @@
+%CMF
+# %PSECTS Section
+# For each object file, details of its psects are enumerated here.
+# The begining of the section is indicated by %PSECTS.  The first
+# line indicates the name of the first object file, e.g.
+#    $foo.obj
+# Each line that follows describes a psect in that object file, until
+# the next object file.  The lines that describe a psect have the
+# format:
+#    <psect name> <class name> <space> <link address> <load addresses> <length> <delta>
+# All addresses and the length are given in unqualified hexadecimal
+# in delta units.  Any other numeric values are decimal.
+%PSECTS
+$dist/default/production\LCD-TIMER.X.production.obj
+cinit CODE 0 7A54 7A54 10 1
+text0 CODE 0 7D72 7D72 28E 1
+text1 CODE 0 7BA4 7BA4 56 1
+text2 CODE 0 7AD8 7AD8 38 1
+text3 CODE 0 7A88 7A88 14 1
+text4 CODE 0 7A9C 7A9C 16 1
+text5 CODE 0 7AB2 7AB2 26 1
+text6 CODE 0 7A46 7A46 E 1
+text7 CODE 0 7A76 7A76 12 1
+text8 CODE 0 7A64 7A64 12 1
+text9 CODE 0 7B10 7B10 42 1
+text10 CODE 0 7B52 7B52 52 1
+text11 CODE 0 7BFA 7BFA AC 1
+text12 CODE 0 7CA6 7CA6 CC 1
+cstackCOMRAM COMRAM 1 1 1 1F 1
+bssCOMRAM COMRAM 1 20 20 5 1
+$C:\Users\KUOYAO~1\AppData\Local\Temp\s2tk.obj
+idloc IDLOC 0 200000 200000 8 1
+end_init CODE 0 0 0 4 1
+config CONFIG 0 300000 300000 E 1
+# %UNUSED Section
+# This section enumerates the unused ranges of each CLASS. Each entry
+# is described on a single line as follows:
+#    <class name> <range> <delta>
+# Addresses given in the range are in hexadecimal and units of delta.
+%UNUSED
+RAM 60-7FF 1
+SFR F60-FFF 1
+BANK0 60-FF 1
+BANK1 100-1FF 1
+BANK2 200-2FF 1
+BANK3 300-3FF 1
+BANK4 400-4FF 1
+BANK5 500-5FF 1
+BANK6 600-6FF 1
+BANK7 700-7FF 1
+CONST 4-7A45 1
+STACK 60-7FF 1
+SMALLCONST 800-7A45 1
+CODE 4-7A45 1
+BIGRAM 25-7FF 1
+COMRAM 25-5F 1
+EEDATA F00000-F000FF 1
+MEDIUMCONST 800-7A45 1
+# %LINETAB Section
+# This section enumerates the file/line to address mappings.
+# The beginning of the section is indicated by %LINETAB.
+# The first line indicates the name of the first object file, e.g.
+#   $foo.obj
+# Each line that follows describes a single mapping until the next
+# object file.  Mappings have the following format:
+#    <address> <psect name> <class name> ><line number>:<file name>
+# The address is absolute and given given in unqualified hex 
+# in delta units of the psect. All mappings within an object file
+# are in ascending order of addresses.
+# All other numeric values are in decimal.
+%LINETAB
+$dist/default/production\LCD-TIMER.X.production.obj
+7CA6 text12 CODE >8:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\aldiv.c
+7CA6 text12 CODE >14:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\aldiv.c
+7CAA text12 CODE >15:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\aldiv.c
+7CAE text12 CODE >16:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\aldiv.c
+7CBE text12 CODE >17:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\aldiv.c
+7CC2 text12 CODE >19:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\aldiv.c
+7CC6 text12 CODE >20:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\aldiv.c
+7CD6 text12 CODE >21:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\aldiv.c
+7CDA text12 CODE >23:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\aldiv.c
+7CEA text12 CODE >24:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\aldiv.c
+7CF6 text12 CODE >25:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\aldiv.c
+7CFA text12 CODE >26:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\aldiv.c
+7CFC text12 CODE >27:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\aldiv.c
+7D06 text12 CODE >28:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\aldiv.c
+7D08 text12 CODE >26:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\aldiv.c
+7D0C text12 CODE >31:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\aldiv.c
+7D16 text12 CODE >32:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\aldiv.c
+7D2A text12 CODE >33:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\aldiv.c
+7D3A text12 CODE >34:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\aldiv.c
+7D3C text12 CODE >36:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\aldiv.c
+7D46 text12 CODE >37:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\aldiv.c
+7D4A text12 CODE >39:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\aldiv.c
+7D50 text12 CODE >40:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\aldiv.c
+7D60 text12 CODE >41:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\aldiv.c
+7BFA text11 CODE >8:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\almod.c
+7BFA text11 CODE >13:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\almod.c
+7BFE text11 CODE >14:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\almod.c
+7C02 text11 CODE >15:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\almod.c
+7C12 text11 CODE >16:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\almod.c
+7C16 text11 CODE >18:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\almod.c
+7C1A text11 CODE >19:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\almod.c
+7C2A text11 CODE >20:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\almod.c
+7C36 text11 CODE >21:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\almod.c
+7C3A text11 CODE >22:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\almod.c
+7C3C text11 CODE >23:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\almod.c
+7C46 text11 CODE >24:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\almod.c
+7C48 text11 CODE >22:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\almod.c
+7C4C text11 CODE >27:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\almod.c
+7C60 text11 CODE >28:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\almod.c
+7C70 text11 CODE >29:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\almod.c
+7C7A text11 CODE >30:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\almod.c
+7C7E text11 CODE >32:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\almod.c
+7C84 text11 CODE >33:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\almod.c
+7C94 text11 CODE >34:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\almod.c
+7B52 text10 CODE >8:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\lwdiv.c
+7B52 text10 CODE >14:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\lwdiv.c
+7B5A text10 CODE >15:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\lwdiv.c
+7B62 text10 CODE >16:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\lwdiv.c
+7B66 text10 CODE >17:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\lwdiv.c
+7B68 text10 CODE >18:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\lwdiv.c
+7B6E text10 CODE >19:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\lwdiv.c
+7B70 text10 CODE >17:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\lwdiv.c
+7B74 text10 CODE >22:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\lwdiv.c
+7B7A text10 CODE >23:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\lwdiv.c
+7B86 text10 CODE >24:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\lwdiv.c
+7B8E text10 CODE >25:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\lwdiv.c
+7B90 text10 CODE >27:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\lwdiv.c
+7B96 text10 CODE >28:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\lwdiv.c
+7B9A text10 CODE >29:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\lwdiv.c
+7B9A text10 CODE >30:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\lwdiv.c
+7BA2 text10 CODE >31:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\lwdiv.c
+7B10 text9 CODE >8:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\lwmod.c
+7B10 text9 CODE >13:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\lwmod.c
+7B18 text9 CODE >14:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\lwmod.c
+7B1C text9 CODE >15:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\lwmod.c
+7B1E text9 CODE >16:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\lwmod.c
+7B24 text9 CODE >17:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\lwmod.c
+7B26 text9 CODE >15:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\lwmod.c
+7B2A text9 CODE >20:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\lwmod.c
+7B36 text9 CODE >21:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\lwmod.c
+7B3E text9 CODE >22:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\lwmod.c
+7B44 text9 CODE >23:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\lwmod.c
+7B48 text9 CODE >24:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\lwmod.c
+7B48 text9 CODE >25:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\lwmod.c
+7B50 text9 CODE >26:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\lwmod.c
+7A64 text8 CODE >24:C:\kuotest\LCD-TIMER.X\newfile.c
+7A64 text8 CODE >26:C:\kuotest\LCD-TIMER.X\newfile.c
+7A66 text8 CODE >27:C:\kuotest\LCD-TIMER.X\newfile.c
+7A68 text8 CODE >28:C:\kuotest\LCD-TIMER.X\newfile.c
+7A6A text8 CODE >29:C:\kuotest\LCD-TIMER.X\newfile.c
+7A6C text8 CODE >30:C:\kuotest\LCD-TIMER.X\newfile.c
+7A70 text8 CODE >31:C:\kuotest\LCD-TIMER.X\newfile.c
+7A72 text8 CODE >32:C:\kuotest\LCD-TIMER.X\newfile.c
+7A74 text8 CODE >33:C:\kuotest\LCD-TIMER.X\newfile.c
+7A76 text7 CODE >35:C:\kuotest\LCD-TIMER.X\newfile.c
+7A78 text7 CODE >37:C:\kuotest\LCD-TIMER.X\newfile.c
+7A7A text7 CODE >38:C:\kuotest\LCD-TIMER.X\newfile.c
+7A7C text7 CODE >39:C:\kuotest\LCD-TIMER.X\newfile.c
+7A80 text7 CODE >40:C:\kuotest\LCD-TIMER.X\newfile.c
+7A82 text7 CODE >41:C:\kuotest\LCD-TIMER.X\newfile.c
+7A84 text7 CODE >42:C:\kuotest\LCD-TIMER.X\newfile.c
+7A86 text7 CODE >43:C:\kuotest\LCD-TIMER.X\newfile.c
+7A46 text6 CODE >45:C:\kuotest\LCD-TIMER.X\newfile.c
+7A48 text6 CODE >47:C:\kuotest\LCD-TIMER.X\newfile.c
+7A4C text6 CODE >48:C:\kuotest\LCD-TIMER.X\newfile.c
+7A52 text6 CODE >49:C:\kuotest\LCD-TIMER.X\newfile.c
+7AB2 text5 CODE >62:C:\kuotest\LCD-TIMER.X\newfile.c
+7AB4 text5 CODE >64:C:\kuotest\LCD-TIMER.X\newfile.c
+7AB8 text5 CODE >65:C:\kuotest\LCD-TIMER.X\newfile.c
+7ABC text5 CODE >66:C:\kuotest\LCD-TIMER.X\newfile.c
+7AC2 text5 CODE >67:C:\kuotest\LCD-TIMER.X\newfile.c
+7ACC text5 CODE >69:C:\kuotest\LCD-TIMER.X\newfile.c
+7A9C text4 CODE >51:C:\kuotest\LCD-TIMER.X\newfile.c
+7A9E text4 CODE >53:C:\kuotest\LCD-TIMER.X\newfile.c
+7AA2 text4 CODE >54:C:\kuotest\LCD-TIMER.X\newfile.c
+7AA4 text4 CODE >55:C:\kuotest\LCD-TIMER.X\newfile.c
+7AA6 text4 CODE >56:C:\kuotest\LCD-TIMER.X\newfile.c
+7AAA text4 CODE >57:C:\kuotest\LCD-TIMER.X\newfile.c
+7AAC text4 CODE >58:C:\kuotest\LCD-TIMER.X\newfile.c
+7AAE text4 CODE >59:C:\kuotest\LCD-TIMER.X\newfile.c
+7AB0 text4 CODE >60:C:\kuotest\LCD-TIMER.X\newfile.c
+7A88 text3 CODE >87:C:\kuotest\LCD-TIMER.X\newfile.c
+7A8A text3 CODE >89:C:\kuotest\LCD-TIMER.X\newfile.c
+7A94 text3 CODE >90:C:\kuotest\LCD-TIMER.X\newfile.c
+7A9A text3 CODE >91:C:\kuotest\LCD-TIMER.X\newfile.c
+7AD8 text2 CODE >12:C:\kuotest\LCD-TIMER.X\newfile.c
+7AD8 text2 CODE >15:C:\kuotest\LCD-TIMER.X\newfile.c
+7AE2 text2 CODE >17:C:\kuotest\LCD-TIMER.X\newfile.c
+7AF6 text2 CODE >19:C:\kuotest\LCD-TIMER.X\newfile.c
+7AF8 text2 CODE >17:C:\kuotest\LCD-TIMER.X\newfile.c
+7AFE text2 CODE >15:C:\kuotest\LCD-TIMER.X\newfile.c
+7BA4 text1 CODE >72:C:\kuotest\LCD-TIMER.X\newfile.c
+7BA4 text1 CODE >74:C:\kuotest\LCD-TIMER.X\newfile.c
+7BB0 text1 CODE >75:C:\kuotest\LCD-TIMER.X\newfile.c
+7BB6 text1 CODE >76:C:\kuotest\LCD-TIMER.X\newfile.c
+7BC2 text1 CODE >77:C:\kuotest\LCD-TIMER.X\newfile.c
+7BC8 text1 CODE >78:C:\kuotest\LCD-TIMER.X\newfile.c
+7BD4 text1 CODE >79:C:\kuotest\LCD-TIMER.X\newfile.c
+7BDA text1 CODE >80:C:\kuotest\LCD-TIMER.X\newfile.c
+7BE0 text1 CODE >81:C:\kuotest\LCD-TIMER.X\newfile.c
+7BE6 text1 CODE >82:C:\kuotest\LCD-TIMER.X\newfile.c
+7BEC text1 CODE >83:C:\kuotest\LCD-TIMER.X\newfile.c
+7BF2 text1 CODE >84:C:\kuotest\LCD-TIMER.X\newfile.c
+7BF8 text1 CODE >85:C:\kuotest\LCD-TIMER.X\newfile.c
+7D72 text0 CODE >93:C:\kuotest\LCD-TIMER.X\newfile.c
+7D72 text0 CODE >95:C:\kuotest\LCD-TIMER.X\newfile.c
+7D76 text0 CODE >96:C:\kuotest\LCD-TIMER.X\newfile.c
+7D78 text0 CODE >97:C:\kuotest\LCD-TIMER.X\newfile.c
+7D7A text0 CODE >98:C:\kuotest\LCD-TIMER.X\newfile.c
+7D7C text0 CODE >99:C:\kuotest\LCD-TIMER.X\newfile.c
+7D80 text0 CODE >100:C:\kuotest\LCD-TIMER.X\newfile.c
+7D84 text0 CODE >101:C:\kuotest\LCD-TIMER.X\newfile.c
+7D86 text0 CODE >102:C:\kuotest\LCD-TIMER.X\newfile.c
+7D88 text0 CODE >103:C:\kuotest\LCD-TIMER.X\newfile.c
+7D8C text0 CODE >104:C:\kuotest\LCD-TIMER.X\newfile.c
+7D90 text0 CODE >105:C:\kuotest\LCD-TIMER.X\newfile.c
+7D94 text0 CODE >106:C:\kuotest\LCD-TIMER.X\newfile.c
+7D98 text0 CODE >108:C:\kuotest\LCD-TIMER.X\newfile.c
+7D9E text0 CODE >110:C:\kuotest\LCD-TIMER.X\newfile.c
+7DA0 text0 CODE >111:C:\kuotest\LCD-TIMER.X\newfile.c
+7DA4 text0 CODE >112:C:\kuotest\LCD-TIMER.X\newfile.c
+7DA6 text0 CODE >113:C:\kuotest\LCD-TIMER.X\newfile.c
+7DBE text0 CODE >114:C:\kuotest\LCD-TIMER.X\newfile.c
+7DC2 text0 CODE >115:C:\kuotest\LCD-TIMER.X\newfile.c
+7DD0 text0 CODE >116:C:\kuotest\LCD-TIMER.X\newfile.c
+7DDE text0 CODE >117:C:\kuotest\LCD-TIMER.X\newfile.c
+7DEC text0 CODE >118:C:\kuotest\LCD-TIMER.X\newfile.c
+7DFA text0 CODE >119:C:\kuotest\LCD-TIMER.X\newfile.c
+7E08 text0 CODE >120:C:\kuotest\LCD-TIMER.X\newfile.c
+7E16 text0 CODE >121:C:\kuotest\LCD-TIMER.X\newfile.c
+7E24 text0 CODE >122:C:\kuotest\LCD-TIMER.X\newfile.c
+7E32 text0 CODE >123:C:\kuotest\LCD-TIMER.X\newfile.c
+7E40 text0 CODE >124:C:\kuotest\LCD-TIMER.X\newfile.c
+7E4E text0 CODE >125:C:\kuotest\LCD-TIMER.X\newfile.c
+7EB2 text0 CODE >126:C:\kuotest\LCD-TIMER.X\newfile.c
+7F06 text0 CODE >127:C:\kuotest\LCD-TIMER.X\newfile.c
+7F14 text0 CODE >128:C:\kuotest\LCD-TIMER.X\newfile.c
+7F4C text0 CODE >129:C:\kuotest\LCD-TIMER.X\newfile.c
+7F84 text0 CODE >130:C:\kuotest\LCD-TIMER.X\newfile.c
+7F92 text0 CODE >131:C:\kuotest\LCD-TIMER.X\newfile.c
+7FCA text0 CODE >132:C:\kuotest\LCD-TIMER.X\newfile.c
+7FEE text0 CODE >133:C:\kuotest\LCD-TIMER.X\newfile.c
+7FFC text0 CODE >136:C:\kuotest\LCD-TIMER.X\newfile.c
+7A54 cinit CODE >560:C:\Users\KUOYAO~1\AppData\Local\Temp\s2tk.
+7A54 cinit CODE >562:C:\Users\KUOYAO~1\AppData\Local\Temp\s2tk.
+7A54 cinit CODE >565:C:\Users\KUOYAO~1\AppData\Local\Temp\s2tk.
+7A54 cinit CODE >584:C:\Users\KUOYAO~1\AppData\Local\Temp\s2tk.
+7A56 cinit CODE >585:C:\Users\KUOYAO~1\AppData\Local\Temp\s2tk.
+7A58 cinit CODE >586:C:\Users\KUOYAO~1\AppData\Local\Temp\s2tk.
+7A5A cinit CODE >587:C:\Users\KUOYAO~1\AppData\Local\Temp\s2tk.
+7A5C cinit CODE >588:C:\Users\KUOYAO~1\AppData\Local\Temp\s2tk.
+7A5E cinit CODE >594:C:\Users\KUOYAO~1\AppData\Local\Temp\s2tk.
+7A5E cinit CODE >596:C:\Users\KUOYAO~1\AppData\Local\Temp\s2tk.
+7A60 cinit CODE >597:C:\Users\KUOYAO~1\AppData\Local\Temp\s2tk.
+# %SYMTAB Section
+# An enumeration of all symbols in the program.
+# The beginning of the section is indicated by %SYMTAB.
+# Each line describes a single symbol as follows:
+#    <label> <value> [-]<load-adj> <class> <space> <psect> <file-name>
+# The value and load-adj are both in unqualified hexadecimal.
+# All other numeric values are in decimal.  The load-adj is the
+# quantity one needs to add to the symbol value in order to obtain the load
+# address of the symbol.  This value may be signed. If the symbol
+# was defined in a psect then <psect> will be "-". File-name
+# is the name of the object file in which the symbol was defined.
+%SYMTAB
+_a 24 0 COMRAM 1 bssCOMRAM dist/default/production\LCD-TIMER.X.production.obj
+___lwmod@counter 5 0 COMRAM 1 cstackCOMRAM dist/default/production\LCD-TIMER.X.production.obj
+__Lmediumconst 0 0 MEDIUMCONST 0 mediumconst dist/default/production\LCD-TIMER.X.production.obj
+__Hspace_0 30000E 0 ABS 0 - dist/default/production\LCD-TIMER.X.production.obj
+__Hspace_1 25 0 ABS 0 - dist/default/production\LCD-TIMER.X.production.obj
+__Hspace_2 0 0 ABS 0 - dist/default/production\LCD-TIMER.X.production.obj
+__Hibigdata 0 0 CODE 0 ibigdata dist/default/production\LCD-TIMER.X.production.obj
+__mediumconst 0 0 MEDIUMCONST 0 mediumconst C:\Users\KUOYAO~1\AppData\Local\Temp\s2tk.obj
+delay@i 3 0 COMRAM 1 cstackCOMRAM dist/default/production\LCD-TIMER.X.production.obj
+delay@j 5 0 COMRAM 1 cstackCOMRAM dist/default/production\LCD-TIMER.X.production.obj
+delay@t 1 0 COMRAM 1 cstackCOMRAM dist/default/production\LCD-TIMER.X.production.obj
+__Heeprom_data 0 0 EEDATA 0 eeprom_data dist/default/production\LCD-TIMER.X.production.obj
+__CFG_MCLRE$ON 0 0 ABS 0 - dist/default/production\LCD-TIMER.X.production.obj
+__Lsmallconst 0 0 SMALLCONST 0 smallconst dist/default/production\LCD-TIMER.X.production.obj
+_PEIE 7F96 0 ABS 0 - dist/default/production\LCD-TIMER.X.production.obj
+_PIR1 F9E 0 ABS 0 - dist/default/production\LCD-TIMER.X.production.obj
+___sp 0 0 STACK 2 stack C:\Users\KUOYAO~1\AppData\Local\Temp\s2tk.obj
+_main 7D72 0 CODE 0 text0 dist/default/production\LCD-TIMER.X.production.obj
+_tttt 20 0 COMRAM 1 bssCOMRAM dist/default/production\LCD-TIMER.X.production.obj
+_ycon 22 0 COMRAM 1 bssCOMRAM dist/default/production\LCD-TIMER.X.production.obj
+_lcd_write_com 7A76 0 CODE 0 text7 dist/default/production\LCD-TIMER.X.production.obj
+start 0 0 CODE 0 init C:\Users\KUOYAO~1\AppData\Local\Temp\s2tk.obj
+__size_of___aldiv 0 0 ABS 0 - dist/default/production\LCD-TIMER.X.production.obj
+__size_of___almod 0 0 ABS 0 - dist/default/production\LCD-TIMER.X.production.obj
+__size_of_main 0 0 ABS 0 - dist/default/production\LCD-TIMER.X.production.obj
+__size_of___lwdiv 0 0 ABS 0 - dist/default/production\LCD-TIMER.X.production.obj
+__size_of___lwmod 0 0 ABS 0 - dist/default/production\LCD-TIMER.X.production.obj
+__HbssCOMRAM 0 0 ABS 0 bssCOMRAM dist/default/production\LCD-TIMER.X.production.obj
+__end_of_lcd_write_char 7A9C 0 CODE 0 text3 dist/default/production\LCD-TIMER.X.production.obj
+__end_of_lcd_write_data 7AB2 0 CODE 0 text4 dist/default/production\LCD-TIMER.X.production.obj
+__Hpowerup 0 0 CODE 0 powerup dist/default/production\LCD-TIMER.X.production.obj
+___almod@sign A 0 COMRAM 1 cstackCOMRAM dist/default/production\LCD-TIMER.X.production.obj
+_lcd_write_address 7AB2 0 CODE 0 text5 dist/default/production\LCD-TIMER.X.production.obj
+__accesstop 60 0 ABS 0 - C:\Users\KUOYAO~1\AppData\Local\Temp\s2tk.obj
+intlevel0 0 0 CODE 0 text C:\Users\KUOYAO~1\AppData\Local\Temp\s2tk.obj
+intlevel1 0 0 CODE 0 text C:\Users\KUOYAO~1\AppData\Local\Temp\s2tk.obj
+intlevel2 0 0 CODE 0 text C:\Users\KUOYAO~1\AppData\Local\Temp\s2tk.obj
+intlevel3 0 0 CODE 0 text C:\Users\KUOYAO~1\AppData\Local\Temp\s2tk.obj
+__LbssCOMRAM 0 0 ABS 0 bssCOMRAM dist/default/production\LCD-TIMER.X.production.obj
+___aldiv@divisor F 0 COMRAM 1 cstackCOMRAM dist/default/production\LCD-TIMER.X.production.obj
+__LnvFARRAM 0 0 FARRAM 0 nvFARRAM dist/default/production\LCD-TIMER.X.production.obj
+__Hifardata 0 0 CODE 0 ifardata dist/default/production\LCD-TIMER.X.production.obj
+___aldiv@sign 14 0 COMRAM 1 cstackCOMRAM dist/default/production\LCD-TIMER.X.production.obj
+__Hclrtext 0 0 ABS 0 clrtext dist/default/production\LCD-TIMER.X.production.obj
+__CFG_BOR$ON_ACTIVE 0 0 ABS 0 - dist/default/production\LCD-TIMER.X.production.obj
+_ADCON1 FC1 0 ABS 0 - dist/default/production\LCD-TIMER.X.production.obj
+___inthi_sp 0 0 STACK 2 stack C:\Users\KUOYAO~1\AppData\Local\Temp\s2tk.obj
+___intlo_sp 0 0 STACK 2 stack C:\Users\KUOYAO~1\AppData\Local\Temp\s2tk.obj
+__Hintcode_body 0 0 ABS 0 intcode_body dist/default/production\LCD-TIMER.X.production.obj
+__Lintsave_regs 0 0 BIGRAM 1 intsave_regs dist/default/production\LCD-TIMER.X.production.obj
+__Hmediumconst 0 0 MEDIUMCONST 0 mediumconst dist/default/production\LCD-TIMER.X.production.obj
+__Hintcodelo 0 0 CODE 0 intcodelo dist/default/production\LCD-TIMER.X.production.obj
+___lwmod@divisor 3 0 COMRAM 1 cstackCOMRAM dist/default/production\LCD-TIMER.X.production.obj
+__end_of___aldiv 7D72 0 CODE 0 text12 dist/default/production\LCD-TIMER.X.production.obj
+__end_of___almod 7CA6 0 CODE 0 text11 dist/default/production\LCD-TIMER.X.production.obj
+__end_of___lwdiv 7BA4 0 CODE 0 text10 dist/default/production\LCD-TIMER.X.production.obj
+__end_of___lwmod 7B52 0 CODE 0 text9 dist/default/production\LCD-TIMER.X.production.obj
+__size_of_lcd_write_com 0 0 ABS 0 - dist/default/production\LCD-TIMER.X.production.obj
+___lwdiv@quotient A 0 COMRAM 1 cstackCOMRAM dist/default/production\LCD-TIMER.X.production.obj
+__size_of_delay 0 0 ABS 0 - dist/default/production\LCD-TIMER.X.production.obj
+___lwmod@dividend 1 0 COMRAM 1 cstackCOMRAM dist/default/production\LCD-TIMER.X.production.obj
+__Lintcodelo 0 0 CODE 0 intcodelo dist/default/production\LCD-TIMER.X.production.obj
+start_initialization 7A54 0 CODE 0 cinit dist/default/production\LCD-TIMER.X.production.obj
+__end_of_lcd_write_com_busy 7A54 0 CODE 0 text6 dist/default/production\LCD-TIMER.X.production.obj
+__HnvFARRAM 0 0 FARRAM 0 nvFARRAM dist/default/production\LCD-TIMER.X.production.obj
+___aldiv@quotient 15 0 COMRAM 1 cstackCOMRAM dist/default/production\LCD-TIMER.X.production.obj
+__end_of_lcd_write_com 7A88 0 CODE 0 text7 dist/default/production\LCD-TIMER.X.production.obj
+___rparam_used 1 0 ABS 0 - dist/default/production\LCD-TIMER.X.production.obj
+___almod@dividend 1 0 COMRAM 1 cstackCOMRAM dist/default/production\LCD-TIMER.X.production.obj
+_TMR1IE 7CE8 0 ABS 0 - dist/default/production\LCD-TIMER.X.production.obj
+_TMR1IF 7CF0 0 ABS 0 - dist/default/production\LCD-TIMER.X.production.obj
+_TRISD7 7CAF 0 ABS 0 - dist/default/production\LCD-TIMER.X.production.obj
+_lcd_wait_busy 7A64 0 CODE 0 text8 dist/default/production\LCD-TIMER.X.production.obj
+_lcd_write_com_busy 7A46 0 CODE 0 text6 dist/default/production\LCD-TIMER.X.production.obj
+__Hbank0 0 0 ABS 0 bank0 dist/default/production\LCD-TIMER.X.production.obj
+__Hbank1 0 0 ABS 0 bank1 dist/default/production\LCD-TIMER.X.production.obj
+__Hbank2 0 0 ABS 0 bank2 dist/default/production\LCD-TIMER.X.production.obj
+__Hbank3 0 0 ABS 0 bank3 dist/default/production\LCD-TIMER.X.production.obj
+__Hbank4 0 0 ABS 0 bank4 dist/default/production\LCD-TIMER.X.production.obj
+__Hbank5 0 0 ABS 0 bank5 dist/default/production\LCD-TIMER.X.production.obj
+__Hbank6 0 0 ABS 0 bank6 dist/default/production\LCD-TIMER.X.production.obj
+__Hbank7 0 0 ABS 0 bank7 dist/default/production\LCD-TIMER.X.production.obj
+__Hcinit 0 0 ABS 0 cinit dist/default/production\LCD-TIMER.X.production.obj
+__Hconst 0 0 CODE 0 const dist/default/production\LCD-TIMER.X.production.obj
+__Hidata 0 0 CODE 0 idata dist/default/production\LCD-TIMER.X.production.obj
+__Hidloc 200008 0 IDLOC 0 idloc dist/default/production\LCD-TIMER.X.production.obj
+__Hnvbit 0 0 COMRAM 1 nvbit dist/default/production\LCD-TIMER.X.production.obj
+__Hparam 0 0 COMRAM 1 rparam dist/default/production\LCD-TIMER.X.production.obj
+__Hrdata 0 0 COMRAM 1 rdata dist/default/production\LCD-TIMER.X.production.obj
+__Hstack 0 0 STACK 2 stack dist/default/production\LCD-TIMER.X.production.obj
+__Htext0 0 0 ABS 0 text0 dist/default/production\LCD-TIMER.X.production.obj
+__Htext1 0 0 ABS 0 text1 dist/default/production\LCD-TIMER.X.production.obj
+__Htext2 0 0 ABS 0 text2 dist/default/production\LCD-TIMER.X.production.obj
+__Htext3 0 0 ABS 0 text3 dist/default/production\LCD-TIMER.X.production.obj
+__Htext4 0 0 ABS 0 text4 dist/default/production\LCD-TIMER.X.production.obj
+__Htext5 0 0 ABS 0 text5 dist/default/production\LCD-TIMER.X.production.obj
+__Htext6 0 0 ABS 0 text6 dist/default/production\LCD-TIMER.X.production.obj
+__Htext7 0 0 ABS 0 text7 dist/default/production\LCD-TIMER.X.production.obj
+__Htext8 0 0 ABS 0 text8 dist/default/production\LCD-TIMER.X.production.obj
+__Htext9 0 0 ABS 0 text9 dist/default/production\LCD-TIMER.X.production.obj
+___lwdiv@counter C 0 COMRAM 1 cstackCOMRAM dist/default/production\LCD-TIMER.X.production.obj
+__Hbigbss 0 0 BIGRAM 1 bigbss dist/default/production\LCD-TIMER.X.production.obj
+__Hbigram 0 0 ABS 0 bigram dist/default/production\LCD-TIMER.X.production.obj
+__smallconst 0 0 SMALLCONST 0 smallconst C:\Users\KUOYAO~1\AppData\Local\Temp\s2tk.obj
+__Hcomram 0 0 ABS 0 comram dist/default/production\LCD-TIMER.X.production.obj
+__Hconfig 30000E 0 CONFIG 0 config dist/default/production\LCD-TIMER.X.production.obj
+__size_of_lcdreset 0 0 ABS 0 - dist/default/production\LCD-TIMER.X.production.obj
+__Lbank0 0 0 ABS 0 bank0 dist/default/production\LCD-TIMER.X.production.obj
+__Lbank1 0 0 ABS 0 bank1 dist/default/production\LCD-TIMER.X.production.obj
+__Lbank2 0 0 ABS 0 bank2 dist/default/production\LCD-TIMER.X.production.obj
+__Lbank3 0 0 ABS 0 bank3 dist/default/production\LCD-TIMER.X.production.obj
+__Lbank4 0 0 ABS 0 bank4 dist/default/production\LCD-TIMER.X.production.obj
+__Lbank5 0 0 ABS 0 bank5 dist/default/production\LCD-TIMER.X.production.obj
+__Lbank6 0 0 ABS 0 bank6 dist/default/production\LCD-TIMER.X.production.obj
+__Lbank7 0 0 ABS 0 bank7 dist/default/production\LCD-TIMER.X.production.obj
+__Lcinit 0 0 ABS 0 cinit dist/default/production\LCD-TIMER.X.production.obj
+__Lconst 0 0 CODE 0 const dist/default/production\LCD-TIMER.X.production.obj
+__Lidata 0 0 CODE 0 idata dist/default/production\LCD-TIMER.X.production.obj
+__Lidloc 200000 0 IDLOC 0 idloc dist/default/production\LCD-TIMER.X.production.obj
+__Lnvbit 0 0 COMRAM 1 nvbit dist/default/production\LCD-TIMER.X.production.obj
+__Lparam 0 0 COMRAM 1 rparam dist/default/production\LCD-TIMER.X.production.obj
+__Lrdata 0 0 COMRAM 1 rdata dist/default/production\LCD-TIMER.X.production.obj
+__Lstack 0 0 STACK 2 stack dist/default/production\LCD-TIMER.X.production.obj
+__Ltext0 0 0 ABS 0 text0 dist/default/production\LCD-TIMER.X.production.obj
+__Ltext1 0 0 ABS 0 text1 dist/default/production\LCD-TIMER.X.production.obj
+__Ltext2 0 0 ABS 0 text2 dist/default/production\LCD-TIMER.X.production.obj
+__Ltext3 0 0 ABS 0 text3 dist/default/production\LCD-TIMER.X.production.obj
+__Ltext4 0 0 ABS 0 text4 dist/default/production\LCD-TIMER.X.production.obj
+__Ltext5 0 0 ABS 0 text5 dist/default/production\LCD-TIMER.X.production.obj
+__Ltext6 0 0 ABS 0 text6 dist/default/production\LCD-TIMER.X.production.obj
+__Ltext7 0 0 ABS 0 text7 dist/default/production\LCD-TIMER.X.production.obj
+__Ltext8 0 0 ABS 0 text8 dist/default/production\LCD-TIMER.X.production.obj
+__Ltext9 0 0 ABS 0 text9 dist/default/production\LCD-TIMER.X.production.obj
+__Hfarbss 0 0 FARRAM 0 farbss dist/default/production\LCD-TIMER.X.production.obj
+__Lintcode_body 0 0 ABS 0 intcode_body dist/default/production\LCD-TIMER.X.production.obj
+__Habs1 0 0 ABS 0 abs1 dist/default/production\LCD-TIMER.X.production.obj
+__Hdata 0 0 ABS 0 data dist/default/production\LCD-TIMER.X.production.obj
+__Hinit 0 0 CODE 0 init dist/default/production\LCD-TIMER.X.production.obj
+__Hrbit 0 0 COMRAM 1 rbit dist/default/production\LCD-TIMER.X.production.obj
+__Hrbss 0 0 COMRAM 1 rbss dist/default/production\LCD-TIMER.X.production.obj
+__Htemp 0 0 COMRAM 1 temp dist/default/production\LCD-TIMER.X.production.obj
+__Htext 0 0 ABS 0 text dist/default/production\LCD-TIMER.X.production.obj
+__Labs1 0 0 ABS 0 abs1 dist/default/production\LCD-TIMER.X.production.obj
+__Ldata 0 0 ABS 0 data dist/default/production\LCD-TIMER.X.production.obj
+__Linit 0 0 CODE 0 init dist/default/production\LCD-TIMER.X.production.obj
+__Lrbit 0 0 COMRAM 1 rbit dist/default/production\LCD-TIMER.X.production.obj
+__Lrbss 0 0 COMRAM 1 rbss dist/default/production\LCD-TIMER.X.production.obj
+__Ltemp 0 0 COMRAM 1 temp dist/default/production\LCD-TIMER.X.production.obj
+__Ltext 0 0 ABS 0 text dist/default/production\LCD-TIMER.X.production.obj
+__CFG_XINST$OFF 0 0 ABS 0 - dist/default/production\LCD-TIMER.X.production.obj
+lcd_write_address@x 4 0 COMRAM 1 cstackCOMRAM dist/default/production\LCD-TIMER.X.production.obj
+lcd_write_address@y 3 0 COMRAM 1 cstackCOMRAM dist/default/production\LCD-TIMER.X.production.obj
+__HcstackCOMRAM 0 0 ABS 0 cstackCOMRAM dist/default/production\LCD-TIMER.X.production.obj
+__Hintret 0 0 ABS 0 intret dist/default/production\LCD-TIMER.X.production.obj
+__Hirdata 0 0 CODE 0 irdata dist/default/production\LCD-TIMER.X.production.obj
+_GIE 7F97 0 ABS 0 - dist/default/production\LCD-TIMER.X.production.obj
+_RB3 7C0B 0 ABS 0 - dist/default/production\LCD-TIMER.X.production.obj
+_RB4 7C0C 0 ABS 0 - dist/default/production\LCD-TIMER.X.production.obj
+_RB5 7C0D 0 ABS 0 - dist/default/production\LCD-TIMER.X.production.obj
+_RD7 7C1F 0 ABS 0 - dist/default/production\LCD-TIMER.X.production.obj
+__S0 30000E 0 ABS 0 - dist/default/production\LCD-TIMER.X.production.obj
+__S1 25 0 ABS 0 - dist/default/production\LCD-TIMER.X.production.obj
+__S2 0 0 ABS 0 - dist/default/production\LCD-TIMER.X.production.obj
+lcd_write_com_busy@combuf 2 0 COMRAM 1 cstackCOMRAM dist/default/production\LCD-TIMER.X.production.obj
+___almod@counter 9 0 COMRAM 1 cstackCOMRAM dist/default/production\LCD-TIMER.X.production.obj
+__CFG_PBADEN$OFF 0 0 ABS 0 - dist/default/production\LCD-TIMER.X.production.obj
+__size_of_lcd_write_char 0 0 ABS 0 - dist/default/production\LCD-TIMER.X.production.obj
+__size_of_lcd_write_data 0 0 ABS 0 - dist/default/production\LCD-TIMER.X.production.obj
+__Lbigdata 0 0 BIGRAM 1 bigdata dist/default/production\LCD-TIMER.X.production.obj
+__Hnvrram 0 0 COMRAM 1 nvrram dist/default/production\LCD-TIMER.X.production.obj
+__Lintentry 0 0 ABS 0 intentry dist/default/production\LCD-TIMER.X.production.obj
+_lcdreset 7BA4 0 CODE 0 text1 dist/default/production\LCD-TIMER.X.production.obj
+__Hramtop 800 0 RAM 0 ramtop dist/default/production\LCD-TIMER.X.production.obj
+__Hrparam 0 0 COMRAM 1 rparam dist/default/production\LCD-TIMER.X.production.obj
+__size_of_lcd_wait_busy 0 0 ABS 0 - dist/default/production\LCD-TIMER.X.production.obj
+__activetblptr 0 0 ABS 0 - dist/default/production\LCD-TIMER.X.production.obj
+__Hstruct 0 0 COMRAM 1 struct dist/default/production\LCD-TIMER.X.production.obj
+__Htext10 0 0 ABS 0 text10 dist/default/production\LCD-TIMER.X.production.obj
+__Htext11 0 0 ABS 0 text11 dist/default/production\LCD-TIMER.X.production.obj
+__Htext12 0 0 ABS 0 text12 dist/default/production\LCD-TIMER.X.production.obj
+__end_of_lcdreset 7BFA 0 CODE 0 text1 dist/default/production\LCD-TIMER.X.production.obj
+__ptext10 7B52 0 CODE 0 text10 dist/default/production\LCD-TIMER.X.production.obj
+__ptext11 7BFA 0 CODE 0 text11 dist/default/production\LCD-TIMER.X.production.obj
+__ptext12 7CA6 0 CODE 0 text12 dist/default/production\LCD-TIMER.X.production.obj
+___aldiv 7CA6 0 CODE 0 text12 dist/default/production\LCD-TIMER.X.production.obj
+___almod 7BFA 0 CODE 0 text11 dist/default/production\LCD-TIMER.X.production.obj
+___lwdiv 7B52 0 CODE 0 text10 dist/default/production\LCD-TIMER.X.production.obj
+___lwmod 7B10 0 CODE 0 text9 dist/default/production\LCD-TIMER.X.production.obj
+__Lbigbss 0 0 BIGRAM 1 bigbss dist/default/production\LCD-TIMER.X.production.obj
+__Lbigram 0 0 ABS 0 bigram dist/default/production\LCD-TIMER.X.production.obj
+__CFG_BORV$1 0 0 ABS 0 - dist/default/production\LCD-TIMER.X.production.obj
+__Lcomram 0 0 ABS 0 comram dist/default/production\LCD-TIMER.X.production.obj
+__Lconfig 300000 0 CONFIG 0 config dist/default/production\LCD-TIMER.X.production.obj
+__end_of_lcd_wait_busy 7A76 0 CODE 0 text8 dist/default/production\LCD-TIMER.X.production.obj
+__Lfarbss 0 0 FARRAM 0 farbss dist/default/production\LCD-TIMER.X.production.obj
+___lwdiv@divisor 8 0 COMRAM 1 cstackCOMRAM dist/default/production\LCD-TIMER.X.production.obj
+__Lfardata 0 0 FARRAM 0 fardata dist/default/production\LCD-TIMER.X.production.obj
+stackhi 7FF 0 ABS 0 - C:\Users\KUOYAO~1\AppData\Local\Temp\s2tk.obj
+stacklo 60 0 ABS 0 - C:\Users\KUOYAO~1\AppData\Local\Temp\s2tk.obj
+__Lintcode 0 0 CODE 0 intcode dist/default/production\LCD-TIMER.X.production.obj
+__Lintret 0 0 ABS 0 intret dist/default/production\LCD-TIMER.X.production.obj
+__Lirdata 0 0 CODE 0 irdata dist/default/production\LCD-TIMER.X.production.obj
+__CFG_LVP$OFF 0 0 ABS 0 - dist/default/production\LCD-TIMER.X.production.obj
+__Lspace_0 0 0 ABS 0 - dist/default/production\LCD-TIMER.X.production.obj
+__Lspace_1 0 0 ABS 0 - dist/default/production\LCD-TIMER.X.production.obj
+__Lspace_2 0 0 ABS 0 - dist/default/production\LCD-TIMER.X.production.obj
+__pbssCOMRAM 20 0 COMRAM 1 bssCOMRAM dist/default/production\LCD-TIMER.X.production.obj
+__size_of_lcd_write_address 0 0 ABS 0 - dist/default/production\LCD-TIMER.X.production.obj
+__Lend_init 0 0 CODE 0 end_init dist/default/production\LCD-TIMER.X.production.obj
+__LcstackCOMRAM 0 0 ABS 0 cstackCOMRAM dist/default/production\LCD-TIMER.X.production.obj
+end_of_initialization 7A5E 0 CODE 0 cinit dist/default/production\LCD-TIMER.X.production.obj
+lcd_write_char@buf 1A 0 COMRAM 1 cstackCOMRAM dist/default/production\LCD-TIMER.X.production.obj
+__Lnvrram 0 0 COMRAM 1 nvrram dist/default/production\LCD-TIMER.X.production.obj
+__Hintentry 0 0 ABS 0 intentry dist/default/production\LCD-TIMER.X.production.obj
+___almod@divisor 5 0 COMRAM 1 cstackCOMRAM dist/default/production\LCD-TIMER.X.production.obj
+?___aldiv B 0 COMRAM 1 cstackCOMRAM dist/default/production\LCD-TIMER.X.production.obj
+?___almod 1 0 COMRAM 1 cstackCOMRAM dist/default/production\LCD-TIMER.X.production.obj
+___lwdiv@dividend 6 0 COMRAM 1 cstackCOMRAM dist/default/production\LCD-TIMER.X.production.obj
+?___lwdiv 6 0 COMRAM 1 cstackCOMRAM dist/default/production\LCD-TIMER.X.production.obj
+?___lwmod 1 0 COMRAM 1 cstackCOMRAM dist/default/production\LCD-TIMER.X.production.obj
+__Hreset_vec 0 0 CODE 0 reset_vec dist/default/production\LCD-TIMER.X.production.obj
+__size_of_lcd_write_com_busy 0 0 ABS 0 - dist/default/production\LCD-TIMER.X.production.obj
+__Lramtop 800 0 RAM 0 ramtop dist/default/production\LCD-TIMER.X.production.obj
+__Lrparam 0 0 COMRAM 1 rparam dist/default/production\LCD-TIMER.X.production.obj
+__pcinit 7A54 0 CODE 0 cinit dist/default/production\LCD-TIMER.X.production.obj
+__ptext0 7D72 0 CODE 0 text0 dist/default/production\LCD-TIMER.X.production.obj
+__ptext1 7BA4 0 CODE 0 text1 dist/default/production\LCD-TIMER.X.production.obj
+__ptext2 7AD8 0 CODE 0 text2 dist/default/production\LCD-TIMER.X.production.obj
+__ptext3 7A88 0 CODE 0 text3 dist/default/production\LCD-TIMER.X.production.obj
+__ptext4 7A9C 0 CODE 0 text4 dist/default/production\LCD-TIMER.X.production.obj
+__ptext5 7AB2 0 CODE 0 text5 dist/default/production\LCD-TIMER.X.production.obj
+__ptext6 7A46 0 CODE 0 text6 dist/default/production\LCD-TIMER.X.production.obj
+__ptext7 7A76 0 CODE 0 text7 dist/default/production\LCD-TIMER.X.production.obj
+__ptext8 7A64 0 CODE 0 text8 dist/default/production\LCD-TIMER.X.production.obj
+__ptext9 7B10 0 CODE 0 text9 dist/default/production\LCD-TIMER.X.production.obj
+__Lstruct 0 0 COMRAM 1 struct dist/default/production\LCD-TIMER.X.production.obj
+__Ltext10 0 0 ABS 0 text10 dist/default/production\LCD-TIMER.X.production.obj
+__Ltext11 0 0 ABS 0 text11 dist/default/production\LCD-TIMER.X.production.obj
+__Ltext12 0 0 ABS 0 text12 dist/default/production\LCD-TIMER.X.production.obj
+__ramtop 800 0 RAM 0 ramtop C:\Users\KUOYAO~1\AppData\Local\Temp\s2tk.obj
+___aldiv@dividend B 0 COMRAM 1 cstackCOMRAM dist/default/production\LCD-TIMER.X.production.obj
+__Lpowerup 0 0 CODE 0 powerup dist/default/production\LCD-TIMER.X.production.obj
+__Leeprom_data 0 0 EEDATA 0 eeprom_data dist/default/production\LCD-TIMER.X.production.obj
+__Lreset_vec 0 0 CODE 0 reset_vec dist/default/production\LCD-TIMER.X.production.obj
+__CFG_FOSC$HS 0 0 ABS 0 - dist/default/production\LCD-TIMER.X.production.obj
+___param_bank 10 0 ABS 0 - dist/default/production\LCD-TIMER.X.production.obj
+__CFG_WDT$OFF 0 0 ABS 0 - dist/default/production\LCD-TIMER.X.production.obj
+__Hbigdata 0 0 BIGRAM 1 bigdata dist/default/production\LCD-TIMER.X.production.obj
+__end_of__initialization 7A5E 0 CODE 0 cinit dist/default/production\LCD-TIMER.X.production.obj
+__Libigdata 0 0 CODE 0 ibigdata dist/default/production\LCD-TIMER.X.production.obj
+__Lclrtext 0 0 ABS 0 clrtext dist/default/production\LCD-TIMER.X.production.obj
+__pcstackCOMRAM 1 0 COMRAM 1 cstackCOMRAM dist/default/production\LCD-TIMER.X.production.obj
+__Hend_init 4 0 CODE 0 end_init dist/default/production\LCD-TIMER.X.production.obj
+___aldiv@counter 13 0 COMRAM 1 cstackCOMRAM dist/default/production\LCD-TIMER.X.production.obj
+__end_of_main 8000 0 CODE 0 text0 dist/default/production\LCD-TIMER.X.production.obj
+__end_of_delay 7B10 0 CODE 0 text2 dist/default/production\LCD-TIMER.X.production.obj
+_PORTD F83 0 ABS 0 - dist/default/production\LCD-TIMER.X.production.obj
+_T1CON FCD 0 ABS 0 - dist/default/production\LCD-TIMER.X.production.obj
+_TMR1H FCF 0 ABS 0 - dist/default/production\LCD-TIMER.X.production.obj
+_TMR1L FCE 0 ABS 0 - dist/default/production\LCD-TIMER.X.production.obj
+_TRISB F93 0 ABS 0 - dist/default/production\LCD-TIMER.X.production.obj
+_TRISD F95 0 ABS 0 - dist/default/production\LCD-TIMER.X.production.obj
+_main$606 1C 0 COMRAM 1 cstackCOMRAM dist/default/production\LCD-TIMER.X.production.obj
+__HRAM 0 0 ABS 0 - dist/default/production\LCD-TIMER.X.production.obj
+__Hbss 0 0 RAM 1 bss dist/default/production\LCD-TIMER.X.production.obj
+__Hram 0 0 ABS 0 ram dist/default/production\LCD-TIMER.X.production.obj
+__Hsfr 0 0 ABS 0 sfr dist/default/production\LCD-TIMER.X.production.obj
+__LRAM 1 0 ABS 0 - dist/default/production\LCD-TIMER.X.production.obj
+__Lbss 0 0 RAM 1 bss dist/default/production\LCD-TIMER.X.production.obj
+__Lram 0 0 ABS 0 ram dist/default/production\LCD-TIMER.X.production.obj
+__Lsfr 0 0 ABS 0 sfr dist/default/production\LCD-TIMER.X.production.obj
+lcd_write_char@x 1B 0 COMRAM 1 cstackCOMRAM dist/default/production\LCD-TIMER.X.production.obj
+lcd_write_char@y 19 0 COMRAM 1 cstackCOMRAM dist/default/production\LCD-TIMER.X.production.obj
+_delay 7AD8 0 CODE 0 text2 dist/default/production\LCD-TIMER.X.production.obj
+__end_of_lcd_write_address 7AD8 0 CODE 0 text5 dist/default/production\LCD-TIMER.X.production.obj
+__initialization 7A54 0 CODE 0 cinit dist/default/production\LCD-TIMER.X.production.obj
+lcd_write_com@combuf 1 0 COMRAM 1 cstackCOMRAM dist/default/production\LCD-TIMER.X.production.obj
+lcd_write_data@databuf 1 0 COMRAM 1 cstackCOMRAM dist/default/production\LCD-TIMER.X.production.obj
+__Hfardata 0 0 FARRAM 0 fardata dist/default/production\LCD-TIMER.X.production.obj
+__Hsmallconst 0 0 SMALLCONST 0 smallconst dist/default/production\LCD-TIMER.X.production.obj
+_lcd_write_char 7A88 0 CODE 0 text3 dist/default/production\LCD-TIMER.X.production.obj
+_lcd_write_data 7A9C 0 CODE 0 text4 dist/default/production\LCD-TIMER.X.production.obj
+__Lifardata 0 0 CODE 0 ifardata dist/default/production\LCD-TIMER.X.production.obj
+__Hintsave_regs 0 0 BIGRAM 1 intsave_regs dist/default/production\LCD-TIMER.X.production.obj
+__Hintcode 0 0 CODE 0 intcode dist/default/production\LCD-TIMER.X.production.obj
+# %SPLITSTAB Section
+# This section enumerates all the psect splits performed by the assembler.
+# The beginning of the section is indicated by %SPLITSTAB.
+# Each line is a record a particular split, where the parent psect is on
+# the left and the child on the right.  Note that a child psect is always
+# split form the top of the parent psect. All splits from a given parent
+# are listed in the order in which they occurred.
+%SPLITSTAB
+# %DABS Section
+# This section contains a table of all usuage of the assember
+# directive DABS in the program. Each line has the following format:
+#   <name> <space> <address> <size>
+# If the DABS was originally labelled then that shall be <name>,
+# otherwise name will be "-".  The <space> number is in decimal.
+# <address> and <size> are in byte units as unqaulified hexadecimal
+%DABS
+# %SEGMENTS Section
+# This sections enumerates the segments of the program.  Each segment
+# is described on a single line as follows:
+#    <name> <space> <link address> <file address> <size> <delta>
+# Addresses and size are in unqualified hexadecimal.  The link address
+# and size are in units of delta. The file address is in units of bytes.
+# All other numeric quantities are in decimal.
+%SEGMENTS
+cinit 0 7A54 7A54 10 1
+idloc 0 200000 200000 8 1
+text0 0 7D72 7D72 28E 1
+text1 0 7BA4 7BA4 56 1
+text2 0 7AD8 7AD8 38 1
+text3 0 7A88 7A88 14 1
+text4 0 7A9C 7A9C 16 1
+text5 0 7AB2 7AB2 26 1
+text6 0 7A46 7A46 E 1
+text7 0 7A76 7A76 12 1
+text8 0 7A64 7A64 12 1
+text9 0 7B10 7B10 42 1
+text10 0 7B52 7B52 52 1
+text11 0 7BFA 7BFA AC 1
+text12 0 7CA6 7CA6 CC 1
+cstackCOMRAM 1 1 1 24 1
+reset_vec 0 0 0 4 1
+config 0 300000 300000 E 1

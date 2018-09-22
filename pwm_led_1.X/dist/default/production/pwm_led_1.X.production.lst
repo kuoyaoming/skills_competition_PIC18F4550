@@ -1,0 +1,3154 @@
+
+
+Microchip Technology PIC18 LITE Macro Assembler V1.35 build -356382666 
+                                                                                               Wed Sep 30 15:38:25 2015
+
+Microchip Technology Omniscient Code Generator v1.35 (Free mode) build 201507080246
+     1                           	processor	18F4550
+     2                           	fnconf	rparam,??,?,0
+     3                           	opt	pw 120
+     4                           	opt	lm
+     5                           	psect	nvCOMRAM,global,class=COMRAM,space=1,delta=1
+     6                           	psect	cinit,global,reloc=2,class=CODE,delta=1
+     7                           	psect	bssBANK0,global,class=BANK0,space=1,delta=1
+     8                           	psect	cstackBANK0,global,class=BANK0,space=1,delta=1
+     9                           	psect	cstackCOMRAM,global,class=COMRAM,space=1,delta=1
+    10                           	psect	text0,global,reloc=2,class=CODE,delta=1
+    11                           	psect	text1,global,reloc=2,class=CODE,delta=1
+    12                           	psect	text2,global,reloc=2,class=CODE,delta=1
+    13                           	psect	text3,global,reloc=2,class=CODE,delta=1
+    14                           	psect	text4,global,reloc=2,class=CODE,delta=1
+    15                           	psect	text5,global,reloc=2,class=CODE,delta=1
+    16                           	psect	text6,global,reloc=2,class=CODE,delta=1
+    17                           	psect	text7,global,reloc=2,class=CODE,delta=1
+    18                           	psect	text8,global,reloc=2,class=CODE,delta=1
+    19                           	psect	text9,global,reloc=2,class=CODE,delta=1
+    20                           	psect	text10,global,reloc=2,class=CODE,delta=1
+    21                           	psect	text11,global,reloc=2,class=CODE,delta=1
+    22                           	psect	text12,global,reloc=2,class=CODE,delta=1
+    23                           	psect	text13,global,reloc=2,class=CODE,delta=1
+    24                           	psect	text14,global,reloc=2,class=CODE,delta=1
+    25                           	psect	intcodelo,global,reloc=2,class=CODE,delta=1
+    26                           	psect	intcode,global,reloc=2,class=CODE,delta=1
+    27                           	psect	intcode_body,global,reloc=2,class=CODE,delta=1
+    28                           	psect	intsave_regs,global,class=BIGRAM,space=1,delta=1
+    29                           	psect	rparam,global,class=COMRAM,space=1,delta=1
+    30                           	psect	temp,global,ovrld,common,class=COMRAM,space=1,delta=1
+    31  0000                     
+    32                           	psect	nvCOMRAM
+    33  00003C                     __pnvCOMRAM:
+    34                           	opt stack 0
+    35  00003C                     _freq:
+    36                           	opt stack 0
+    37  00003C                     	ds	4
+    38  0000                     _CCPR1L	set	4030
+    39  0000                     _CCPR2L	set	4027
+    40  0000                     _INTCONbits	set	4082
+    41  0000                     _LATCbits	set	3979
+    42  0000                     _PIR1bits	set	3998
+    43  0000                     _PR2	set	4043
+    44  0000                     _T0CONbits	set	4053
+    45  0000                     _T2CONbits	set	4042
+    46  0000                     _TMR0H	set	4055
+    47  0000                     _TMR0L	set	4054
+    48  0000                     _TMR1H	set	4047
+    49  0000                     _TMR1L	set	4046
+    50  0000                     _TRISB	set	3987
+    51  0000                     _TRISCbits	set	3988
+    52  0000                     _TRISD	set	3989
+    53  0000                     _CCP1M2	set	32234
+    54  0000                     _CCP1M3	set	32235
+    55  0000                     _CCP2M2	set	32210
+    56  0000                     _CCP2M3	set	32211
+    57  0000                     _DC1B0	set	32236
+    58  0000                     _DC1B1	set	32237
+    59  0000                     _DC2B0	set	32212
+    60  0000                     _DC2B1	set	32213
+    61  0000                     _T2CKPS0	set	32336
+    62  0000                     _T2CKPS1	set	32337
+    63  0000                     _TMR0IE	set	32661
+    64  0000                     _TMR0IF	set	32658
+    65  0000                     _TMR1IE	set	31976
+    66  0000                     _TMR1IF	set	31984
+    67  0000                     _TMR2ON	set	32338
+    68  0000                     _TRISC1	set	31905
+    69  0000                     _TRISC2	set	31906
+    70                           
+    71                           ; #config settings
+    72  0000                     
+    73                           	psect	cinit
+    74  000A4A                     __pcinit:
+    75                           	opt stack 0
+    76  000A4A                     start_initialization:
+    77                           	opt stack 0
+    78  000A4A                     __initialization:
+    79                           	opt stack 0
+    80                           
+    81                           ; Clear objects allocated to BANK0 (1 bytes)
+    82  000A4A  0100               	movlb	0
+    83  000A4C  6B8A               	clrf	__pbssBANK0& (0+255),b
+    84  000A4E                     end_of_initialization:
+    85                           	opt stack 0
+    86  000A4E                     __end_of__initialization:
+    87                           	opt stack 0
+    88  000A4E  9040               	bcf	int$flags,0,c	;clear compiler interrupt flag (level 1)
+    89  000A50  9240               	bcf	int$flags,1,c	;clear compiler interrupt flag (level 2)
+    90  000A52  0100               	movlb	0
+    91  000A54  EF0C  F001         	goto	_main	;jump to C main() function
+    92                           
+    93                           	psect	bssBANK0
+    94  00008A                     __pbssBANK0:
+    95                           	opt stack 0
+    96  00008A                     _Timer0Flag:
+    97                           	opt stack 0
+    98  00008A                     	ds	1
+    99                           
+   100                           	psect	cstackBANK0
+   101  000060                     __pcstackBANK0:
+   102                           	opt stack 0
+   103  000060                     ?___ftmul:
+   104                           	opt stack 0
+   105  000060                     ___ftmul@f1:
+   106                           	opt stack 0
+   107                           
+   108                           ; 3 bytes @ 0x0
+   109  000060                     	ds	3
+   110  000063                     ___ftmul@f2:
+   111                           	opt stack 0
+   112                           
+   113                           ; 3 bytes @ 0x3
+   114  000063                     	ds	3
+   115  000066                     ??___ftmul:
+   116                           
+   117                           ; 0 bytes @ 0x6
+   118  000066                     	ds	3
+   119  000069                     ___ftmul@exp:
+   120                           	opt stack 0
+   121                           
+   122                           ; 1 bytes @ 0x9
+   123  000069                     	ds	1
+   124  00006A                     ___ftmul@f3_as_product:
+   125                           	opt stack 0
+   126                           
+   127                           ; 3 bytes @ 0xA
+   128  00006A                     	ds	3
+   129  00006D                     ___ftmul@cntr:
+   130                           	opt stack 0
+   131                           
+   132                           ; 1 bytes @ 0xD
+   133  00006D                     	ds	1
+   134  00006E                     ___ftmul@sign:
+   135                           	opt stack 0
+   136                           
+   137                           ; 1 bytes @ 0xE
+   138  00006E                     	ds	1
+   139  00006F                     ?___fttol:
+   140                           	opt stack 0
+   141  00006F                     ___fttol@f1:
+   142                           	opt stack 0
+   143                           
+   144                           ; 3 bytes @ 0xF
+   145  00006F                     	ds	4
+   146  000073                     ??___fttol:
+   147                           
+   148                           ; 0 bytes @ 0x13
+   149  000073                     	ds	5
+   150  000078                     ___fttol@sign1:
+   151                           	opt stack 0
+   152                           
+   153                           ; 1 bytes @ 0x18
+   154  000078                     	ds	1
+   155  000079                     ___fttol@lval:
+   156                           	opt stack 0
+   157                           
+   158                           ; 4 bytes @ 0x19
+   159  000079                     	ds	4
+   160  00007D                     ___fttol@exp1:
+   161                           	opt stack 0
+   162                           
+   163                           ; 1 bytes @ 0x1D
+   164  00007D                     	ds	1
+   165  00007E                     PWM1_Duty@duty:
+   166                           	opt stack 0
+   167  00007E                     PWM2_Duty@duty:
+   168                           	opt stack 0
+   169                           
+   170                           ; 2 bytes @ 0x1E
+   171  00007E                     	ds	2
+   172  000080                     main@i:
+   173                           	opt stack 0
+   174                           
+   175                           ; 2 bytes @ 0x20
+   176  000080                     	ds	2
+   177  000082                     main@ff:
+   178                           	opt stack 0
+   179                           
+   180                           ; 2 bytes @ 0x22
+   181  000082                     	ds	2
+   182  000084                     main@jj:
+   183                           	opt stack 0
+   184                           
+   185                           ; 2 bytes @ 0x24
+   186  000084                     	ds	2
+   187  000086                     main@f:
+   188                           	opt stack 0
+   189                           
+   190                           ; 2 bytes @ 0x26
+   191  000086                     	ds	2
+   192  000088                     main@j:
+   193                           	opt stack 0
+   194                           
+   195                           ; 2 bytes @ 0x28
+   196  000088                     	ds	2
+   197                           
+   198                           	psect	cstackCOMRAM
+   199  000001                     __pcstackCOMRAM:
+   200                           	opt stack 0
+   201  000001                     ??_LowISR:
+   202  000001                     
+   203                           ; 2 bytes @ 0x0
+   204  000001                     	ds	17
+   205  000012                     ??_HighISR:
+   206                           
+   207                           ; 0 bytes @ 0x11
+   208  000012                     	ds	14
+   209  000020                     ?___ftpack:
+   210                           	opt stack 0
+   211  000020                     ?___aldiv:
+   212                           	opt stack 0
+   213  000020                     ___ftpack@arg:
+   214                           	opt stack 0
+   215  000020                     ___aldiv@dividend:
+   216                           	opt stack 0
+   217                           
+   218                           ; 4 bytes @ 0x1F
+   219  000020                     	ds	3
+   220  000023                     ___ftpack@exp:
+   221                           	opt stack 0
+   222                           
+   223                           ; 1 bytes @ 0x22
+   224  000023                     	ds	1
+   225  000024                     ___ftpack@sign:
+   226                           	opt stack 0
+   227  000024                     ___aldiv@divisor:
+   228                           	opt stack 0
+   229                           
+   230                           ; 4 bytes @ 0x23
+   231  000024                     	ds	1
+   232  000025                     ??___ftpack:
+   233                           
+   234                           ; 0 bytes @ 0x24
+   235  000025                     	ds	3
+   236  000028                     ?___lwtoft:
+   237                           	opt stack 0
+   238  000028                     ___aldiv@counter:
+   239                           	opt stack 0
+   240  000028                     ___lwtoft@c:
+   241                           	opt stack 0
+   242                           
+   243                           ; 2 bytes @ 0x27
+   244  000028                     	ds	1
+   245  000029                     ___aldiv@sign:
+   246                           	opt stack 0
+   247                           
+   248                           ; 1 bytes @ 0x28
+   249  000029                     	ds	1
+   250  00002A                     ___aldiv@quotient:
+   251                           	opt stack 0
+   252                           
+   253                           ; 4 bytes @ 0x29
+   254  00002A                     	ds	1
+   255  00002B                     ?___ftdiv:
+   256                           	opt stack 0
+   257  00002B                     ___ftdiv@f1:
+   258                           	opt stack 0
+   259                           
+   260                           ; 3 bytes @ 0x2A
+   261  00002B                     	ds	3
+   262  00002E                     ?_PWM_Max_Duty:
+   263                           	opt stack 0
+   264  00002E                     ___ftdiv@f2:
+   265                           	opt stack 0
+   266  00002E                     PWM1_Init@fre:
+   267                           	opt stack 0
+   268  00002E                     PWM2_Init@fre:
+   269                           	opt stack 0
+   270                           
+   271                           ; 4 bytes @ 0x2D
+   272  00002E                     	ds	2
+   273  000030                     ??_PWM_Max_Duty:
+   274                           
+   275                           ; 0 bytes @ 0x2F
+   276  000030                     	ds	1
+   277  000031                     ??___ftdiv:
+   278                           
+   279                           ; 0 bytes @ 0x30
+   280  000031                     	ds	1
+   281  000032                     ??_PWM1_Init:
+   282  000032                     ??_PWM2_Init:
+   283                           
+   284                           ; 0 bytes @ 0x31
+   285  000032                     	ds	2
+   286  000034                     ?___awtoft:
+   287                           	opt stack 0
+   288  000034                     ___ftdiv@cntr:
+   289                           	opt stack 0
+   290  000034                     ___awtoft@c:
+   291                           	opt stack 0
+   292                           
+   293                           ; 2 bytes @ 0x33
+   294  000034                     	ds	1
+   295  000035                     ___ftdiv@f3:
+   296                           	opt stack 0
+   297                           
+   298                           ; 3 bytes @ 0x34
+   299  000035                     	ds	2
+   300  000037                     ___awtoft@sign:
+   301                           	opt stack 0
+   302                           
+   303                           ; 1 bytes @ 0x36
+   304  000037                     	ds	1
+   305  000038                     ___ftdiv@exp:
+   306                           	opt stack 0
+   307                           
+   308                           ; 1 bytes @ 0x37
+   309  000038                     	ds	1
+   310  000039                     ___ftdiv@sign:
+   311                           	opt stack 0
+   312                           
+   313                           ; 1 bytes @ 0x38
+   314  000039                     	ds	1
+   315  00003A                     ??_PWM1_Duty:
+   316  00003A                     ??_PWM2_Duty:
+   317                           
+   318                           ; 0 bytes @ 0x39
+   319  00003A                     	ds	2
+   320  00003C                     
+   321                           ; 0 bytes @ 0x3B
+   322 ;;
+   323 ;;Main: autosize = 0, tempsize = 0, incstack = 0, save=0
+   324 ;;
+   325 ;; *************** function _main *****************
+   326 ;; Defined at:
+   327 ;;		line 116 in file "newmain18.c"
+   328 ;; Parameters:    Size  Location     Type
+   329 ;;		None
+   330 ;; Auto vars:     Size  Location     Type
+   331 ;;  j               2   40[BANK0 ] unsigned int 
+   332 ;;  f               2   38[BANK0 ] unsigned int 
+   333 ;;  jj              2   36[BANK0 ] unsigned int 
+   334 ;;  ff              2   34[BANK0 ] unsigned int 
+   335 ;;  i               2   32[BANK0 ] unsigned int 
+   336 ;; Return value:  Size  Location     Type
+   337 ;;		None               void
+   338 ;; Registers used:
+   339 ;;		wreg, status,2, status,0, cstack
+   340 ;; Tracked objects:
+   341 ;;		On entry : 0/0
+   342 ;;		On exit  : 0/0
+   343 ;;		Unchanged: 0/0
+   344 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
+   345 ;;      Params:         0       0       0       0       0       0       0       0       0
+   346 ;;      Locals:         0      10       0       0       0       0       0       0       0
+   347 ;;      Temps:          0       0       0       0       0       0       0       0       0
+   348 ;;      Totals:         0      10       0       0       0       0       0       0       0
+   349 ;;Total ram usage:       10 bytes
+   350 ;; Hardware stack levels required when called:    5
+   351 ;; This function calls:
+   352 ;;		_PWM1_Duty
+   353 ;;		_PWM1_Init
+   354 ;;		_PWM1_Start
+   355 ;;		_PWM2_Duty
+   356 ;;		_PWM2_Init
+   357 ;;		_PWM2_Start
+   358 ;; This function is called by:
+   359 ;;		Startup code after reset
+   360 ;; This function uses a non-reentrant model
+   361 ;;
+   362                           
+   363                           	psect	text0
+   364  000218                     __ptext0:
+   365                           	opt stack 0
+   366  000218                     _main:
+   367                           	opt stack 26
+   368                           
+   369                           ;newmain18.c: 119: unsigned int i = 0;
+   370                           
+   371                           ;incstack = 0
+   372  000218  0E00               	movlw	0
+   373  00021A  0100               	movlb	0	; () banked
+   374  00021C  6F81               	movwf	(main@i+1)& (0+255),b
+   375  00021E  0E00               	movlw	0
+   376  000220  6F80               	movwf	main@i& (0+255),b
+   377                           
+   378                           ; BSR set to: 0
+   379                           ;newmain18.c: 121: LATCbits.LATC1 = 0;
+   380  000222  928B               	bcf	3979,1,c	;volatile
+   381                           
+   382                           ; BSR set to: 0
+   383                           ;newmain18.c: 122: TRISCbits.TRISC1 = 0;
+   384  000224  9294               	bcf	3988,1,c	;volatile
+   385                           
+   386                           ; BSR set to: 0
+   387                           ;newmain18.c: 123: LATCbits.LATC2 = 0;
+   388  000226  948B               	bcf	3979,2,c	;volatile
+   389                           
+   390                           ; BSR set to: 0
+   391                           ;newmain18.c: 124: TRISCbits.TRISC2 = 0;
+   392  000228  9494               	bcf	3988,2,c	;volatile
+   393                           
+   394                           ; BSR set to: 0
+   395                           ;newmain18.c: 126: T2CONbits.TOUTPS = 0x00;
+   396  00022A  96CA               	bcf	4042,3,c	;volatile
+   397  00022C  98CA               	bcf	4042,4,c	;volatile
+   398  00022E  9ACA               	bcf	4042,5,c	;volatile
+   399  000230  9CCA               	bcf	4042,6,c	;volatile
+   400                           
+   401                           ;newmain18.c: 127: T2CONbits.T2CKPS = 0x02;
+   402  000232  50CA               	movf	4042,w,c	;volatile
+   403  000234  0BFC               	andlw	-4
+   404  000236  0902               	iorlw	2
+   405  000238  6ECA               	movwf	4042,c	;volatile
+   406                           
+   407                           ; BSR set to: 0
+   408                           ;newmain18.c: 128: T2CONbits.TMR2ON = 1;
+   409  00023A  84CA               	bsf	4042,2,c	;volatile
+   410                           
+   411                           ;newmain18.c: 129: PR2 = ( 16000000 / 4 / 16 / 1000 );
+   412  00023C  0EFA               	movlw	250
+   413  00023E  6ECB               	movwf	4043,c	;volatile
+   414                           
+   415                           ; BSR set to: 0
+   416                           ;newmain18.c: 131: T0CONbits.T08BIT = 0;
+   417  000240  9CD5               	bcf	4053,6,c	;volatile
+   418                           
+   419                           ; BSR set to: 0
+   420                           ;newmain18.c: 132: T0CONbits.T0CS = 0;
+   421  000242  9AD5               	bcf	4053,5,c	;volatile
+   422                           
+   423                           ; BSR set to: 0
+   424                           ;newmain18.c: 133: T0CONbits.T0SE = 0;
+   425  000244  98D5               	bcf	4053,4,c	;volatile
+   426                           
+   427                           ; BSR set to: 0
+   428                           ;newmain18.c: 134: T0CONbits.PSA = 0;
+   429  000246  96D5               	bcf	4053,3,c	;volatile
+   430                           
+   431                           ; BSR set to: 0
+   432                           ;newmain18.c: 135: T0CONbits.T0PS = 0x07;
+   433  000248  80D5               	bsf	4053,0,c	;volatile
+   434  00024A  82D5               	bsf	4053,1,c	;volatile
+   435  00024C  84D5               	bsf	4053,2,c	;volatile
+   436                           
+   437                           ;newmain18.c: 136: TMR0H = ( ( ( 65536 - ( 16000000 / 4 / 256 / 1 )) >> 8 ) & 0xff );
+   438  00024E  0EC2               	movlw	194
+   439  000250  6ED7               	movwf	4055,c	;volatile
+   440                           
+   441                           ;newmain18.c: 137: TMR0L = ( ( 65536 - ( 16000000 / 4 / 256 / 1 )) & 0xff );
+   442  000252  0EF7               	movlw	247
+   443  000254  6ED6               	movwf	4054,c	;volatile
+   444                           
+   445                           ; BSR set to: 0
+   446                           ;newmain18.c: 138: T0CONbits.TMR0ON = 1;
+   447  000256  8ED5               	bsf	4053,7,c	;volatile
+   448                           
+   449                           ; BSR set to: 0
+   450                           ;newmain18.c: 140: INTCONbits.TMR0IF = 0;
+   451  000258  94F2               	bcf	intcon,2,c	;volatile
+   452                           
+   453                           ; BSR set to: 0
+   454                           ;newmain18.c: 141: INTCONbits.TMR0IE = 1;
+   455  00025A  8AF2               	bsf	intcon,5,c	;volatile
+   456                           
+   457                           ; BSR set to: 0
+   458                           ;newmain18.c: 143: INTCONbits.PEIE = 1;
+   459  00025C  8CF2               	bsf	intcon,6,c	;volatile
+   460                           
+   461                           ; BSR set to: 0
+   462                           ;newmain18.c: 144: INTCONbits.GIE = 1;
+   463  00025E  8EF2               	bsf	intcon,7,c	;volatile
+   464                           
+   465                           ;newmain18.c: 146: unsigned int f=0,j=0,ff=1,jj=10;
+   466  000260  0E00               	movlw	0
+   467  000262  0100               	movlb	0	; () banked
+   468  000264  6F87               	movwf	(main@f+1)& (0+255),b
+   469  000266  0E00               	movlw	0
+   470  000268  6F86               	movwf	main@f& (0+255),b
+   471  00026A  0E00               	movlw	0
+   472  00026C  0100               	movlb	0	; () banked
+   473  00026E  6F89               	movwf	(main@j+1)& (0+255),b
+   474  000270  0E00               	movlw	0
+   475  000272  6F88               	movwf	main@j& (0+255),b
+   476  000274  0E00               	movlw	0
+   477  000276  0100               	movlb	0	; () banked
+   478  000278  6F83               	movwf	(main@ff+1)& (0+255),b
+   479  00027A  0E01               	movlw	1
+   480  00027C  6F82               	movwf	main@ff& (0+255),b
+   481  00027E  0E00               	movlw	0
+   482  000280  0100               	movlb	0	; () banked
+   483  000282  6F85               	movwf	(main@jj+1)& (0+255),b
+   484  000284  0E0A               	movlw	10
+   485  000286  6F84               	movwf	main@jj& (0+255),b
+   486                           
+   487                           ; BSR set to: 0
+   488                           ;newmain18.c: 147: PWM1_Init(5000);
+   489  000288  0E88               	movlw	136
+   490  00028A  6E2E               	movwf	PWM1_Init@fre,c
+   491  00028C  0E13               	movlw	19
+   492  00028E  6E2F               	movwf	PWM1_Init@fre+1,c
+   493  000290  0E00               	movlw	0
+   494  000292  6E30               	movwf	PWM1_Init@fre+2,c
+   495  000294  0E00               	movlw	0
+   496  000296  6E31               	movwf	PWM1_Init@fre+3,c
+   497  000298  EC9B  F004         	call	_PWM1_Init	;wreg free
+   498                           
+   499                           ;newmain18.c: 148: PWM2_Init(5000);
+   500  00029C  0E88               	movlw	136
+   501  00029E  6E2E               	movwf	PWM2_Init@fre,c
+   502  0002A0  0E13               	movlw	19
+   503  0002A2  6E2F               	movwf	PWM2_Init@fre+1,c
+   504  0002A4  0E00               	movlw	0
+   505  0002A6  6E30               	movwf	PWM2_Init@fre+2,c
+   506  0002A8  0E00               	movlw	0
+   507  0002AA  6E31               	movwf	PWM2_Init@fre+3,c
+   508  0002AC  EC66  F004         	call	_PWM2_Init	;wreg free
+   509                           
+   510                           ;newmain18.c: 149: TRISD = 0xFF;
+   511  0002B0  6895               	setf	3989,c	;volatile
+   512                           
+   513                           ;newmain18.c: 150: TRISB = 0;
+   514  0002B2  0E00               	movlw	0
+   515  0002B4  6E93               	movwf	3987,c	;volatile
+   516                           
+   517                           ;newmain18.c: 151: PWM1_Duty(0);
+   518  0002B6  0E00               	movlw	0
+   519  0002B8  0100               	movlb	0	; () banked
+   520  0002BA  6F7F               	movwf	(PWM1_Duty@duty+1)& (0+255),b
+   521  0002BC  0E00               	movlw	0
+   522  0002BE  6F7E               	movwf	PWM1_Duty@duty& (0+255),b
+   523  0002C0  ECD5  F003         	call	_PWM1_Duty	;wreg free
+   524                           
+   525                           ;newmain18.c: 152: PWM2_Duty(0);
+   526  0002C4  0E00               	movlw	0
+   527  0002C6  0100               	movlb	0	; () banked
+   528  0002C8  6F7F               	movwf	(PWM2_Duty@duty+1)& (0+255),b
+   529  0002CA  0E00               	movlw	0
+   530  0002CC  6F7E               	movwf	PWM2_Duty@duty& (0+255),b
+   531  0002CE  EC86  F003         	call	_PWM2_Duty	;wreg free
+   532                           
+   533                           ;newmain18.c: 153: PWM1_Start();
+   534  0002D2  EC33  F005         	call	_PWM1_Start	;wreg free
+   535                           
+   536                           ;newmain18.c: 154: PWM2_Start();
+   537  0002D6  EC2C  F005         	call	_PWM2_Start	;wreg free
+   538  0002DA                     l1561:
+   539                           
+   540                           ;newmain18.c: 157: {
+   541                           ;newmain18.c: 158: if (PIR1bits.TMR2IF)
+   542  0002DA  A29E               	btfss	3998,1,c	;volatile
+   543  0002DC  D01F               	goto	l1573
+   544                           
+   545                           ;newmain18.c: 159: {
+   546                           ;newmain18.c: 160: PIR1bits.TMR2IF = 0;
+   547  0002DE  929E               	bcf	3998,1,c	;volatile
+   548                           
+   549                           ;newmain18.c: 161: if (f < 0 || f > 1024)ff = -ff ;
+   550  0002E0  0100               	movlb	0	; () banked
+   551  0002E2  0586               	decf	main@f& (0+255),w,b
+   552  0002E4  0E04               	movlw	4
+   553  0002E6  0100               	movlb	0	; () banked
+   554  0002E8  5987               	subwfb	(main@f+1)& (0+255),w,b
+   555  0002EA  A0D8               	btfss	status,0,c
+   556  0002EC  D005               	goto	l1569
+   557                           
+   558                           ; BSR set to: 0
+   559  0002EE  0100               	movlb	0	; () banked
+   560  0002F0  6D82               	negf	main@ff& (0+255),b
+   561  0002F2  1F83               	comf	(main@ff+1)& (0+255),f,b
+   562  0002F4  B0D8               	btfsc	status,0,c
+   563  0002F6  2B83               	incf	(main@ff+1)& (0+255),f,b
+   564  0002F8                     l1569:
+   565                           
+   566                           ; BSR set to: 0
+   567                           ;newmain18.c: 162: f=f+ ff;
+   568  0002F8  0100               	movlb	0	; () banked
+   569  0002FA  5182               	movf	main@ff& (0+255),w,b
+   570  0002FC  0100               	movlb	0	; () banked
+   571  0002FE  2586               	addwf	main@f& (0+255),w,b
+   572  000300  0100               	movlb	0	; () banked
+   573  000302  6F86               	movwf	main@f& (0+255),b
+   574  000304  0100               	movlb	0	; () banked
+   575  000306  5183               	movf	(main@ff+1)& (0+255),w,b
+   576  000308  0100               	movlb	0	; () banked
+   577  00030A  2187               	addwfc	(main@f+1)& (0+255),w,b
+   578  00030C  0100               	movlb	0	; () banked
+   579  00030E  6F87               	movwf	(main@f+1)& (0+255),b
+   580                           
+   581                           ; BSR set to: 0
+   582                           ;newmain18.c: 163: PWM1_Duty(f);
+   583  000310  C086  F07E         	movff	main@f,PWM1_Duty@duty
+   584  000314  C087  F07F         	movff	main@f+1,PWM1_Duty@duty+1
+   585  000318  ECD5  F003         	call	_PWM1_Duty	;wreg free
+   586  00031C                     l1573:
+   587                           
+   588                           ;newmain18.c: 165: }
+   589                           ;newmain18.c: 167: if (Timer0Flag)
+   590  00031C  0100               	movlb	0	; () banked
+   591  00031E  518A               	movf	_Timer0Flag& (0+255),w,b	;volatile
+   592  000320  B4D8               	btfsc	status,2,c
+   593  000322  D7DB               	goto	l1561
+   594                           
+   595                           ; BSR set to: 0
+   596                           ;newmain18.c: 168: {
+   597                           ;newmain18.c: 169: Timer0Flag = 0;
+   598  000324  0E00               	movlw	0
+   599  000326  0100               	movlb	0	; () banked
+   600  000328  6F8A               	movwf	_Timer0Flag& (0+255),b	;volatile
+   601                           
+   602                           ; BSR set to: 0
+   603                           ;newmain18.c: 170: if (j < 0 || j > 1024)jj = -jj ;
+   604  00032A  0100               	movlb	0	; () banked
+   605  00032C  0588               	decf	main@j& (0+255),w,b
+   606  00032E  0E04               	movlw	4
+   607  000330  0100               	movlb	0	; () banked
+   608  000332  5989               	subwfb	(main@j+1)& (0+255),w,b
+   609  000334  A0D8               	btfss	status,0,c
+   610  000336  D005               	goto	l1581
+   611                           
+   612                           ; BSR set to: 0
+   613  000338  0100               	movlb	0	; () banked
+   614  00033A  6D84               	negf	main@jj& (0+255),b
+   615  00033C  1F85               	comf	(main@jj+1)& (0+255),f,b
+   616  00033E  B0D8               	btfsc	status,0,c
+   617  000340  2B85               	incf	(main@jj+1)& (0+255),f,b
+   618  000342                     l1581:
+   619                           
+   620                           ; BSR set to: 0
+   621                           ;newmain18.c: 171: j=j+ jj;
+   622  000342  0100               	movlb	0	; () banked
+   623  000344  5184               	movf	main@jj& (0+255),w,b
+   624  000346  0100               	movlb	0	; () banked
+   625  000348  2588               	addwf	main@j& (0+255),w,b
+   626  00034A  0100               	movlb	0	; () banked
+   627  00034C  6F88               	movwf	main@j& (0+255),b
+   628  00034E  0100               	movlb	0	; () banked
+   629  000350  5185               	movf	(main@jj+1)& (0+255),w,b
+   630  000352  0100               	movlb	0	; () banked
+   631  000354  2189               	addwfc	(main@j+1)& (0+255),w,b
+   632  000356  0100               	movlb	0	; () banked
+   633  000358  6F89               	movwf	(main@j+1)& (0+255),b
+   634                           
+   635                           ; BSR set to: 0
+   636                           ;newmain18.c: 172: PWM2_Duty(j);
+   637  00035A  C088  F07E         	movff	main@j,PWM2_Duty@duty
+   638  00035E  C089  F07F         	movff	main@j+1,PWM2_Duty@duty+1
+   639  000362  EC86  F003         	call	_PWM2_Duty	;wreg free
+   640  000366  D7B9               	goto	l1561
+   641  000368                     __end_of_main:
+   642                           	opt stack 0
+   643                           intcon	equ	0xFF2
+   644                           status	equ	0xFD8
+   645                           
+   646 ;; *************** function _PWM2_Start *****************
+   647 ;; Defined at:
+   648 ;;		line 80 in file "newmain18.c"
+   649 ;; Parameters:    Size  Location     Type
+   650 ;;		None
+   651 ;; Auto vars:     Size  Location     Type
+   652 ;;		None
+   653 ;; Return value:  Size  Location     Type
+   654 ;;                  2   91[None  ] int 
+   655 ;; Registers used:
+   656 ;;		None
+   657 ;; Tracked objects:
+   658 ;;		On entry : 0/0
+   659 ;;		On exit  : 0/0
+   660 ;;		Unchanged: 0/0
+   661 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
+   662 ;;      Params:         0       0       0       0       0       0       0       0       0
+   663 ;;      Locals:         0       0       0       0       0       0       0       0       0
+   664 ;;      Temps:          0       0       0       0       0       0       0       0       0
+   665 ;;      Totals:         0       0       0       0       0       0       0       0       0
+   666 ;;Total ram usage:        0 bytes
+   667 ;; Hardware stack levels used:    1
+   668 ;; Hardware stack levels required when called:    2
+   669 ;; This function calls:
+   670 ;;		Nothing
+   671 ;; This function is called by:
+   672 ;;		_main
+   673 ;; This function uses a non-reentrant model
+   674 ;;
+   675                           
+   676                           	psect	text1
+   677  000A58                     __ptext1:
+   678                           	opt stack 0
+   679  000A58                     _PWM2_Start:
+   680                           	opt stack 28
+   681                           
+   682                           ;newmain18.c: 82: CCP2M3 = 1;
+   683                           
+   684                           ;incstack = 0
+   685  000A58  86BA               	bsf	4026,3,c	;volatile
+   686                           
+   687                           ;newmain18.c: 83: CCP2M2 = 1;
+   688  000A5A  84BA               	bsf	4026,2,c	;volatile
+   689                           
+   690                           ;newmain18.c: 88: T2CKPS0 = 1;
+   691  000A5C  80CA               	bsf	4042,0,c	;volatile
+   692                           
+   693                           ;newmain18.c: 89: T2CKPS1 = 0;
+   694  000A5E  92CA               	bcf	4042,1,c	;volatile
+   695                           
+   696                           ;newmain18.c: 94: TMR2ON = 1;
+   697  000A60  84CA               	bsf	4042,2,c	;volatile
+   698                           
+   699                           ;newmain18.c: 95: TRISC1 = 0;
+   700  000A62  9294               	bcf	3988,1,c	;volatile
+   701  000A64  0012               	return		;funcret
+   702  000A66                     __end_of_PWM2_Start:
+   703                           	opt stack 0
+   704                           intcon	equ	0xFF2
+   705                           status	equ	0xFD8
+   706                           
+   707 ;; *************** function _PWM2_Init *****************
+   708 ;; Defined at:
+   709 ;;		line 27 in file "newmain18.c"
+   710 ;; Parameters:    Size  Location     Type
+   711 ;;  fre             4   45[COMRAM] long 
+   712 ;; Auto vars:     Size  Location     Type
+   713 ;;		None
+   714 ;; Return value:  Size  Location     Type
+   715 ;;                  2   45[COMRAM] int 
+   716 ;; Registers used:
+   717 ;;		wreg, status,2, status,0, cstack
+   718 ;; Tracked objects:
+   719 ;;		On entry : 0/0
+   720 ;;		On exit  : 0/0
+   721 ;;		Unchanged: 0/0
+   722 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
+   723 ;;      Params:         4       0       0       0       0       0       0       0       0
+   724 ;;      Locals:         0       0       0       0       0       0       0       0       0
+   725 ;;      Temps:          4       0       0       0       0       0       0       0       0
+   726 ;;      Totals:         8       0       0       0       0       0       0       0       0
+   727 ;;Total ram usage:        8 bytes
+   728 ;; Hardware stack levels used:    1
+   729 ;; Hardware stack levels required when called:    3
+   730 ;; This function calls:
+   731 ;;		___aldiv
+   732 ;; This function is called by:
+   733 ;;		_main
+   734 ;; This function uses a non-reentrant model
+   735 ;;
+   736                           
+   737                           	psect	text2
+   738  0008CC                     __ptext2:
+   739                           	opt stack 0
+   740  0008CC                     _PWM2_Init:
+   741                           	opt stack 27
+   742                           
+   743                           ;newmain18.c: 29: PR2 = (16000000/(fre*4*4)) - 1;
+   744                           
+   745                           ;incstack = 0
+   746  0008CC  0E00               	movlw	0
+   747  0008CE  6E20               	movwf	___aldiv@dividend,c
+   748  0008D0  0E24               	movlw	36
+   749  0008D2  6E21               	movwf	___aldiv@dividend+1,c
+   750  0008D4  0EF4               	movlw	244
+   751  0008D6  6E22               	movwf	___aldiv@dividend+2,c
+   752  0008D8  0E00               	movlw	0
+   753  0008DA  6E23               	movwf	___aldiv@dividend+3,c
+   754  0008DC  C02E  F032         	movff	PWM2_Init@fre,??_PWM2_Init
+   755  0008E0  C02F  F033         	movff	PWM2_Init@fre+1,??_PWM2_Init+1
+   756  0008E4  C030  F034         	movff	PWM2_Init@fre+2,??_PWM2_Init+2
+   757  0008E8  C031  F035         	movff	PWM2_Init@fre+3,??_PWM2_Init+3
+   758  0008EC  0E02               	movlw	2
+   759  0008EE                     u915:
+   760  0008EE  90D8               	bcf	status,0,c
+   761  0008F0  3632               	rlcf	??_PWM2_Init,f,c
+   762  0008F2  3633               	rlcf	??_PWM2_Init+1,f,c
+   763  0008F4  3634               	rlcf	??_PWM2_Init+2,f,c
+   764  0008F6  3635               	rlcf	??_PWM2_Init+3,f,c
+   765  0008F8  2EE8               	decfsz	wreg,f,c
+   766  0008FA  D7F9               	goto	u915
+   767  0008FC  0E02               	movlw	2
+   768  0008FE                     u925:
+   769  0008FE  90D8               	bcf	status,0,c
+   770  000900  3632               	rlcf	??_PWM2_Init,f,c
+   771  000902  3633               	rlcf	??_PWM2_Init+1,f,c
+   772  000904  3634               	rlcf	??_PWM2_Init+2,f,c
+   773  000906  3635               	rlcf	??_PWM2_Init+3,f,c
+   774  000908  2EE8               	decfsz	wreg,f,c
+   775  00090A  D7F9               	goto	u925
+   776  00090C  C032  F024         	movff	??_PWM2_Init,___aldiv@divisor
+   777  000910  C033  F025         	movff	??_PWM2_Init+1,___aldiv@divisor+1
+   778  000914  C034  F026         	movff	??_PWM2_Init+2,___aldiv@divisor+2
+   779  000918  C035  F027         	movff	??_PWM2_Init+3,___aldiv@divisor+3
+   780  00091C  ECC9  F002         	call	___aldiv	;wreg free
+   781  000920  0420               	decf	?___aldiv,w,c
+   782  000922  6ECB               	movwf	4043,c	;volatile
+   783                           
+   784                           ;newmain18.c: 30: freq = fre;
+   785  000924  C02E  F03C         	movff	PWM2_Init@fre,_freq
+   786  000928  C02F  F03D         	movff	PWM2_Init@fre+1,_freq+1
+   787  00092C  C030  F03E         	movff	PWM2_Init@fre+2,_freq+2
+   788  000930  C031  F03F         	movff	PWM2_Init@fre+3,_freq+3
+   789  000934  0012               	return		;funcret
+   790  000936                     __end_of_PWM2_Init:
+   791                           	opt stack 0
+   792                           intcon	equ	0xFF2
+   793                           wreg	equ	0xFE8
+   794                           status	equ	0xFD8
+   795                           
+   796 ;; *************** function _PWM2_Duty *****************
+   797 ;; Defined at:
+   798 ;;		line 45 in file "newmain18.c"
+   799 ;; Parameters:    Size  Location     Type
+   800 ;;  duty            2   30[BANK0 ] unsigned int 
+   801 ;; Auto vars:     Size  Location     Type
+   802 ;;		None
+   803 ;; Return value:  Size  Location     Type
+   804 ;;                  2   30[BANK0 ] int 
+   805 ;; Registers used:
+   806 ;;		wreg, status,2, status,0, cstack
+   807 ;; Tracked objects:
+   808 ;;		On entry : 0/0
+   809 ;;		On exit  : 0/0
+   810 ;;		Unchanged: 0/0
+   811 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
+   812 ;;      Params:         0       2       0       0       0       0       0       0       0
+   813 ;;      Locals:         0       0       0       0       0       0       0       0       0
+   814 ;;      Temps:          2       0       0       0       0       0       0       0       0
+   815 ;;      Totals:         2       2       0       0       0       0       0       0       0
+   816 ;;Total ram usage:        4 bytes
+   817 ;; Hardware stack levels used:    1
+   818 ;; Hardware stack levels required when called:    4
+   819 ;; This function calls:
+   820 ;;		_PWM_Max_Duty
+   821 ;;		___awtoft
+   822 ;;		___ftdiv
+   823 ;;		___ftmul
+   824 ;;		___fttol
+   825 ;;		___lwtoft
+   826 ;; This function is called by:
+   827 ;;		_main
+   828 ;; This function uses a non-reentrant model
+   829 ;;
+   830                           
+   831                           	psect	text3
+   832  00070C                     __ptext3:
+   833                           	opt stack 0
+   834  00070C                     _PWM2_Duty:
+   835                           	opt stack 26
+   836                           
+   837                           ;newmain18.c: 47: if(duty<1024)
+   838                           
+   839                           ;incstack = 0
+   840  00070C  0E04               	movlw	4
+   841  00070E  0100               	movlb	0	; () banked
+   842  000710  5D7F               	subwf	(PWM2_Duty@duty+1)& (0+255),w,b
+   843  000712  B0D8               	btfsc	status,0,c
+   844  000714  0012               	return	
+   845                           
+   846                           ; BSR set to: 0
+   847                           ;newmain18.c: 48: {
+   848                           ;newmain18.c: 49: duty = ((float)duty/1023)*PWM_Max_Duty();
+   849  000716  ECD0  F004         	call	_PWM_Max_Duty	;wreg free
+   850  00071A  C02E  F034         	movff	?_PWM_Max_Duty,___awtoft@c
+   851  00071E  C02F  F035         	movff	?_PWM_Max_Duty+1,___awtoft@c+1
+   852  000722  ECF7  F004         	call	___awtoft	;wreg free
+   853  000726  C034  F063         	movff	?___awtoft,___ftmul@f2
+   854  00072A  C035  F064         	movff	?___awtoft+1,___ftmul@f2+1
+   855  00072E  C036  F065         	movff	?___awtoft+2,___ftmul@f2+2
+   856  000732  0EC0               	movlw	192
+   857  000734  6E2E               	movwf	___ftdiv@f2,c
+   858  000736  0E7F               	movlw	127
+   859  000738  6E2F               	movwf	___ftdiv@f2+1,c
+   860  00073A  0E44               	movlw	68
+   861  00073C  6E30               	movwf	___ftdiv@f2+2,c
+   862  00073E  C07E  F028         	movff	PWM2_Duty@duty,___lwtoft@c
+   863  000742  C07F  F029         	movff	PWM2_Duty@duty+1,___lwtoft@c+1
+   864  000746  EC13  F005         	call	___lwtoft	;wreg free
+   865  00074A  C028  F02B         	movff	?___lwtoft,___ftdiv@f1
+   866  00074E  C029  F02C         	movff	?___lwtoft+1,___ftdiv@f1+1
+   867  000752  C02A  F02D         	movff	?___lwtoft+2,___ftdiv@f1+2
+   868  000756  EC56  F002         	call	___ftdiv	;wreg free
+   869  00075A  C02B  F060         	movff	?___ftdiv,___ftmul@f1
+   870  00075E  C02C  F061         	movff	?___ftdiv+1,___ftmul@f1+1
+   871  000762  C02D  F062         	movff	?___ftdiv+2,___ftmul@f1+2
+   872  000766  EC5D  F000         	call	___ftmul	;wreg free
+   873  00076A  C060  F06F         	movff	?___ftmul,___fttol@f1
+   874  00076E  C061  F070         	movff	?___ftmul+1,___fttol@f1+1
+   875  000772  C062  F071         	movff	?___ftmul+2,___fttol@f1+2
+   876  000776  ECB4  F001         	call	___fttol	;wreg free
+   877  00077A  C06F  F07E         	movff	?___fttol,PWM2_Duty@duty
+   878  00077E  C070  F07F         	movff	?___fttol+1,PWM2_Duty@duty+1
+   879                           
+   880                           ;newmain18.c: 50: DC2B1 = duty & 2;
+   881  000782  9ABA               	bcf	4026,5,c	;volatile
+   882                           
+   883                           ;newmain18.c: 51: DC2B0 = duty & 1;
+   884  000784  0100               	movlb	0	; () banked
+   885  000786  A17E               	btfss	PWM2_Duty@duty& (0+255),0,b
+   886  000788  D002               	goto	u1150
+   887  00078A  88BA               	bsf	4026,4,c	;volatile
+   888  00078C  D001               	goto	l1511
+   889  00078E                     u1150:
+   890  00078E  98BA               	bcf	4026,4,c	;volatile
+   891  000790                     l1511:
+   892                           
+   893                           ;newmain18.c: 52: CCPR2L = duty>>2;
+   894  000790  C07E  F03A         	movff	PWM2_Duty@duty,??_PWM2_Duty
+   895  000794  C07F  F03B         	movff	PWM2_Duty@duty+1,??_PWM2_Duty+1
+   896  000798  90D8               	bcf	status,0,c
+   897  00079A  323B               	rrcf	??_PWM2_Duty+1,f,c
+   898  00079C  323A               	rrcf	??_PWM2_Duty,f,c
+   899  00079E  90D8               	bcf	status,0,c
+   900  0007A0  323B               	rrcf	??_PWM2_Duty+1,f,c
+   901  0007A2  323A               	rrcf	??_PWM2_Duty,f,c
+   902  0007A4  503A               	movf	??_PWM2_Duty,w,c
+   903  0007A6  6EBB               	movwf	4027,c	;volatile
+   904  0007A8  0012               	return	
+   905  0007AA                     __end_of_PWM2_Duty:
+   906                           	opt stack 0
+   907                           intcon	equ	0xFF2
+   908                           wreg	equ	0xFE8
+   909                           status	equ	0xFD8
+   910                           
+   911 ;; *************** function _PWM1_Start *****************
+   912 ;; Defined at:
+   913 ;;		line 56 in file "newmain18.c"
+   914 ;; Parameters:    Size  Location     Type
+   915 ;;		None
+   916 ;; Auto vars:     Size  Location     Type
+   917 ;;		None
+   918 ;; Return value:  Size  Location     Type
+   919 ;;                  2   85[None  ] int 
+   920 ;; Registers used:
+   921 ;;		None
+   922 ;; Tracked objects:
+   923 ;;		On entry : 0/0
+   924 ;;		On exit  : 0/0
+   925 ;;		Unchanged: 0/0
+   926 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
+   927 ;;      Params:         0       0       0       0       0       0       0       0       0
+   928 ;;      Locals:         0       0       0       0       0       0       0       0       0
+   929 ;;      Temps:          0       0       0       0       0       0       0       0       0
+   930 ;;      Totals:         0       0       0       0       0       0       0       0       0
+   931 ;;Total ram usage:        0 bytes
+   932 ;; Hardware stack levels used:    1
+   933 ;; Hardware stack levels required when called:    2
+   934 ;; This function calls:
+   935 ;;		Nothing
+   936 ;; This function is called by:
+   937 ;;		_main
+   938 ;; This function uses a non-reentrant model
+   939 ;;
+   940                           
+   941                           	psect	text4
+   942  000A66                     __ptext4:
+   943                           	opt stack 0
+   944  000A66                     _PWM1_Start:
+   945                           	opt stack 28
+   946                           
+   947                           ;newmain18.c: 58: CCP1M3 = 1;
+   948                           
+   949                           ;incstack = 0
+   950  000A66  86BD               	bsf	4029,3,c	;volatile
+   951                           
+   952                           ;newmain18.c: 59: CCP1M2 = 1;
+   953  000A68  84BD               	bsf	4029,2,c	;volatile
+   954                           
+   955                           ;newmain18.c: 70: TMR2ON = 1;
+   956  000A6A  84CA               	bsf	4042,2,c	;volatile
+   957                           
+   958                           ;newmain18.c: 71: TRISC2 = 0;
+   959  000A6C  9494               	bcf	3988,2,c	;volatile
+   960  000A6E  0012               	return		;funcret
+   961  000A70                     __end_of_PWM1_Start:
+   962                           	opt stack 0
+   963                           intcon	equ	0xFF2
+   964                           wreg	equ	0xFE8
+   965                           status	equ	0xFD8
+   966                           
+   967 ;; *************** function _PWM1_Init *****************
+   968 ;; Defined at:
+   969 ;;		line 21 in file "newmain18.c"
+   970 ;; Parameters:    Size  Location     Type
+   971 ;;  fre             4   45[COMRAM] long 
+   972 ;; Auto vars:     Size  Location     Type
+   973 ;;		None
+   974 ;; Return value:  Size  Location     Type
+   975 ;;                  2   45[COMRAM] int 
+   976 ;; Registers used:
+   977 ;;		wreg, status,2, status,0, cstack
+   978 ;; Tracked objects:
+   979 ;;		On entry : 0/0
+   980 ;;		On exit  : 0/0
+   981 ;;		Unchanged: 0/0
+   982 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
+   983 ;;      Params:         4       0       0       0       0       0       0       0       0
+   984 ;;      Locals:         0       0       0       0       0       0       0       0       0
+   985 ;;      Temps:          4       0       0       0       0       0       0       0       0
+   986 ;;      Totals:         8       0       0       0       0       0       0       0       0
+   987 ;;Total ram usage:        8 bytes
+   988 ;; Hardware stack levels used:    1
+   989 ;; Hardware stack levels required when called:    3
+   990 ;; This function calls:
+   991 ;;		___aldiv
+   992 ;; This function is called by:
+   993 ;;		_main
+   994 ;; This function uses a non-reentrant model
+   995 ;;
+   996                           
+   997                           	psect	text5
+   998  000936                     __ptext5:
+   999                           	opt stack 0
+  1000  000936                     _PWM1_Init:
+  1001                           	opt stack 27
+  1002                           
+  1003                           ;newmain18.c: 23: PR2 = (16000000/(fre*4*4)) - 1;
+  1004                           
+  1005                           ;incstack = 0
+  1006  000936  0E00               	movlw	0
+  1007  000938  6E20               	movwf	___aldiv@dividend,c
+  1008  00093A  0E24               	movlw	36
+  1009  00093C  6E21               	movwf	___aldiv@dividend+1,c
+  1010  00093E  0EF4               	movlw	244
+  1011  000940  6E22               	movwf	___aldiv@dividend+2,c
+  1012  000942  0E00               	movlw	0
+  1013  000944  6E23               	movwf	___aldiv@dividend+3,c
+  1014  000946  C02E  F032         	movff	PWM1_Init@fre,??_PWM1_Init
+  1015  00094A  C02F  F033         	movff	PWM1_Init@fre+1,??_PWM1_Init+1
+  1016  00094E  C030  F034         	movff	PWM1_Init@fre+2,??_PWM1_Init+2
+  1017  000952  C031  F035         	movff	PWM1_Init@fre+3,??_PWM1_Init+3
+  1018  000956  0E02               	movlw	2
+  1019  000958                     u895:
+  1020  000958  90D8               	bcf	status,0,c
+  1021  00095A  3632               	rlcf	??_PWM1_Init,f,c
+  1022  00095C  3633               	rlcf	??_PWM1_Init+1,f,c
+  1023  00095E  3634               	rlcf	??_PWM1_Init+2,f,c
+  1024  000960  3635               	rlcf	??_PWM1_Init+3,f,c
+  1025  000962  2EE8               	decfsz	wreg,f,c
+  1026  000964  D7F9               	goto	u895
+  1027  000966  0E02               	movlw	2
+  1028  000968                     u905:
+  1029  000968  90D8               	bcf	status,0,c
+  1030  00096A  3632               	rlcf	??_PWM1_Init,f,c
+  1031  00096C  3633               	rlcf	??_PWM1_Init+1,f,c
+  1032  00096E  3634               	rlcf	??_PWM1_Init+2,f,c
+  1033  000970  3635               	rlcf	??_PWM1_Init+3,f,c
+  1034  000972  2EE8               	decfsz	wreg,f,c
+  1035  000974  D7F9               	goto	u905
+  1036  000976  C032  F024         	movff	??_PWM1_Init,___aldiv@divisor
+  1037  00097A  C033  F025         	movff	??_PWM1_Init+1,___aldiv@divisor+1
+  1038  00097E  C034  F026         	movff	??_PWM1_Init+2,___aldiv@divisor+2
+  1039  000982  C035  F027         	movff	??_PWM1_Init+3,___aldiv@divisor+3
+  1040  000986  ECC9  F002         	call	___aldiv	;wreg free
+  1041  00098A  0420               	decf	?___aldiv,w,c
+  1042  00098C  6ECB               	movwf	4043,c	;volatile
+  1043                           
+  1044                           ;newmain18.c: 24: freq = fre;
+  1045  00098E  C02E  F03C         	movff	PWM1_Init@fre,_freq
+  1046  000992  C02F  F03D         	movff	PWM1_Init@fre+1,_freq+1
+  1047  000996  C030  F03E         	movff	PWM1_Init@fre+2,_freq+2
+  1048  00099A  C031  F03F         	movff	PWM1_Init@fre+3,_freq+3
+  1049  00099E  0012               	return		;funcret
+  1050  0009A0                     __end_of_PWM1_Init:
+  1051                           	opt stack 0
+  1052                           intcon	equ	0xFF2
+  1053                           wreg	equ	0xFE8
+  1054                           status	equ	0xFD8
+  1055                           
+  1056 ;; *************** function _PWM1_Duty *****************
+  1057 ;; Defined at:
+  1058 ;;		line 33 in file "newmain18.c"
+  1059 ;; Parameters:    Size  Location     Type
+  1060 ;;  duty            2   30[BANK0 ] unsigned int 
+  1061 ;; Auto vars:     Size  Location     Type
+  1062 ;;		None
+  1063 ;; Return value:  Size  Location     Type
+  1064 ;;                  2   30[BANK0 ] int 
+  1065 ;; Registers used:
+  1066 ;;		wreg, status,2, status,0, cstack
+  1067 ;; Tracked objects:
+  1068 ;;		On entry : 0/0
+  1069 ;;		On exit  : 0/0
+  1070 ;;		Unchanged: 0/0
+  1071 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
+  1072 ;;      Params:         0       2       0       0       0       0       0       0       0
+  1073 ;;      Locals:         0       0       0       0       0       0       0       0       0
+  1074 ;;      Temps:          2       0       0       0       0       0       0       0       0
+  1075 ;;      Totals:         2       2       0       0       0       0       0       0       0
+  1076 ;;Total ram usage:        4 bytes
+  1077 ;; Hardware stack levels used:    1
+  1078 ;; Hardware stack levels required when called:    4
+  1079 ;; This function calls:
+  1080 ;;		_PWM_Max_Duty
+  1081 ;;		___awtoft
+  1082 ;;		___ftdiv
+  1083 ;;		___ftmul
+  1084 ;;		___fttol
+  1085 ;;		___lwtoft
+  1086 ;; This function is called by:
+  1087 ;;		_main
+  1088 ;; This function uses a non-reentrant model
+  1089 ;;
+  1090                           
+  1091                           	psect	text6
+  1092  0007AA                     __ptext6:
+  1093                           	opt stack 0
+  1094  0007AA                     _PWM1_Duty:
+  1095                           	opt stack 26
+  1096                           
+  1097                           ;newmain18.c: 35: if(duty<1024)
+  1098                           
+  1099                           ;incstack = 0
+  1100  0007AA  0E04               	movlw	4
+  1101  0007AC  0100               	movlb	0	; () banked
+  1102  0007AE  5D7F               	subwf	(PWM1_Duty@duty+1)& (0+255),w,b
+  1103  0007B0  B0D8               	btfsc	status,0,c
+  1104  0007B2  0012               	return	
+  1105                           
+  1106                           ; BSR set to: 0
+  1107                           ;newmain18.c: 36: {
+  1108                           ;newmain18.c: 37: duty = ((float)duty/1023)*PWM_Max_Duty();
+  1109  0007B4  ECD0  F004         	call	_PWM_Max_Duty	;wreg free
+  1110  0007B8  C02E  F034         	movff	?_PWM_Max_Duty,___awtoft@c
+  1111  0007BC  C02F  F035         	movff	?_PWM_Max_Duty+1,___awtoft@c+1
+  1112  0007C0  ECF7  F004         	call	___awtoft	;wreg free
+  1113  0007C4  C034  F063         	movff	?___awtoft,___ftmul@f2
+  1114  0007C8  C035  F064         	movff	?___awtoft+1,___ftmul@f2+1
+  1115  0007CC  C036  F065         	movff	?___awtoft+2,___ftmul@f2+2
+  1116  0007D0  0EC0               	movlw	192
+  1117  0007D2  6E2E               	movwf	___ftdiv@f2,c
+  1118  0007D4  0E7F               	movlw	127
+  1119  0007D6  6E2F               	movwf	___ftdiv@f2+1,c
+  1120  0007D8  0E44               	movlw	68
+  1121  0007DA  6E30               	movwf	___ftdiv@f2+2,c
+  1122  0007DC  C07E  F028         	movff	PWM1_Duty@duty,___lwtoft@c
+  1123  0007E0  C07F  F029         	movff	PWM1_Duty@duty+1,___lwtoft@c+1
+  1124  0007E4  EC13  F005         	call	___lwtoft	;wreg free
+  1125  0007E8  C028  F02B         	movff	?___lwtoft,___ftdiv@f1
+  1126  0007EC  C029  F02C         	movff	?___lwtoft+1,___ftdiv@f1+1
+  1127  0007F0  C02A  F02D         	movff	?___lwtoft+2,___ftdiv@f1+2
+  1128  0007F4  EC56  F002         	call	___ftdiv	;wreg free
+  1129  0007F8  C02B  F060         	movff	?___ftdiv,___ftmul@f1
+  1130  0007FC  C02C  F061         	movff	?___ftdiv+1,___ftmul@f1+1
+  1131  000800  C02D  F062         	movff	?___ftdiv+2,___ftmul@f1+2
+  1132  000804  EC5D  F000         	call	___ftmul	;wreg free
+  1133  000808  C060  F06F         	movff	?___ftmul,___fttol@f1
+  1134  00080C  C061  F070         	movff	?___ftmul+1,___fttol@f1+1
+  1135  000810  C062  F071         	movff	?___ftmul+2,___fttol@f1+2
+  1136  000814  ECB4  F001         	call	___fttol	;wreg free
+  1137  000818  C06F  F07E         	movff	?___fttol,PWM1_Duty@duty
+  1138  00081C  C070  F07F         	movff	?___fttol+1,PWM1_Duty@duty+1
+  1139                           
+  1140                           ;newmain18.c: 38: DC1B1 = duty & 2;
+  1141  000820  9ABD               	bcf	4029,5,c	;volatile
+  1142                           
+  1143                           ;newmain18.c: 39: DC1B0 = duty & 1;
+  1144  000822  0100               	movlb	0	; () banked
+  1145  000824  A17E               	btfss	PWM1_Duty@duty& (0+255),0,b
+  1146  000826  D002               	goto	u1120
+  1147  000828  88BD               	bsf	4029,4,c	;volatile
+  1148  00082A  D001               	goto	l1501
+  1149  00082C                     u1120:
+  1150  00082C  98BD               	bcf	4029,4,c	;volatile
+  1151  00082E                     l1501:
+  1152                           
+  1153                           ;newmain18.c: 41: CCPR1L = duty>>2;
+  1154  00082E  C07E  F03A         	movff	PWM1_Duty@duty,??_PWM1_Duty
+  1155  000832  C07F  F03B         	movff	PWM1_Duty@duty+1,??_PWM1_Duty+1
+  1156  000836  90D8               	bcf	status,0,c
+  1157  000838  323B               	rrcf	??_PWM1_Duty+1,f,c
+  1158  00083A  323A               	rrcf	??_PWM1_Duty,f,c
+  1159  00083C  90D8               	bcf	status,0,c
+  1160  00083E  323B               	rrcf	??_PWM1_Duty+1,f,c
+  1161  000840  323A               	rrcf	??_PWM1_Duty,f,c
+  1162  000842  503A               	movf	??_PWM1_Duty,w,c
+  1163  000844  6EBE               	movwf	4030,c	;volatile
+  1164  000846  0012               	return	
+  1165  000848                     __end_of_PWM1_Duty:
+  1166                           	opt stack 0
+  1167                           intcon	equ	0xFF2
+  1168                           wreg	equ	0xFE8
+  1169                           status	equ	0xFD8
+  1170                           
+  1171 ;; *************** function ___lwtoft *****************
+  1172 ;; Defined at:
+  1173 ;;		line 28 in file "C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\lwtoft.c"
+  1174 ;; Parameters:    Size  Location     Type
+  1175 ;;  c               2   39[COMRAM] unsigned int 
+  1176 ;; Auto vars:     Size  Location     Type
+  1177 ;;		None
+  1178 ;; Return value:  Size  Location     Type
+  1179 ;;                  3   39[COMRAM] float 
+  1180 ;; Registers used:
+  1181 ;;		wreg, status,2, status,0, cstack
+  1182 ;; Tracked objects:
+  1183 ;;		On entry : 0/0
+  1184 ;;		On exit  : 0/0
+  1185 ;;		Unchanged: 0/0
+  1186 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
+  1187 ;;      Params:         3       0       0       0       0       0       0       0       0
+  1188 ;;      Locals:         0       0       0       0       0       0       0       0       0
+  1189 ;;      Temps:          0       0       0       0       0       0       0       0       0
+  1190 ;;      Totals:         3       0       0       0       0       0       0       0       0
+  1191 ;;Total ram usage:        3 bytes
+  1192 ;; Hardware stack levels used:    1
+  1193 ;; Hardware stack levels required when called:    3
+  1194 ;; This function calls:
+  1195 ;;		___ftpack
+  1196 ;; This function is called by:
+  1197 ;;		_PWM1_Duty
+  1198 ;;		_PWM2_Duty
+  1199 ;; This function uses a non-reentrant model
+  1200 ;;
+  1201                           
+  1202                           	psect	text7
+  1203  000A26                     __ptext7:
+  1204                           	opt stack 0
+  1205  000A26                     ___lwtoft:
+  1206                           	opt stack 26
+  1207                           
+  1208                           ;incstack = 0
+  1209  000A26  C028  F020         	movff	___lwtoft@c,___ftpack@arg
+  1210  000A2A  C029  F021         	movff	___lwtoft@c+1,___ftpack@arg+1
+  1211  000A2E  6A22               	clrf	___ftpack@arg+2,c
+  1212  000A30  0E8E               	movlw	142
+  1213  000A32  6E23               	movwf	___ftpack@exp,c
+  1214  000A34  0E00               	movlw	0
+  1215  000A36  6E24               	movwf	___ftpack@sign,c
+  1216  000A38  EC2F  F003         	call	___ftpack	;wreg free
+  1217  000A3C  C020  F028         	movff	?___ftpack,?___lwtoft
+  1218  000A40  C021  F029         	movff	?___ftpack+1,?___lwtoft+1
+  1219  000A44  C022  F02A         	movff	?___ftpack+2,?___lwtoft+2
+  1220  000A48  0012               	return	
+  1221  000A4A                     __end_of___lwtoft:
+  1222                           	opt stack 0
+  1223                           intcon	equ	0xFF2
+  1224                           wreg	equ	0xFE8
+  1225                           status	equ	0xFD8
+  1226                           
+  1227 ;; *************** function ___fttol *****************
+  1228 ;; Defined at:
+  1229 ;;		line 44 in file "C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\fttol.c"
+  1230 ;; Parameters:    Size  Location     Type
+  1231 ;;  f1              3   15[BANK0 ] float 
+  1232 ;; Auto vars:     Size  Location     Type
+  1233 ;;  lval            4   25[BANK0 ] unsigned long 
+  1234 ;;  exp1            1   29[BANK0 ] unsigned char 
+  1235 ;;  sign1           1   24[BANK0 ] unsigned char 
+  1236 ;; Return value:  Size  Location     Type
+  1237 ;;                  4   15[BANK0 ] long 
+  1238 ;; Registers used:
+  1239 ;;		wreg, status,2, status,0
+  1240 ;; Tracked objects:
+  1241 ;;		On entry : 0/0
+  1242 ;;		On exit  : 0/0
+  1243 ;;		Unchanged: 0/0
+  1244 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
+  1245 ;;      Params:         0       4       0       0       0       0       0       0       0
+  1246 ;;      Locals:         0       6       0       0       0       0       0       0       0
+  1247 ;;      Temps:          0       5       0       0       0       0       0       0       0
+  1248 ;;      Totals:         0      15       0       0       0       0       0       0       0
+  1249 ;;Total ram usage:       15 bytes
+  1250 ;; Hardware stack levels used:    1
+  1251 ;; Hardware stack levels required when called:    2
+  1252 ;; This function calls:
+  1253 ;;		Nothing
+  1254 ;; This function is called by:
+  1255 ;;		_PWM1_Duty
+  1256 ;;		_PWM2_Duty
+  1257 ;; This function uses a non-reentrant model
+  1258 ;;
+  1259                           
+  1260                           	psect	text8
+  1261  000368                     __ptext8:
+  1262                           	opt stack 0
+  1263  000368                     ___fttol:
+  1264                           	opt stack 27
+  1265                           
+  1266                           ;incstack = 0
+  1267  000368  C071  F073         	movff	___fttol@f1+2,??___fttol
+  1268  00036C  0100               	movlb	0	; () banked
+  1269  00036E  6B74               	clrf	(??___fttol+1)& (0+255),b
+  1270  000370  6B75               	clrf	(??___fttol+2)& (0+255),b
+  1271  000372  0100               	movlb	0	; () banked
+  1272  000374  3570               	rlcf	(___fttol@f1+1)& (0+255),w,b
+  1273  000376  0100               	movlb	0	; () banked
+  1274  000378  3773               	rlcf	??___fttol& (0+255),f,b
+  1275  00037A  E301               	bnc	u811
+  1276  00037C  8174               	bsf	(??___fttol+1)& (0+255),0,b
+  1277  00037E                     u811:
+  1278  00037E  0100               	movlb	0	; () banked
+  1279  000380  5173               	movf	??___fttol& (0+255),w,b
+  1280  000382  0100               	movlb	0	; () banked
+  1281  000384  6F7D               	movwf	___fttol@exp1& (0+255),b
+  1282  000386  0100               	movlb	0	; () banked
+  1283  000388  517D               	movf	___fttol@exp1& (0+255),w,b
+  1284  00038A  A4D8               	btfss	status,2,c
+  1285  00038C  D00A               	goto	l1289
+  1286                           
+  1287                           ; BSR set to: 0
+  1288  00038E  0E00               	movlw	0
+  1289  000390  0100               	movlb	0	; () banked
+  1290  000392  6F6F               	movwf	?___fttol& (0+255),b
+  1291  000394  0E00               	movlw	0
+  1292  000396  6F70               	movwf	(?___fttol+1)& (0+255),b
+  1293  000398  0E00               	movlw	0
+  1294  00039A  6F71               	movwf	(?___fttol+2)& (0+255),b
+  1295  00039C  0E00               	movlw	0
+  1296  00039E  6F72               	movwf	(?___fttol+3)& (0+255),b
+  1297                           
+  1298                           ; BSR set to: 0
+  1299  0003A0  0012               	return	
+  1300  0003A2                     l1289:
+  1301                           
+  1302                           ; BSR set to: 0
+  1303  0003A2  0E17               	movlw	23
+  1304  0003A4  0100               	movlb	0	; () banked
+  1305  0003A6  6F73               	movwf	??___fttol& (0+255),b
+  1306  0003A8  C06F  F074         	movff	___fttol@f1,??___fttol+1
+  1307  0003AC  C070  F075         	movff	___fttol@f1+1,??___fttol+2
+  1308  0003B0  C071  F076         	movff	___fttol@f1+2,??___fttol+3
+  1309  0003B4  0100               	movlb	0	; () banked
+  1310  0003B6  2973               	incf	??___fttol& (0+255),w,b
+  1311  0003B8  0100               	movlb	0	; () banked
+  1312  0003BA  6F77               	movwf	(??___fttol+4)& (0+255),b
+  1313  0003BC  D005               	goto	u830
+  1314  0003BE                     u835:
+  1315  0003BE  0100               	movlb	0	; () banked
+  1316  0003C0  90D8               	bcf	status,0,c
+  1317  0003C2  3376               	rrcf	(??___fttol+3)& (0+255),f,b
+  1318  0003C4  3375               	rrcf	(??___fttol+2)& (0+255),f,b
+  1319  0003C6  3374               	rrcf	(??___fttol+1)& (0+255),f,b
+  1320  0003C8                     u830:
+  1321  0003C8  0100               	movlb	0	; () banked
+  1322  0003CA  2F77               	decfsz	(??___fttol+4)& (0+255),f,b
+  1323  0003CC  D7F8               	goto	u835
+  1324  0003CE  0100               	movlb	0	; () banked
+  1325  0003D0  5174               	movf	(??___fttol+1)& (0+255),w,b
+  1326  0003D2  0100               	movlb	0	; () banked
+  1327  0003D4  6F78               	movwf	___fttol@sign1& (0+255),b
+  1328                           
+  1329                           ; BSR set to: 0
+  1330  0003D6  0100               	movlb	0	; () banked
+  1331  0003D8  8F70               	bsf	(___fttol@f1+1)& (0+255),7,b
+  1332                           
+  1333                           ; BSR set to: 0
+  1334  0003DA  0EFF               	movlw	255
+  1335  0003DC  0100               	movlb	0	; () banked
+  1336  0003DE  176F               	andwf	___fttol@f1& (0+255),f,b
+  1337  0003E0  0EFF               	movlw	255
+  1338  0003E2  0100               	movlb	0	; () banked
+  1339  0003E4  1770               	andwf	(___fttol@f1+1)& (0+255),f,b
+  1340  0003E6  0E00               	movlw	0
+  1341  0003E8  0100               	movlb	0	; () banked
+  1342  0003EA  1771               	andwf	(___fttol@f1+2)& (0+255),f,b
+  1343                           
+  1344                           ; BSR set to: 0
+  1345  0003EC  0100               	movlb	0	; () banked
+  1346  0003EE  516F               	movf	___fttol@f1& (0+255),w,b
+  1347  0003F0  0100               	movlb	0	; () banked
+  1348  0003F2  6F79               	movwf	___fttol@lval& (0+255),b
+  1349  0003F4  0100               	movlb	0	; () banked
+  1350  0003F6  5170               	movf	(___fttol@f1+1)& (0+255),w,b
+  1351  0003F8  0100               	movlb	0	; () banked
+  1352  0003FA  6F7A               	movwf	(___fttol@lval+1)& (0+255),b
+  1353  0003FC  0100               	movlb	0	; () banked
+  1354  0003FE  5171               	movf	(___fttol@f1+2)& (0+255),w,b
+  1355  000400  0100               	movlb	0	; () banked
+  1356  000402  6F7B               	movwf	(___fttol@lval+2)& (0+255),b
+  1357  000404  0100               	movlb	0	; () banked
+  1358  000406  6B7C               	clrf	(___fttol@lval+3)& (0+255),b
+  1359                           
+  1360                           ; BSR set to: 0
+  1361  000408  0E8E               	movlw	142
+  1362  00040A  0100               	movlb	0	; () banked
+  1363  00040C  5F7D               	subwf	___fttol@exp1& (0+255),f,b
+  1364                           
+  1365                           ; BSR set to: 0
+  1366  00040E  0100               	movlb	0	; () banked
+  1367  000410  AF7D               	btfss	___fttol@exp1& (0+255),7,b
+  1368  000412  D01A               	goto	l1311
+  1369                           
+  1370                           ; BSR set to: 0
+  1371  000414  0100               	movlb	0	; () banked
+  1372  000416  517D               	movf	___fttol@exp1& (0+255),w,b
+  1373  000418  0A80               	xorlw	128
+  1374  00041A  0F8F               	addlw	143
+  1375  00041C  B0D8               	btfsc	status,0,c
+  1376  00041E  D00A               	goto	l1307
+  1377                           
+  1378                           ; BSR set to: 0
+  1379  000420  0E00               	movlw	0
+  1380  000422  0100               	movlb	0	; () banked
+  1381  000424  6F6F               	movwf	?___fttol& (0+255),b
+  1382  000426  0E00               	movlw	0
+  1383  000428  6F70               	movwf	(?___fttol+1)& (0+255),b
+  1384  00042A  0E00               	movlw	0
+  1385  00042C  6F71               	movwf	(?___fttol+2)& (0+255),b
+  1386  00042E  0E00               	movlw	0
+  1387  000430  6F72               	movwf	(?___fttol+3)& (0+255),b
+  1388                           
+  1389                           ; BSR set to: 0
+  1390  000432  0012               	return	
+  1391  000434                     l1307:
+  1392                           
+  1393                           ; BSR set to: 0
+  1394  000434  0100               	movlb	0	; () banked
+  1395  000436  90D8               	bcf	status,0,c
+  1396  000438  337C               	rrcf	(___fttol@lval+3)& (0+255),f,b
+  1397  00043A  337B               	rrcf	(___fttol@lval+2)& (0+255),f,b
+  1398  00043C  337A               	rrcf	(___fttol@lval+1)& (0+255),f,b
+  1399  00043E  3379               	rrcf	___fttol@lval& (0+255),f,b
+  1400                           
+  1401                           ; BSR set to: 0
+  1402  000440  0100               	movlb	0	; () banked
+  1403  000442  3F7D               	incfsz	___fttol@exp1& (0+255),f,b
+  1404  000444  D7F7               	goto	l1307
+  1405                           
+  1406                           ; BSR set to: 0
+  1407  000446  D01B               	goto	l1321
+  1408  000448                     l1311:
+  1409                           
+  1410                           ; BSR set to: 0
+  1411  000448  0E17               	movlw	23
+  1412  00044A  0100               	movlb	0	; () banked
+  1413  00044C  657D               	cpfsgt	___fttol@exp1& (0+255),b
+  1414  00044E  D012               	goto	l1319
+  1415                           
+  1416                           ; BSR set to: 0
+  1417  000450  0E00               	movlw	0
+  1418  000452  0100               	movlb	0	; () banked
+  1419  000454  6F6F               	movwf	?___fttol& (0+255),b
+  1420  000456  0E00               	movlw	0
+  1421  000458  6F70               	movwf	(?___fttol+1)& (0+255),b
+  1422  00045A  0E00               	movlw	0
+  1423  00045C  6F71               	movwf	(?___fttol+2)& (0+255),b
+  1424  00045E  0E00               	movlw	0
+  1425  000460  6F72               	movwf	(?___fttol+3)& (0+255),b
+  1426                           
+  1427                           ; BSR set to: 0
+  1428  000462  0012               	return	
+  1429  000464                     l1317:
+  1430                           
+  1431                           ; BSR set to: 0
+  1432  000464  0100               	movlb	0	; () banked
+  1433  000466  90D8               	bcf	status,0,c
+  1434  000468  3779               	rlcf	___fttol@lval& (0+255),f,b
+  1435  00046A  377A               	rlcf	(___fttol@lval+1)& (0+255),f,b
+  1436  00046C  377B               	rlcf	(___fttol@lval+2)& (0+255),f,b
+  1437  00046E  377C               	rlcf	(___fttol@lval+3)& (0+255),f,b
+  1438  000470  0100               	movlb	0	; () banked
+  1439  000472  077D               	decf	___fttol@exp1& (0+255),f,b
+  1440  000474                     l1319:
+  1441                           
+  1442                           ; BSR set to: 0
+  1443  000474  0100               	movlb	0	; () banked
+  1444  000476  517D               	movf	___fttol@exp1& (0+255),w,b
+  1445  000478  0100               	movlb	0	; () banked
+  1446  00047A  A4D8               	btfss	status,2,c
+  1447  00047C  D7F3               	goto	l1317
+  1448  00047E                     l1321:
+  1449                           
+  1450                           ; BSR set to: 0
+  1451  00047E  0100               	movlb	0	; () banked
+  1452  000480  5178               	movf	___fttol@sign1& (0+255),w,b
+  1453  000482  0100               	movlb	0	; () banked
+  1454  000484  B4D8               	btfsc	status,2,c
+  1455  000486  D009               	goto	l1325
+  1456                           
+  1457                           ; BSR set to: 0
+  1458  000488  0100               	movlb	0	; () banked
+  1459  00048A  1F7C               	comf	(___fttol@lval+3)& (0+255),f,b
+  1460  00048C  1F7B               	comf	(___fttol@lval+2)& (0+255),f,b
+  1461  00048E  1F7A               	comf	(___fttol@lval+1)& (0+255),f,b
+  1462  000490  6D79               	negf	___fttol@lval& (0+255),b
+  1463  000492  0E00               	movlw	0
+  1464  000494  237A               	addwfc	(___fttol@lval+1)& (0+255),f,b
+  1465  000496  237B               	addwfc	(___fttol@lval+2)& (0+255),f,b
+  1466  000498  237C               	addwfc	(___fttol@lval+3)& (0+255),f,b
+  1467  00049A                     l1325:
+  1468                           
+  1469                           ; BSR set to: 0
+  1470  00049A  C079  F06F         	movff	___fttol@lval,?___fttol
+  1471  00049E  C07A  F070         	movff	___fttol@lval+1,?___fttol+1
+  1472  0004A2  C07B  F071         	movff	___fttol@lval+2,?___fttol+2
+  1473  0004A6  C07C  F072         	movff	___fttol@lval+3,?___fttol+3
+  1474  0004AA  0012               	return	
+  1475  0004AC                     __end_of___fttol:
+  1476                           	opt stack 0
+  1477                           intcon	equ	0xFF2
+  1478                           wreg	equ	0xFE8
+  1479                           status	equ	0xFD8
+  1480                           
+  1481 ;; *************** function ___ftmul *****************
+  1482 ;; Defined at:
+  1483 ;;		line 62 in file "C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\ftmul.c"
+  1484 ;; Parameters:    Size  Location     Type
+  1485 ;;  f1              3    0[BANK0 ] float 
+  1486 ;;  f2              3    3[BANK0 ] float 
+  1487 ;; Auto vars:     Size  Location     Type
+  1488 ;;  f3_as_produc    3   10[BANK0 ] unsigned um
+  1489 ;;  sign            1   14[BANK0 ] unsigned char 
+  1490 ;;  cntr            1   13[BANK0 ] unsigned char 
+  1491 ;;  exp             1    9[BANK0 ] unsigned char 
+  1492 ;; Return value:  Size  Location     Type
+  1493 ;;                  3    0[BANK0 ] float 
+  1494 ;; Registers used:
+  1495 ;;		wreg, status,2, status,0, cstack
+  1496 ;; Tracked objects:
+  1497 ;;		On entry : 0/0
+  1498 ;;		On exit  : 0/0
+  1499 ;;		Unchanged: 0/0
+  1500 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
+  1501 ;;      Params:         0       6       0       0       0       0       0       0       0
+  1502 ;;      Locals:         0       6       0       0       0       0       0       0       0
+  1503 ;;      Temps:          0       3       0       0       0       0       0       0       0
+  1504 ;;      Totals:         0      15       0       0       0       0       0       0       0
+  1505 ;;Total ram usage:       15 bytes
+  1506 ;; Hardware stack levels used:    1
+  1507 ;; Hardware stack levels required when called:    3
+  1508 ;; This function calls:
+  1509 ;;		___ftpack
+  1510 ;; This function is called by:
+  1511 ;;		_PWM1_Duty
+  1512 ;;		_PWM2_Duty
+  1513 ;; This function uses a non-reentrant model
+  1514 ;;
+  1515                           
+  1516                           	psect	text9
+  1517  0000BA                     __ptext9:
+  1518                           	opt stack 0
+  1519  0000BA                     ___ftmul:
+  1520                           	opt stack 26
+  1521                           
+  1522                           ; BSR set to: 0
+  1523                           ;incstack = 0
+  1524  0000BA  C062  F066         	movff	___ftmul@f1+2,??___ftmul
+  1525  0000BE  0100               	movlb	0	; () banked
+  1526  0000C0  6B67               	clrf	(??___ftmul+1)& (0+255),b
+  1527  0000C2  6B68               	clrf	(??___ftmul+2)& (0+255),b
+  1528  0000C4  0100               	movlb	0	; () banked
+  1529  0000C6  3561               	rlcf	(___ftmul@f1+1)& (0+255),w,b
+  1530  0000C8  0100               	movlb	0	; () banked
+  1531  0000CA  3766               	rlcf	??___ftmul& (0+255),f,b
+  1532  0000CC  E301               	bnc	u1051
+  1533  0000CE  8167               	bsf	(??___ftmul+1)& (0+255),0,b
+  1534  0000D0                     u1051:
+  1535  0000D0  0100               	movlb	0	; () banked
+  1536  0000D2  5166               	movf	??___ftmul& (0+255),w,b
+  1537  0000D4  0100               	movlb	0	; () banked
+  1538  0000D6  6F69               	movwf	___ftmul@exp& (0+255),b
+  1539  0000D8  0100               	movlb	0	; () banked
+  1540  0000DA  5169               	movf	___ftmul@exp& (0+255),w,b
+  1541  0000DC  A4D8               	btfss	status,2,c
+  1542  0000DE  D00A               	goto	l1451
+  1543                           
+  1544                           ; BSR set to: 0
+  1545  0000E0  0E00               	movlw	0
+  1546  0000E2  0100               	movlb	0	; () banked
+  1547  0000E4  6F60               	movwf	?___ftmul& (0+255),b
+  1548  0000E6  0E00               	movlw	0
+  1549  0000E8  0100               	movlb	0	; () banked
+  1550  0000EA  6F61               	movwf	(?___ftmul+1)& (0+255),b
+  1551  0000EC  0E00               	movlw	0
+  1552  0000EE  0100               	movlb	0	; () banked
+  1553  0000F0  6F62               	movwf	(?___ftmul+2)& (0+255),b
+  1554                           
+  1555                           ; BSR set to: 0
+  1556  0000F2  0012               	return	
+  1557  0000F4                     l1451:
+  1558                           
+  1559                           ; BSR set to: 0
+  1560  0000F4  C065  F066         	movff	___ftmul@f2+2,??___ftmul
+  1561  0000F8  0100               	movlb	0	; () banked
+  1562  0000FA  6B67               	clrf	(??___ftmul+1)& (0+255),b
+  1563  0000FC  6B68               	clrf	(??___ftmul+2)& (0+255),b
+  1564  0000FE  0100               	movlb	0	; () banked
+  1565  000100  3564               	rlcf	(___ftmul@f2+1)& (0+255),w,b
+  1566  000102  0100               	movlb	0	; () banked
+  1567  000104  3766               	rlcf	??___ftmul& (0+255),f,b
+  1568  000106  E301               	bnc	u1071
+  1569  000108  8167               	bsf	(??___ftmul+1)& (0+255),0,b
+  1570  00010A                     u1071:
+  1571  00010A  0100               	movlb	0	; () banked
+  1572  00010C  5166               	movf	??___ftmul& (0+255),w,b
+  1573  00010E  0100               	movlb	0	; () banked
+  1574  000110  6F6E               	movwf	___ftmul@sign& (0+255),b
+  1575  000112  0100               	movlb	0	; () banked
+  1576  000114  516E               	movf	___ftmul@sign& (0+255),w,b
+  1577  000116  A4D8               	btfss	status,2,c
+  1578  000118  D00A               	goto	l1457
+  1579                           
+  1580                           ; BSR set to: 0
+  1581  00011A  0E00               	movlw	0
+  1582  00011C  0100               	movlb	0	; () banked
+  1583  00011E  6F60               	movwf	?___ftmul& (0+255),b
+  1584  000120  0E00               	movlw	0
+  1585  000122  0100               	movlb	0	; () banked
+  1586  000124  6F61               	movwf	(?___ftmul+1)& (0+255),b
+  1587  000126  0E00               	movlw	0
+  1588  000128  0100               	movlb	0	; () banked
+  1589  00012A  6F62               	movwf	(?___ftmul+2)& (0+255),b
+  1590                           
+  1591                           ; BSR set to: 0
+  1592  00012C  0012               	return	
+  1593  00012E                     l1457:
+  1594                           
+  1595                           ; BSR set to: 0
+  1596  00012E  0100               	movlb	0	; () banked
+  1597  000130  516E               	movf	___ftmul@sign& (0+255),w,b
+  1598  000132  0F7B               	addlw	123
+  1599  000134  0100               	movlb	0	; () banked
+  1600  000136  2769               	addwf	___ftmul@exp& (0+255),f,b
+  1601                           
+  1602                           ; BSR set to: 0
+  1603  000138  C062  F06E         	movff	___ftmul@f1+2,___ftmul@sign
+  1604  00013C  0100               	movlb	0	; () banked
+  1605  00013E  5165               	movf	(___ftmul@f2+2)& (0+255),w,b
+  1606  000140  0100               	movlb	0	; () banked
+  1607  000142  1B6E               	xorwf	___ftmul@sign& (0+255),f,b
+  1608  000144  0E80               	movlw	128
+  1609  000146  0100               	movlb	0	; () banked
+  1610  000148  176E               	andwf	___ftmul@sign& (0+255),f,b
+  1611                           
+  1612                           ; BSR set to: 0
+  1613  00014A  0100               	movlb	0	; () banked
+  1614  00014C  8F61               	bsf	(___ftmul@f1+1)& (0+255),7,b
+  1615                           
+  1616                           ; BSR set to: 0
+  1617  00014E  0100               	movlb	0	; () banked
+  1618  000150  8F64               	bsf	(___ftmul@f2+1)& (0+255),7,b
+  1619                           
+  1620                           ; BSR set to: 0
+  1621  000152  0EFF               	movlw	255
+  1622  000154  0100               	movlb	0	; () banked
+  1623  000156  1763               	andwf	___ftmul@f2& (0+255),f,b
+  1624  000158  0EFF               	movlw	255
+  1625  00015A  0100               	movlb	0	; () banked
+  1626  00015C  1764               	andwf	(___ftmul@f2+1)& (0+255),f,b
+  1627  00015E  0E00               	movlw	0
+  1628  000160  0100               	movlb	0	; () banked
+  1629  000162  1765               	andwf	(___ftmul@f2+2)& (0+255),f,b
+  1630                           
+  1631                           ; BSR set to: 0
+  1632  000164  0E00               	movlw	0
+  1633  000166  0100               	movlb	0	; () banked
+  1634  000168  6F6A               	movwf	___ftmul@f3_as_product& (0+255),b
+  1635  00016A  0E00               	movlw	0
+  1636  00016C  0100               	movlb	0	; () banked
+  1637  00016E  6F6B               	movwf	(___ftmul@f3_as_product+1)& (0+255),b
+  1638  000170  0E00               	movlw	0
+  1639  000172  0100               	movlb	0	; () banked
+  1640  000174  6F6C               	movwf	(___ftmul@f3_as_product+2)& (0+255),b
+  1641                           
+  1642                           ; BSR set to: 0
+  1643  000176  0E07               	movlw	7
+  1644  000178  0100               	movlb	0	; () banked
+  1645  00017A  6F6D               	movwf	___ftmul@cntr& (0+255),b
+  1646  00017C                     l1471:
+  1647                           
+  1648                           ; BSR set to: 0
+  1649  00017C  0100               	movlb	0	; () banked
+  1650  00017E  A160               	btfss	___ftmul@f1& (0+255),0,b
+  1651  000180  D00C               	goto	l1475
+  1652                           
+  1653                           ; BSR set to: 0
+  1654  000182  0100               	movlb	0	; () banked
+  1655  000184  5163               	movf	___ftmul@f2& (0+255),w,b
+  1656  000186  0100               	movlb	0	; () banked
+  1657  000188  276A               	addwf	___ftmul@f3_as_product& (0+255),f,b
+  1658  00018A  0100               	movlb	0	; () banked
+  1659  00018C  5164               	movf	(___ftmul@f2+1)& (0+255),w,b
+  1660  00018E  0100               	movlb	0	; () banked
+  1661  000190  236B               	addwfc	(___ftmul@f3_as_product+1)& (0+255),f,b
+  1662  000192  0100               	movlb	0	; () banked
+  1663  000194  5165               	movf	(___ftmul@f2+2)& (0+255),w,b
+  1664  000196  0100               	movlb	0	; () banked
+  1665  000198  236C               	addwfc	(___ftmul@f3_as_product+2)& (0+255),f,b
+  1666  00019A                     l1475:
+  1667                           
+  1668                           ; BSR set to: 0
+  1669  00019A  0100               	movlb	0	; () banked
+  1670  00019C  90D8               	bcf	status,0,c
+  1671  00019E  3362               	rrcf	(___ftmul@f1+2)& (0+255),f,b
+  1672  0001A0  3361               	rrcf	(___ftmul@f1+1)& (0+255),f,b
+  1673  0001A2  3360               	rrcf	___ftmul@f1& (0+255),f,b
+  1674  0001A4  0100               	movlb	0	; () banked
+  1675  0001A6  90D8               	bcf	status,0,c
+  1676  0001A8  3763               	rlcf	___ftmul@f2& (0+255),f,b
+  1677  0001AA  3764               	rlcf	(___ftmul@f2+1)& (0+255),f,b
+  1678  0001AC  3765               	rlcf	(___ftmul@f2+2)& (0+255),f,b
+  1679                           
+  1680                           ; BSR set to: 0
+  1681  0001AE  0100               	movlb	0	; () banked
+  1682  0001B0  2F6D               	decfsz	___ftmul@cntr& (0+255),f,b
+  1683  0001B2  D7E4               	goto	l1471
+  1684                           
+  1685                           ; BSR set to: 0
+  1686                           
+  1687                           ; BSR set to: 0
+  1688  0001B4  0E09               	movlw	9
+  1689  0001B6  0100               	movlb	0	; () banked
+  1690  0001B8  6F6D               	movwf	___ftmul@cntr& (0+255),b
+  1691  0001BA                     l1481:
+  1692                           
+  1693                           ; BSR set to: 0
+  1694  0001BA  0100               	movlb	0	; () banked
+  1695  0001BC  A160               	btfss	___ftmul@f1& (0+255),0,b
+  1696  0001BE  D00C               	goto	l1485
+  1697                           
+  1698                           ; BSR set to: 0
+  1699  0001C0  0100               	movlb	0	; () banked
+  1700  0001C2  5163               	movf	___ftmul@f2& (0+255),w,b
+  1701  0001C4  0100               	movlb	0	; () banked
+  1702  0001C6  276A               	addwf	___ftmul@f3_as_product& (0+255),f,b
+  1703  0001C8  0100               	movlb	0	; () banked
+  1704  0001CA  5164               	movf	(___ftmul@f2+1)& (0+255),w,b
+  1705  0001CC  0100               	movlb	0	; () banked
+  1706  0001CE  236B               	addwfc	(___ftmul@f3_as_product+1)& (0+255),f,b
+  1707  0001D0  0100               	movlb	0	; () banked
+  1708  0001D2  5165               	movf	(___ftmul@f2+2)& (0+255),w,b
+  1709  0001D4  0100               	movlb	0	; () banked
+  1710  0001D6  236C               	addwfc	(___ftmul@f3_as_product+2)& (0+255),f,b
+  1711  0001D8                     l1485:
+  1712                           
+  1713                           ; BSR set to: 0
+  1714  0001D8  0100               	movlb	0	; () banked
+  1715  0001DA  90D8               	bcf	status,0,c
+  1716  0001DC  3362               	rrcf	(___ftmul@f1+2)& (0+255),f,b
+  1717  0001DE  3361               	rrcf	(___ftmul@f1+1)& (0+255),f,b
+  1718  0001E0  3360               	rrcf	___ftmul@f1& (0+255),f,b
+  1719  0001E2  0100               	movlb	0	; () banked
+  1720  0001E4  90D8               	bcf	status,0,c
+  1721  0001E6  336C               	rrcf	(___ftmul@f3_as_product+2)& (0+255),f,b
+  1722  0001E8  336B               	rrcf	(___ftmul@f3_as_product+1)& (0+255),f,b
+  1723  0001EA  336A               	rrcf	___ftmul@f3_as_product& (0+255),f,b
+  1724                           
+  1725                           ; BSR set to: 0
+  1726  0001EC  0100               	movlb	0	; () banked
+  1727  0001EE  2F6D               	decfsz	___ftmul@cntr& (0+255),f,b
+  1728  0001F0  D7E4               	goto	l1481
+  1729                           
+  1730                           ; BSR set to: 0
+  1731                           
+  1732                           ; BSR set to: 0
+  1733  0001F2  C06A  F020         	movff	___ftmul@f3_as_product,___ftpack@arg
+  1734  0001F6  C06B  F021         	movff	___ftmul@f3_as_product+1,___ftpack@arg+1
+  1735  0001FA  C06C  F022         	movff	___ftmul@f3_as_product+2,___ftpack@arg+2
+  1736  0001FE  C069  F023         	movff	___ftmul@exp,___ftpack@exp
+  1737  000202  C06E  F024         	movff	___ftmul@sign,___ftpack@sign
+  1738  000206  EC2F  F003         	call	___ftpack	;wreg free
+  1739  00020A  C020  F060         	movff	?___ftpack,?___ftmul
+  1740  00020E  C021  F061         	movff	?___ftpack+1,?___ftmul+1
+  1741  000212  C022  F062         	movff	?___ftpack+2,?___ftmul+2
+  1742  000216  0012               	return	
+  1743  000218                     __end_of___ftmul:
+  1744                           	opt stack 0
+  1745                           intcon	equ	0xFF2
+  1746                           wreg	equ	0xFE8
+  1747                           status	equ	0xFD8
+  1748                           
+  1749 ;; *************** function ___ftdiv *****************
+  1750 ;; Defined at:
+  1751 ;;		line 54 in file "C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\ftdiv.c"
+  1752 ;; Parameters:    Size  Location     Type
+  1753 ;;  f1              3   42[COMRAM] float 
+  1754 ;;  f2              3   45[COMRAM] float 
+  1755 ;; Auto vars:     Size  Location     Type
+  1756 ;;  f3              3   52[COMRAM] float 
+  1757 ;;  sign            1   56[COMRAM] unsigned char 
+  1758 ;;  exp             1   55[COMRAM] unsigned char 
+  1759 ;;  cntr            1   51[COMRAM] unsigned char 
+  1760 ;; Return value:  Size  Location     Type
+  1761 ;;                  3   42[COMRAM] float 
+  1762 ;; Registers used:
+  1763 ;;		wreg, status,2, status,0, cstack
+  1764 ;; Tracked objects:
+  1765 ;;		On entry : 0/0
+  1766 ;;		On exit  : 0/0
+  1767 ;;		Unchanged: 0/0
+  1768 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
+  1769 ;;      Params:         6       0       0       0       0       0       0       0       0
+  1770 ;;      Locals:         6       0       0       0       0       0       0       0       0
+  1771 ;;      Temps:          3       0       0       0       0       0       0       0       0
+  1772 ;;      Totals:        15       0       0       0       0       0       0       0       0
+  1773 ;;Total ram usage:       15 bytes
+  1774 ;; Hardware stack levels used:    1
+  1775 ;; Hardware stack levels required when called:    3
+  1776 ;; This function calls:
+  1777 ;;		___ftpack
+  1778 ;; This function is called by:
+  1779 ;;		_PWM1_Duty
+  1780 ;;		_PWM2_Duty
+  1781 ;; This function uses a non-reentrant model
+  1782 ;;
+  1783                           
+  1784                           	psect	text10
+  1785  0004AC                     __ptext10:
+  1786                           	opt stack 0
+  1787  0004AC                     ___ftdiv:
+  1788                           	opt stack 26
+  1789                           
+  1790                           ;incstack = 0
+  1791  0004AC  C02D  F031         	movff	___ftdiv@f1+2,??___ftdiv
+  1792  0004B0  6A32               	clrf	(??___ftdiv+1)& (0+255),c
+  1793  0004B2  6A33               	clrf	(??___ftdiv+2)& (0+255),c
+  1794  0004B4  342C               	rlcf	___ftdiv@f1+1,w,c
+  1795  0004B6  3631               	rlcf	??___ftdiv& (0+255),f,c
+  1796  0004B8  E301               	bnc	u691
+  1797  0004BA  8032               	bsf	(??___ftdiv+1)& (0+255),0,c
+  1798  0004BC                     u691:
+  1799  0004BC  5031               	movf	??___ftdiv,w,c
+  1800  0004BE  6E38               	movwf	___ftdiv@exp,c
+  1801  0004C0  5038               	movf	___ftdiv@exp,w,c
+  1802  0004C2  A4D8               	btfss	status,2,c
+  1803  0004C4  D007               	goto	l1183
+  1804  0004C6  0E00               	movlw	0
+  1805  0004C8  6E2B               	movwf	?___ftdiv,c
+  1806  0004CA  0E00               	movlw	0
+  1807  0004CC  6E2C               	movwf	?___ftdiv+1,c
+  1808  0004CE  0E00               	movlw	0
+  1809  0004D0  6E2D               	movwf	?___ftdiv+2,c
+  1810  0004D2  0012               	return	
+  1811  0004D4                     l1183:
+  1812  0004D4  C030  F031         	movff	___ftdiv@f2+2,??___ftdiv
+  1813  0004D8  6A32               	clrf	(??___ftdiv+1)& (0+255),c
+  1814  0004DA  6A33               	clrf	(??___ftdiv+2)& (0+255),c
+  1815  0004DC  342F               	rlcf	___ftdiv@f2+1,w,c
+  1816  0004DE  3631               	rlcf	??___ftdiv& (0+255),f,c
+  1817  0004E0  E301               	bnc	u711
+  1818  0004E2  8032               	bsf	(??___ftdiv+1)& (0+255),0,c
+  1819  0004E4                     u711:
+  1820  0004E4  5031               	movf	??___ftdiv,w,c
+  1821  0004E6  6E39               	movwf	___ftdiv@sign,c
+  1822  0004E8  5039               	movf	___ftdiv@sign,w,c
+  1823  0004EA  A4D8               	btfss	status,2,c
+  1824  0004EC  D007               	goto	l1189
+  1825  0004EE  0E00               	movlw	0
+  1826  0004F0  6E2B               	movwf	?___ftdiv,c
+  1827  0004F2  0E00               	movlw	0
+  1828  0004F4  6E2C               	movwf	?___ftdiv+1,c
+  1829  0004F6  0E00               	movlw	0
+  1830  0004F8  6E2D               	movwf	?___ftdiv+2,c
+  1831  0004FA  0012               	return	
+  1832  0004FC                     l1189:
+  1833  0004FC  0E00               	movlw	0
+  1834  0004FE  6E35               	movwf	___ftdiv@f3,c
+  1835  000500  0E00               	movlw	0
+  1836  000502  6E36               	movwf	___ftdiv@f3+1,c
+  1837  000504  0E00               	movlw	0
+  1838  000506  6E37               	movwf	___ftdiv@f3+2,c
+  1839  000508  5039               	movf	___ftdiv@sign,w,c
+  1840  00050A  0F89               	addlw	137
+  1841  00050C  5E38               	subwf	___ftdiv@exp,f,c
+  1842  00050E  C02D  F039         	movff	___ftdiv@f1+2,___ftdiv@sign
+  1843  000512  5030               	movf	___ftdiv@f2+2,w,c
+  1844  000514  1A39               	xorwf	___ftdiv@sign,f,c
+  1845  000516  0E80               	movlw	128
+  1846  000518  1639               	andwf	___ftdiv@sign,f,c
+  1847  00051A  8E2C               	bsf	___ftdiv@f1+1,7,c
+  1848  00051C  0EFF               	movlw	255
+  1849  00051E  162B               	andwf	___ftdiv@f1,f,c
+  1850  000520  0EFF               	movlw	255
+  1851  000522  162C               	andwf	___ftdiv@f1+1,f,c
+  1852  000524  0E00               	movlw	0
+  1853  000526  162D               	andwf	___ftdiv@f1+2,f,c
+  1854  000528  8E2F               	bsf	___ftdiv@f2+1,7,c
+  1855  00052A  0EFF               	movlw	255
+  1856  00052C  162E               	andwf	___ftdiv@f2,f,c
+  1857  00052E  0EFF               	movlw	255
+  1858  000530  162F               	andwf	___ftdiv@f2+1,f,c
+  1859  000532  0E00               	movlw	0
+  1860  000534  1630               	andwf	___ftdiv@f2+2,f,c
+  1861  000536  0E18               	movlw	24
+  1862  000538  6E34               	movwf	___ftdiv@cntr,c
+  1863  00053A                     l1209:
+  1864  00053A  90D8               	bcf	status,0,c
+  1865  00053C  3635               	rlcf	___ftdiv@f3,f,c
+  1866  00053E  3636               	rlcf	___ftdiv@f3+1,f,c
+  1867  000540  3637               	rlcf	___ftdiv@f3+2,f,c
+  1868  000542  502E               	movf	___ftdiv@f2,w,c
+  1869  000544  5C2B               	subwf	___ftdiv@f1,w,c
+  1870  000546  502F               	movf	___ftdiv@f2+1,w,c
+  1871  000548  582C               	subwfb	___ftdiv@f1+1,w,c
+  1872  00054A  5030               	movf	___ftdiv@f2+2,w,c
+  1873  00054C  582D               	subwfb	___ftdiv@f1+2,w,c
+  1874  00054E  A0D8               	btfss	status,0,c
+  1875  000550  D007               	goto	l398
+  1876  000552  502E               	movf	___ftdiv@f2,w,c
+  1877  000554  5E2B               	subwf	___ftdiv@f1,f,c
+  1878  000556  502F               	movf	___ftdiv@f2+1,w,c
+  1879  000558  5A2C               	subwfb	___ftdiv@f1+1,f,c
+  1880  00055A  5030               	movf	___ftdiv@f2+2,w,c
+  1881  00055C  5A2D               	subwfb	___ftdiv@f1+2,f,c
+  1882  00055E  8035               	bsf	___ftdiv@f3,0,c
+  1883  000560                     l398:
+  1884  000560  90D8               	bcf	status,0,c
+  1885  000562  362B               	rlcf	___ftdiv@f1,f,c
+  1886  000564  362C               	rlcf	___ftdiv@f1+1,f,c
+  1887  000566  362D               	rlcf	___ftdiv@f1+2,f,c
+  1888  000568  2E34               	decfsz	___ftdiv@cntr,f,c
+  1889  00056A  D7E7               	goto	l1209
+  1890  00056C  C035  F020         	movff	___ftdiv@f3,___ftpack@arg
+  1891  000570  C036  F021         	movff	___ftdiv@f3+1,___ftpack@arg+1
+  1892  000574  C037  F022         	movff	___ftdiv@f3+2,___ftpack@arg+2
+  1893  000578  C038  F023         	movff	___ftdiv@exp,___ftpack@exp
+  1894  00057C  C039  F024         	movff	___ftdiv@sign,___ftpack@sign
+  1895  000580  EC2F  F003         	call	___ftpack	;wreg free
+  1896  000584  C020  F02B         	movff	?___ftpack,?___ftdiv
+  1897  000588  C021  F02C         	movff	?___ftpack+1,?___ftdiv+1
+  1898  00058C  C022  F02D         	movff	?___ftpack+2,?___ftdiv+2
+  1899  000590  0012               	return	
+  1900  000592                     __end_of___ftdiv:
+  1901                           	opt stack 0
+  1902                           intcon	equ	0xFF2
+  1903                           wreg	equ	0xFE8
+  1904                           status	equ	0xFD8
+  1905                           
+  1906 ;; *************** function ___awtoft *****************
+  1907 ;; Defined at:
+  1908 ;;		line 32 in file "C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\awtoft.c"
+  1909 ;; Parameters:    Size  Location     Type
+  1910 ;;  c               2   51[COMRAM] int 
+  1911 ;; Auto vars:     Size  Location     Type
+  1912 ;;  sign            1   54[COMRAM] unsigned char 
+  1913 ;; Return value:  Size  Location     Type
+  1914 ;;                  3   51[COMRAM] float 
+  1915 ;; Registers used:
+  1916 ;;		wreg, status,2, status,0, cstack
+  1917 ;; Tracked objects:
+  1918 ;;		On entry : 0/0
+  1919 ;;		On exit  : 0/0
+  1920 ;;		Unchanged: 0/0
+  1921 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
+  1922 ;;      Params:         3       0       0       0       0       0       0       0       0
+  1923 ;;      Locals:         1       0       0       0       0       0       0       0       0
+  1924 ;;      Temps:          0       0       0       0       0       0       0       0       0
+  1925 ;;      Totals:         4       0       0       0       0       0       0       0       0
+  1926 ;;Total ram usage:        4 bytes
+  1927 ;; Hardware stack levels used:    1
+  1928 ;; Hardware stack levels required when called:    3
+  1929 ;; This function calls:
+  1930 ;;		___ftpack
+  1931 ;; This function is called by:
+  1932 ;;		_PWM1_Duty
+  1933 ;;		_PWM2_Duty
+  1934 ;; This function uses a non-reentrant model
+  1935 ;;
+  1936                           
+  1937                           	psect	text11
+  1938  0009EE                     __ptext11:
+  1939                           	opt stack 0
+  1940  0009EE                     ___awtoft:
+  1941                           	opt stack 26
+  1942                           
+  1943                           ;incstack = 0
+  1944  0009EE  0E00               	movlw	0
+  1945  0009F0  6E37               	movwf	___awtoft@sign,c
+  1946  0009F2  AE35               	btfss	___awtoft@c+1,7,c
+  1947  0009F4  D006               	goto	l1279
+  1948  0009F6  6C34               	negf	___awtoft@c,c
+  1949  0009F8  1E35               	comf	___awtoft@c+1,f,c
+  1950  0009FA  B0D8               	btfsc	status,0,c
+  1951  0009FC  2A35               	incf	___awtoft@c+1,f,c
+  1952  0009FE  0E01               	movlw	1
+  1953  000A00  6E37               	movwf	___awtoft@sign,c
+  1954  000A02                     l1279:
+  1955  000A02  C034  F020         	movff	___awtoft@c,___ftpack@arg
+  1956  000A06  C035  F021         	movff	___awtoft@c+1,___ftpack@arg+1
+  1957  000A0A  6A22               	clrf	___ftpack@arg+2,c
+  1958  000A0C  0E8E               	movlw	142
+  1959  000A0E  6E23               	movwf	___ftpack@exp,c
+  1960  000A10  C037  F024         	movff	___awtoft@sign,___ftpack@sign
+  1961  000A14  EC2F  F003         	call	___ftpack	;wreg free
+  1962  000A18  C020  F034         	movff	?___ftpack,?___awtoft
+  1963  000A1C  C021  F035         	movff	?___ftpack+1,?___awtoft+1
+  1964  000A20  C022  F036         	movff	?___ftpack+2,?___awtoft+2
+  1965  000A24  0012               	return	
+  1966  000A26                     __end_of___awtoft:
+  1967                           	opt stack 0
+  1968                           intcon	equ	0xFF2
+  1969                           wreg	equ	0xFE8
+  1970                           status	equ	0xFD8
+  1971                           
+  1972 ;; *************** function ___ftpack *****************
+  1973 ;; Defined at:
+  1974 ;;		line 62 in file "C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\float.c"
+  1975 ;; Parameters:    Size  Location     Type
+  1976 ;;  arg             3   31[COMRAM] unsigned um
+  1977 ;;  exp             1   34[COMRAM] unsigned char 
+  1978 ;;  sign            1   35[COMRAM] unsigned char 
+  1979 ;; Auto vars:     Size  Location     Type
+  1980 ;;		None
+  1981 ;; Return value:  Size  Location     Type
+  1982 ;;                  3   31[COMRAM] float 
+  1983 ;; Registers used:
+  1984 ;;		wreg, status,2, status,0
+  1985 ;; Tracked objects:
+  1986 ;;		On entry : 0/0
+  1987 ;;		On exit  : 0/0
+  1988 ;;		Unchanged: 0/0
+  1989 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
+  1990 ;;      Params:         5       0       0       0       0       0       0       0       0
+  1991 ;;      Locals:         0       0       0       0       0       0       0       0       0
+  1992 ;;      Temps:          3       0       0       0       0       0       0       0       0
+  1993 ;;      Totals:         8       0       0       0       0       0       0       0       0
+  1994 ;;Total ram usage:        8 bytes
+  1995 ;; Hardware stack levels used:    1
+  1996 ;; Hardware stack levels required when called:    2
+  1997 ;; This function calls:
+  1998 ;;		Nothing
+  1999 ;; This function is called by:
+  2000 ;;		___awtoft
+  2001 ;;		___ftdiv
+  2002 ;;		___ftmul
+  2003 ;;		___lwtoft
+  2004 ;; This function uses a non-reentrant model
+  2005 ;;
+  2006                           
+  2007                           	psect	text12
+  2008  00065E                     __ptext12:
+  2009                           	opt stack 0
+  2010  00065E                     ___ftpack:
+  2011                           	opt stack 26
+  2012                           
+  2013                           ;incstack = 0
+  2014  00065E  5023               	movf	___ftpack@exp,w,c
+  2015  000660  B4D8               	btfsc	status,2,c
+  2016  000662  D005               	goto	l1097
+  2017  000664  5020               	movf	___ftpack@arg,w,c
+  2018  000666  1021               	iorwf	___ftpack@arg+1,w,c
+  2019  000668  1022               	iorwf	___ftpack@arg+2,w,c
+  2020  00066A  A4D8               	btfss	status,2,c
+  2021  00066C  D00C               	goto	l1103
+  2022  00066E                     l1097:
+  2023  00066E  0E00               	movlw	0
+  2024  000670  6E20               	movwf	?___ftpack,c
+  2025  000672  0E00               	movlw	0
+  2026  000674  6E21               	movwf	?___ftpack+1,c
+  2027  000676  0E00               	movlw	0
+  2028  000678  6E22               	movwf	?___ftpack+2,c
+  2029  00067A  0012               	return	
+  2030  00067C                     l1101:
+  2031  00067C  2A23               	incf	___ftpack@exp,f,c
+  2032  00067E  90D8               	bcf	status,0,c
+  2033  000680  3222               	rrcf	___ftpack@arg+2,f,c
+  2034  000682  3221               	rrcf	___ftpack@arg+1,f,c
+  2035  000684  3220               	rrcf	___ftpack@arg,f,c
+  2036  000686                     l1103:
+  2037  000686  0E00               	movlw	0
+  2038  000688  1420               	andwf	___ftpack@arg,w,c
+  2039  00068A  6E25               	movwf	??___ftpack& (0+255),c
+  2040  00068C  0E00               	movlw	0
+  2041  00068E  1421               	andwf	___ftpack@arg+1,w,c
+  2042  000690  6E26               	movwf	(??___ftpack+1)& (0+255),c
+  2043  000692  0EFE               	movlw	254
+  2044  000694  1422               	andwf	___ftpack@arg+2,w,c
+  2045  000696  6E27               	movwf	(??___ftpack+2)& (0+255),c
+  2046  000698  5025               	movf	??___ftpack,w,c
+  2047  00069A  1026               	iorwf	??___ftpack+1,w,c
+  2048  00069C  1027               	iorwf	??___ftpack+2,w,c
+  2049  00069E  B4D8               	btfsc	status,2,c
+  2050  0006A0  D00C               	goto	l1109
+  2051  0006A2  D7EC               	goto	l1101
+  2052  0006A4                     l1105:
+  2053  0006A4  2A23               	incf	___ftpack@exp,f,c
+  2054  0006A6  0E01               	movlw	1
+  2055  0006A8  2620               	addwf	___ftpack@arg,f,c
+  2056  0006AA  0E00               	movlw	0
+  2057  0006AC  2221               	addwfc	___ftpack@arg+1,f,c
+  2058  0006AE  0E00               	movlw	0
+  2059  0006B0  2222               	addwfc	___ftpack@arg+2,f,c
+  2060  0006B2  90D8               	bcf	status,0,c
+  2061  0006B4  3222               	rrcf	___ftpack@arg+2,f,c
+  2062  0006B6  3221               	rrcf	___ftpack@arg+1,f,c
+  2063  0006B8  3220               	rrcf	___ftpack@arg,f,c
+  2064  0006BA                     l1109:
+  2065  0006BA  0E00               	movlw	0
+  2066  0006BC  1420               	andwf	___ftpack@arg,w,c
+  2067  0006BE  6E25               	movwf	??___ftpack& (0+255),c
+  2068  0006C0  0E00               	movlw	0
+  2069  0006C2  1421               	andwf	___ftpack@arg+1,w,c
+  2070  0006C4  6E26               	movwf	(??___ftpack+1)& (0+255),c
+  2071  0006C6  0EFF               	movlw	255
+  2072  0006C8  1422               	andwf	___ftpack@arg+2,w,c
+  2073  0006CA  6E27               	movwf	(??___ftpack+2)& (0+255),c
+  2074  0006CC  5025               	movf	??___ftpack,w,c
+  2075  0006CE  1026               	iorwf	??___ftpack+1,w,c
+  2076  0006D0  1027               	iorwf	??___ftpack+2,w,c
+  2077  0006D2  B4D8               	btfsc	status,2,c
+  2078  0006D4  D006               	goto	l1113
+  2079  0006D6  D7E6               	goto	l1105
+  2080  0006D8                     l1111:
+  2081  0006D8  0623               	decf	___ftpack@exp,f,c
+  2082  0006DA  90D8               	bcf	status,0,c
+  2083  0006DC  3620               	rlcf	___ftpack@arg,f,c
+  2084  0006DE  3621               	rlcf	___ftpack@arg+1,f,c
+  2085  0006E0  3622               	rlcf	___ftpack@arg+2,f,c
+  2086  0006E2                     l1113:
+  2087  0006E2  BE21               	btfsc	___ftpack@arg+1,7,c
+  2088  0006E4  D003               	goto	l340
+  2089  0006E6  0E02               	movlw	2
+  2090  0006E8  6023               	cpfslt	___ftpack@exp,c
+  2091  0006EA  D7F6               	goto	l1111
+  2092  0006EC                     l340:
+  2093  0006EC  A023               	btfss	___ftpack@exp,0,c
+  2094  0006EE  9E21               	bcf	___ftpack@arg+1,7,c
+  2095  0006F0  90D8               	bcf	status,0,c
+  2096  0006F2  3223               	rrcf	___ftpack@exp,f,c
+  2097  0006F4  5023               	movf	___ftpack@exp,w,c
+  2098  0006F6  1222               	iorwf	___ftpack@arg+2,f,c
+  2099  0006F8  5024               	movf	___ftpack@sign,w,c
+  2100  0006FA  A4D8               	btfss	status,2,c
+  2101  0006FC  8E22               	bsf	___ftpack@arg+2,7,c
+  2102  0006FE  C020  F020         	movff	___ftpack@arg,?___ftpack
+  2103  000702  C021  F021         	movff	___ftpack@arg+1,?___ftpack+1
+  2104  000706  C022  F022         	movff	___ftpack@arg+2,?___ftpack+2
+  2105  00070A  0012               	return	
+  2106  00070C                     __end_of___ftpack:
+  2107                           	opt stack 0
+  2108                           intcon	equ	0xFF2
+  2109                           wreg	equ	0xFE8
+  2110                           status	equ	0xFD8
+  2111                           
+  2112 ;; *************** function _PWM_Max_Duty *****************
+  2113 ;; Defined at:
+  2114 ;;		line 16 in file "newmain18.c"
+  2115 ;; Parameters:    Size  Location     Type
+  2116 ;;		None
+  2117 ;; Auto vars:     Size  Location     Type
+  2118 ;;		None
+  2119 ;; Return value:  Size  Location     Type
+  2120 ;;                  2   45[COMRAM] int 
+  2121 ;; Registers used:
+  2122 ;;		wreg, status,2, status,0, cstack
+  2123 ;; Tracked objects:
+  2124 ;;		On entry : 0/0
+  2125 ;;		On exit  : 0/0
+  2126 ;;		Unchanged: 0/0
+  2127 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
+  2128 ;;      Params:         2       0       0       0       0       0       0       0       0
+  2129 ;;      Locals:         0       0       0       0       0       0       0       0       0
+  2130 ;;      Temps:          4       0       0       0       0       0       0       0       0
+  2131 ;;      Totals:         6       0       0       0       0       0       0       0       0
+  2132 ;;Total ram usage:        6 bytes
+  2133 ;; Hardware stack levels used:    1
+  2134 ;; Hardware stack levels required when called:    3
+  2135 ;; This function calls:
+  2136 ;;		___aldiv
+  2137 ;; This function is called by:
+  2138 ;;		_PWM1_Duty
+  2139 ;;		_PWM2_Duty
+  2140 ;; This function uses a non-reentrant model
+  2141 ;;
+  2142                           
+  2143                           	psect	text13
+  2144  0009A0                     __ptext13:
+  2145                           	opt stack 0
+  2146  0009A0                     _PWM_Max_Duty:
+  2147                           	opt stack 26
+  2148                           
+  2149                           ;newmain18.c: 18: return(16000000/(freq*4));
+  2150                           
+  2151                           ;incstack = 0
+  2152  0009A0  0E00               	movlw	0
+  2153  0009A2  6E20               	movwf	___aldiv@dividend,c
+  2154  0009A4  0E24               	movlw	36
+  2155  0009A6  6E21               	movwf	___aldiv@dividend+1,c
+  2156  0009A8  0EF4               	movlw	244
+  2157  0009AA  6E22               	movwf	___aldiv@dividend+2,c
+  2158  0009AC  0E00               	movlw	0
+  2159  0009AE  6E23               	movwf	___aldiv@dividend+3,c
+  2160  0009B0  C03C  F030         	movff	_freq,??_PWM_Max_Duty
+  2161  0009B4  C03D  F031         	movff	_freq+1,??_PWM_Max_Duty+1
+  2162  0009B8  C03E  F032         	movff	_freq+2,??_PWM_Max_Duty+2
+  2163  0009BC  C03F  F033         	movff	_freq+3,??_PWM_Max_Duty+3
+  2164  0009C0  0E02               	movlw	2
+  2165  0009C2                     u685:
+  2166  0009C2  90D8               	bcf	status,0,c
+  2167  0009C4  3630               	rlcf	??_PWM_Max_Duty,f,c
+  2168  0009C6  3631               	rlcf	??_PWM_Max_Duty+1,f,c
+  2169  0009C8  3632               	rlcf	??_PWM_Max_Duty+2,f,c
+  2170  0009CA  3633               	rlcf	??_PWM_Max_Duty+3,f,c
+  2171  0009CC  2EE8               	decfsz	wreg,f,c
+  2172  0009CE  D7F9               	goto	u685
+  2173  0009D0  C030  F024         	movff	??_PWM_Max_Duty,___aldiv@divisor
+  2174  0009D4  C031  F025         	movff	??_PWM_Max_Duty+1,___aldiv@divisor+1
+  2175  0009D8  C032  F026         	movff	??_PWM_Max_Duty+2,___aldiv@divisor+2
+  2176  0009DC  C033  F027         	movff	??_PWM_Max_Duty+3,___aldiv@divisor+3
+  2177  0009E0  ECC9  F002         	call	___aldiv	;wreg free
+  2178  0009E4  C020  F02E         	movff	?___aldiv,?_PWM_Max_Duty
+  2179  0009E8  C021  F02F         	movff	?___aldiv+1,?_PWM_Max_Duty+1
+  2180  0009EC  0012               	return	
+  2181  0009EE                     __end_of_PWM_Max_Duty:
+  2182                           	opt stack 0
+  2183                           intcon	equ	0xFF2
+  2184                           wreg	equ	0xFE8
+  2185                           status	equ	0xFD8
+  2186                           
+  2187 ;; *************** function ___aldiv *****************
+  2188 ;; Defined at:
+  2189 ;;		line 8 in file "C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\aldiv.c"
+  2190 ;; Parameters:    Size  Location     Type
+  2191 ;;  dividend        4   31[COMRAM] long 
+  2192 ;;  divisor         4   35[COMRAM] long 
+  2193 ;; Auto vars:     Size  Location     Type
+  2194 ;;  quotient        4   41[COMRAM] long 
+  2195 ;;  sign            1   40[COMRAM] unsigned char 
+  2196 ;;  counter         1   39[COMRAM] unsigned char 
+  2197 ;; Return value:  Size  Location     Type
+  2198 ;;                  4   31[COMRAM] long 
+  2199 ;; Registers used:
+  2200 ;;		wreg, status,2, status,0
+  2201 ;; Tracked objects:
+  2202 ;;		On entry : 0/0
+  2203 ;;		On exit  : 0/0
+  2204 ;;		Unchanged: 0/0
+  2205 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
+  2206 ;;      Params:         8       0       0       0       0       0       0       0       0
+  2207 ;;      Locals:         6       0       0       0       0       0       0       0       0
+  2208 ;;      Temps:          0       0       0       0       0       0       0       0       0
+  2209 ;;      Totals:        14       0       0       0       0       0       0       0       0
+  2210 ;;Total ram usage:       14 bytes
+  2211 ;; Hardware stack levels used:    1
+  2212 ;; Hardware stack levels required when called:    2
+  2213 ;; This function calls:
+  2214 ;;		Nothing
+  2215 ;; This function is called by:
+  2216 ;;		_PWM_Max_Duty
+  2217 ;;		_PWM1_Init
+  2218 ;;		_PWM2_Init
+  2219 ;; This function uses a non-reentrant model
+  2220 ;;
+  2221                           
+  2222                           	psect	text14
+  2223  000592                     __ptext14:
+  2224                           	opt stack 0
+  2225  000592                     ___aldiv:
+  2226                           	opt stack 27
+  2227                           
+  2228                           ;incstack = 0
+  2229  000592  0E00               	movlw	0
+  2230  000594  6E29               	movwf	___aldiv@sign,c
+  2231  000596  AE27               	btfss	___aldiv@divisor+3,7,c
+  2232  000598  D00A               	goto	l1137
+  2233  00059A  1E27               	comf	___aldiv@divisor+3,f,c
+  2234  00059C  1E26               	comf	___aldiv@divisor+2,f,c
+  2235  00059E  1E25               	comf	___aldiv@divisor+1,f,c
+  2236  0005A0  6C24               	negf	___aldiv@divisor,c
+  2237  0005A2  0E00               	movlw	0
+  2238  0005A4  2225               	addwfc	___aldiv@divisor+1,f,c
+  2239  0005A6  2226               	addwfc	___aldiv@divisor+2,f,c
+  2240  0005A8  2227               	addwfc	___aldiv@divisor+3,f,c
+  2241  0005AA  0E01               	movlw	1
+  2242  0005AC  6E29               	movwf	___aldiv@sign,c
+  2243  0005AE                     l1137:
+  2244  0005AE  AE23               	btfss	___aldiv@dividend+3,7,c
+  2245  0005B0  D00A               	goto	l1143
+  2246  0005B2  1E23               	comf	___aldiv@dividend+3,f,c
+  2247  0005B4  1E22               	comf	___aldiv@dividend+2,f,c
+  2248  0005B6  1E21               	comf	___aldiv@dividend+1,f,c
+  2249  0005B8  6C20               	negf	___aldiv@dividend,c
+  2250  0005BA  0E00               	movlw	0
+  2251  0005BC  2221               	addwfc	___aldiv@dividend+1,f,c
+  2252  0005BE  2222               	addwfc	___aldiv@dividend+2,f,c
+  2253  0005C0  2223               	addwfc	___aldiv@dividend+3,f,c
+  2254  0005C2  0E01               	movlw	1
+  2255  0005C4  1A29               	xorwf	___aldiv@sign,f,c
+  2256  0005C6                     l1143:
+  2257  0005C6  0E00               	movlw	0
+  2258  0005C8  6E2A               	movwf	___aldiv@quotient,c
+  2259  0005CA  0E00               	movlw	0
+  2260  0005CC  6E2B               	movwf	___aldiv@quotient+1,c
+  2261  0005CE  0E00               	movlw	0
+  2262  0005D0  6E2C               	movwf	___aldiv@quotient+2,c
+  2263  0005D2  0E00               	movlw	0
+  2264  0005D4  6E2D               	movwf	___aldiv@quotient+3,c
+  2265  0005D6  5024               	movf	___aldiv@divisor,w,c
+  2266  0005D8  1025               	iorwf	___aldiv@divisor+1,w,c
+  2267  0005DA  1026               	iorwf	___aldiv@divisor+2,w,c
+  2268  0005DC  1027               	iorwf	___aldiv@divisor+3,w,c
+  2269  0005DE  B4D8               	btfsc	status,2,c
+  2270  0005E0  D02A               	goto	l1165
+  2271  0005E2  0E01               	movlw	1
+  2272  0005E4  6E28               	movwf	___aldiv@counter,c
+  2273  0005E6  D006               	goto	l1151
+  2274  0005E8                     l1149:
+  2275  0005E8  90D8               	bcf	status,0,c
+  2276  0005EA  3624               	rlcf	___aldiv@divisor,f,c
+  2277  0005EC  3625               	rlcf	___aldiv@divisor+1,f,c
+  2278  0005EE  3626               	rlcf	___aldiv@divisor+2,f,c
+  2279  0005F0  3627               	rlcf	___aldiv@divisor+3,f,c
+  2280  0005F2  2A28               	incf	___aldiv@counter,f,c
+  2281  0005F4                     l1151:
+  2282  0005F4  AE27               	btfss	___aldiv@divisor+3,7,c
+  2283  0005F6  D7F8               	goto	l1149
+  2284  0005F8                     l1153:
+  2285  0005F8  90D8               	bcf	status,0,c
+  2286  0005FA  362A               	rlcf	___aldiv@quotient,f,c
+  2287  0005FC  362B               	rlcf	___aldiv@quotient+1,f,c
+  2288  0005FE  362C               	rlcf	___aldiv@quotient+2,f,c
+  2289  000600  362D               	rlcf	___aldiv@quotient+3,f,c
+  2290  000602  5024               	movf	___aldiv@divisor,w,c
+  2291  000604  5C20               	subwf	___aldiv@dividend,w,c
+  2292  000606  5025               	movf	___aldiv@divisor+1,w,c
+  2293  000608  5821               	subwfb	___aldiv@dividend+1,w,c
+  2294  00060A  5026               	movf	___aldiv@divisor+2,w,c
+  2295  00060C  5822               	subwfb	___aldiv@dividend+2,w,c
+  2296  00060E  5027               	movf	___aldiv@divisor+3,w,c
+  2297  000610  5823               	subwfb	___aldiv@dividend+3,w,c
+  2298  000612  A0D8               	btfss	status,0,c
+  2299  000614  D009               	goto	l1161
+  2300  000616  5024               	movf	___aldiv@divisor,w,c
+  2301  000618  5E20               	subwf	___aldiv@dividend,f,c
+  2302  00061A  5025               	movf	___aldiv@divisor+1,w,c
+  2303  00061C  5A21               	subwfb	___aldiv@dividend+1,f,c
+  2304  00061E  5026               	movf	___aldiv@divisor+2,w,c
+  2305  000620  5A22               	subwfb	___aldiv@dividend+2,f,c
+  2306  000622  5027               	movf	___aldiv@divisor+3,w,c
+  2307  000624  5A23               	subwfb	___aldiv@dividend+3,f,c
+  2308  000626  802A               	bsf	___aldiv@quotient,0,c
+  2309  000628                     l1161:
+  2310  000628  90D8               	bcf	status,0,c
+  2311  00062A  3227               	rrcf	___aldiv@divisor+3,f,c
+  2312  00062C  3226               	rrcf	___aldiv@divisor+2,f,c
+  2313  00062E  3225               	rrcf	___aldiv@divisor+1,f,c
+  2314  000630  3224               	rrcf	___aldiv@divisor,f,c
+  2315  000632  2E28               	decfsz	___aldiv@counter,f,c
+  2316  000634  D7E1               	goto	l1153
+  2317  000636                     l1165:
+  2318  000636  5029               	movf	___aldiv@sign,w,c
+  2319  000638  B4D8               	btfsc	status,2,c
+  2320  00063A  D008               	goto	l1169
+  2321  00063C  1E2D               	comf	___aldiv@quotient+3,f,c
+  2322  00063E  1E2C               	comf	___aldiv@quotient+2,f,c
+  2323  000640  1E2B               	comf	___aldiv@quotient+1,f,c
+  2324  000642  6C2A               	negf	___aldiv@quotient,c
+  2325  000644  0E00               	movlw	0
+  2326  000646  222B               	addwfc	___aldiv@quotient+1,f,c
+  2327  000648  222C               	addwfc	___aldiv@quotient+2,f,c
+  2328  00064A  222D               	addwfc	___aldiv@quotient+3,f,c
+  2329  00064C                     l1169:
+  2330  00064C  C02A  F020         	movff	___aldiv@quotient,?___aldiv
+  2331  000650  C02B  F021         	movff	___aldiv@quotient+1,?___aldiv+1
+  2332  000654  C02C  F022         	movff	___aldiv@quotient+2,?___aldiv+2
+  2333  000658  C02D  F023         	movff	___aldiv@quotient+3,?___aldiv+3
+  2334  00065C  0012               	return	
+  2335  00065E                     __end_of___aldiv:
+  2336                           	opt stack 0
+  2337                           intcon	equ	0xFF2
+  2338                           wreg	equ	0xFE8
+  2339                           status	equ	0xFD8
+  2340                           
+  2341 ;; *************** function _LowISR *****************
+  2342 ;; Defined at:
+  2343 ;;		line 186 in file "newmain18.c"
+  2344 ;; Parameters:    Size  Location     Type
+  2345 ;;		None
+  2346 ;; Auto vars:     Size  Location     Type
+  2347 ;;		None
+  2348 ;; Return value:  Size  Location     Type
+  2349 ;;		None               void
+  2350 ;; Registers used:
+  2351 ;;		wreg, status,2
+  2352 ;; Tracked objects:
+  2353 ;;		On entry : 0/0
+  2354 ;;		On exit  : 0/0
+  2355 ;;		Unchanged: 0/0
+  2356 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
+  2357 ;;      Params:         0       0       0       0       0       0       0       0       0
+  2358 ;;      Locals:         0       0       0       0       0       0       0       0       0
+  2359 ;;      Temps:         17       0       0       0       0       0       0       0       0
+  2360 ;;      Totals:        17       0       0       0       0       0       0       0       0
+  2361 ;;Total ram usage:       17 bytes
+  2362 ;; Hardware stack levels used:    1
+  2363 ;; Hardware stack levels required when called:    1
+  2364 ;; This function calls:
+  2365 ;;		Nothing
+  2366 ;; This function is called by:
+  2367 ;;		Interrupt level 1
+  2368 ;; This function uses a non-reentrant model
+  2369 ;;
+  2370                           
+  2371                           	psect	intcodelo
+  2372  000018                     __pintcodelo:
+  2373                           	opt stack 0
+  2374  000018                     _LowISR:
+  2375                           	opt stack 26
+  2376                           
+  2377                           ;incstack = 0
+  2378  000018  8040               	bsf	btemp,0,c	;set compiler interrupt flag (level 1)
+  2379  00001A  CFD8 F001          	movff	status,??_LowISR
+  2380  00001E  CFE8 F002          	movff	wreg,??_LowISR+1
+  2381  000022  CFE0 F003          	movff	bsr,??_LowISR+2
+  2382  000026  CFFA F004          	movff	pclath,??_LowISR+3
+  2383  00002A  CFFB F005          	movff	pclatu,??_LowISR+4
+  2384  00002E  CFE9 F006          	movff	fsr0l,??_LowISR+5
+  2385  000032  CFEA F007          	movff	fsr0h,??_LowISR+6
+  2386  000036  CFE1 F008          	movff	fsr1l,??_LowISR+7
+  2387  00003A  CFE2 F009          	movff	fsr1h,??_LowISR+8
+  2388  00003E  CFD9 F00A          	movff	fsr2l,??_LowISR+9
+  2389  000042  CFDA F00B          	movff	fsr2h,??_LowISR+10
+  2390  000046  CFF3 F00C          	movff	prodl,??_LowISR+11
+  2391  00004A  CFF4 F00D          	movff	prodh,??_LowISR+12
+  2392  00004E  CFF6 F00E          	movff	tblptrl,??_LowISR+13
+  2393  000052  CFF7 F00F          	movff	tblptrh,??_LowISR+14
+  2394  000056  CFF8 F010          	movff	tblptru,??_LowISR+15
+  2395  00005A  CFF5 F011          	movff	tablat,??_LowISR+16
+  2396                           
+  2397                           ;newmain18.c: 188: if (TMR1IF && TMR1IE)
+  2398  00005E  B09E               	btfsc	3998,0,c	;volatile
+  2399  000060  A09D               	btfss	3997,0,c	;volatile
+  2400  000062  D005               	goto	i1l115
+  2401                           
+  2402                           ;newmain18.c: 189: {
+  2403                           ;newmain18.c: 190: ((void)(TMR1H=((65536-7812)>>8),TMR1L=((65536-7812)&0xFF)));
+  2404  000064  0EE1               	movlw	225
+  2405  000066  6ECF               	movwf	4047,c	;volatile
+  2406  000068  0E7C               	movlw	124
+  2407  00006A  6ECE               	movwf	4046,c	;volatile
+  2408                           
+  2409                           ;newmain18.c: 192: TMR1IF = 0;
+  2410  00006C  909E               	bcf	3998,0,c	;volatile
+  2411  00006E                     i1l115:
+  2412  00006E  C011  FFF5         	movff	??_LowISR+16,tablat
+  2413  000072  C010  FFF8         	movff	??_LowISR+15,tblptru
+  2414  000076  C00F  FFF7         	movff	??_LowISR+14,tblptrh
+  2415  00007A  C00E  FFF6         	movff	??_LowISR+13,tblptrl
+  2416  00007E  C00D  FFF4         	movff	??_LowISR+12,prodh
+  2417  000082  C00C  FFF3         	movff	??_LowISR+11,prodl
+  2418  000086  C00B  FFDA         	movff	??_LowISR+10,fsr2h
+  2419  00008A  C00A  FFD9         	movff	??_LowISR+9,fsr2l
+  2420  00008E  C009  FFE2         	movff	??_LowISR+8,fsr1h
+  2421  000092  C008  FFE1         	movff	??_LowISR+7,fsr1l
+  2422  000096  C007  FFEA         	movff	??_LowISR+6,fsr0h
+  2423  00009A  C006  FFE9         	movff	??_LowISR+5,fsr0l
+  2424  00009E  C005  FFFB         	movff	??_LowISR+4,pclatu
+  2425  0000A2  C004  FFFA         	movff	??_LowISR+3,pclath
+  2426  0000A6  C003  FFE0         	movff	??_LowISR+2,bsr
+  2427  0000AA  C002  FFE8         	movff	??_LowISR+1,wreg
+  2428  0000AE  C001  FFD8         	movff	??_LowISR,status
+  2429  0000B2  9040               	bcf	btemp,0,c	;clear compiler interrupt flag (level 1)
+  2430  0000B4  0010               	retfie	
+  2431  0000B6                     __end_of_LowISR:
+  2432                           	opt stack 0
+  2433                           pclatu	equ	0xFFB
+  2434                           pclath	equ	0xFFA
+  2435                           tblptru	equ	0xFF8
+  2436                           tblptrh	equ	0xFF7
+  2437                           tblptrl	equ	0xFF6
+  2438                           tablat	equ	0xFF5
+  2439                           prodh	equ	0xFF4
+  2440                           prodl	equ	0xFF3
+  2441                           intcon	equ	0xFF2
+  2442                           fsr0h	equ	0xFEA
+  2443                           fsr0l	equ	0xFE9
+  2444                           wreg	equ	0xFE8
+  2445                           fsr1h	equ	0xFE2
+  2446                           fsr1l	equ	0xFE1
+  2447                           bsr	equ	0xFE0
+  2448                           fsr2h	equ	0xFDA
+  2449                           fsr2l	equ	0xFD9
+  2450                           status	equ	0xFD8
+  2451                           
+  2452 ;; *************** function _HighISR *****************
+  2453 ;; Defined at:
+  2454 ;;		line 177 in file "newmain18.c"
+  2455 ;; Parameters:    Size  Location     Type
+  2456 ;;		None
+  2457 ;; Auto vars:     Size  Location     Type
+  2458 ;;		None
+  2459 ;; Return value:  Size  Location     Type
+  2460 ;;		None               void
+  2461 ;; Registers used:
+  2462 ;;		wreg, status,2
+  2463 ;; Tracked objects:
+  2464 ;;		On entry : 0/0
+  2465 ;;		On exit  : 0/0
+  2466 ;;		Unchanged: 0/0
+  2467 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
+  2468 ;;      Params:         0       0       0       0       0       0       0       0       0
+  2469 ;;      Locals:         0       0       0       0       0       0       0       0       0
+  2470 ;;      Temps:         14       0       0       0       0       0       0       0       0
+  2471 ;;      Totals:        14       0       0       0       0       0       0       0       0
+  2472 ;;Total ram usage:       14 bytes
+  2473 ;; Hardware stack levels used:    1
+  2474 ;; This function calls:
+  2475 ;;		Nothing
+  2476 ;; This function is called by:
+  2477 ;;		Interrupt level 2
+  2478 ;; This function uses a non-reentrant model
+  2479 ;;
+  2480                           
+  2481                           	psect	intcode
+  2482  000008                     __pintcode:
+  2483                           	opt stack 0
+  2484  000008                     _HighISR:
+  2485                           	opt stack 26
+  2486                           
+  2487                           ;incstack = 0
+  2488  000008  8240               	bsf	btemp,1,c	;set compiler interrupt flag (level 2)
+  2489  00000A  CFFA F012          	movff	pclath,??_HighISR
+  2490  00000E  CFFB F013          	movff	pclatu,??_HighISR+1
+  2491  000012  ED24  F004         	call	int_func,f	;refresh shadow registers
+  2492                           pclatu	equ	0xFFB
+  2493                           pclath	equ	0xFFA
+  2494                           tblptru	equ	0xFF8
+  2495                           tblptrh	equ	0xFF7
+  2496                           tblptrl	equ	0xFF6
+  2497                           tablat	equ	0xFF5
+  2498                           prodh	equ	0xFF4
+  2499                           prodl	equ	0xFF3
+  2500                           intcon	equ	0xFF2
+  2501                           fsr0h	equ	0xFEA
+  2502                           fsr0l	equ	0xFE9
+  2503                           wreg	equ	0xFE8
+  2504                           fsr1h	equ	0xFE2
+  2505                           fsr1l	equ	0xFE1
+  2506                           bsr	equ	0xFE0
+  2507                           fsr2h	equ	0xFDA
+  2508                           fsr2l	equ	0xFD9
+  2509                           status	equ	0xFD8
+  2510                           
+  2511                           	psect	intcode_body
+  2512  000848                     __pintcode_body:
+  2513                           	opt stack 26
+  2514  000848                     int_func:
+  2515                           	opt stack 26
+  2516  000848  0006               	pop		; remove dummy address from shadow register refresh
+  2517  00084A  CFE9 F014          	movff	fsr0l,??_HighISR+2
+  2518  00084E  CFEA F015          	movff	fsr0h,??_HighISR+3
+  2519  000852  CFE1 F016          	movff	fsr1l,??_HighISR+4
+  2520  000856  CFE2 F017          	movff	fsr1h,??_HighISR+5
+  2521  00085A  CFD9 F018          	movff	fsr2l,??_HighISR+6
+  2522  00085E  CFDA F019          	movff	fsr2h,??_HighISR+7
+  2523  000862  CFF3 F01A          	movff	prodl,??_HighISR+8
+  2524  000866  CFF4 F01B          	movff	prodh,??_HighISR+9
+  2525  00086A  CFF6 F01C          	movff	tblptrl,??_HighISR+10
+  2526  00086E  CFF7 F01D          	movff	tblptrh,??_HighISR+11
+  2527  000872  CFF8 F01E          	movff	tblptru,??_HighISR+12
+  2528  000876  CFF5 F01F          	movff	tablat,??_HighISR+13
+  2529                           
+  2530                           ;newmain18.c: 179: if (TMR0IE && TMR0IF)
+  2531  00087A  BAF2               	btfsc	intcon,5,c	;volatile
+  2532  00087C  A4F2               	btfss	intcon,2,c	;volatile
+  2533  00087E  D008               	goto	i2l111
+  2534                           
+  2535                           ;newmain18.c: 180: {
+  2536                           ;newmain18.c: 181: ((void)(TMR0H=((65536-781)>>8),TMR0L=((65536-781)&0xFF)));
+  2537  000880  0EFC               	movlw	252
+  2538  000882  6ED7               	movwf	4055,c	;volatile
+  2539  000884  0EF3               	movlw	243
+  2540  000886  6ED6               	movwf	4054,c	;volatile
+  2541                           
+  2542                           ;newmain18.c: 182: TMR0IF=0;
+  2543  000888  94F2               	bcf	intcon,2,c	;volatile
+  2544                           
+  2545                           ;newmain18.c: 183: Timer0Flag = 1;
+  2546  00088A  0E01               	movlw	1
+  2547  00088C  0100               	movlb	0	; () banked
+  2548  00088E  6F8A               	movwf	_Timer0Flag& (0+255),b	;volatile
+  2549  000890                     i2l111:
+  2550  000890  C01F  FFF5         	movff	??_HighISR+13,tablat
+  2551  000894  C01E  FFF8         	movff	??_HighISR+12,tblptru
+  2552  000898  C01D  FFF7         	movff	??_HighISR+11,tblptrh
+  2553  00089C  C01C  FFF6         	movff	??_HighISR+10,tblptrl
+  2554  0008A0  C01B  FFF4         	movff	??_HighISR+9,prodh
+  2555  0008A4  C01A  FFF3         	movff	??_HighISR+8,prodl
+  2556  0008A8  C019  FFDA         	movff	??_HighISR+7,fsr2h
+  2557  0008AC  C018  FFD9         	movff	??_HighISR+6,fsr2l
+  2558  0008B0  C017  FFE2         	movff	??_HighISR+5,fsr1h
+  2559  0008B4  C016  FFE1         	movff	??_HighISR+4,fsr1l
+  2560  0008B8  C015  FFEA         	movff	??_HighISR+3,fsr0h
+  2561  0008BC  C014  FFE9         	movff	??_HighISR+2,fsr0l
+  2562  0008C0  C013  FFFB         	movff	??_HighISR+1,pclatu
+  2563  0008C4  C012  FFFA         	movff	??_HighISR,pclath
+  2564  0008C8  9240               	bcf	btemp,1,c	;clear compiler interrupt flag (level 2)
+  2565  0008CA  0011               	retfie		f
+  2566  0008CC                     __end_of_HighISR:
+  2567                           	opt stack 0
+  2568  0000                     pclatu	equ	0xFFB
+  2569                           pclath	equ	0xFFA
+  2570                           tblptru	equ	0xFF8
+  2571                           tblptrh	equ	0xFF7
+  2572                           tblptrl	equ	0xFF6
+  2573                           tablat	equ	0xFF5
+  2574                           prodh	equ	0xFF4
+  2575                           prodl	equ	0xFF3
+  2576                           intcon	equ	0xFF2
+  2577                           fsr0h	equ	0xFEA
+  2578                           fsr0l	equ	0xFE9
+  2579                           wreg	equ	0xFE8
+  2580                           fsr1h	equ	0xFE2
+  2581                           fsr1l	equ	0xFE1
+  2582                           bsr	equ	0xFE0
+  2583                           fsr2h	equ	0xFDA
+  2584                           fsr2l	equ	0xFD9
+  2585                           status	equ	0xFD8
+  2586                           pclatu	equ	0xFFB
+  2587                           pclath	equ	0xFFA
+  2588                           tblptru	equ	0xFF8
+  2589                           tblptrh	equ	0xFF7
+  2590                           tblptrl	equ	0xFF6
+  2591                           tablat	equ	0xFF5
+  2592                           prodh	equ	0xFF4
+  2593                           prodl	equ	0xFF3
+  2594                           intcon	equ	0xFF2
+  2595                           fsr0h	equ	0xFEA
+  2596                           fsr0l	equ	0xFE9
+  2597                           wreg	equ	0xFE8
+  2598                           fsr1h	equ	0xFE2
+  2599                           fsr1l	equ	0xFE1
+  2600                           bsr	equ	0xFE0
+  2601                           fsr2h	equ	0xFDA
+  2602                           fsr2l	equ	0xFD9
+  2603                           status	equ	0xFD8
+  2604                           
+  2605                           	psect	rparam
+  2606  0000                     pclatu	equ	0xFFB
+  2607                           pclath	equ	0xFFA
+  2608                           tblptru	equ	0xFF8
+  2609                           tblptrh	equ	0xFF7
+  2610                           tblptrl	equ	0xFF6
+  2611                           tablat	equ	0xFF5
+  2612                           prodh	equ	0xFF4
+  2613                           prodl	equ	0xFF3
+  2614                           intcon	equ	0xFF2
+  2615                           fsr0h	equ	0xFEA
+  2616                           fsr0l	equ	0xFE9
+  2617                           wreg	equ	0xFE8
+  2618                           fsr1h	equ	0xFE2
+  2619                           fsr1l	equ	0xFE1
+  2620                           bsr	equ	0xFE0
+  2621                           fsr2h	equ	0xFDA
+  2622                           fsr2l	equ	0xFD9
+  2623                           status	equ	0xFD8
+  2624                           
+  2625                           	psect	temp
+  2626  000040                     btemp:
+  2627                           	opt stack 0
+  2628  000040                     	ds	1
+  2629  0000                     int$flags	set	btemp
+  2630                           pclatu	equ	0xFFB
+  2631                           pclath	equ	0xFFA
+  2632                           tblptru	equ	0xFF8
+  2633                           tblptrh	equ	0xFF7
+  2634                           tblptrl	equ	0xFF6
+  2635                           tablat	equ	0xFF5
+  2636                           prodh	equ	0xFF4
+  2637                           prodl	equ	0xFF3
+  2638                           intcon	equ	0xFF2
+  2639                           fsr0h	equ	0xFEA
+  2640                           fsr0l	equ	0xFE9
+  2641                           wreg	equ	0xFE8
+  2642                           fsr1h	equ	0xFE2
+  2643                           fsr1l	equ	0xFE1
+  2644                           bsr	equ	0xFE0
+  2645                           fsr2h	equ	0xFDA
+  2646                           fsr2l	equ	0xFD9
+  2647                           status	equ	0xFD8
+
+
+Data Sizes:
+    Strings     0
+    Constant    0
+    Data        0
+    BSS         1
+    Persistent  4
+    Stack       0
+
+Auto Spaces:
+    Space          Size  Autos    Used
+    COMRAM           94     59      63
+    BANK0           160     42      43
+    BANK1           256      0       0
+    BANK2           256      0       0
+    BANK3           256      0       0
+    BANK4           256      0       0
+    BANK5           256      0       0
+    BANK6           256      0       0
+    BANK7           256      0       0
+
+Pointer List with Targets:
+
+    None.
+
+Critical Paths under _main in COMRAM
+
+    _main->_PWM1_Duty
+    _main->_PWM2_Duty
+    _PWM2_Init->___aldiv
+    _PWM2_Duty->___ftdiv
+    _PWM1_Init->___aldiv
+    _PWM1_Duty->___ftdiv
+    ___lwtoft->___ftpack
+    ___fttol->___ftdiv
+    ___ftmul->___ftdiv
+    ___ftdiv->___lwtoft
+    ___awtoft->_PWM_Max_Duty
+    _PWM_Max_Duty->___aldiv
+
+Critical Paths under _HighISR in COMRAM
+
+    None.
+
+Critical Paths under _LowISR in COMRAM
+
+    None.
+
+Critical Paths under _main in BANK0
+
+    _main->_PWM1_Duty
+    _main->_PWM2_Duty
+    _PWM2_Duty->___fttol
+    _PWM1_Duty->___fttol
+    ___fttol->___ftmul
+
+Critical Paths under _HighISR in BANK0
+
+    None.
+
+Critical Paths under _LowISR in BANK0
+
+    None.
+
+Critical Paths under _main in BANK1
+
+    None.
+
+Critical Paths under _HighISR in BANK1
+
+    None.
+
+Critical Paths under _LowISR in BANK1
+
+    None.
+
+Critical Paths under _main in BANK2
+
+    None.
+
+Critical Paths under _HighISR in BANK2
+
+    None.
+
+Critical Paths under _LowISR in BANK2
+
+    None.
+
+Critical Paths under _main in BANK3
+
+    None.
+
+Critical Paths under _HighISR in BANK3
+
+    None.
+
+Critical Paths under _LowISR in BANK3
+
+    None.
+
+Critical Paths under _main in BANK4
+
+    None.
+
+Critical Paths under _HighISR in BANK4
+
+    None.
+
+Critical Paths under _LowISR in BANK4
+
+    None.
+
+Critical Paths under _main in BANK5
+
+    None.
+
+Critical Paths under _HighISR in BANK5
+
+    None.
+
+Critical Paths under _LowISR in BANK5
+
+    None.
+
+Critical Paths under _main in BANK6
+
+    None.
+
+Critical Paths under _HighISR in BANK6
+
+    None.
+
+Critical Paths under _LowISR in BANK6
+
+    None.
+
+Critical Paths under _main in BANK7
+
+    None.
+
+Critical Paths under _HighISR in BANK7
+
+    None.
+
+Critical Paths under _LowISR in BANK7
+
+    None.
+
+Call Graph Tables:
+
+ ---------------------------------------------------------------------------------
+ (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
+ ---------------------------------------------------------------------------------
+ (0) _main                                                10    10      0   25005
+                                             32 BANK0     10    10      0
+                          _PWM1_Duty
+                          _PWM1_Init
+                         _PWM1_Start
+                          _PWM2_Duty
+                          _PWM2_Init
+                         _PWM2_Start
+ ---------------------------------------------------------------------------------
+ (1) _PWM2_Start                                           0     0      0       0
+ ---------------------------------------------------------------------------------
+ (1) _PWM2_Init                                            8     4      4     792
+                                             45 COMRAM     8     4      4
+                            ___aldiv
+ ---------------------------------------------------------------------------------
+ (1) _PWM2_Duty                                            4     2      2   11542
+                                             57 COMRAM     2     2      0
+                                             30 BANK0      2     0      2
+                       _PWM_Max_Duty
+                           ___awtoft
+                            ___ftdiv
+                            ___ftmul
+                            ___fttol
+                           ___lwtoft
+ ---------------------------------------------------------------------------------
+ (1) _PWM1_Start                                           0     0      0       0
+ ---------------------------------------------------------------------------------
+ (1) _PWM1_Init                                            8     4      4     792
+                                             45 COMRAM     8     4      4
+                            ___aldiv
+ ---------------------------------------------------------------------------------
+ (1) _PWM1_Duty                                            4     2      2   11542
+                                             57 COMRAM     2     2      0
+                                             30 BANK0      2     0      2
+                       _PWM_Max_Duty
+                           ___awtoft
+                            ___ftdiv
+                            ___ftmul
+                            ___fttol
+                           ___lwtoft
+ ---------------------------------------------------------------------------------
+ (2) ___lwtoft                                             3     0      3    2220
+                                             39 COMRAM     3     0      3
+                           ___ftpack
+ ---------------------------------------------------------------------------------
+ (2) ___fttol                                             15    11      4     380
+                                             15 BANK0     15    11      4
+                       _PWM_Max_Duty (ARG)
+                           ___awtoft (ARG)
+                            ___ftdiv (ARG)
+                            ___ftmul (ARG)
+                           ___lwtoft (ARG)
+ ---------------------------------------------------------------------------------
+ (2) ___ftmul                                             15     9      6    2980
+                                              0 BANK0     15     9      6
+                       _PWM_Max_Duty (ARG)
+                           ___awtoft (ARG)
+                            ___ftdiv (ARG)
+                           ___ftpack
+                           ___lwtoft (ARG)
+ ---------------------------------------------------------------------------------
+ (2) ___ftdiv                                             15     9      6    2708
+                                             42 COMRAM    15     9      6
+                           ___ftpack
+                           ___lwtoft (ARG)
+ ---------------------------------------------------------------------------------
+ (2) ___awtoft                                             4     1      3    2289
+                                             51 COMRAM     4     1      3
+                       _PWM_Max_Duty (ARG)
+                           ___ftpack
+ ---------------------------------------------------------------------------------
+ (3) ___ftpack                                             8     3      5    2070
+                                             31 COMRAM     8     3      5
+ ---------------------------------------------------------------------------------
+ (2) _PWM_Max_Duty                                         6     4      2     684
+                                             45 COMRAM     6     4      2
+                            ___aldiv
+ ---------------------------------------------------------------------------------
+ (2) ___aldiv                                             14     6      8     684
+                                             31 COMRAM    14     6      8
+ ---------------------------------------------------------------------------------
+ Estimated maximum stack depth 3
+ ---------------------------------------------------------------------------------
+ (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
+ ---------------------------------------------------------------------------------
+ (4) _LowISR                                              17    17      0       0
+                                              0 COMRAM    17    17      0
+ ---------------------------------------------------------------------------------
+ Estimated maximum stack depth 4
+ ---------------------------------------------------------------------------------
+ (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
+ ---------------------------------------------------------------------------------
+ (5) _HighISR                                             14    14      0       0
+                                             17 COMRAM    14    14      0
+ ---------------------------------------------------------------------------------
+ Estimated maximum stack depth 5
+ ---------------------------------------------------------------------------------
+
+ Call Graph Graphs:
+
+ _main (ROOT)
+   _PWM1_Duty
+     _PWM_Max_Duty
+       ___aldiv
+     ___awtoft
+       _PWM_Max_Duty (ARG)
+         ___aldiv
+       ___ftpack (ARG)
+     ___ftdiv
+       ___ftpack
+       ___lwtoft (ARG)
+         ___ftpack
+     ___ftmul
+       _PWM_Max_Duty (ARG)
+         ___aldiv
+       ___awtoft (ARG)
+         _PWM_Max_Duty (ARG)
+           ___aldiv
+         ___ftpack (ARG)
+       ___ftdiv (ARG)
+         ___ftpack
+         ___lwtoft (ARG)
+           ___ftpack
+       ___ftpack (ARG)
+       ___lwtoft (ARG)
+         ___ftpack
+     ___fttol
+       _PWM_Max_Duty (ARG)
+         ___aldiv
+       ___awtoft (ARG)
+         _PWM_Max_Duty (ARG)
+           ___aldiv
+         ___ftpack (ARG)
+       ___ftdiv (ARG)
+         ___ftpack
+         ___lwtoft (ARG)
+           ___ftpack
+       ___ftmul (ARG)
+         _PWM_Max_Duty (ARG)
+           ___aldiv
+         ___awtoft (ARG)
+           _PWM_Max_Duty (ARG)
+             ___aldiv
+           ___ftpack (ARG)
+         ___ftdiv (ARG)
+           ___ftpack
+           ___lwtoft (ARG)
+             ___ftpack
+         ___ftpack (ARG)
+         ___lwtoft (ARG)
+           ___ftpack
+       ___lwtoft (ARG)
+         ___ftpack
+     ___lwtoft
+       ___ftpack
+   _PWM1_Init
+     ___aldiv
+   _PWM1_Start
+   _PWM2_Duty
+     _PWM_Max_Duty
+       ___aldiv
+     ___awtoft
+       _PWM_Max_Duty (ARG)
+         ___aldiv
+       ___ftpack (ARG)
+     ___ftdiv
+       ___ftpack
+       ___lwtoft (ARG)
+         ___ftpack
+     ___ftmul
+       _PWM_Max_Duty (ARG)
+         ___aldiv
+       ___awtoft (ARG)
+         _PWM_Max_Duty (ARG)
+           ___aldiv
+         ___ftpack (ARG)
+       ___ftdiv (ARG)
+         ___ftpack
+         ___lwtoft (ARG)
+           ___ftpack
+       ___ftpack (ARG)
+       ___lwtoft (ARG)
+         ___ftpack
+     ___fttol
+       _PWM_Max_Duty (ARG)
+         ___aldiv
+       ___awtoft (ARG)
+         _PWM_Max_Duty (ARG)
+           ___aldiv
+         ___ftpack (ARG)
+       ___ftdiv (ARG)
+         ___ftpack
+         ___lwtoft (ARG)
+           ___ftpack
+       ___ftmul (ARG)
+         _PWM_Max_Duty (ARG)
+           ___aldiv
+         ___awtoft (ARG)
+           _PWM_Max_Duty (ARG)
+             ___aldiv
+           ___ftpack (ARG)
+         ___ftdiv (ARG)
+           ___ftpack
+           ___lwtoft (ARG)
+             ___ftpack
+         ___ftpack (ARG)
+         ___lwtoft (ARG)
+           ___ftpack
+       ___lwtoft (ARG)
+         ___ftpack
+     ___lwtoft
+       ___ftpack
+   _PWM2_Init
+     ___aldiv
+   _PWM2_Start
+
+ _LowISR (ROOT)
+
+ _HighISR (ROOT)
+
+ Address spaces:
+Name               Size   Autos  Total    Cost      Usage
+BIGRAM             7FF      0       0      21        0.0%
+EEDATA             100      0       0       0        0.0%
+BITBANK7           100      0       0      18        0.0%
+BANK7              100      0       0      19        0.0%
+BITBANK6           100      0       0      16        0.0%
+BANK6              100      0       0      17        0.0%
+BITBANK5           100      0       0      14        0.0%
+BANK5              100      0       0      15        0.0%
+BITBANK4           100      0       0      12        0.0%
+BANK4              100      0       0      13        0.0%
+BITBANK3           100      0       0      10        0.0%
+BANK3              100      0       0      11        0.0%
+BITBANK2           100      0       0       8        0.0%
+BANK2              100      0       0       9        0.0%
+BITBANK1           100      0       0       6        0.0%
+BANK1              100      0       0       7        0.0%
+BITBANK0            A0      0       0       4        0.0%
+BANK0               A0     2A      2B       5       26.9%
+BITCOMRAM           5E      0       0       0        0.0%
+COMRAM              5E     3B      3F       1       67.0%
+BITSFR               0      0       0      40        0.0%
+SFR                  0      0       0      40        0.0%
+STACK                0      0       0       2        0.0%
+NULL                 0      0       0       0        0.0%
+ABS                  0      0      6A      20        0.0%
+DATA                 0      0      6A       3        0.0%
+CODE                 0      0       0       0        0.0%
+
+
+Microchip Technology PIC18 Macro Assembler V1.35 build -356382666 
+Symbol Table                                                                                   Wed Sep 30 15:38:25 2015
+
+                     bsr 000FE0              __CFG_BORV$1 000000                      l340 06EC  
+                    l398 0560                      _PR2 000FCB                      u711 04E4  
+                    u811 037E                      u830 03C8                      u905 0968  
+                    u691 04BC                      u835 03BE                      u915 08EE  
+                    u685 09C2                      u925 08FE                      u895 0958  
+                    wreg 000FE8             __CFG_FOSC$HS 000000             __CFG_LVP$OFF 000000  
+           ___ftdiv@cntr 0034             ___ftdiv@sign 0039             __CFG_WDT$OFF 000000  
+                   l1101 067C                     l1111 06D8                     l1103 0686  
+                   l1113 06E2                     l1105 06A4                     l1109 06BA  
+                   l1151 05F4                     l1143 05C6                     l1311 0448  
+                   l1161 0628                     l1153 05F8                     l1137 05AE  
+                   l1209 053A                     l1321 047E                     l1307 0434  
+                   l1149 05E8                     l1165 0636                     l1325 049A  
+                   l1317 0464                     l1501 082E                     l1183 04D4  
+                   l1319 0474                     l1511 0790                     l1169 064C  
+                   l1097 066E                     l1451 00F4                     l1189 04FC  
+                   l1279 0A02                     l1471 017C                     l1481 01BA  
+                   l1457 012E                     l1289 03A2                     l1561 02DA  
+                   l1475 019A                     l1485 01D8                     l1581 0342  
+                   l1573 031C                     l1569 02F8                     u1120 082C  
+                   u1051 00D0                     u1150 078E                     u1071 010A  
+           _PWM_Max_Duty 09A0                     _main 0218                     _freq 003C  
+           ___ftpack@arg 0020             ___ftpack@exp 0023                     fsr0h 000FEA  
+                   fsr1h 000FE2                     fsr0l 000FE9                     fsr2h 000FDA  
+                   fsr1l 000FE1                     fsr2l 000FD9                     btemp 0040  
+                   pclat 000FFA                     prodh 000FF4                     prodl 000FF3  
+                   start 00B6          __end_of_HighISR 08CC            __CFG_MCLRE$ON 000000  
+           ___ftmul@cntr 006D             ___param_bank 000010             ___ftmul@sign 006E  
+           ___fttol@exp1 007D             ___fttol@lval 0079                    _DC1B0 007DEC  
+                  _DC1B1 007DED                    _DC2B0 007DD4                    _DC2B1 007DD5  
+        __end_of___aldiv 065E                    ?_main 0001          __end_of___ftdiv 0592  
+        __end_of___ftmul 0218          __end_of___fttol 04AC                    i1l115 006E  
+                  i2l111 0890                    _TMR0H 000FD7                    _TMR1H 000FCF  
+                  _TMR0L 000FD6                    _TMR1L 000FCE                    _TRISB 000F93  
+                  _TRISD 000F95       __size_of_PWM1_Init 006A       __size_of_PWM1_Duty 009E  
+            ?_PWM1_Start 0001       __size_of_PWM2_Init 006A       __size_of_PWM2_Duty 009E  
+            ?_PWM2_Start 0001            ___awtoft@sign 0037            ___ftpack@sign 0024  
+                  main@f 0086                    main@i 0080                    main@j 0088  
+                  tablat 000FF5                    status 000FD8          __initialization 0A4A  
+           __end_of_main 0368                   ??_main 003C            ___fttol@sign1 0078  
+          __activetblptr 000000                   _CCP1M2 007DEA                   _CCP1M3 007DEB  
+                 _CCP2M2 007DD2                   _CCP2M3 007DD3                   _CCPR1L 000FBE  
+                 _CCPR2L 000FBB         __end_of___awtoft 0A26         __end_of___ftpack 070C  
+       __end_of___lwtoft 0A4A                ??_HighISR 0012                   _TMR0IE 007F95  
+                 _TMR0IF 007F92                   _TMR1IE 007CE8                   _TMR1IF 007CF0  
+                 _TMR2ON 007E52                   _TRISC1 007CA1                   _TRISC2 007CA2  
+                 _LowISR 0018               _Timer0Flag 008A           __CFG_XINST$OFF 000000  
+      __end_of_PWM1_Init 09A0        __end_of_PWM1_Duty 0848        __end_of_PWM2_Init 0936  
+      __end_of_PWM2_Duty 07AA                ??___aldiv 0028      __size_of_PWM1_Start 000A  
+              ??___ftdiv 0031      __size_of_PWM2_Start 000E                ??___ftmul 0066  
+              ??___fttol 0073                   main@ff 0082                   main@jj 0084  
+  ___ftmul@f3_as_product 006A                   tblptrh 000FF7                   tblptrl 000FF6  
+                 tblptru 000FF8               __accesstop 0060  __end_of__initialization 0A4E  
+        __CFG_PBADEN$OFF 000000            ___rparam_used 000001               ___ftdiv@f1 002B  
+             ___ftdiv@f2 002E               ___ftdiv@f3 0035               ___awtoft@c 0034  
+             ___ftmul@f1 0060               ___ftmul@f2 0063               ___fttol@f1 006F  
+         __pcstackCOMRAM 0001               ___lwtoft@c 0028               __pbssBANK0 008A  
+             __pnvCOMRAM 003C                  ?_LowISR 0001                ?___awtoft 0034  
+              ?___ftpack 0020                  _T2CKPS0 007E50                  _T2CKPS1 007E51  
+              ?___lwtoft 0028             ??_PWM1_Start 0020             ??_PWM2_Start 0020  
+                _HighISR 0008                  __Hparam 0000                  __Lparam 0000  
+        __size_of_LowISR 009E                  ___aldiv 0592                  ___ftdiv 04AC  
+                ___ftmul 00BA                  ___fttol 0368       __end_of_PWM1_Start 0A70  
+     __end_of_PWM2_Start 0A66                  __pcinit 0A4A               ??___awtoft 0037  
+             ??___ftpack 0025                  __ramtop 0800                  __ptext0 0218  
+                __ptext1 0A58                  __ptext2 08CC                  __ptext3 070C  
+                __ptext4 0A66                  __ptext5 0936                  __ptext6 07AA  
+                __ptext7 0A26                  __ptext8 0368                  __ptext9 00BA  
+             ??___lwtoft 002B                _T0CONbits 000FD5                _T2CONbits 000FCA  
+       ___aldiv@dividend 0020           __pintcode_body 0848     end_of_initialization 0A4E  
+                int_func 0848         ___aldiv@quotient 002A                _PWM1_Init 0936  
+              _PWM1_Duty 07AA                _PWM2_Init 08CC                _PWM2_Duty 070C  
+              _TRISCbits 000F94              ___ftdiv@exp 0038              ___ftmul@exp 0069  
+         __end_of_LowISR 00B6               ?_PWM1_Init 002E               ?_PWM1_Duty 007E  
+             ?_PWM2_Init 002E               ?_PWM2_Duty 007E      start_initialization 0A4A  
+          ?_PWM_Max_Duty 002E                 ??_LowISR 0001        __size_of___awtoft 0038  
+      __size_of___ftpack 00AE       __CFG_BOR$ON_ACTIVE 000000        __size_of___lwtoft 0024  
+          __pcstackBANK0 0060           ??_PWM_Max_Duty 0030                 ?_HighISR 0001  
+              __pintcode 0008                 ?___aldiv 0020                 ?___ftdiv 002B  
+               ?___ftmul 0060                 ?___fttol 006F              __pintcodelo 0018  
+            ??_PWM1_Init 0032              ??_PWM1_Duty 003A              ??_PWM2_Init 0032  
+            ??_PWM2_Duty 003A          ___aldiv@divisor 0024          ___aldiv@counter 0028  
+               _LATCbits 000F8B                 _PIR1bits 000F9E            PWM1_Duty@duty 007E  
+          PWM2_Duty@duty 007E         __size_of_HighISR 08C4                 __Hrparam 0000  
+               __Lrparam 0000         __size_of___aldiv 00CC     __end_of_PWM_Max_Duty 09EE  
+       __size_of___ftdiv 00E6         __size_of___ftmul 015E         __size_of___fttol 0144  
+               ___awtoft 09EE                 ___ftpack 065E                 ___lwtoft 0A26  
+               __ptext10 04AC                 __ptext11 09EE                 __ptext12 065E  
+               __ptext13 09A0                 __ptext14 0592            __size_of_main 0150  
+           PWM1_Init@fre 002E             PWM2_Init@fre 002E                 int$flags 0040  
+             _INTCONbits 000FF2                 intlevel1 0000                 intlevel2 0000  
+           ___aldiv@sign 0029               _PWM1_Start 0A66               _PWM2_Start 0A58  
+  __size_of_PWM_Max_Duty 004E  

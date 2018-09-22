@@ -1,0 +1,981 @@
+
+
+Microchip Technology PIC18 LITE Macro Assembler V1.35 build -356382666 
+                                                                                               Tue Aug 25 14:30:19 2015
+
+Microchip Technology Omniscient Code Generator v1.35 (Free mode) build 201507080246
+     1                           	processor	18F4550
+     2                           	fnconf	rparam,??,?,0
+     3                           	opt	pw 120
+     4                           	opt	lm
+     5                           	psect	cinit,global,reloc=2,class=CODE,delta=1
+     6                           	psect	cstackCOMRAM,global,class=COMRAM,space=1,delta=1
+     7                           	psect	text0,global,reloc=2,class=CODE,delta=1
+     8                           	psect	text1,global,reloc=2,class=CODE,delta=1
+     9                           	psect	text2,global,reloc=2,class=CODE,delta=1
+    10                           	psect	text3,global,reloc=2,class=CODE,delta=1
+    11                           	psect	text4,global,reloc=2,class=CODE,delta=1
+    12                           	psect	text5,global,reloc=2,class=CODE,delta=1
+    13                           	psect	text6,global,reloc=2,class=CODE,delta=1
+    14                           	psect	text7,global,reloc=2,class=CODE,delta=1
+    15                           	psect	text8,global,reloc=2,class=CODE,delta=1
+    16                           	psect	intsave_regs,global,class=BIGRAM,space=1,delta=1
+    17                           	psect	rparam,global,class=COMRAM,space=1,delta=1
+    18  0000                     _ADCON1	set	4033
+    19  0000                     _OSCCON	set	4051
+    20  0000                     _PORTD	set	3971
+    21  0000                     _TRISB	set	3987
+    22  0000                     _TRISD	set	3989
+    23  0000                     _RB3	set	31755
+    24  0000                     _RB4	set	31756
+    25  0000                     _RB5	set	31757
+    26  0000                     _RD7	set	31775
+    27  0000                     _TRISD7	set	31919
+    28                           
+    29                           ; #config settings
+    30  0000                     
+    31                           	psect	cinit
+    32  007E4A                     __pcinit:
+    33                           	opt stack 0
+    34  007E4A                     start_initialization:
+    35                           	opt stack 0
+    36  007E4A                     __initialization:
+    37                           	opt stack 0
+    38  007E4A                     end_of_initialization:
+    39                           	opt stack 0
+    40  007E4A                     __end_of__initialization:
+    41                           	opt stack 0
+    42  007E4A  0100               	movlb	0
+    43  007E4C  EFAF  F03F         	goto	_main	;jump to C main() function
+    44                           
+    45                           	psect	cstackCOMRAM
+    46  000001                     __pcstackCOMRAM:
+    47                           	opt stack 0
+    48  000001                     lcd_write_com@combuf:
+    49                           	opt stack 0
+    50  000001                     lcd_write_data@databuf:
+    51                           	opt stack 0
+    52  000001                     delay@t:
+    53                           	opt stack 0
+    54                           
+    55                           ; 2 bytes @ 0x0
+    56  000001                     	ds	1
+    57  000002                     lcd_write_com_busy@combuf:
+    58                           	opt stack 0
+    59                           
+    60                           ; 1 bytes @ 0x1
+    61  000002                     	ds	1
+    62  000003                     lcd_write_address@y:
+    63                           	opt stack 0
+    64  000003                     delay@i:
+    65                           	opt stack 0
+    66                           
+    67                           ; 2 bytes @ 0x2
+    68  000003                     	ds	1
+    69  000004                     lcd_write_address@x:
+    70                           	opt stack 0
+    71                           
+    72                           ; 1 bytes @ 0x3
+    73  000004                     	ds	1
+    74  000005                     lcd_write_char@y:
+    75                           	opt stack 0
+    76  000005                     delay@j:
+    77                           	opt stack 0
+    78                           
+    79                           ; 2 bytes @ 0x4
+    80  000005                     	ds	1
+    81  000006                     lcd_write_char@buf:
+    82                           	opt stack 0
+    83                           
+    84                           ; 1 bytes @ 0x5
+    85  000006                     	ds	1
+    86  000007                     lcd_write_char@x:
+    87                           	opt stack 0
+    88                           
+    89                           ; 1 bytes @ 0x6
+    90  000007                     	ds	1
+    91  000008                     
+    92                           ; 0 bytes @ 0x7
+    93 ;;
+    94 ;;Main: autosize = 0, tempsize = 0, incstack = 0, save=0
+    95 ;;
+    96 ;; *************** function _main *****************
+    97 ;; Defined at:
+    98 ;;		line 144 in file "newmain.c"
+    99 ;; Parameters:    Size  Location     Type
+   100 ;;		None
+   101 ;; Auto vars:     Size  Location     Type
+   102 ;;		None
+   103 ;; Return value:  Size  Location     Type
+   104 ;;		None               void
+   105 ;; Registers used:
+   106 ;;		wreg, status,2, status,0, cstack
+   107 ;; Tracked objects:
+   108 ;;		On entry : 0/0
+   109 ;;		On exit  : 0/0
+   110 ;;		Unchanged: 0/0
+   111 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
+   112 ;;      Params:         0       0       0       0       0       0       0       0       0
+   113 ;;      Locals:         0       0       0       0       0       0       0       0       0
+   114 ;;      Temps:          0       0       0       0       0       0       0       0       0
+   115 ;;      Totals:         0       0       0       0       0       0       0       0       0
+   116 ;;Total ram usage:        0 bytes
+   117 ;; Hardware stack levels required when called:    4
+   118 ;; This function calls:
+   119 ;;		_lcd_write_char
+   120 ;;		_lcdreset
+   121 ;; This function is called by:
+   122 ;;		Startup code after reset
+   123 ;; This function uses a non-reentrant model
+   124 ;;
+   125                           
+   126                           	psect	text0
+   127  007F5E                     __ptext0:
+   128                           	opt stack 0
+   129  007F5E                     _main:
+   130                           	opt stack 27
+   131                           
+   132                           ;newmain.c: 146: OSCCON=0X00;
+   133                           
+   134                           ;incstack = 0
+   135  007F5E  0E00               	movlw	0
+   136  007F60  6ED3               	movwf	4051,c	;volatile
+   137                           
+   138                           ;newmain.c: 147: ADCON1=0X0f;
+   139  007F62  0E0F               	movlw	15
+   140  007F64  6EC1               	movwf	4033,c	;volatile
+   141                           
+   142                           ;newmain.c: 148: TRISB=0B11000111;
+   143  007F66  0EC7               	movlw	199
+   144  007F68  6E93               	movwf	3987,c	;volatile
+   145                           
+   146                           ;newmain.c: 149: TRISD=0B00000000;
+   147  007F6A  0E00               	movlw	0
+   148  007F6C  6E95               	movwf	3989,c	;volatile
+   149                           
+   150                           ;newmain.c: 150: lcdreset();
+   151  007F6E  EC84  F03F         	call	_lcdreset	;wreg free
+   152                           
+   153                           ;newmain.c: 151: lcd_write_char(0,0,0x30);
+   154  007F72  0E00               	movlw	0
+   155  007F74  6E05               	movwf	lcd_write_char@y,c
+   156  007F76  0E30               	movlw	48
+   157  007F78  6E06               	movwf	lcd_write_char@buf,c
+   158  007F7A  0E00               	movlw	0
+   159  007F7C  EC41  F03F         	call	_lcd_write_char
+   160                           
+   161                           ;newmain.c: 152: lcd_write_char(1,0,0x31);
+   162  007F80  0E00               	movlw	0
+   163  007F82  6E05               	movwf	lcd_write_char@y,c
+   164  007F84  0E31               	movlw	49
+   165  007F86  6E06               	movwf	lcd_write_char@buf,c
+   166  007F88  0E01               	movlw	1
+   167  007F8A  EC41  F03F         	call	_lcd_write_char
+   168                           
+   169                           ;newmain.c: 153: lcd_write_char(2,0,0x32);
+   170  007F8E  0E00               	movlw	0
+   171  007F90  6E05               	movwf	lcd_write_char@y,c
+   172  007F92  0E32               	movlw	50
+   173  007F94  6E06               	movwf	lcd_write_char@buf,c
+   174  007F96  0E02               	movlw	2
+   175  007F98  EC41  F03F         	call	_lcd_write_char
+   176                           
+   177                           ;newmain.c: 154: lcd_write_char(3,0,0x33);
+   178  007F9C  0E00               	movlw	0
+   179  007F9E  6E05               	movwf	lcd_write_char@y,c
+   180  007FA0  0E33               	movlw	51
+   181  007FA2  6E06               	movwf	lcd_write_char@buf,c
+   182  007FA4  0E03               	movlw	3
+   183  007FA6  EC41  F03F         	call	_lcd_write_char
+   184                           
+   185                           ;newmain.c: 155: lcd_write_char(4,0,0x34);
+   186  007FAA  0E00               	movlw	0
+   187  007FAC  6E05               	movwf	lcd_write_char@y,c
+   188  007FAE  0E34               	movlw	52
+   189  007FB0  6E06               	movwf	lcd_write_char@buf,c
+   190  007FB2  0E04               	movlw	4
+   191  007FB4  EC41  F03F         	call	_lcd_write_char
+   192                           
+   193                           ;newmain.c: 156: lcd_write_char(5,0,0x35);
+   194  007FB8  0E00               	movlw	0
+   195  007FBA  6E05               	movwf	lcd_write_char@y,c
+   196  007FBC  0E35               	movlw	53
+   197  007FBE  6E06               	movwf	lcd_write_char@buf,c
+   198  007FC0  0E05               	movlw	5
+   199  007FC2  EC41  F03F         	call	_lcd_write_char
+   200                           
+   201                           ;newmain.c: 157: lcd_write_char(6,0,0x36);
+   202  007FC6  0E00               	movlw	0
+   203  007FC8  6E05               	movwf	lcd_write_char@y,c
+   204  007FCA  0E36               	movlw	54
+   205  007FCC  6E06               	movwf	lcd_write_char@buf,c
+   206  007FCE  0E06               	movlw	6
+   207  007FD0  EC41  F03F         	call	_lcd_write_char
+   208                           
+   209                           ;newmain.c: 158: lcd_write_char(7,0,0x37);
+   210  007FD4  0E00               	movlw	0
+   211  007FD6  6E05               	movwf	lcd_write_char@y,c
+   212  007FD8  0E37               	movlw	55
+   213  007FDA  6E06               	movwf	lcd_write_char@buf,c
+   214  007FDC  0E07               	movlw	7
+   215  007FDE  EC41  F03F         	call	_lcd_write_char
+   216                           
+   217                           ;newmain.c: 159: lcd_write_char(8,0,0x38);
+   218  007FE2  0E00               	movlw	0
+   219  007FE4  6E05               	movwf	lcd_write_char@y,c
+   220  007FE6  0E38               	movlw	56
+   221  007FE8  6E06               	movwf	lcd_write_char@buf,c
+   222  007FEA  0E08               	movlw	8
+   223  007FEC  EC41  F03F         	call	_lcd_write_char
+   224                           
+   225                           ;newmain.c: 160: lcd_write_char(9,0,0x39);
+   226  007FF0  0E00               	movlw	0
+   227  007FF2  6E05               	movwf	lcd_write_char@y,c
+   228  007FF4  0E39               	movlw	57
+   229  007FF6  6E06               	movwf	lcd_write_char@buf,c
+   230  007FF8  0E09               	movlw	9
+   231  007FFA  EC41  F03F         	call	_lcd_write_char
+   232  007FFE  D7FF               	goto	l58
+   233  008000                     __end_of_main:
+   234                           	opt stack 0
+   235                           
+   236 ;; *************** function _lcdreset *****************
+   237 ;; Defined at:
+   238 ;;		line 110 in file "newmain.c"
+   239 ;; Parameters:    Size  Location     Type
+   240 ;;		None
+   241 ;; Auto vars:     Size  Location     Type
+   242 ;;		None
+   243 ;; Return value:  Size  Location     Type
+   244 ;;		None               void
+   245 ;; Registers used:
+   246 ;;		wreg, status,2, status,0, cstack
+   247 ;; Tracked objects:
+   248 ;;		On entry : 0/0
+   249 ;;		On exit  : 0/0
+   250 ;;		Unchanged: 0/0
+   251 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
+   252 ;;      Params:         0       0       0       0       0       0       0       0       0
+   253 ;;      Locals:         0       0       0       0       0       0       0       0       0
+   254 ;;      Temps:          0       0       0       0       0       0       0       0       0
+   255 ;;      Totals:         0       0       0       0       0       0       0       0       0
+   256 ;;Total ram usage:        0 bytes
+   257 ;; Hardware stack levels used:    1
+   258 ;; Hardware stack levels required when called:    2
+   259 ;; This function calls:
+   260 ;;		_delay
+   261 ;;		_lcd_write_com
+   262 ;;		_lcd_write_com_busy
+   263 ;; This function is called by:
+   264 ;;		_main
+   265 ;; This function uses a non-reentrant model
+   266 ;;
+   267                           
+   268                           	psect	text1
+   269  007F08                     __ptext1:
+   270                           	opt stack 0
+   271  007F08                     _lcdreset:
+   272                           	opt stack 28
+   273                           
+   274                           ;newmain.c: 112: delay(150);
+   275                           
+   276                           ;incstack = 0
+   277  007F08  0E00               	movlw	0
+   278  007F0A  6E02               	movwf	delay@t+1,c
+   279  007F0C  0E96               	movlw	150
+   280  007F0E  6E01               	movwf	delay@t,c
+   281  007F10  EC69  F03F         	call	_delay	;wreg free
+   282                           
+   283                           ;newmain.c: 113: lcd_write_com(0x38);
+   284  007F14  0E38               	movlw	56
+   285  007F16  EC38  F03F         	call	_lcd_write_com
+   286                           
+   287                           ;newmain.c: 114: delay(50);
+   288  007F1A  0E00               	movlw	0
+   289  007F1C  6E02               	movwf	delay@t+1,c
+   290  007F1E  0E32               	movlw	50
+   291  007F20  6E01               	movwf	delay@t,c
+   292  007F22  EC69  F03F         	call	_delay	;wreg free
+   293                           
+   294                           ;newmain.c: 115: lcd_write_com(0x38);
+   295  007F26  0E38               	movlw	56
+   296  007F28  EC38  F03F         	call	_lcd_write_com
+   297                           
+   298                           ;newmain.c: 116: delay(50);
+   299  007F2C  0E00               	movlw	0
+   300  007F2E  6E02               	movwf	delay@t+1,c
+   301  007F30  0E32               	movlw	50
+   302  007F32  6E01               	movwf	delay@t,c
+   303  007F34  EC69  F03F         	call	_delay	;wreg free
+   304                           
+   305                           ;newmain.c: 117: lcd_write_com(0x38);
+   306  007F38  0E38               	movlw	56
+   307  007F3A  EC38  F03F         	call	_lcd_write_com
+   308                           
+   309                           ;newmain.c: 118: lcd_write_com_busy(0x38);
+   310  007F3E  0E38               	movlw	56
+   311  007F40  EC28  F03F         	call	_lcd_write_com_busy
+   312                           
+   313                           ;newmain.c: 119: lcd_write_com_busy(0x08);
+   314  007F44  0E08               	movlw	8
+   315  007F46  EC28  F03F         	call	_lcd_write_com_busy
+   316                           
+   317                           ;newmain.c: 120: lcd_write_com_busy(0x01);
+   318  007F4A  0E01               	movlw	1
+   319  007F4C  EC28  F03F         	call	_lcd_write_com_busy
+   320                           
+   321                           ;newmain.c: 121: lcd_write_com_busy(0x06);
+   322  007F50  0E06               	movlw	6
+   323  007F52  EC28  F03F         	call	_lcd_write_com_busy
+   324                           
+   325                           ;newmain.c: 122: lcd_write_com_busy(0x0c);
+   326  007F56  0E0C               	movlw	12
+   327  007F58  EC28  F03F         	call	_lcd_write_com_busy
+   328  007F5C  0012               	return		;funcret
+   329  007F5E                     __end_of_lcdreset:
+   330                           	opt stack 0
+   331                           
+   332 ;; *************** function _delay *****************
+   333 ;; Defined at:
+   334 ;;		line 16 in file "newmain.c"
+   335 ;; Parameters:    Size  Location     Type
+   336 ;;  t               2    0[COMRAM] unsigned int 
+   337 ;; Auto vars:     Size  Location     Type
+   338 ;;  j               2    4[COMRAM] unsigned int 
+   339 ;;  i               2    2[COMRAM] unsigned int 
+   340 ;; Return value:  Size  Location     Type
+   341 ;;		None               void
+   342 ;; Registers used:
+   343 ;;		wreg, status,2, status,0
+   344 ;; Tracked objects:
+   345 ;;		On entry : 0/0
+   346 ;;		On exit  : 0/0
+   347 ;;		Unchanged: 0/0
+   348 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
+   349 ;;      Params:         2       0       0       0       0       0       0       0       0
+   350 ;;      Locals:         4       0       0       0       0       0       0       0       0
+   351 ;;      Temps:          0       0       0       0       0       0       0       0       0
+   352 ;;      Totals:         6       0       0       0       0       0       0       0       0
+   353 ;;Total ram usage:        6 bytes
+   354 ;; Hardware stack levels used:    1
+   355 ;; This function calls:
+   356 ;;		Nothing
+   357 ;; This function is called by:
+   358 ;;		_lcdreset
+   359 ;; This function uses a non-reentrant model
+   360 ;;
+   361                           
+   362                           	psect	text2
+   363  007ED2                     __ptext2:
+   364                           	opt stack 0
+   365  007ED2                     _delay:
+   366                           	opt stack 29
+   367                           
+   368                           ;newmain.c: 18: unsigned int i,j;
+   369                           ;newmain.c: 19: for(i=0;i<t;i++)
+   370                           
+   371                           ;incstack = 0
+   372  007ED2  0E00               	movlw	0
+   373  007ED4  6E04               	movwf	delay@i+1,c
+   374  007ED6  0E00               	movlw	0
+   375  007ED8  6E03               	movwf	delay@i,c
+   376  007EDA  D00F               	goto	l770
+   377  007EDC                     l758:
+   378                           
+   379                           ;newmain.c: 20: {
+   380                           ;newmain.c: 21: for(j=0;j<10;j++);
+   381  007EDC  0E00               	movlw	0
+   382  007EDE  6E06               	movwf	delay@j+1,c
+   383  007EE0  0E00               	movlw	0
+   384  007EE2  6E05               	movwf	delay@j,c
+   385  007EE4                     l760:
+   386  007EE4  5006               	movf	delay@j+1,w,c
+   387  007EE6  E107               	bnz	l768
+   388  007EE8  0E0A               	movlw	10
+   389  007EEA  5C05               	subwf	delay@j,w,c
+   390  007EEC  B0D8               	btfsc	status,0,c
+   391  007EEE  D003               	goto	l768
+   392  007EF0  4A05               	infsnz	delay@j,f,c
+   393  007EF2  2A06               	incf	delay@j+1,f,c
+   394  007EF4  D7F7               	goto	l760
+   395  007EF6                     l768:
+   396  007EF6  4A03               	infsnz	delay@i,f,c
+   397  007EF8  2A04               	incf	delay@i+1,f,c
+   398  007EFA                     l770:
+   399  007EFA  5001               	movf	delay@t,w,c
+   400  007EFC  5C03               	subwf	delay@i,w,c
+   401  007EFE  5002               	movf	delay@t+1,w,c
+   402  007F00  5804               	subwfb	delay@i+1,w,c
+   403  007F02  B0D8               	btfsc	status,0,c
+   404  007F04  0012               	return	
+   405  007F06  D7EA               	goto	l758
+   406  007F08                     __end_of_delay:
+   407                           	opt stack 0
+   408                           status	equ	0xFD8
+   409                           
+   410 ;; *************** function _lcd_write_char *****************
+   411 ;; Defined at:
+   412 ;;		line 131 in file "newmain.c"
+   413 ;; Parameters:    Size  Location     Type
+   414 ;;  x               1    wreg     unsigned char 
+   415 ;;  y               1    4[COMRAM] unsigned char 
+   416 ;;  buf             1    5[COMRAM] unsigned char 
+   417 ;; Auto vars:     Size  Location     Type
+   418 ;;  x               1    6[COMRAM] unsigned char 
+   419 ;; Return value:  Size  Location     Type
+   420 ;;		None               void
+   421 ;; Registers used:
+   422 ;;		wreg, status,2, status,0, cstack
+   423 ;; Tracked objects:
+   424 ;;		On entry : 0/0
+   425 ;;		On exit  : 0/0
+   426 ;;		Unchanged: 0/0
+   427 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
+   428 ;;      Params:         2       0       0       0       0       0       0       0       0
+   429 ;;      Locals:         1       0       0       0       0       0       0       0       0
+   430 ;;      Temps:          0       0       0       0       0       0       0       0       0
+   431 ;;      Totals:         3       0       0       0       0       0       0       0       0
+   432 ;;Total ram usage:        3 bytes
+   433 ;; Hardware stack levels used:    1
+   434 ;; Hardware stack levels required when called:    3
+   435 ;; This function calls:
+   436 ;;		_lcd_write_address
+   437 ;;		_lcd_write_data
+   438 ;; This function is called by:
+   439 ;;		_main
+   440 ;; This function uses a non-reentrant model
+   441 ;;
+   442                           
+   443                           	psect	text3
+   444  007E82                     __ptext3:
+   445                           	opt stack 0
+   446  007E82                     _lcd_write_char:
+   447                           	opt stack 27
+   448                           
+   449                           ;incstack = 0
+   450                           ;lcd_write_char@x stored from wreg
+   451  007E82  6E07               	movwf	lcd_write_char@x,c
+   452                           
+   453                           ;newmain.c: 133: lcd_write_address(x,y);
+   454  007E84  C005  F003         	movff	lcd_write_char@y,lcd_write_address@y
+   455  007E88  5007               	movf	lcd_write_char@x,w,c
+   456  007E8A  EC56  F03F         	call	_lcd_write_address
+   457                           
+   458                           ;newmain.c: 134: lcd_write_data(buf);
+   459  007E8E  5006               	movf	lcd_write_char@buf,w,c
+   460  007E90  EC4B  F03F         	call	_lcd_write_data
+   461  007E94  0012               	return		;funcret
+   462  007E96                     __end_of_lcd_write_char:
+   463                           	opt stack 0
+   464                           status	equ	0xFD8
+   465                           
+   466 ;; *************** function _lcd_write_data *****************
+   467 ;; Defined at:
+   468 ;;		line 77 in file "newmain.c"
+   469 ;; Parameters:    Size  Location     Type
+   470 ;;  databuf         1    wreg     unsigned char 
+   471 ;; Auto vars:     Size  Location     Type
+   472 ;;  databuf         1    0[COMRAM] unsigned char 
+   473 ;; Return value:  Size  Location     Type
+   474 ;;		None               void
+   475 ;; Registers used:
+   476 ;;		wreg, cstack
+   477 ;; Tracked objects:
+   478 ;;		On entry : 0/0
+   479 ;;		On exit  : 0/0
+   480 ;;		Unchanged: 0/0
+   481 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
+   482 ;;      Params:         0       0       0       0       0       0       0       0       0
+   483 ;;      Locals:         1       0       0       0       0       0       0       0       0
+   484 ;;      Temps:          0       0       0       0       0       0       0       0       0
+   485 ;;      Totals:         1       0       0       0       0       0       0       0       0
+   486 ;;Total ram usage:        1 bytes
+   487 ;; Hardware stack levels used:    1
+   488 ;; Hardware stack levels required when called:    1
+   489 ;; This function calls:
+   490 ;;		_lcd_wait_busy
+   491 ;; This function is called by:
+   492 ;;		_lcd_write_char
+   493 ;; This function uses a non-reentrant model
+   494 ;;
+   495                           
+   496                           	psect	text4
+   497  007E96                     __ptext4:
+   498                           	opt stack 0
+   499  007E96                     _lcd_write_data:
+   500                           	opt stack 28
+   501                           
+   502                           ;incstack = 0
+   503                           ;lcd_write_data@databuf stored from wreg
+   504  007E96  6E01               	movwf	lcd_write_data@databuf,c
+   505                           
+   506                           ;newmain.c: 79: lcd_wait_busy();
+   507  007E98  EC2F  F03F         	call	_lcd_wait_busy	;wreg free
+   508                           
+   509                           ;newmain.c: 80: RB5=1;
+   510  007E9C  8A81               	bsf	3969,5,c	;volatile
+   511                           
+   512                           ;newmain.c: 81: RB4=0;
+   513  007E9E  9881               	bcf	3969,4,c	;volatile
+   514                           
+   515                           ;newmain.c: 82: PORTD=databuf;
+   516  007EA0  C001  FF83         	movff	lcd_write_data@databuf,3971	;volatile
+   517                           
+   518                           ;newmain.c: 83: RB3=1;
+   519  007EA4  8681               	bsf	3969,3,c	;volatile
+   520  007EA6  F000               	nop		;# 
+   521                           
+   522                           ;newmain.c: 85: RB3=0;
+   523  007EA8  9681               	bcf	3969,3,c	;volatile
+   524  007EAA  0012               	return		;funcret
+   525  007EAC                     __end_of_lcd_write_data:
+   526                           	opt stack 0
+   527                           status	equ	0xFD8
+   528                           
+   529 ;; *************** function _lcd_write_address *****************
+   530 ;; Defined at:
+   531 ;;		line 94 in file "newmain.c"
+   532 ;; Parameters:    Size  Location     Type
+   533 ;;  x               1    wreg     unsigned char 
+   534 ;;  y               1    2[COMRAM] unsigned char 
+   535 ;; Auto vars:     Size  Location     Type
+   536 ;;  x               1    3[COMRAM] unsigned char 
+   537 ;; Return value:  Size  Location     Type
+   538 ;;		None               void
+   539 ;; Registers used:
+   540 ;;		wreg, status,2, status,0, cstack
+   541 ;; Tracked objects:
+   542 ;;		On entry : 0/0
+   543 ;;		On exit  : 0/0
+   544 ;;		Unchanged: 0/0
+   545 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
+   546 ;;      Params:         1       0       0       0       0       0       0       0       0
+   547 ;;      Locals:         1       0       0       0       0       0       0       0       0
+   548 ;;      Temps:          0       0       0       0       0       0       0       0       0
+   549 ;;      Totals:         2       0       0       0       0       0       0       0       0
+   550 ;;Total ram usage:        2 bytes
+   551 ;; Hardware stack levels used:    1
+   552 ;; Hardware stack levels required when called:    2
+   553 ;; This function calls:
+   554 ;;		_lcd_write_com_busy
+   555 ;; This function is called by:
+   556 ;;		_lcd_write_char
+   557 ;; This function uses a non-reentrant model
+   558 ;;
+   559                           
+   560                           	psect	text5
+   561  007EAC                     __ptext5:
+   562                           	opt stack 0
+   563  007EAC                     _lcd_write_address:
+   564                           	opt stack 27
+   565                           
+   566                           ;incstack = 0
+   567                           ;lcd_write_address@x stored from wreg
+   568  007EAC  6E04               	movwf	lcd_write_address@x,c
+   569                           
+   570                           ;newmain.c: 96: x&=0x0f;
+   571  007EAE  0E0F               	movlw	15
+   572  007EB0  1604               	andwf	lcd_write_address@x,f,c
+   573                           
+   574                           ;newmain.c: 97: y&=0x01;
+   575  007EB2  0E01               	movlw	1
+   576  007EB4  1603               	andwf	lcd_write_address@y,f,c
+   577                           
+   578                           ;newmain.c: 98: if(y==0x00)
+   579  007EB6  5003               	movf	lcd_write_address@y,w,c
+   580  007EB8  A4D8               	btfss	status,2,c
+   581  007EBA  D005               	goto	l778
+   582                           
+   583                           ;newmain.c: 99: lcd_write_com_busy(x|0x80);
+   584  007EBC  5004               	movf	lcd_write_address@x,w,c
+   585  007EBE  0980               	iorlw	128
+   586  007EC0  EC28  F03F         	call	_lcd_write_com_busy
+   587  007EC4  0012               	return	
+   588  007EC6                     l778:
+   589                           
+   590                           ;newmain.c: 100: else
+   591                           ;newmain.c: 101: lcd_write_com_busy((x+0x40)|0x80);
+   592  007EC6  5004               	movf	lcd_write_address@x,w,c
+   593  007EC8  0F40               	addlw	64
+   594  007ECA  0980               	iorlw	128
+   595  007ECC  EC28  F03F         	call	_lcd_write_com_busy
+   596  007ED0  0012               	return	
+   597  007ED2                     __end_of_lcd_write_address:
+   598                           	opt stack 0
+   599                           status	equ	0xFD8
+   600                           
+   601 ;; *************** function _lcd_write_com_busy *****************
+   602 ;; Defined at:
+   603 ;;		line 65 in file "newmain.c"
+   604 ;; Parameters:    Size  Location     Type
+   605 ;;  combuf          1    wreg     unsigned char 
+   606 ;; Auto vars:     Size  Location     Type
+   607 ;;  combuf          1    1[COMRAM] unsigned char 
+   608 ;; Return value:  Size  Location     Type
+   609 ;;		None               void
+   610 ;; Registers used:
+   611 ;;		wreg, status,2, cstack
+   612 ;; Tracked objects:
+   613 ;;		On entry : 0/0
+   614 ;;		On exit  : 0/0
+   615 ;;		Unchanged: 0/0
+   616 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
+   617 ;;      Params:         0       0       0       0       0       0       0       0       0
+   618 ;;      Locals:         1       0       0       0       0       0       0       0       0
+   619 ;;      Temps:          0       0       0       0       0       0       0       0       0
+   620 ;;      Totals:         1       0       0       0       0       0       0       0       0
+   621 ;;Total ram usage:        1 bytes
+   622 ;; Hardware stack levels used:    1
+   623 ;; Hardware stack levels required when called:    1
+   624 ;; This function calls:
+   625 ;;		_lcd_wait_busy
+   626 ;;		_lcd_write_com
+   627 ;; This function is called by:
+   628 ;;		_lcd_write_address
+   629 ;;		_lcdreset
+   630 ;; This function uses a non-reentrant model
+   631 ;;
+   632                           
+   633                           	psect	text6
+   634  007E50                     __ptext6:
+   635                           	opt stack 0
+   636  007E50                     _lcd_write_com_busy:
+   637                           	opt stack 28
+   638                           
+   639                           ;incstack = 0
+   640                           ;lcd_write_com_busy@combuf stored from wreg
+   641  007E50  6E02               	movwf	lcd_write_com_busy@combuf,c
+   642                           
+   643                           ;newmain.c: 67: lcd_wait_busy();
+   644  007E52  EC2F  F03F         	call	_lcd_wait_busy	;wreg free
+   645                           
+   646                           ;newmain.c: 68: lcd_write_com(combuf);
+   647  007E56  5002               	movf	lcd_write_com_busy@combuf,w,c
+   648  007E58  EC38  F03F         	call	_lcd_write_com
+   649  007E5C  0012               	return		;funcret
+   650  007E5E                     __end_of_lcd_write_com_busy:
+   651                           	opt stack 0
+   652                           status	equ	0xFD8
+   653                           
+   654 ;; *************** function _lcd_write_com *****************
+   655 ;; Defined at:
+   656 ;;		line 49 in file "newmain.c"
+   657 ;; Parameters:    Size  Location     Type
+   658 ;;  combuf          1    wreg     unsigned char 
+   659 ;; Auto vars:     Size  Location     Type
+   660 ;;  combuf          1    0[COMRAM] unsigned char 
+   661 ;; Return value:  Size  Location     Type
+   662 ;;		None               void
+   663 ;; Registers used:
+   664 ;;		wreg
+   665 ;; Tracked objects:
+   666 ;;		On entry : 0/0
+   667 ;;		On exit  : 0/0
+   668 ;;		Unchanged: 0/0
+   669 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
+   670 ;;      Params:         0       0       0       0       0       0       0       0       0
+   671 ;;      Locals:         1       0       0       0       0       0       0       0       0
+   672 ;;      Temps:          0       0       0       0       0       0       0       0       0
+   673 ;;      Totals:         1       0       0       0       0       0       0       0       0
+   674 ;;Total ram usage:        1 bytes
+   675 ;; Hardware stack levels used:    1
+   676 ;; This function calls:
+   677 ;;		Nothing
+   678 ;; This function is called by:
+   679 ;;		_lcd_write_com_busy
+   680 ;;		_lcdreset
+   681 ;; This function uses a non-reentrant model
+   682 ;;
+   683                           
+   684                           	psect	text7
+   685  007E70                     __ptext7:
+   686                           	opt stack 0
+   687  007E70                     _lcd_write_com:
+   688                           	opt stack 28
+   689                           
+   690                           ;incstack = 0
+   691                           ;lcd_write_com@combuf stored from wreg
+   692  007E70  6E01               	movwf	lcd_write_com@combuf,c
+   693                           
+   694                           ;newmain.c: 51: RB5=0;
+   695  007E72  9A81               	bcf	3969,5,c	;volatile
+   696                           
+   697                           ;newmain.c: 52: RB4=0;
+   698  007E74  9881               	bcf	3969,4,c	;volatile
+   699                           
+   700                           ;newmain.c: 53: PORTD=combuf;
+   701  007E76  C001  FF83         	movff	lcd_write_com@combuf,3971	;volatile
+   702                           
+   703                           ;newmain.c: 54: RB3=1;
+   704  007E7A  8681               	bsf	3969,3,c	;volatile
+   705  007E7C  F000               	nop		;# 
+   706                           
+   707                           ;newmain.c: 56: RB3=0;
+   708  007E7E  9681               	bcf	3969,3,c	;volatile
+   709  007E80  0012               	return		;funcret
+   710  007E82                     __end_of_lcd_write_com:
+   711                           	opt stack 0
+   712                           status	equ	0xFD8
+   713                           
+   714 ;; *************** function _lcd_wait_busy *****************
+   715 ;; Defined at:
+   716 ;;		line 32 in file "newmain.c"
+   717 ;; Parameters:    Size  Location     Type
+   718 ;;		None
+   719 ;; Auto vars:     Size  Location     Type
+   720 ;;		None
+   721 ;; Return value:  Size  Location     Type
+   722 ;;		None               void
+   723 ;; Registers used:
+   724 ;;		None
+   725 ;; Tracked objects:
+   726 ;;		On entry : 0/0
+   727 ;;		On exit  : 0/0
+   728 ;;		Unchanged: 0/0
+   729 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
+   730 ;;      Params:         0       0       0       0       0       0       0       0       0
+   731 ;;      Locals:         0       0       0       0       0       0       0       0       0
+   732 ;;      Temps:          0       0       0       0       0       0       0       0       0
+   733 ;;      Totals:         0       0       0       0       0       0       0       0       0
+   734 ;;Total ram usage:        0 bytes
+   735 ;; Hardware stack levels used:    1
+   736 ;; This function calls:
+   737 ;;		Nothing
+   738 ;; This function is called by:
+   739 ;;		_lcd_write_com_busy
+   740 ;;		_lcd_write_data
+   741 ;; This function uses a non-reentrant model
+   742 ;;
+   743                           
+   744                           	psect	text8
+   745  007E5E                     __ptext8:
+   746                           	opt stack 0
+   747  007E5E                     _lcd_wait_busy:
+   748                           	opt stack 28
+   749                           
+   750                           ;newmain.c: 34: TRISD7=1;
+   751                           
+   752                           ;incstack = 0
+   753  007E5E  8E95               	bsf	3989,7,c	;volatile
+   754                           
+   755                           ;newmain.c: 35: RB5=0;
+   756  007E60  9A81               	bcf	3969,5,c	;volatile
+   757                           
+   758                           ;newmain.c: 36: RB4=1;
+   759  007E62  8881               	bsf	3969,4,c	;volatile
+   760                           
+   761                           ;newmain.c: 37: RB3=1;
+   762  007E64  8681               	bsf	3969,3,c	;volatile
+   763  007E66                     l31:
+   764  007E66  BE83               	btfsc	3971,7,c	;volatile
+   765  007E68  D7FE               	goto	l31
+   766                           
+   767                           ;newmain.c: 39: RB3=0;
+   768  007E6A  9681               	bcf	3969,3,c	;volatile
+   769                           
+   770                           ;newmain.c: 40: TRISD7=0;
+   771  007E6C  9E95               	bcf	3989,7,c	;volatile
+   772  007E6E  0012               	return		;funcret
+   773  007E70                     __end_of_lcd_wait_busy:
+   774                           	opt stack 0
+   775  0000                     status	equ	0xFD8
+   776                           status	equ	0xFD8
+   777                           
+   778                           	psect	rparam
+   779  0000                     status	equ	0xFD8
+
+
+Data Sizes:
+    Strings     0
+    Constant    0
+    Data        0
+    BSS         0
+    Persistent  0
+    Stack       0
+
+Auto Spaces:
+    Space          Size  Autos    Used
+    COMRAM           95      7       7
+    BANK0           160      0       0
+    BANK1           256      0       0
+    BANK2           256      0       0
+    BANK3           256      0       0
+    BANK4           256      0       0
+    BANK5           256      0       0
+    BANK6           256      0       0
+    BANK7           256      0       0
+
+Pointer List with Targets:
+
+    None.
+
+Critical Paths under _main in COMRAM
+
+    _main->_lcd_write_char
+    _lcdreset->_delay
+    _lcd_write_char->_lcd_write_address
+    _lcd_write_address->_lcd_write_com_busy
+    _lcd_write_com_busy->_lcd_write_com
+
+Critical Paths under _main in BANK0
+
+    None.
+
+Critical Paths under _main in BANK1
+
+    None.
+
+Critical Paths under _main in BANK2
+
+    None.
+
+Critical Paths under _main in BANK3
+
+    None.
+
+Critical Paths under _main in BANK4
+
+    None.
+
+Critical Paths under _main in BANK5
+
+    None.
+
+Critical Paths under _main in BANK6
+
+    None.
+
+Critical Paths under _main in BANK7
+
+    None.
+
+Call Graph Tables:
+
+ ---------------------------------------------------------------------------------
+ (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
+ ---------------------------------------------------------------------------------
+ (0) _main                                                 0     0      0    1348
+                     _lcd_write_char
+                           _lcdreset
+ ---------------------------------------------------------------------------------
+ (1) _lcdreset                                             0     0      0     266
+                              _delay
+                      _lcd_write_com
+                 _lcd_write_com_busy
+ ---------------------------------------------------------------------------------
+ (2) _delay                                                6     4      2     221
+                                              0 COMRAM     6     4      2
+ ---------------------------------------------------------------------------------
+ (1) _lcd_write_char                                       3     1      2    1082
+                                              4 COMRAM     3     1      2
+                  _lcd_write_address
+                     _lcd_write_data
+ ---------------------------------------------------------------------------------
+ (2) _lcd_write_data                                       1     1      0      15
+                                              0 COMRAM     1     1      0
+                      _lcd_wait_busy
+ ---------------------------------------------------------------------------------
+ (2) _lcd_write_address                                    2     1      1     141
+                                              2 COMRAM     2     1      1
+                 _lcd_write_com_busy
+ ---------------------------------------------------------------------------------
+ (2) _lcd_write_com_busy                                   1     1      0      30
+                                              1 COMRAM     1     1      0
+                      _lcd_wait_busy
+                      _lcd_write_com
+ ---------------------------------------------------------------------------------
+ (3) _lcd_write_com                                        1     1      0      15
+                                              0 COMRAM     1     1      0
+ ---------------------------------------------------------------------------------
+ (3) _lcd_wait_busy                                        0     0      0       0
+ ---------------------------------------------------------------------------------
+ Estimated maximum stack depth 3
+ ---------------------------------------------------------------------------------
+
+ Call Graph Graphs:
+
+ _main (ROOT)
+   _lcd_write_char
+     _lcd_write_address
+       _lcd_write_com_busy
+         _lcd_wait_busy
+         _lcd_write_com
+     _lcd_write_data
+       _lcd_wait_busy
+   _lcdreset
+     _delay
+     _lcd_write_com
+     _lcd_write_com_busy
+       _lcd_wait_busy
+       _lcd_write_com
+
+ Address spaces:
+Name               Size   Autos  Total    Cost      Usage
+BITCOMRAM           5F      0       0       0        0.0%
+EEDATA             100      0       0       0        0.0%
+NULL                 0      0       0       0        0.0%
+CODE                 0      0       0       0        0.0%
+COMRAM              5F      7       7       1        7.4%
+STACK                0      0       0       2        0.0%
+DATA                 0      0       0       3        0.0%
+BITBANK0            A0      0       0       4        0.0%
+BANK0               A0      0       0       5        0.0%
+BITBANK1           100      0       0       6        0.0%
+BANK1              100      0       0       7        0.0%
+BITBANK2           100      0       0       8        0.0%
+BANK2              100      0       0       9        0.0%
+BITBANK3           100      0       0      10        0.0%
+BANK3              100      0       0      11        0.0%
+BITBANK4           100      0       0      12        0.0%
+BANK4              100      0       0      13        0.0%
+BITBANK5           100      0       0      14        0.0%
+BANK5              100      0       0      15        0.0%
+BITBANK6           100      0       0      16        0.0%
+BANK6              100      0       0      17        0.0%
+BITBANK7           100      0       0      18        0.0%
+BANK7              100      0       0      19        0.0%
+ABS                  0      0       0      20        0.0%
+BIGRAM             7FF      0       0      21        0.0%
+BITSFR               0      0       0      40        0.0%
+SFR                  0      0       0      40        0.0%
+
+
+Microchip Technology PIC18 Macro Assembler V1.35 build -356382666 
+Symbol Table                                                                                   Tue Aug 25 14:30:19 2015
+
+                         l31 7E66                           l58 7FFE                  __CFG_BORV$1 000000  
+                        l760 7EE4                          l770 7EFA                          l758 7EDC  
+                        l768 7EF6                          l778 7EC6                          _RB3 007C0B  
+                        _RB4 007C0C                          _RB5 007C0D                          _RD7 007C1F  
+             ?_lcd_wait_busy 0001                 __CFG_FOSC$HS 000000                 __CFG_LVP$OFF 000000  
+               __CFG_WDT$OFF 000000              lcd_write_char@x 0007              lcd_write_char@y 0005  
+      lcd_write_data@databuf 0001       __end_of_lcd_write_char 7E96       __end_of_lcd_write_data 7EAC  
+                       _main 7F5E               ?_lcd_write_com 0001                         start 0000  
+              __CFG_MCLRE$ON 000000                 ___param_bank 000010                        ?_main 0001  
+                      _PORTD 000F83                        _TRISB 000F93                        _TRISD 000F95  
+                      _delay 7ED2              ?_lcd_write_char 0005              ?_lcd_write_data 0001  
+                      status 000FD8   __size_of_lcd_write_address 0026              __initialization 7E4A  
+               __end_of_main 8000              ??_lcd_wait_busy 0001                       ??_main 0008  
+              __activetblptr 000000                       ?_delay 0001                       _ADCON1 000FC1  
+                     _OSCCON 000FD3              ??_lcd_write_com 0001                       _TRISD7 007CAF  
+          lcd_write_char@buf 0006               __CFG_XINST$OFF 000000             __end_of_lcdreset 7F5E  
+                     delay@i 0003                       delay@j 0005                       delay@t 0001  
+   lcd_write_com_busy@combuf 0002                   __accesstop 0060      __end_of__initialization 7E4A  
+            __CFG_PBADEN$OFF 000000                ___rparam_used 000001  __size_of_lcd_write_com_busy 000E  
+             __pcstackCOMRAM 0001                __end_of_delay 7F08                      ??_delay 0003  
+           ??_lcd_write_char 0007             ??_lcd_write_data 0001           lcd_write_address@x 0004  
+         lcd_write_address@y 0003                    ?_lcdreset 0001                      __Hparam 0000  
+                    __Lparam 0000                      __pcinit 7E4A                      __ramtop 0800  
+                    __ptext0 7F5E                      __ptext1 7F08                      __ptext2 7ED2  
+                    __ptext3 7E82                      __ptext4 7E96                      __ptext5 7EAC  
+                    __ptext6 7E50                      __ptext7 7E70                      __ptext8 7E5E  
+       end_of_initialization 7E4A                   ??_lcdreset 0007        __end_of_lcd_wait_busy 7E70  
+      __end_of_lcd_write_com 7E82          start_initialization 7E4A   __end_of_lcd_write_com_busy 7E5E  
+         __CFG_BOR$ON_ACTIVE 000000            __size_of_lcdreset 0056               __size_of_delay 0036  
+        lcd_write_com@combuf 0001      __size_of_lcd_write_char 0014      __size_of_lcd_write_data 0016  
+                   __Hrparam 0000                     __Lrparam 0000                     _lcdreset 7F08  
+              __size_of_main 00A2       __size_of_lcd_wait_busy 0012           _lcd_write_com_busy 7E50  
+     __size_of_lcd_write_com 0012          ?_lcd_write_com_busy 0001         ??_lcd_write_com_busy 0002  
+          _lcd_write_address 7EAC           ?_lcd_write_address 0003          ??_lcd_write_address 0004  
+              _lcd_wait_busy 7E5E               _lcd_write_char 7E82               _lcd_write_data 7E96  
+  __end_of_lcd_write_address 7ED2                _lcd_write_com 7E70  

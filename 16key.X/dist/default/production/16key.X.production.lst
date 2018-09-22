@@ -1,0 +1,786 @@
+
+
+Microchip Technology PIC18 LITE Macro Assembler V1.35 build -356382666 
+                                                                                               Mon Aug 24 09:00:58 2015
+
+Microchip Technology Omniscient Code Generator v1.35 (Free mode) build 201507080246
+     1                           	processor	18F4550
+     2                           	fnconf	rparam,??,?,0
+     3                           	opt	pw 120
+     4                           	opt	lm
+     5                           	psect	smallconst,global,reloc=2,class=SMALLCONST,delta=1
+     6                           	psect	cinit,global,reloc=2,class=CODE,delta=1
+     7                           	psect	cstackCOMRAM,global,class=COMRAM,space=1,delta=1
+     8                           	psect	text0,global,reloc=2,class=CODE,delta=1
+     9                           	psect	text1,global,reloc=2,class=CODE,delta=1
+    10                           	psect	intsave_regs,global,class=BIGRAM,space=1,delta=1
+    11                           	psect	rparam,global,class=COMRAM,space=1,delta=1
+    12  0000                     
+    13                           	psect	smallconst
+    14  000800                     __psmallconst:
+    15                           	opt stack 0
+    16  000800  00                 	db	0
+    17  000801                     _LED:
+    18                           	opt stack 0
+    19  000801  3F                 	db	63
+    20  000802  06                 	db	6
+    21  000803  5B                 	db	91
+    22  000804  4F                 	db	79
+    23  000805  66                 	db	102
+    24  000806  6D                 	db	109
+    25  000807  7D                 	db	125
+    26  000808  07                 	db	7
+    27  000809  7F                 	db	127
+    28  00080A  6F                 	db	111
+    29  00080B  77                 	db	119
+    30  00080C  7C                 	db	124
+    31  00080D  39                 	db	57
+    32  00080E  5E                 	db	94
+    33  00080F  79                 	db	121
+    34  000810  71                 	db	113
+    35  000811                     __end_of_LED:
+    36                           	opt stack 0
+    37  0000                     _ADCON1	set	4033
+    38  0000                     _OSCCON	set	4051
+    39  0000                     _PORTD	set	3971
+    40  0000                     _TRISB	set	3987
+    41  0000                     _TRISD	set	3989
+    42  0000                     _RB0	set	31752
+    43  0000                     _RB1	set	31753
+    44  0000                     _RB2	set	31754
+    45  0000                     _RB3	set	31755
+    46  0000                     _RB4	set	31756
+    47  0000                     _RB5	set	31757
+    48  0000                     _RB6	set	31758
+    49  0000                     _RB7	set	31759
+    50                           
+    51                           ; #config settings
+    52  000811  00                 	db	0	; dummy byte at the end
+    53  0000                     
+    54                           	psect	cinit
+    55  0009F8                     __pcinit:
+    56                           	opt stack 0
+    57  0009F8                     start_initialization:
+    58                           	opt stack 0
+    59  0009F8                     __initialization:
+    60                           	opt stack 0
+    61  0009F8                     end_of_initialization:
+    62                           	opt stack 0
+    63  0009F8                     __end_of__initialization:
+    64                           	opt stack 0
+    65  0009F8  0E00               	movlw	low (__Lsmallconst shr (0+16))
+    66  0009FA  6EF8               	movwf	tblptru,c
+    67  0009FC  0E08               	movlw	high __Lsmallconst
+    68  0009FE  6EF7               	movwf	tblptrh,c
+    69  000A00  0100               	movlb	0
+    70  000A02  EF09  F004         	goto	_main	;jump to C main() function
+    71                           tblptru	equ	0xFF8
+    72                           tblptrh	equ	0xFF7
+    73                           
+    74                           	psect	cstackCOMRAM
+    75  000001                     __pcstackCOMRAM:
+    76                           	opt stack 0
+    77  000001                     main@keybuf:
+    78                           	opt stack 0
+    79                           
+    80                           ; 1 bytes @ 0x0
+    81  000001                     	ds	1
+    82                           tblptru	equ	0xFF8
+    83                           tblptrh	equ	0xFF7
+    84                           
+    85 ;;
+    86 ;;Main: autosize = 0, tempsize = 0, incstack = 0, save=0
+    87 ;;
+    88 ;; *************** function _main *****************
+    89 ;; Defined at:
+    90 ;;		line 147 in file "newmain.c"
+    91 ;; Parameters:    Size  Location     Type
+    92 ;;		None
+    93 ;; Auto vars:     Size  Location     Type
+    94 ;;  keybuf          1    0[COMRAM] unsigned char 
+    95 ;; Return value:  Size  Location     Type
+    96 ;;		None               void
+    97 ;; Registers used:
+    98 ;;		wreg, status,2, status,0, tblptrl, tblptrh, tblptru, cstack
+    99 ;; Tracked objects:
+   100 ;;		On entry : 0/0
+   101 ;;		On exit  : 0/0
+   102 ;;		Unchanged: 0/0
+   103 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
+   104 ;;      Params:         0       0       0       0       0       0       0       0       0
+   105 ;;      Locals:         1       0       0       0       0       0       0       0       0
+   106 ;;      Temps:          0       0       0       0       0       0       0       0       0
+   107 ;;      Totals:         1       0       0       0       0       0       0       0       0
+   108 ;;Total ram usage:        1 bytes
+   109 ;; Hardware stack levels required when called:    1
+   110 ;; This function calls:
+   111 ;;		_key
+   112 ;; This function is called by:
+   113 ;;		Startup code after reset
+   114 ;; This function uses a non-reentrant model
+   115 ;;
+   116                           
+   117                           	psect	text0
+   118  000812                     __ptext0:
+   119                           	opt stack 0
+   120  000812                     _main:
+   121                           	opt stack 30
+   122                           
+   123                           ;newmain.c: 149: unsigned char keybuf;
+   124                           ;newmain.c: 150: OSCCON=0X00;
+   125                           
+   126                           ;incstack = 0
+   127  000812  0E00               	movlw	0
+   128  000814  6ED3               	movwf	4051,c	;volatile
+   129                           
+   130                           ;newmain.c: 151: ADCON1=0X0f;
+   131  000816  0E0F               	movlw	15
+   132  000818  6EC1               	movwf	4033,c	;volatile
+   133                           
+   134                           ;newmain.c: 152: TRISD=0B00000000;
+   135  00081A  0E00               	movlw	0
+   136  00081C  6E95               	movwf	3989,c	;volatile
+   137                           
+   138                           ;newmain.c: 153: TRISB=0B11110000;
+   139  00081E  0EF0               	movlw	240
+   140  000820  6E93               	movwf	3987,c	;volatile
+   141  000822                     l791:
+   142                           
+   143                           ;newmain.c: 155: {
+   144                           ;newmain.c: 156: keybuf=key();
+   145  000822  EC9A  F004         	call	_key	;wreg free
+   146  000826  6E01               	movwf	main@keybuf,c
+   147                           
+   148                           ;newmain.c: 157: if(keybuf==1) PORTD=LED[0];
+   149  000828  0401               	decf	main@keybuf,w,c
+   150  00082A  A4D8               	btfss	status,2,c
+   151  00082C  D003               	goto	l797
+   152  00082E  0E01               	movlw	low _LED
+   153  000830  6EF6               	movwf	tblptrl,c
+   154  000832                     	if	0	;There is only one active tblptr byte
+   155  000832                     	endif
+   156  000832                     	if	0	;There are less than 3 active tblptr bytes
+   157  000832  D008               	goto	L1
+   158  000834                     l797:
+   159                           
+   160                           ;newmain.c: 158: else if(keybuf==2) PORTD=LED[1];
+   161  000834  0E02               	movlw	2
+   162  000836  1801               	xorwf	main@keybuf,w,c
+   163  000838  A4D8               	btfss	status,2,c
+   164  00083A  D008               	goto	l801
+   165  00083C  0E02               	movlw	low (_LED+1)
+   166  00083E  6EF6               	movwf	tblptrl,c
+   167  000840  0E08               	movlw	high (_LED+1)
+   168  000842  D073               	goto	L15
+   169  000844                     L1:
+   170  000844                     	endif
+   171  000844  0008               	tblrd		*
+   172  000846  CFF5 FF83          	movff	tablat,3971	;volatile
+   173  00084A  D7EB               	goto	l791
+   174  00084C                     l801:
+   175                           
+   176                           ;newmain.c: 159: else if(keybuf==3) PORTD=LED[2];
+   177  00084C  0E03               	movlw	3
+   178  00084E  1801               	xorwf	main@keybuf,w,c
+   179  000850  A4D8               	btfss	status,2,c
+   180  000852  D004               	goto	l805
+   181  000854  0E03               	movlw	low (_LED+2)
+   182  000856  6EF6               	movwf	tblptrl,c
+   183  000858  0E08               	movlw	high (_LED+2)
+   184  00085A  D067               	goto	L15
+   185  00085C                     l805:
+   186                           
+   187                           ;newmain.c: 160: else if(keybuf==4) PORTD=LED[3];
+   188  00085C  0E04               	movlw	4
+   189  00085E  1801               	xorwf	main@keybuf,w,c
+   190  000860  A4D8               	btfss	status,2,c
+   191  000862  D004               	goto	l809
+   192  000864  0E04               	movlw	low (_LED+3)
+   193  000866  6EF6               	movwf	tblptrl,c
+   194  000868  0E08               	movlw	high (_LED+3)
+   195  00086A  D05F               	goto	L15
+   196  00086C                     l809:
+   197                           
+   198                           ;newmain.c: 161: else if(keybuf==5) PORTD=LED[4];
+   199  00086C  0E05               	movlw	5
+   200  00086E  1801               	xorwf	main@keybuf,w,c
+   201  000870  A4D8               	btfss	status,2,c
+   202  000872  D004               	goto	l813
+   203  000874  0E05               	movlw	low (_LED+4)
+   204  000876  6EF6               	movwf	tblptrl,c
+   205  000878  0E08               	movlw	high (_LED+4)
+   206  00087A  D057               	goto	L15
+   207  00087C                     l813:
+   208                           
+   209                           ;newmain.c: 162: else if(keybuf==6) PORTD=LED[5];
+   210  00087C  0E06               	movlw	6
+   211  00087E  1801               	xorwf	main@keybuf,w,c
+   212  000880  A4D8               	btfss	status,2,c
+   213  000882  D004               	goto	l817
+   214  000884  0E06               	movlw	low (_LED+5)
+   215  000886  6EF6               	movwf	tblptrl,c
+   216  000888  0E08               	movlw	high (_LED+5)
+   217  00088A  D04F               	goto	L15
+   218  00088C                     l817:
+   219                           
+   220                           ;newmain.c: 163: else if(keybuf==7) PORTD=LED[6];
+   221  00088C  0E07               	movlw	7
+   222  00088E  1801               	xorwf	main@keybuf,w,c
+   223  000890  A4D8               	btfss	status,2,c
+   224  000892  D004               	goto	l821
+   225  000894  0E07               	movlw	low (_LED+6)
+   226  000896  6EF6               	movwf	tblptrl,c
+   227  000898  0E08               	movlw	high (_LED+6)
+   228  00089A  D047               	goto	L15
+   229  00089C                     l821:
+   230                           
+   231                           ;newmain.c: 164: else if(keybuf==8) PORTD=LED[7];
+   232  00089C  0E08               	movlw	8
+   233  00089E  1801               	xorwf	main@keybuf,w,c
+   234  0008A0  A4D8               	btfss	status,2,c
+   235  0008A2  D004               	goto	l825
+   236  0008A4  0E08               	movlw	low (_LED+7)
+   237  0008A6  6EF6               	movwf	tblptrl,c
+   238  0008A8  0E08               	movlw	high (_LED+7)
+   239  0008AA  D03F               	goto	L15
+   240  0008AC                     l825:
+   241                           
+   242                           ;newmain.c: 165: else if(keybuf==9) PORTD=LED[8];
+   243  0008AC  0E09               	movlw	9
+   244  0008AE  1801               	xorwf	main@keybuf,w,c
+   245  0008B0  A4D8               	btfss	status,2,c
+   246  0008B2  D004               	goto	l829
+   247  0008B4  0E09               	movlw	low (_LED+8)
+   248  0008B6  6EF6               	movwf	tblptrl,c
+   249  0008B8  0E08               	movlw	high (_LED+8)
+   250  0008BA  D037               	goto	L15
+   251  0008BC                     l829:
+   252                           
+   253                           ;newmain.c: 166: else if(keybuf==10) PORTD=LED[9];
+   254  0008BC  0E0A               	movlw	10
+   255  0008BE  1801               	xorwf	main@keybuf,w,c
+   256  0008C0  A4D8               	btfss	status,2,c
+   257  0008C2  D004               	goto	l833
+   258  0008C4  0E0A               	movlw	low (_LED+9)
+   259  0008C6  6EF6               	movwf	tblptrl,c
+   260  0008C8  0E08               	movlw	high (_LED+9)
+   261  0008CA  D02F               	goto	L15
+   262  0008CC                     l833:
+   263                           
+   264                           ;newmain.c: 167: else if(keybuf==11) PORTD=LED[10];
+   265  0008CC  0E0B               	movlw	11
+   266  0008CE  1801               	xorwf	main@keybuf,w,c
+   267  0008D0  A4D8               	btfss	status,2,c
+   268  0008D2  D004               	goto	l837
+   269  0008D4  0E0B               	movlw	low (_LED+10)
+   270  0008D6  6EF6               	movwf	tblptrl,c
+   271  0008D8  0E08               	movlw	high (_LED+10)
+   272  0008DA  D027               	goto	L15
+   273  0008DC                     l837:
+   274                           
+   275                           ;newmain.c: 168: else if(keybuf==12) PORTD=LED[11];
+   276  0008DC  0E0C               	movlw	12
+   277  0008DE  1801               	xorwf	main@keybuf,w,c
+   278  0008E0  A4D8               	btfss	status,2,c
+   279  0008E2  D004               	goto	l841
+   280  0008E4  0E0C               	movlw	low (_LED+11)
+   281  0008E6  6EF6               	movwf	tblptrl,c
+   282  0008E8  0E08               	movlw	high (_LED+11)
+   283  0008EA  D01F               	goto	L15
+   284  0008EC                     l841:
+   285                           
+   286                           ;newmain.c: 169: else if(keybuf==13) PORTD=LED[12];
+   287  0008EC  0E0D               	movlw	13
+   288  0008EE  1801               	xorwf	main@keybuf,w,c
+   289  0008F0  A4D8               	btfss	status,2,c
+   290  0008F2  D004               	goto	l845
+   291  0008F4  0E0D               	movlw	low (_LED+12)
+   292  0008F6  6EF6               	movwf	tblptrl,c
+   293  0008F8  0E08               	movlw	high (_LED+12)
+   294  0008FA  D017               	goto	L15
+   295  0008FC                     l845:
+   296                           
+   297                           ;newmain.c: 170: else if(keybuf==14) PORTD=LED[13];
+   298  0008FC  0E0E               	movlw	14
+   299  0008FE  1801               	xorwf	main@keybuf,w,c
+   300  000900  A4D8               	btfss	status,2,c
+   301  000902  D004               	goto	l849
+   302  000904  0E0E               	movlw	low (_LED+13)
+   303  000906  6EF6               	movwf	tblptrl,c
+   304  000908  0E08               	movlw	high (_LED+13)
+   305  00090A  D00F               	goto	L15
+   306  00090C                     l849:
+   307                           
+   308                           ;newmain.c: 171: else if(keybuf==15) PORTD=LED[14];
+   309  00090C  0E0F               	movlw	15
+   310  00090E  1801               	xorwf	main@keybuf,w,c
+   311  000910  A4D8               	btfss	status,2,c
+   312  000912  D004               	goto	l853
+   313  000914  0E0F               	movlw	low (_LED+14)
+   314  000916  6EF6               	movwf	tblptrl,c
+   315  000918  0E08               	movlw	high (_LED+14)
+   316  00091A  D007               	goto	L15
+   317  00091C                     l853:
+   318                           
+   319                           ;newmain.c: 172: else if(keybuf==16) PORTD=LED[15];
+   320  00091C  0E10               	movlw	16
+   321  00091E  1801               	xorwf	main@keybuf,w,c
+   322  000920  A4D8               	btfss	status,2,c
+   323  000922  D005               	goto	l857
+   324  000924  0E10               	movlw	low (_LED+15)
+   325  000926  6EF6               	movwf	tblptrl,c
+   326  000928  0E08               	movlw	high (_LED+15)
+   327  00092A                     L15:
+   328  00092A  6EF7               	movwf	tblptrh,c
+   329  00092C                     	if	0	;tblptru may be non-zero
+   330  00092C                     	endif
+   331  00092C                     	if	0	;tblptru may be non-zero
+   332  00092C  D78B               	goto	L1
+   333  00092E                     l857:
+   334                           
+   335                           ;newmain.c: 173: else PORTD=0;
+   336  00092E  0E00               	movlw	0
+   337  000930  6E83               	movwf	3971,c	;volatile
+   338  000932  D777               	goto	l791
+   339  000934                     __end_of_main:
+   340                           	opt stack 0
+   341                           tblptru	equ	0xFF8
+   342                           tblptrh	equ	0xFF7
+   343                           tblptrl	equ	0xFF6
+   344                           tablat	equ	0xFF5
+   345                           status	equ	0xFD8
+   346                           
+   347 ;; *************** function _key *****************
+   348 ;; Defined at:
+   349 ;;		line 40 in file "newmain.c"
+   350 ;; Parameters:    Size  Location     Type
+   351 ;;		None
+   352 ;; Auto vars:     Size  Location     Type
+   353 ;;		None
+   354 ;; Return value:  Size  Location     Type
+   355 ;;                  1    wreg      unsigned char 
+   356 ;; Registers used:
+   357 ;;		wreg
+   358 ;; Tracked objects:
+   359 ;;		On entry : 0/0
+   360 ;;		On exit  : 0/0
+   361 ;;		Unchanged: 0/0
+   362 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
+   363 ;;      Params:         0       0       0       0       0       0       0       0       0
+   364 ;;      Locals:         0       0       0       0       0       0       0       0       0
+   365 ;;      Temps:          0       0       0       0       0       0       0       0       0
+   366 ;;      Totals:         0       0       0       0       0       0       0       0       0
+   367 ;;Total ram usage:        0 bytes
+   368 ;; Hardware stack levels used:    1
+   369 ;; This function calls:
+   370 ;;		Nothing
+   371 ;; This function is called by:
+   372 ;;		_main
+   373 ;; This function uses a non-reentrant model
+   374 ;;
+   375                           
+   376                           	psect	text1
+   377  000934                     __ptext1:
+   378                           	opt stack 0
+   379  000934                     _key:
+   380                           	opt stack 30
+   381                           
+   382                           ;newmain.c: 42: RB0=0;
+   383                           
+   384                           ;incstack = 0
+   385  000934  9081               	bcf	3969,0,c	;volatile
+   386                           
+   387                           ;newmain.c: 43: RB1=1;
+   388  000936  8281               	bsf	3969,1,c	;volatile
+   389                           
+   390                           ;newmain.c: 44: RB2=1;
+   391  000938  8481               	bsf	3969,2,c	;volatile
+   392                           
+   393                           ;newmain.c: 45: RB3=1;
+   394  00093A  8681               	bsf	3969,3,c	;volatile
+   395  00093C  F000               	nop		;# 
+   396  00093E  F000               	nop		;# 
+   397  000940  F000               	nop		;# 
+   398  000942  F000               	nop		;# 
+   399                           
+   400                           ;newmain.c: 50: if(RB4==0)
+   401  000944  B881               	btfsc	3969,4,c	;volatile
+   402  000946  D002               	goto	l31
+   403                           
+   404                           ;newmain.c: 51: {
+   405                           ;newmain.c: 52: return 1;
+   406  000948  0E01               	movlw	1
+   407  00094A  0012               	return	
+   408  00094C                     l31:
+   409                           
+   410                           ;newmain.c: 54: else if(RB5==0)
+   411  00094C  BA81               	btfsc	3969,5,c	;volatile
+   412  00094E  D002               	goto	l34
+   413                           
+   414                           ;newmain.c: 55: {
+   415                           ;newmain.c: 56: return 2;
+   416  000950  0E02               	movlw	2
+   417  000952  0012               	return	
+   418  000954                     l34:
+   419                           
+   420                           ;newmain.c: 58: else if(RB6==0)
+   421  000954  BC81               	btfsc	3969,6,c	;volatile
+   422  000956  D002               	goto	l36
+   423                           
+   424                           ;newmain.c: 59: {
+   425                           ;newmain.c: 60: return 3;
+   426  000958  0E03               	movlw	3
+   427  00095A  0012               	return	
+   428  00095C                     l36:
+   429                           
+   430                           ;newmain.c: 62: else if(RB7==0)
+   431  00095C  BE81               	btfsc	3969,7,c	;volatile
+   432  00095E  D002               	goto	l33
+   433                           
+   434                           ;newmain.c: 63: {
+   435                           ;newmain.c: 64: return 4;
+   436  000960  0E04               	movlw	4
+   437  000962  0012               	return	
+   438  000964                     l33:
+   439                           
+   440                           ;newmain.c: 65: }
+   441                           ;newmain.c: 66: RB0=1;
+   442  000964  8081               	bsf	3969,0,c	;volatile
+   443                           
+   444                           ;newmain.c: 67: RB1=0;
+   445  000966  9281               	bcf	3969,1,c	;volatile
+   446                           
+   447                           ;newmain.c: 68: RB2=1;
+   448  000968  8481               	bsf	3969,2,c	;volatile
+   449                           
+   450                           ;newmain.c: 69: RB3=1;
+   451  00096A  8681               	bsf	3969,3,c	;volatile
+   452  00096C  F000               	nop		;# 
+   453  00096E  F000               	nop		;# 
+   454  000970  F000               	nop		;# 
+   455  000972  F000               	nop		;# 
+   456                           
+   457                           ;newmain.c: 74: if(RB4==0)
+   458  000974  B881               	btfsc	3969,4,c	;volatile
+   459  000976  D002               	goto	l39
+   460                           
+   461                           ;newmain.c: 75: {
+   462                           ;newmain.c: 76: return 5;
+   463  000978  0E05               	movlw	5
+   464  00097A  0012               	return	
+   465  00097C                     l39:
+   466                           
+   467                           ;newmain.c: 78: else if(RB5==0)
+   468  00097C  BA81               	btfsc	3969,5,c	;volatile
+   469  00097E  D002               	goto	l41
+   470                           
+   471                           ;newmain.c: 79: {
+   472                           ;newmain.c: 80: return 6;
+   473  000980  0E06               	movlw	6
+   474  000982  0012               	return	
+   475  000984                     l41:
+   476                           
+   477                           ;newmain.c: 82: else if(RB6==0)
+   478  000984  BC81               	btfsc	3969,6,c	;volatile
+   479  000986  D002               	goto	l43
+   480                           
+   481                           ;newmain.c: 83: {
+   482                           ;newmain.c: 84: return 7;
+   483  000988  0E07               	movlw	7
+   484  00098A  0012               	return	
+   485  00098C                     l43:
+   486                           
+   487                           ;newmain.c: 86: else if(RB7==0)
+   488  00098C  BE81               	btfsc	3969,7,c	;volatile
+   489  00098E  D002               	goto	l40
+   490                           
+   491                           ;newmain.c: 87: {
+   492                           ;newmain.c: 88: return 8;
+   493  000990  0E08               	movlw	8
+   494  000992  0012               	return	
+   495  000994                     l40:
+   496                           
+   497                           ;newmain.c: 89: }
+   498                           ;newmain.c: 90: RB0=1;
+   499  000994  8081               	bsf	3969,0,c	;volatile
+   500                           
+   501                           ;newmain.c: 91: RB1=1;
+   502  000996  8281               	bsf	3969,1,c	;volatile
+   503                           
+   504                           ;newmain.c: 92: RB2=0;
+   505  000998  9481               	bcf	3969,2,c	;volatile
+   506                           
+   507                           ;newmain.c: 93: RB3=1;
+   508  00099A  8681               	bsf	3969,3,c	;volatile
+   509  00099C  F000               	nop		;# 
+   510  00099E  F000               	nop		;# 
+   511  0009A0  F000               	nop		;# 
+   512  0009A2  F000               	nop		;# 
+   513                           
+   514                           ;newmain.c: 98: if(RB4==0)
+   515  0009A4  B881               	btfsc	3969,4,c	;volatile
+   516  0009A6  D002               	goto	l46
+   517                           
+   518                           ;newmain.c: 99: {
+   519                           ;newmain.c: 100: return 9;
+   520  0009A8  0E09               	movlw	9
+   521  0009AA  0012               	return	
+   522  0009AC                     l46:
+   523                           
+   524                           ;newmain.c: 102: else if(RB5==0)
+   525  0009AC  BA81               	btfsc	3969,5,c	;volatile
+   526  0009AE  D002               	goto	l48
+   527                           
+   528                           ;newmain.c: 103: {
+   529                           ;newmain.c: 104: return 10;
+   530  0009B0  0E0A               	movlw	10
+   531  0009B2  0012               	return	
+   532  0009B4                     l48:
+   533                           
+   534                           ;newmain.c: 106: else if(RB6==0)
+   535  0009B4  BC81               	btfsc	3969,6,c	;volatile
+   536  0009B6  D002               	goto	l50
+   537                           
+   538                           ;newmain.c: 107: {
+   539                           ;newmain.c: 108: return 11;
+   540  0009B8  0E0B               	movlw	11
+   541  0009BA  0012               	return	
+   542  0009BC                     l50:
+   543                           
+   544                           ;newmain.c: 110: else if(RB7==0)
+   545  0009BC  BE81               	btfsc	3969,7,c	;volatile
+   546  0009BE  D002               	goto	l47
+   547                           
+   548                           ;newmain.c: 111: {
+   549                           ;newmain.c: 112: return 12;
+   550  0009C0  0E0C               	movlw	12
+   551  0009C2  0012               	return	
+   552  0009C4                     l47:
+   553                           
+   554                           ;newmain.c: 113: }
+   555                           ;newmain.c: 114: RB0=1;
+   556  0009C4  8081               	bsf	3969,0,c	;volatile
+   557                           
+   558                           ;newmain.c: 115: RB1=1;
+   559  0009C6  8281               	bsf	3969,1,c	;volatile
+   560                           
+   561                           ;newmain.c: 116: RB2=1;
+   562  0009C8  8481               	bsf	3969,2,c	;volatile
+   563                           
+   564                           ;newmain.c: 117: RB3=0;
+   565  0009CA  9681               	bcf	3969,3,c	;volatile
+   566  0009CC  F000               	nop		;# 
+   567  0009CE  F000               	nop		;# 
+   568  0009D0  F000               	nop		;# 
+   569  0009D2  F000               	nop		;# 
+   570                           
+   571                           ;newmain.c: 122: if(RB4==0)
+   572  0009D4  B881               	btfsc	3969,4,c	;volatile
+   573  0009D6  D002               	goto	l53
+   574                           
+   575                           ;newmain.c: 123: {
+   576                           ;newmain.c: 124: return 13;
+   577  0009D8  0E0D               	movlw	13
+   578  0009DA  0012               	return	
+   579  0009DC                     l53:
+   580                           
+   581                           ;newmain.c: 126: else if(RB5==0)
+   582  0009DC  BA81               	btfsc	3969,5,c	;volatile
+   583  0009DE  D002               	goto	l55
+   584                           
+   585                           ;newmain.c: 127: {
+   586                           ;newmain.c: 128: return 14;
+   587  0009E0  0E0E               	movlw	14
+   588  0009E2  0012               	return	
+   589  0009E4                     l55:
+   590                           
+   591                           ;newmain.c: 130: else if(RB6==0)
+   592  0009E4  BC81               	btfsc	3969,6,c	;volatile
+   593  0009E6  D002               	goto	l57
+   594                           
+   595                           ;newmain.c: 131: {
+   596                           ;newmain.c: 132: return 15;
+   597  0009E8  0E0F               	movlw	15
+   598  0009EA  0012               	return	
+   599  0009EC                     l57:
+   600                           
+   601                           ;newmain.c: 134: else if(RB7==0)
+   602  0009EC  BE81               	btfsc	3969,7,c	;volatile
+   603  0009EE  D002               	goto	l785
+   604                           
+   605                           ;newmain.c: 135: {
+   606                           ;newmain.c: 136: return 16;
+   607  0009F0  0E10               	movlw	16
+   608  0009F2  0012               	return	
+   609  0009F4                     l785:
+   610                           
+   611                           ;newmain.c: 137: }
+   612                           ;newmain.c: 138: return 0;
+   613  0009F4  0E00               	movlw	0
+   614  0009F6  0012               	return	
+   615  0009F8                     __end_of_key:
+   616                           	opt stack 0
+   617                           tblptru	equ	0xFF8
+   618                           tblptrh	equ	0xFF7
+   619                           tblptrl	equ	0xFF6
+   620                           tablat	equ	0xFF5
+   621                           status	equ	0xFD8
+   622                           tblptru	equ	0xFF8
+   623                           tblptrh	equ	0xFF7
+   624                           tblptrl	equ	0xFF6
+   625                           tablat	equ	0xFF5
+   626                           status	equ	0xFD8
+   627                           
+   628                           	psect	rparam
+   629  0000                     tblptru	equ	0xFF8
+   630                           tblptrh	equ	0xFF7
+   631                           tblptrl	equ	0xFF6
+   632                           tablat	equ	0xFF5
+   633                           status	equ	0xFD8
+
+
+Data Sizes:
+    Strings     0
+    Constant    16
+    Data        0
+    BSS         0
+    Persistent  0
+    Stack       0
+
+Auto Spaces:
+    Space          Size  Autos    Used
+    COMRAM           95      1       1
+    BANK0           160      0       0
+    BANK1           256      0       0
+    BANK2           256      0       0
+    BANK3           256      0       0
+    BANK4           256      0       0
+    BANK5           256      0       0
+    BANK6           256      0       0
+    BANK7           256      0       0
+
+Pointer List with Targets:
+
+    None.
+
+Critical Paths under _main in COMRAM
+
+    None.
+
+Critical Paths under _main in BANK0
+
+    None.
+
+Critical Paths under _main in BANK1
+
+    None.
+
+Critical Paths under _main in BANK2
+
+    None.
+
+Critical Paths under _main in BANK3
+
+    None.
+
+Critical Paths under _main in BANK4
+
+    None.
+
+Critical Paths under _main in BANK5
+
+    None.
+
+Critical Paths under _main in BANK6
+
+    None.
+
+Critical Paths under _main in BANK7
+
+    None.
+
+Call Graph Tables:
+
+ ---------------------------------------------------------------------------------
+ (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
+ ---------------------------------------------------------------------------------
+ (0) _main                                                 1     1      0     240
+                                              0 COMRAM     1     1      0
+                                _key
+ ---------------------------------------------------------------------------------
+ (1) _key                                                  0     0      0       0
+ ---------------------------------------------------------------------------------
+ Estimated maximum stack depth 1
+ ---------------------------------------------------------------------------------
+
+ Call Graph Graphs:
+
+ _main (ROOT)
+   _key
+
+ Address spaces:
+Name               Size   Autos  Total    Cost      Usage
+BITCOMRAM           5F      0       0       0        0.0%
+EEDATA             100      0       0       0        0.0%
+NULL                 0      0       0       0        0.0%
+CODE                 0      0       0       0        0.0%
+COMRAM              5F      1       1       1        1.1%
+STACK                0      0       0       2        0.0%
+DATA                 0      0       0       3        0.0%
+BITBANK0            A0      0       0       4        0.0%
+BANK0               A0      0       0       5        0.0%
+BITBANK1           100      0       0       6        0.0%
+BANK1              100      0       0       7        0.0%
+BITBANK2           100      0       0       8        0.0%
+BANK2              100      0       0       9        0.0%
+BITBANK3           100      0       0      10        0.0%
+BANK3              100      0       0      11        0.0%
+BITBANK4           100      0       0      12        0.0%
+BANK4              100      0       0      13        0.0%
+BITBANK5           100      0       0      14        0.0%
+BANK5              100      0       0      15        0.0%
+BITBANK6           100      0       0      16        0.0%
+BANK6              100      0       0      17        0.0%
+BITBANK7           100      0       0      18        0.0%
+BANK7              100      0       0      19        0.0%
+ABS                  0      0       0      20        0.0%
+BIGRAM             7FF      0       0      21        0.0%
+BITSFR               0      0       0      40        0.0%
+SFR                  0      0       0      40        0.0%
+
+
+Microchip Technology PIC18 Macro Assembler V1.35 build -356382666 
+Symbol Table                                                                                   Mon Aug 24 09:00:58 2015
+
+                     l31 094C                       l40 0994                       l41 0984  
+                     l33 0964                       l50 09BC                       l34 0954  
+                     l43 098C                       l36 095C                       l53 09DC  
+                     l46 09AC                       l55 09E4                       l47 09C4  
+                     l39 097C                       l48 09B4                       l57 09EC  
+            __CFG_BORV$1 000000                      l801 084C                      l821 089C  
+                    l813 087C                      l805 085C                      l841 08EC  
+                    l833 08CC                      l825 08AC                      l817 088C  
+                    l809 086C                      l853 091C                      l845 08FC  
+                    l837 08DC                      l829 08BC                      l791 0822  
+                    l785 09F4                      l857 092E                      l849 090C  
+                    l797 0834                      _RB0 007C08                      _RB1 007C09  
+                    _RB2 007C0A                      _LED 0801                      _RB3 007C0B  
+                    _RB4 007C0C                      _RB5 007C0D                      _RB6 007C0E  
+                    _RB7 007C0F                      _key 0934             __CFG_FOSC$HS 000000  
+           __CFG_LVP$OFF 000000             __CFG_WDT$OFF 000000                     ?_key 0001  
+                   _main 0812                     start 0000            __CFG_MCLRE$ON 000000  
+           ___param_bank 000010                    ??_key 0001                    ?_main 0001  
+                  _PORTD 000F83                    _TRISB 000F93                    _TRISD 000F95  
+                  tablat 000FF5                    status 000FD8          __initialization 09F8  
+           __end_of_main 0934                   ??_main 0001            __activetblptr 000001  
+                 _ADCON1 000FC1                   _OSCCON 000FD3           __CFG_XINST$OFF 000000  
+           __mediumconst 0000                   tblptrh 000FF7                   tblptrl 000FF6  
+                 tblptru 000FF8               __accesstop 0060  __end_of__initialization 09F8  
+        __CFG_PBADEN$OFF 000000            ___rparam_used 000001           __pcstackCOMRAM 0001  
+                __Hparam 0000                  __Lparam 0000             __psmallconst 0800  
+                __pcinit 09F8                  __ramtop 0800                  __ptext0 0812  
+                __ptext1 0934             __size_of_key 00C4     end_of_initialization 09F8  
+             main@keybuf 0001      start_initialization 09F8              __end_of_LED 0811  
+            __end_of_key 09F8       __CFG_BOR$ON_ACTIVE 000000              __smallconst 0800  
+               __Hrparam 0000                 __Lrparam 0000             __Lsmallconst 0800  
+          __size_of_main 0122  

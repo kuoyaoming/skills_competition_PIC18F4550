@@ -1,0 +1,134 @@
+[p LITE_MODE AUTOSTATIC LFSROK EMI_WORD ]
+[d version 1.1 ]
+[d edition pro ]
+[d chip 18F4550 ]
+[d frameptr 4065 ]
+"62 C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\float.c
+[v ___ftpack __ftpack `(f  1 e 3 0 ]
+"86 C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\ftadd.c
+[v ___ftadd __ftadd `(f  1 e 3 0 ]
+"54 C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\ftdiv.c
+[v ___ftdiv __ftdiv `(f  1 e 3 0 ]
+"62 C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\ftmul.c
+[v ___ftmul __ftmul `(f  1 e 3 0 ]
+"20 C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\ftsub.c
+[v ___ftsub __ftsub `(f  1 e 3 0 ]
+"10 C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\sprcadd.c
+[v ___fladd __fladd `(d  1 e 3 0 ]
+"245
+[v ___flsub __flsub `(d  1 e 3 0 ]
+"11 C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\sprcdiv.c
+[v ___fldiv __fldiv `(d  1 e 3 0 ]
+"8 C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\sprcmul.c
+[v ___flmul __flmul `(d  1 e 3 0 ]
+"15 C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\Umul32.c
+[v ___lmul __lmul `(ul  1 e 4 0 ]
+"66 C:\kuotest\real task befriend.X\newfile.c
+[v _delay_ms delay_ms `(v  1 e 0 0 ]
+"72
+[v _SSEG_OUT SSEG_OUT `(v  1 e 0 0 ]
+"99
+[v _SCAN_OUT SCAN_OUT `(v  1 e 0 0 ]
+"132
+[v _main main `(v  1 e 0 0 ]
+"6187 C:\Program Files (x86)\Microchip\xc8\v1.35\include\pic18f4550.h
+[v _CMCON CMCON `VEuc  1 e 1 @4020 ]
+"7173
+[v _ADCON1 ADCON1 `VEuc  1 e 1 @4033 ]
+"10189
+[v _LATB0 LATB0 `VEb  1 e 0 @31824 ]
+"10191
+[v _LATB1 LATB1 `VEb  1 e 0 @31825 ]
+"10193
+[v _LATB2 LATB2 `VEb  1 e 0 @31826 ]
+"10195
+[v _LATB3 LATB3 `VEb  1 e 0 @31827 ]
+"10215
+[v _LATD0 LATD0 `VEb  1 e 0 @31840 ]
+"10217
+[v _LATD1 LATD1 `VEb  1 e 0 @31841 ]
+"10219
+[v _LATD2 LATD2 `VEb  1 e 0 @31842 ]
+"10221
+[v _LATD3 LATD3 `VEb  1 e 0 @31843 ]
+"10223
+[v _LATD4 LATD4 `VEb  1 e 0 @31844 ]
+"10225
+[v _LATD5 LATD5 `VEb  1 e 0 @31845 ]
+"10227
+[v _LATD6 LATD6 `VEb  1 e 0 @31846 ]
+"10229
+[v _LATD7 LATD7 `VEb  1 e 0 @31847 ]
+"10859
+[v _TRISB0 TRISB0 `VEb  1 e 0 @31896 ]
+"10861
+[v _TRISB1 TRISB1 `VEb  1 e 0 @31897 ]
+"10863
+[v _TRISB2 TRISB2 `VEb  1 e 0 @31898 ]
+"10865
+[v _TRISB3 TRISB3 `VEb  1 e 0 @31899 ]
+"10887
+[v _TRISD0 TRISD0 `VEb  1 e 0 @31912 ]
+"10889
+[v _TRISD1 TRISD1 `VEb  1 e 0 @31913 ]
+"10891
+[v _TRISD2 TRISD2 `VEb  1 e 0 @31914 ]
+"10893
+[v _TRISD3 TRISD3 `VEb  1 e 0 @31915 ]
+"10895
+[v _TRISD4 TRISD4 `VEb  1 e 0 @31916 ]
+"10897
+[v _TRISD5 TRISD5 `VEb  1 e 0 @31917 ]
+"10899
+[v _TRISD6 TRISD6 `VEb  1 e 0 @31918 ]
+"10901
+[v _TRISD7 TRISD7 `VEb  1 e 0 @31919 ]
+"132 C:\kuotest\real task befriend.X\newfile.c
+[v _main main `(v  1 e 0 0 ]
+{
+"134
+[v main@SCAN_COUNT SCAN_COUNT `uc  1 a 1 29 ]
+"135
+[v main@N1000 N1000 `uc  1 a 1 28 ]
+[v main@N100 N100 `uc  1 a 1 27 ]
+[v main@N10 N10 `uc  1 a 1 26 ]
+[v main@N1 N1 `uc  1 a 1 25 ]
+"134
+[v main@DELAY_COUNT DELAY_COUNT `uc  1 a 1 24 ]
+"192
+} 0
+"66
+[v _delay_ms delay_ms `(v  1 e 0 0 ]
+{
+"68
+[v delay_ms@i i `i  1 a 2 3 ]
+"66
+[v delay_ms@a a `i  1 p 2 0 ]
+"70
+} 0
+"72
+[v _SSEG_OUT SSEG_OUT `(v  1 e 0 0 ]
+{
+[v SSEG_OUT@a a `uc  1 a 1 wreg ]
+"74
+[v SSEG_OUT@SSEG_TABLE SSEG_TABLE `C[18]uc  1 a 18 3 ]
+"80
+[v SSEG_OUT@b b `uc  1 a 1 22 ]
+"72
+[v SSEG_OUT@a a `uc  1 a 1 wreg ]
+[v SSEG_OUT@dp dp `uc  1 p 1 0 ]
+"73
+[v SSEG_OUT@F4452 F4452 `C[18]uc  1 s 18 F4452 ]
+"78
+[v SSEG_OUT@a a `uc  1 a 1 21 ]
+"97
+} 0
+"99
+[v _SCAN_OUT SCAN_OUT `(v  1 e 0 0 ]
+{
+[v SCAN_OUT@a a `uc  1 a 1 wreg ]
+[v SCAN_OUT@a a `uc  1 a 1 wreg ]
+"101
+[v SCAN_OUT@a a `uc  1 a 1 0 ]
+"130
+} 0

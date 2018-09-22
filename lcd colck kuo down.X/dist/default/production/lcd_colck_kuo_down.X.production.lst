@@ -1,0 +1,2566 @@
+
+
+Microchip Technology PIC18 LITE Macro Assembler V1.35 build -356382666 
+                                                                                               Thu Sep 03 08:45:22 2015
+
+Microchip Technology Omniscient Code Generator v1.35 (Free mode) build 201507080246
+     1                           	processor	18F4550
+     2                           	fnconf	rparam,??,?,0
+     3                           	opt	pw 120
+     4                           	opt	lm
+     5                           	psect	idataCOMRAM,global,class=CODE,delta=1
+     6                           	psect	smallconst,global,reloc=2,class=SMALLCONST,delta=1
+     7                           	psect	cinit,global,reloc=2,class=CODE,delta=1
+     8                           	psect	bssCOMRAM,global,class=COMRAM,space=1,delta=1
+     9                           	psect	dataCOMRAM,global,class=COMRAM,space=1,delta=1
+    10                           	psect	cstackCOMRAM,global,class=COMRAM,space=1,delta=1
+    11                           	psect	text0,global,reloc=2,class=CODE,delta=1
+    12                           	psect	text1,global,reloc=2,class=CODE,delta=1
+    13                           	psect	text2,global,reloc=2,class=CODE,delta=1
+    14                           	psect	text3,global,reloc=2,class=CODE,delta=1
+    15                           	psect	text4,global,reloc=2,class=CODE,delta=1
+    16                           	psect	text5,global,reloc=2,class=CODE,delta=1
+    17                           	psect	text6,global,reloc=2,class=CODE,delta=1
+    18                           	psect	text7,global,reloc=2,class=CODE,delta=1
+    19                           	psect	text8,global,reloc=2,class=CODE,delta=1
+    20                           	psect	text9,global,reloc=2,class=CODE,delta=1
+    21                           	psect	text10,global,reloc=2,class=CODE,delta=1
+    22                           	psect	text11,global,reloc=2,class=CODE,delta=1
+    23                           	psect	text12,global,reloc=2,class=CODE,delta=1
+    24                           	psect	text13,global,reloc=2,class=CODE,delta=1
+    25                           	psect	intcode,global,reloc=2,class=CODE,delta=1
+    26                           	psect	intcode_body,global,reloc=2,class=CODE,delta=1
+    27                           	psect	intsave_regs,global,class=BIGRAM,space=1,delta=1
+    28                           	psect	rparam,global,class=COMRAM,space=1,delta=1
+    29                           	psect	temp,global,ovrld,common,class=COMRAM,space=1,delta=1
+    30  0000                     
+    31                           	psect	idataCOMRAM
+    32  000E3A                     __pidataCOMRAM:
+    33                           	opt stack 0
+    34                           
+    35                           ;initializer for _h
+    36  000E3A  0017               	dw	23
+    37                           
+    38                           ;initializer for _m
+    39  000E3C  003B               	dw	59
+    40                           
+    41                           ;initializer for _s
+    42  000E3E  003B               	dw	59
+    43                           
+    44                           ;initializer for _Disable_Zero
+    45  000E40  01                 	db	1
+    46                           
+    47                           	psect	smallconst
+    48  000800                     __psmallconst:
+    49                           	opt stack 0
+    50  000800  00                 	db	0
+    51  000801                     _MyName:
+    52                           	opt stack 0
+    53  000801  4D                 	db	77
+    54  000802  79                 	db	121
+    55  000803  20                 	db	32
+    56  000804  43                 	db	67
+    57  000805  6C                 	db	108
+    58  000806  6F                 	db	111
+    59  000807  63                 	db	99
+    60  000808  6B                 	db	107
+    61  000809  00                 	db	0
+    62  00080A                     __end_of_MyName:
+    63                           	opt stack 0
+    64  00080A                     _String1:
+    65                           	opt stack 0
+    66  00080A  3A                 	db	58
+    67  00080B  00                 	db	0
+    68  00080C                     __end_of_String1:
+    69                           	opt stack 0
+    70  0000                     _ADCON1bits	set	4033
+    71  0000                     _INTCONbits	set	4082
+    72  0000                     _LATCbits	set	3979
+    73  0000                     _LATD	set	3980
+    74  0000                     _T0CONbits	set	4053
+    75  0000                     _TMR0H	set	4055
+    76  0000                     _TMR0L	set	4054
+    77  0000                     _TRISBbits	set	3987
+    78  0000                     _TRISCbits	set	3988
+    79  0000                     _TRISD	set	3989
+    80  0000                     _TRISDbits	set	3989
+    81  0000                     _RB0	set	31752
+    82  0000                     _RB1	set	31753
+    83  0000                     _RB2	set	31754
+    84  0000                     _RB3	set	31755
+    85  0000                     _RB4	set	31756
+    86  0000                     _RB5	set	31757
+    87  0000                     _RD4	set	31772
+    88  0000                     _RD5	set	31773
+    89  0000                     _RD6	set	31774
+    90  0000                     _RD7	set	31775
+    91  0000                     _TMR0IE	set	32661
+    92  0000                     _TMR0IF	set	32658
+    93                           
+    94                           ; #config settings
+    95  00080C  00                 	db	0	; dummy byte at the end
+    96  0000                     
+    97                           	psect	cinit
+    98  000D16                     __pcinit:
+    99                           	opt stack 0
+   100  000D16                     start_initialization:
+   101                           	opt stack 0
+   102  000D16                     __initialization:
+   103                           	opt stack 0
+   104                           
+   105                           ; Clear objects allocated to COMRAM (35 bytes)
+   106  000D16  EE00  F001         	lfsr	0,__pbssCOMRAM
+   107  000D1A  0E23               	movlw	35
+   108  000D1C                     clear_0:
+   109  000D1C  6AEE               	clrf	postinc0,c
+   110  000D1E  06E8               	decf	wreg,f,c
+   111  000D20  E1FD               	bnz	clear_0
+   112                           
+   113                           ; Initialize objects allocated to COMRAM (7 bytes)
+   114                           ; load TBLPTR registers with __pidataCOMRAM
+   115  000D22  0E3A               	movlw	low __pidataCOMRAM
+   116  000D24  6EF6               	movwf	tblptrl,c
+   117  000D26  0E0E               	movlw	high __pidataCOMRAM
+   118  000D28  6EF7               	movwf	tblptrh,c
+   119  000D2A  0E00               	movlw	low (__pidataCOMRAM shr (0+16))
+   120  000D2C  6EF8               	movwf	tblptru,c
+   121  000D2E  EE00  F042         	lfsr	0,__pdataCOMRAM
+   122  000D32  EE10 F007          	lfsr	1,7
+   123  000D36                     copy_data0:
+   124  000D36  0009               	tblrd		*+
+   125  000D38  CFF5 FFEE          	movff	tablat,postinc0
+   126  000D3C  50E5               	movf	postdec1,w,c
+   127  000D3E  50E1               	movf	fsr1l,w,c
+   128  000D40  E1FA               	bnz	copy_data0
+   129  000D42                     end_of_initialization:
+   130                           	opt stack 0
+   131  000D42                     __end_of__initialization:
+   132                           	opt stack 0
+   133  000D42  9049               	bcf	int$flags,0,c	;clear compiler interrupt flag (level 1)
+   134  000D44  9249               	bcf	int$flags,1,c	;clear compiler interrupt flag (level 2)
+   135  000D46  0E00               	movlw	low (__Lmediumconst shr (0+16))
+   136  000D48  6EF8               	movwf	tblptru,c
+   137  000D4A  0100               	movlb	0
+   138  000D4C  EF07  F004         	goto	_main	;jump to C main() function
+   139                           tblptru	equ	0xFF8
+   140                           tblptrh	equ	0xFF7
+   141                           tblptrl	equ	0xFF6
+   142                           tablat	equ	0xFF5
+   143                           postinc0	equ	0xFEE
+   144                           wreg	equ	0xFE8
+   145                           postdec1	equ	0xFE5
+   146                           fsr1l	equ	0xFE1
+   147                           
+   148                           	psect	bssCOMRAM
+   149  000001                     __pbssCOMRAM:
+   150                           	opt stack 0
+   151  000001                     _StringBuffer:
+   152                           	opt stack 0
+   153  000001                     	ds	32
+   154  000021                     _Duty:
+   155                           	opt stack 0
+   156  000021                     	ds	2
+   157  000023                     _Timer0Flag:
+   158                           	opt stack 0
+   159  000023                     	ds	1
+   160                           tblptru	equ	0xFF8
+   161                           tblptrh	equ	0xFF7
+   162                           tblptrl	equ	0xFF6
+   163                           tablat	equ	0xFF5
+   164                           postinc0	equ	0xFEE
+   165                           wreg	equ	0xFE8
+   166                           postdec1	equ	0xFE5
+   167                           fsr1l	equ	0xFE1
+   168                           
+   169                           	psect	dataCOMRAM
+   170  000042                     __pdataCOMRAM:
+   171                           	opt stack 0
+   172  000042                     _h:
+   173                           	opt stack 0
+   174  000042                     	ds	2
+   175  000044                     _m:
+   176                           	opt stack 0
+   177  000044                     	ds	2
+   178  000046                     _s:
+   179                           	opt stack 0
+   180  000046                     	ds	2
+   181  000048                     _Disable_Zero:
+   182                           	opt stack 0
+   183  000048                     	ds	1
+   184                           tblptru	equ	0xFF8
+   185                           tblptrh	equ	0xFF7
+   186                           tblptrl	equ	0xFF6
+   187                           tablat	equ	0xFF5
+   188                           postinc0	equ	0xFEE
+   189                           wreg	equ	0xFE8
+   190                           postdec1	equ	0xFE5
+   191                           fsr1l	equ	0xFE1
+   192                           
+   193                           	psect	cstackCOMRAM
+   194  000024                     __pcstackCOMRAM:
+   195                           	opt stack 0
+   196  000024                     ??_HighISR:
+   197  000024                     
+   198                           ; 1 bytes @ 0x0
+   199  000024                     	ds	14
+   200  000032                     ?___lwmod:
+   201                           	opt stack 0
+   202  000032                     LCM_BCD_Regulate@BCD:
+   203                           	opt stack 0
+   204  000032                     LCM_IsBusy@i:
+   205                           	opt stack 0
+   206  000032                     ___lwmod@dividend:
+   207                           	opt stack 0
+   208  000032                     LCM_Delay@Count:
+   209                           	opt stack 0
+   210                           
+   211                           ; 4 bytes @ 0xE
+   212  000032                     	ds	2
+   213  000034                     ___lwmod@divisor:
+   214                           	opt stack 0
+   215                           
+   216                           ; 2 bytes @ 0x10
+   217  000034                     	ds	2
+   218  000036                     ___lwmod@counter:
+   219                           	opt stack 0
+   220  000036                     LCM_Delay@i:
+   221                           	opt stack 0
+   222                           
+   223                           ; 2 bytes @ 0x12
+   224  000036                     	ds	1
+   225  000037                     ?___lwdiv:
+   226                           	opt stack 0
+   227  000037                     ___lwdiv@dividend:
+   228                           	opt stack 0
+   229                           
+   230                           ; 2 bytes @ 0x13
+   231  000037                     	ds	1
+   232  000038                     IntLCM_Communication@NibbleByte:
+   233                           	opt stack 0
+   234                           
+   235                           ; 1 bytes @ 0x14
+   236  000038                     	ds	1
+   237  000039                     IntLCM_Communication@Temporary:
+   238                           	opt stack 0
+   239  000039                     ___lwdiv@divisor:
+   240                           	opt stack 0
+   241                           
+   242                           ; 2 bytes @ 0x15
+   243  000039                     	ds	1
+   244  00003A                     IntLCM_WriteData@Data:
+   245                           	opt stack 0
+   246  00003A                     IntLCM_WriteInstruction@Instruction:
+   247                           	opt stack 0
+   248                           
+   249                           ; 1 bytes @ 0x16
+   250  00003A                     	ds	1
+   251  00003B                     LCM_SetCursor@Y:
+   252                           	opt stack 0
+   253  00003B                     LCM_PutROMString@String:
+   254                           	opt stack 0
+   255  00003B                     ___lwdiv@quotient:
+   256                           	opt stack 0
+   257                           
+   258                           ; 2 bytes @ 0x17
+   259  00003B                     	ds	1
+   260  00003C                     LCM_SetCursor@X:
+   261                           	opt stack 0
+   262                           
+   263                           ; 1 bytes @ 0x18
+   264  00003C                     	ds	1
+   265  00003D                     ___lwdiv@counter:
+   266                           	opt stack 0
+   267                           
+   268                           ; 1 bytes @ 0x19
+   269  00003D                     	ds	1
+   270  00003E                     LCM_PutNumber@Number:
+   271                           	opt stack 0
+   272                           
+   273                           ; 2 bytes @ 0x1A
+   274  00003E                     	ds	2
+   275  000040                     LCM_PutNumber@Digit:
+   276                           	opt stack 0
+   277                           
+   278                           ; 1 bytes @ 0x1C
+   279  000040                     	ds	1
+   280  000041                     LCM_PutNumber@Temporary:
+   281                           	opt stack 0
+   282                           
+   283                           ; 1 bytes @ 0x1D
+   284  000041                     	ds	1
+   285  000042                     tblptru	equ	0xFF8
+   286                           tblptrh	equ	0xFF7
+   287                           tblptrl	equ	0xFF6
+   288                           tablat	equ	0xFF5
+   289                           postinc0	equ	0xFEE
+   290                           wreg	equ	0xFE8
+   291                           postdec1	equ	0xFE5
+   292                           fsr1l	equ	0xFE1
+   293                           
+   294                           ; 0 bytes @ 0x1E
+   295 ;;
+   296 ;;Main: autosize = 0, tempsize = 0, incstack = 0, save=0
+   297 ;;
+   298 ;; *************** function _main *****************
+   299 ;; Defined at:
+   300 ;;		line 36 in file "Lab9 PWM Output By VR Value.c"
+   301 ;; Parameters:    Size  Location     Type
+   302 ;;		None
+   303 ;; Auto vars:     Size  Location     Type
+   304 ;;		None
+   305 ;; Return value:  Size  Location     Type
+   306 ;;		None               void
+   307 ;; Registers used:
+   308 ;;		wreg, status,2, status,0, tblptrl, tblptrh, tblptru, prodl, prodh, cstack
+   309 ;; Tracked objects:
+   310 ;;		On entry : 0/0
+   311 ;;		On exit  : 0/0
+   312 ;;		Unchanged: 0/0
+   313 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
+   314 ;;      Params:         0       0       0       0       0       0       0       0       0
+   315 ;;      Locals:         0       0       0       0       0       0       0       0       0
+   316 ;;      Temps:          0       0       0       0       0       0       0       0       0
+   317 ;;      Totals:         0       0       0       0       0       0       0       0       0
+   318 ;;Total ram usage:        0 bytes
+   319 ;; Hardware stack levels required when called:    5
+   320 ;; This function calls:
+   321 ;;		_LCM_Init
+   322 ;;		_LCM_PutNumber
+   323 ;;		_LCM_PutROMString
+   324 ;;		_LCM_SetCursor
+   325 ;; This function is called by:
+   326 ;;		Startup code after reset
+   327 ;; This function uses a non-reentrant model
+   328 ;;
+   329                           
+   330                           	psect	text0
+   331  00080E                     __ptext0:
+   332                           	opt stack 0
+   333  00080E                     _main:
+   334                           	opt stack 26
+   335                           
+   336                           ;Lab9 PWM Output By VR Value.c: 38: LATCbits.LATC2 = 0;
+   337                           
+   338                           ;incstack = 0
+   339  00080E  948B               	bcf	3979,2,c	;volatile
+   340                           
+   341                           ;Lab9 PWM Output By VR Value.c: 39: TRISCbits.TRISC2 = 0;
+   342  000810  9494               	bcf	3988,2,c	;volatile
+   343                           
+   344                           ;Lab9 PWM Output By VR Value.c: 40: LATD = 0;
+   345  000812  0E00               	movlw	0
+   346  000814  6E8C               	movwf	3980,c	;volatile
+   347                           
+   348                           ;Lab9 PWM Output By VR Value.c: 41: TRISD = 0;
+   349  000816  0E00               	movlw	0
+   350  000818  6E95               	movwf	3989,c	;volatile
+   351                           
+   352                           ;Lab9 PWM Output By VR Value.c: 43: T0CONbits.T08BIT = 0;
+   353  00081A  9CD5               	bcf	4053,6,c	;volatile
+   354                           
+   355                           ;Lab9 PWM Output By VR Value.c: 44: T0CONbits.T0CS = 0;
+   356  00081C  9AD5               	bcf	4053,5,c	;volatile
+   357                           
+   358                           ;Lab9 PWM Output By VR Value.c: 45: T0CONbits.T0SE = 0;
+   359  00081E  98D5               	bcf	4053,4,c	;volatile
+   360                           
+   361                           ;Lab9 PWM Output By VR Value.c: 46: T0CONbits.PSA = 0;
+   362  000820  96D5               	bcf	4053,3,c	;volatile
+   363                           
+   364                           ;Lab9 PWM Output By VR Value.c: 47: T0CONbits.T0PS = 0x07;
+   365  000822  80D5               	bsf	4053,0,c	;volatile
+   366  000824  82D5               	bsf	4053,1,c	;volatile
+   367  000826  84D5               	bsf	4053,2,c	;volatile
+   368                           
+   369                           ;Lab9 PWM Output By VR Value.c: 48: TMR0H = ( ( ( 65536 - ( 4000000 / 4 / 256 / 100 )) >
+      +                          > 8 ) & 0xff );
+   370  000828  68D7               	setf	4055,c	;volatile
+   371                           
+   372                           ;Lab9 PWM Output By VR Value.c: 49: TMR0L = ( ( 65536 - ( 4000000 / 4 / 256 / 100 )) & 0
+      +                          xff );
+   373  00082A  0ED9               	movlw	217
+   374  00082C  6ED6               	movwf	4054,c	;volatile
+   375                           
+   376                           ;Lab9 PWM Output By VR Value.c: 50: INTCONbits.TMR0IF = 0;
+   377  00082E  94F2               	bcf	intcon,2,c	;volatile
+   378                           
+   379                           ;Lab9 PWM Output By VR Value.c: 51: INTCONbits.TMR0IE = 1;
+   380  000830  8AF2               	bsf	intcon,5,c	;volatile
+   381                           
+   382                           ;Lab9 PWM Output By VR Value.c: 52: INTCONbits.PEIE = 1;
+   383  000832  8CF2               	bsf	intcon,6,c	;volatile
+   384                           
+   385                           ;Lab9 PWM Output By VR Value.c: 53: INTCONbits.GIE = 1;
+   386  000834  8EF2               	bsf	intcon,7,c	;volatile
+   387                           
+   388                           ;Lab9 PWM Output By VR Value.c: 55: T0CONbits.TMR0ON = 1;
+   389  000836  8ED5               	bsf	4053,7,c	;volatile
+   390                           
+   391                           ;Lab9 PWM Output By VR Value.c: 59: LCM_Init();
+   392  000838  ECA8  F004         	call	_LCM_Init	;wreg free
+   393                           
+   394                           ;Lab9 PWM Output By VR Value.c: 61: LCM_SetCursor(0, 0);
+   395  00083C  0E00               	movlw	0
+   396  00083E  6E3B               	movwf	LCM_SetCursor@Y,c
+   397  000840  0E00               	movlw	0
+   398  000842  EC14  F007         	call	_LCM_SetCursor
+   399                           
+   400                           ;Lab9 PWM Output By VR Value.c: 62: LCM_PutROMString(MyName);
+   401  000846  0E01               	movlw	low _MyName
+   402  000848  6E3B               	movwf	LCM_PutROMString@String,c
+   403  00084A  0E08               	movlw	high _MyName
+   404  00084C  6E3C               	movwf	LCM_PutROMString@String+1,c
+   405  00084E  ECA8  F006         	call	_LCM_PutROMString	;wreg free
+   406                           
+   407                           ;Lab9 PWM Output By VR Value.c: 63: LCM_SetCursor(3, 1);
+   408  000852  0E01               	movlw	1
+   409  000854  6E3B               	movwf	LCM_SetCursor@Y,c
+   410  000856  0E03               	movlw	3
+   411  000858  EC14  F007         	call	_LCM_SetCursor
+   412                           
+   413                           ;Lab9 PWM Output By VR Value.c: 64: LCM_PutROMString(String1);
+   414  00085C  0E0A               	movlw	low _String1
+   415  00085E  6E3B               	movwf	LCM_PutROMString@String,c
+   416  000860  0E08               	movlw	high _String1
+   417  000862  6E3C               	movwf	LCM_PutROMString@String+1,c
+   418  000864  ECA8  F006         	call	_LCM_PutROMString	;wreg free
+   419                           
+   420                           ;Lab9 PWM Output By VR Value.c: 65: LCM_SetCursor(6, 1);
+   421  000868  0E01               	movlw	1
+   422  00086A  6E3B               	movwf	LCM_SetCursor@Y,c
+   423  00086C  0E06               	movlw	6
+   424  00086E  EC14  F007         	call	_LCM_SetCursor
+   425                           
+   426                           ;Lab9 PWM Output By VR Value.c: 66: LCM_PutROMString(String1);
+   427  000872  0E0A               	movlw	low _String1
+   428  000874  6E3B               	movwf	LCM_PutROMString@String,c
+   429  000876  0E08               	movlw	high _String1
+   430  000878  6E3C               	movwf	LCM_PutROMString@String+1,c
+   431  00087A  ECA8  F006         	call	_LCM_PutROMString	;wreg free
+   432  00087E                     l1391:
+   433                           
+   434                           ;Lab9 PWM Output By VR Value.c: 69: {
+   435                           ;Lab9 PWM Output By VR Value.c: 70: if (Timer0Flag)
+   436  00087E  5023               	movf	_Timer0Flag,w,c	;volatile
+   437  000880  B4D8               	btfsc	status,2,c
+   438  000882  D004               	goto	l1397
+   439                           
+   440                           ;Lab9 PWM Output By VR Value.c: 71: {
+   441                           ;Lab9 PWM Output By VR Value.c: 72: Timer0Flag = 0;
+   442  000884  0E00               	movlw	0
+   443  000886  6E23               	movwf	_Timer0Flag,c	;volatile
+   444                           
+   445                           ;Lab9 PWM Output By VR Value.c: 73: Duty++;
+   446  000888  4A21               	infsnz	_Duty,f,c
+   447  00088A  2A22               	incf	_Duty+1,f,c
+   448  00088C                     l1397:
+   449                           
+   450                           ;Lab9 PWM Output By VR Value.c: 74: }
+   451                           ;Lab9 PWM Output By VR Value.c: 75: if(Duty>1)
+   452  00088C  5022               	movf	_Duty+1,w,c
+   453  00088E  E104               	bnz	u530
+   454  000890  0E02               	movlw	2
+   455  000892  5C21               	subwf	_Duty,w,c
+   456  000894  A0D8               	btfss	status,0,c
+   457  000896  D007               	goto	l1403
+   458  000898                     u530:
+   459                           
+   460                           ;Lab9 PWM Output By VR Value.c: 76: {
+   461                           ;Lab9 PWM Output By VR Value.c: 77: Duty=0;
+   462  000898  0E00               	movlw	0
+   463  00089A  6E22               	movwf	_Duty+1,c
+   464  00089C  0E00               	movlw	0
+   465  00089E  6E21               	movwf	_Duty,c
+   466                           
+   467                           ;Lab9 PWM Output By VR Value.c: 78: s--;
+   468  0008A0  0646               	decf	_s,f,c
+   469  0008A2  A0D8               	btfss	status,0,c
+   470  0008A4  0647               	decf	_s+1,f,c
+   471  0008A6                     l1403:
+   472                           
+   473                           ;Lab9 PWM Output By VR Value.c: 79: }
+   474                           ;Lab9 PWM Output By VR Value.c: 80: if(s<1)
+   475  0008A6  5046               	movf	_s,w,c
+   476  0008A8  1047               	iorwf	_s+1,w,c
+   477  0008AA  A4D8               	btfss	status,2,c
+   478  0008AC  D007               	goto	l1409
+   479                           
+   480                           ;Lab9 PWM Output By VR Value.c: 81: {
+   481                           ;Lab9 PWM Output By VR Value.c: 82: s=59;
+   482  0008AE  0E00               	movlw	0
+   483  0008B0  6E47               	movwf	_s+1,c
+   484  0008B2  0E3B               	movlw	59
+   485  0008B4  6E46               	movwf	_s,c
+   486                           
+   487                           ;Lab9 PWM Output By VR Value.c: 83: m--;
+   488  0008B6  0644               	decf	_m,f,c
+   489  0008B8  A0D8               	btfss	status,0,c
+   490  0008BA  0645               	decf	_m+1,f,c
+   491  0008BC                     l1409:
+   492                           
+   493                           ;Lab9 PWM Output By VR Value.c: 84: }
+   494                           ;Lab9 PWM Output By VR Value.c: 85: if(m<1)
+   495  0008BC  5044               	movf	_m,w,c
+   496  0008BE  1045               	iorwf	_m+1,w,c
+   497  0008C0  A4D8               	btfss	status,2,c
+   498  0008C2  D007               	goto	l1415
+   499                           
+   500                           ;Lab9 PWM Output By VR Value.c: 86: {
+   501                           ;Lab9 PWM Output By VR Value.c: 87: m=59;
+   502  0008C4  0E00               	movlw	0
+   503  0008C6  6E45               	movwf	_m+1,c
+   504  0008C8  0E3B               	movlw	59
+   505  0008CA  6E44               	movwf	_m,c
+   506                           
+   507                           ;Lab9 PWM Output By VR Value.c: 88: h--;
+   508  0008CC  0642               	decf	_h,f,c
+   509  0008CE  A0D8               	btfss	status,0,c
+   510  0008D0  0643               	decf	_h+1,f,c
+   511  0008D2                     l1415:
+   512                           
+   513                           ;Lab9 PWM Output By VR Value.c: 89: }
+   514                           ;Lab9 PWM Output By VR Value.c: 90: if(h<1)h=23;
+   515  0008D2  5042               	movf	_h,w,c
+   516  0008D4  1043               	iorwf	_h+1,w,c
+   517  0008D6  A4D8               	btfss	status,2,c
+   518  0008D8  D004               	goto	l1419
+   519  0008DA  0E00               	movlw	0
+   520  0008DC  6E43               	movwf	_h+1,c
+   521  0008DE  0E17               	movlw	23
+   522  0008E0  6E42               	movwf	_h,c
+   523  0008E2                     l1419:
+   524                           
+   525                           ;Lab9 PWM Output By VR Value.c: 92: if(!RB1)h--;
+   526  0008E2  B281               	btfsc	3969,1,c	;volatile
+   527  0008E4  D003               	goto	l1423
+   528  0008E6  0642               	decf	_h,f,c
+   529  0008E8  A0D8               	btfss	status,0,c
+   530  0008EA  0643               	decf	_h+1,f,c
+   531  0008EC                     l1423:
+   532                           
+   533                           ;Lab9 PWM Output By VR Value.c: 93: if(!RB2)m--;
+   534  0008EC  B481               	btfsc	3969,2,c	;volatile
+   535  0008EE  D003               	goto	l1427
+   536  0008F0  0644               	decf	_m,f,c
+   537  0008F2  A0D8               	btfss	status,0,c
+   538  0008F4  0645               	decf	_m+1,f,c
+   539  0008F6                     l1427:
+   540                           
+   541                           ;Lab9 PWM Output By VR Value.c: 94: if(!RB3)s--;
+   542  0008F6  B681               	btfsc	3969,3,c	;volatile
+   543  0008F8  D003               	goto	l1431
+   544  0008FA  0646               	decf	_s,f,c
+   545  0008FC  A0D8               	btfss	status,0,c
+   546  0008FE  0647               	decf	_s+1,f,c
+   547  000900                     l1431:
+   548                           
+   549                           ;Lab9 PWM Output By VR Value.c: 96: LCM_SetCursor(1, 1);
+   550  000900  0E01               	movlw	1
+   551  000902  6E3B               	movwf	LCM_SetCursor@Y,c
+   552  000904  0E01               	movlw	1
+   553  000906  EC14  F007         	call	_LCM_SetCursor
+   554                           
+   555                           ;Lab9 PWM Output By VR Value.c: 97: LCM_PutNumber(h, 2);
+   556  00090A  C042  F03E         	movff	_h,LCM_PutNumber@Number
+   557  00090E  C043  F03F         	movff	_h+1,LCM_PutNumber@Number+1
+   558  000912  0E02               	movlw	2
+   559  000914  6E40               	movwf	LCM_PutNumber@Digit,c
+   560  000916  EC31  F005         	call	_LCM_PutNumber	;wreg free
+   561                           
+   562                           ;Lab9 PWM Output By VR Value.c: 98: LCM_SetCursor(4, 1);
+   563  00091A  0E01               	movlw	1
+   564  00091C  6E3B               	movwf	LCM_SetCursor@Y,c
+   565  00091E  0E04               	movlw	4
+   566  000920  EC14  F007         	call	_LCM_SetCursor
+   567                           
+   568                           ;Lab9 PWM Output By VR Value.c: 99: LCM_PutNumber(m, 2);
+   569  000924  C044  F03E         	movff	_m,LCM_PutNumber@Number
+   570  000928  C045  F03F         	movff	_m+1,LCM_PutNumber@Number+1
+   571  00092C  0E02               	movlw	2
+   572  00092E  6E40               	movwf	LCM_PutNumber@Digit,c
+   573  000930  EC31  F005         	call	_LCM_PutNumber	;wreg free
+   574                           
+   575                           ;Lab9 PWM Output By VR Value.c: 100: LCM_SetCursor(7, 1);
+   576  000934  0E01               	movlw	1
+   577  000936  6E3B               	movwf	LCM_SetCursor@Y,c
+   578  000938  0E07               	movlw	7
+   579  00093A  EC14  F007         	call	_LCM_SetCursor
+   580                           
+   581                           ;Lab9 PWM Output By VR Value.c: 101: LCM_PutNumber(s, 2);
+   582  00093E  C046  F03E         	movff	_s,LCM_PutNumber@Number
+   583  000942  C047  F03F         	movff	_s+1,LCM_PutNumber@Number+1
+   584  000946  0E02               	movlw	2
+   585  000948  6E40               	movwf	LCM_PutNumber@Digit,c
+   586  00094A  EC31  F005         	call	_LCM_PutNumber	;wreg free
+   587  00094E  D797               	goto	l1391
+   588  000950                     __end_of_main:
+   589                           	opt stack 0
+   590                           tblptru	equ	0xFF8
+   591                           tblptrh	equ	0xFF7
+   592                           tblptrl	equ	0xFF6
+   593                           tablat	equ	0xFF5
+   594                           intcon	equ	0xFF2
+   595                           postinc0	equ	0xFEE
+   596                           wreg	equ	0xFE8
+   597                           postdec1	equ	0xFE5
+   598                           fsr1l	equ	0xFE1
+   599                           status	equ	0xFD8
+   600                           
+   601 ;; *************** function _LCM_SetCursor *****************
+   602 ;; Defined at:
+   603 ;;		line 190 in file "APP001_LCM.c"
+   604 ;; Parameters:    Size  Location     Type
+   605 ;;  X               1    wreg     unsigned char 
+   606 ;;  Y               1   23[COMRAM] unsigned char 
+   607 ;; Auto vars:     Size  Location     Type
+   608 ;;  X               1   24[COMRAM] unsigned char 
+   609 ;; Return value:  Size  Location     Type
+   610 ;;		None               void
+   611 ;; Registers used:
+   612 ;;		wreg, status,2, status,0, prodl, prodh, cstack
+   613 ;; Tracked objects:
+   614 ;;		On entry : 0/0
+   615 ;;		On exit  : 0/0
+   616 ;;		Unchanged: 0/0
+   617 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
+   618 ;;      Params:         1       0       0       0       0       0       0       0       0
+   619 ;;      Locals:         1       0       0       0       0       0       0       0       0
+   620 ;;      Temps:          0       0       0       0       0       0       0       0       0
+   621 ;;      Totals:         2       0       0       0       0       0       0       0       0
+   622 ;;Total ram usage:        2 bytes
+   623 ;; Hardware stack levels used:    1
+   624 ;; Hardware stack levels required when called:    4
+   625 ;; This function calls:
+   626 ;;		_IntLCM_WriteInstruction
+   627 ;; This function is called by:
+   628 ;;		_main
+   629 ;; This function uses a non-reentrant model
+   630 ;;
+   631                           
+   632                           	psect	text1
+   633  000E28                     __ptext1:
+   634                           	opt stack 0
+   635  000E28                     _LCM_SetCursor:
+   636                           	opt stack 26
+   637                           
+   638                           ;incstack = 0
+   639                           ;LCM_SetCursor@X stored from wreg
+   640  000E28  6E3C               	movwf	LCM_SetCursor@X,c
+   641                           
+   642                           ;APP001_LCM.c: 192: IntLCM_WriteInstruction((0x80 + (Y * 0x40) + X));
+   643  000E2A  503B               	movf	LCM_SetCursor@Y,w,c
+   644  000E2C  0D40               	mullw	64
+   645  000E2E  50F3               	movf	prodl,w,c
+   646  000E30  243C               	addwf	LCM_SetCursor@X,w,c
+   647  000E32  0F80               	addlw	128
+   648  000E34  ECD0  F006         	call	_IntLCM_WriteInstruction
+   649  000E38  0012               	return		;funcret
+   650  000E3A                     __end_of_LCM_SetCursor:
+   651                           	opt stack 0
+   652                           tblptru	equ	0xFF8
+   653                           tblptrh	equ	0xFF7
+   654                           tblptrl	equ	0xFF6
+   655                           tablat	equ	0xFF5
+   656                           prodl	equ	0xFF3
+   657                           intcon	equ	0xFF2
+   658                           postinc0	equ	0xFEE
+   659                           wreg	equ	0xFE8
+   660                           postdec1	equ	0xFE5
+   661                           fsr1l	equ	0xFE1
+   662                           status	equ	0xFD8
+   663                           
+   664 ;; *************** function _IntLCM_WriteInstruction *****************
+   665 ;; Defined at:
+   666 ;;		line 140 in file "APP001_LCM.c"
+   667 ;; Parameters:    Size  Location     Type
+   668 ;;  Instruction     1    wreg     unsigned char 
+   669 ;; Auto vars:     Size  Location     Type
+   670 ;;  Instruction     1   22[COMRAM] unsigned char 
+   671 ;; Return value:  Size  Location     Type
+   672 ;;		None               void
+   673 ;; Registers used:
+   674 ;;		wreg, status,2, status,0, cstack
+   675 ;; Tracked objects:
+   676 ;;		On entry : 0/0
+   677 ;;		On exit  : 0/0
+   678 ;;		Unchanged: 0/0
+   679 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
+   680 ;;      Params:         0       0       0       0       0       0       0       0       0
+   681 ;;      Locals:         1       0       0       0       0       0       0       0       0
+   682 ;;      Temps:          0       0       0       0       0       0       0       0       0
+   683 ;;      Totals:         1       0       0       0       0       0       0       0       0
+   684 ;;Total ram usage:        1 bytes
+   685 ;; Hardware stack levels used:    1
+   686 ;; Hardware stack levels required when called:    3
+   687 ;; This function calls:
+   688 ;;		_IntLCM_Communication
+   689 ;;		_LCM_IsBusy
+   690 ;; This function is called by:
+   691 ;;		_LCM_SetCursor
+   692 ;; This function uses a non-reentrant model
+   693 ;;
+   694                           
+   695                           	psect	text2
+   696  000DA0                     __ptext2:
+   697                           	opt stack 0
+   698  000DA0                     _IntLCM_WriteInstruction:
+   699                           	opt stack 26
+   700                           
+   701                           ;incstack = 0
+   702                           ;IntLCM_WriteInstruction@Instruction stored from wreg
+   703  000DA0  6E3A               	movwf	IntLCM_WriteInstruction@Instruction,c
+   704  000DA2                     l1207:
+   705  000DA2  EC05  F007         	call	_LCM_IsBusy	;wreg free
+   706  000DA6  0900               	iorlw	0
+   707  000DA8  A4D8               	btfss	status,2,c
+   708  000DAA  D7FB               	goto	l1207
+   709                           
+   710                           ;APP001_LCM.c: 143: RB5 = 0;
+   711  000DAC  9A81               	bcf	3969,5,c	;volatile
+   712                           
+   713                           ;APP001_LCM.c: 144: RB4 = 0;
+   714  000DAE  9881               	bcf	3969,4,c	;volatile
+   715                           
+   716                           ;APP001_LCM.c: 146: IntLCM_Communication((Instruction >> 4) & 0x0f);
+   717  000DB0  383A               	swapf	IntLCM_WriteInstruction@Instruction,w,c
+   718  000DB2  0B0F               	andlw	15
+   719  000DB4  0B0F               	andlw	15
+   720  000DB6  ECE7  F005         	call	_IntLCM_Communication
+   721                           
+   722                           ;APP001_LCM.c: 147: IntLCM_Communication(Instruction & 0x0f);
+   723  000DBA  503A               	movf	IntLCM_WriteInstruction@Instruction,w,c
+   724  000DBC  0B0F               	andlw	15
+   725  000DBE  ECE7  F005         	call	_IntLCM_Communication
+   726  000DC2  0012               	return		;funcret
+   727  000DC4                     __end_of_IntLCM_WriteInstruction:
+   728                           	opt stack 0
+   729                           tblptru	equ	0xFF8
+   730                           tblptrh	equ	0xFF7
+   731                           tblptrl	equ	0xFF6
+   732                           tablat	equ	0xFF5
+   733                           prodl	equ	0xFF3
+   734                           intcon	equ	0xFF2
+   735                           postinc0	equ	0xFEE
+   736                           wreg	equ	0xFE8
+   737                           postdec1	equ	0xFE5
+   738                           fsr1l	equ	0xFE1
+   739                           status	equ	0xFD8
+   740                           
+   741 ;; *************** function _LCM_PutROMString *****************
+   742 ;; Defined at:
+   743 ;;		line 220 in file "APP001_LCM.c"
+   744 ;; Parameters:    Size  Location     Type
+   745 ;;  String          2   23[COMRAM] PTR const unsigned char 
+   746 ;;		 -> String1(2), MyName(9), 
+   747 ;; Auto vars:     Size  Location     Type
+   748 ;;		None
+   749 ;; Return value:  Size  Location     Type
+   750 ;;		None               void
+   751 ;; Registers used:
+   752 ;;		wreg, status,2, status,0, tblptrl, tblptrh, tblptru, cstack
+   753 ;; Tracked objects:
+   754 ;;		On entry : 0/0
+   755 ;;		On exit  : 0/0
+   756 ;;		Unchanged: 0/0
+   757 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
+   758 ;;      Params:         2       0       0       0       0       0       0       0       0
+   759 ;;      Locals:         0       0       0       0       0       0       0       0       0
+   760 ;;      Temps:          0       0       0       0       0       0       0       0       0
+   761 ;;      Totals:         2       0       0       0       0       0       0       0       0
+   762 ;;Total ram usage:        2 bytes
+   763 ;; Hardware stack levels used:    1
+   764 ;; Hardware stack levels required when called:    4
+   765 ;; This function calls:
+   766 ;;		_IntLCM_WriteData
+   767 ;; This function is called by:
+   768 ;;		_main
+   769 ;; This function uses a non-reentrant model
+   770 ;;
+   771                           
+   772                           	psect	text3
+   773  000D50                     __ptext3:
+   774                           	opt stack 0
+   775  000D50                     _LCM_PutROMString:
+   776                           	opt stack 26
+   777                           
+   778                           ;APP001_LCM.c: 222: while (*String != 0x00)
+   779                           
+   780                           ;incstack = 0
+   781  000D50  D00A               	goto	l1309
+   782  000D52                     l1305:
+   783                           
+   784                           ;APP001_LCM.c: 223: IntLCM_WriteData(*String++);
+   785  000D52  C03B  FFF6         	movff	LCM_PutROMString@String,tblptrl
+   786  000D56  C03C  FFF7         	movff	LCM_PutROMString@String+1,tblptrh
+   787  000D5A                     	if	0	;tblptru may be non-zero
+   788  000D5A                     	endif
+   789  000D5A                     	if	0	;tblptru may be non-zero
+   790  000D5A                     	endif
+   791  000D5A  0008               	tblrd		*
+   792  000D5C  50F5               	movf	tablat,w,c
+   793  000D5E  ECE2  F006         	call	_IntLCM_WriteData
+   794  000D62  4A3B               	infsnz	LCM_PutROMString@String,f,c
+   795  000D64  2A3C               	incf	LCM_PutROMString@String+1,f,c
+   796  000D66                     l1309:
+   797  000D66  C03B  FFF6         	movff	LCM_PutROMString@String,tblptrl
+   798  000D6A  C03C  FFF7         	movff	LCM_PutROMString@String+1,tblptrh
+   799  000D6E                     	if	0	;tblptru may be non-zero
+   800  000D6E                     	endif
+   801  000D6E                     	if	0	;tblptru may be non-zero
+   802  000D6E                     	endif
+   803  000D6E  0008               	tblrd		*
+   804  000D70  50F5               	movf	tablat,w,c
+   805  000D72  0900               	iorlw	0
+   806  000D74  B4D8               	btfsc	status,2,c
+   807  000D76  0012               	return	
+   808  000D78  D7EC               	goto	l1305
+   809  000D7A                     __end_of_LCM_PutROMString:
+   810                           	opt stack 0
+   811                           tblptru	equ	0xFF8
+   812                           tblptrh	equ	0xFF7
+   813                           tblptrl	equ	0xFF6
+   814                           tablat	equ	0xFF5
+   815                           prodl	equ	0xFF3
+   816                           intcon	equ	0xFF2
+   817                           postinc0	equ	0xFEE
+   818                           wreg	equ	0xFE8
+   819                           postdec1	equ	0xFE5
+   820                           fsr1l	equ	0xFE1
+   821                           status	equ	0xFD8
+   822                           
+   823 ;; *************** function _LCM_PutNumber *****************
+   824 ;; Defined at:
+   825 ;;		line 251 in file "APP001_LCM.c"
+   826 ;; Parameters:    Size  Location     Type
+   827 ;;  Number          2   26[COMRAM] unsigned int 
+   828 ;;  Digit           1   28[COMRAM] unsigned char 
+   829 ;; Auto vars:     Size  Location     Type
+   830 ;;  Temporary       1   29[COMRAM] unsigned char 
+   831 ;; Return value:  Size  Location     Type
+   832 ;;		None               void
+   833 ;; Registers used:
+   834 ;;		wreg, status,2, status,0, cstack
+   835 ;; Tracked objects:
+   836 ;;		On entry : 0/0
+   837 ;;		On exit  : 0/0
+   838 ;;		Unchanged: 0/0
+   839 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
+   840 ;;      Params:         3       0       0       0       0       0       0       0       0
+   841 ;;      Locals:         1       0       0       0       0       0       0       0       0
+   842 ;;      Temps:          0       0       0       0       0       0       0       0       0
+   843 ;;      Totals:         4       0       0       0       0       0       0       0       0
+   844 ;;Total ram usage:        4 bytes
+   845 ;; Hardware stack levels used:    1
+   846 ;; Hardware stack levels required when called:    4
+   847 ;; This function calls:
+   848 ;;		_IntLCM_WriteData
+   849 ;;		_LCM_BCD_Regulate
+   850 ;;		___lwdiv
+   851 ;;		___lwmod
+   852 ;; This function is called by:
+   853 ;;		_main
+   854 ;; This function uses a non-reentrant model
+   855 ;;
+   856                           
+   857                           	psect	text4
+   858  000A62                     __ptext4:
+   859                           	opt stack 0
+   860  000A62                     _LCM_PutNumber:
+   861                           	opt stack 26
+   862                           
+   863                           ;APP001_LCM.c: 253: unsigned char Temporary;
+   864                           ;APP001_LCM.c: 254: Disable_Zero = 1;
+   865                           
+   866                           ;incstack = 0
+   867  000A62  0E01               	movlw	1
+   868  000A64  6E48               	movwf	_Disable_Zero,c
+   869                           
+   870                           ;APP001_LCM.c: 256: switch (Digit)
+   871  000A66  D065               	goto	l1321
+   872  000A68                     l1313:
+   873                           
+   874                           ;APP001_LCM.c: 260: Temporary = LCM_BCD_Regulate((Number % 10000) / 1000);
+   875  000A68  0E27               	movlw	39
+   876  000A6A  6E35               	movwf	___lwmod@divisor+1,c
+   877  000A6C  0E10               	movlw	16
+   878  000A6E  6E34               	movwf	___lwmod@divisor,c
+   879  000A70  C03E  F032         	movff	LCM_PutNumber@Number,___lwmod@dividend
+   880  000A74  C03F  F033         	movff	LCM_PutNumber@Number+1,___lwmod@dividend+1
+   881  000A78  EC4A  F006         	call	___lwmod	;wreg free
+   882  000A7C  C032  F037         	movff	?___lwmod,___lwdiv@dividend
+   883  000A80  C033  F038         	movff	?___lwmod+1,___lwdiv@dividend+1
+   884  000A84  0E03               	movlw	3
+   885  000A86  6E3A               	movwf	___lwdiv@divisor+1,c
+   886  000A88  0EE8               	movlw	232
+   887  000A8A  6E39               	movwf	___lwdiv@divisor,c
+   888  000A8C  EC21  F006         	call	___lwdiv	;wreg free
+   889  000A90  5037               	movf	?___lwdiv,w,c
+   890  000A92  ECF4  F006         	call	_LCM_BCD_Regulate
+   891  000A96  6E41               	movwf	LCM_PutNumber@Temporary,c
+   892                           
+   893                           ;APP001_LCM.c: 261: IntLCM_WriteData(Temporary);
+   894  000A98  5041               	movf	LCM_PutNumber@Temporary,w,c
+   895  000A9A  ECE2  F006         	call	_IntLCM_WriteData
+   896  000A9E                     l99:
+   897                           
+   898                           ;APP001_LCM.c: 264: Temporary = LCM_BCD_Regulate((Number % 1000) / 100);
+   899  000A9E  0E03               	movlw	3
+   900  000AA0  6E35               	movwf	___lwmod@divisor+1,c
+   901  000AA2  0EE8               	movlw	232
+   902  000AA4  6E34               	movwf	___lwmod@divisor,c
+   903  000AA6  C03E  F032         	movff	LCM_PutNumber@Number,___lwmod@dividend
+   904  000AAA  C03F  F033         	movff	LCM_PutNumber@Number+1,___lwmod@dividend+1
+   905  000AAE  EC4A  F006         	call	___lwmod	;wreg free
+   906  000AB2  C032  F037         	movff	?___lwmod,___lwdiv@dividend
+   907  000AB6  C033  F038         	movff	?___lwmod+1,___lwdiv@dividend+1
+   908  000ABA  0E00               	movlw	0
+   909  000ABC  6E3A               	movwf	___lwdiv@divisor+1,c
+   910  000ABE  0E64               	movlw	100
+   911  000AC0  6E39               	movwf	___lwdiv@divisor,c
+   912  000AC2  EC21  F006         	call	___lwdiv	;wreg free
+   913  000AC6  5037               	movf	?___lwdiv,w,c
+   914  000AC8  ECF4  F006         	call	_LCM_BCD_Regulate
+   915  000ACC  6E41               	movwf	LCM_PutNumber@Temporary,c
+   916                           
+   917                           ;APP001_LCM.c: 265: IntLCM_WriteData(Temporary);
+   918  000ACE  5041               	movf	LCM_PutNumber@Temporary,w,c
+   919  000AD0  ECE2  F006         	call	_IntLCM_WriteData
+   920  000AD4                     l100:
+   921                           
+   922                           ;APP001_LCM.c: 268: Temporary = LCM_BCD_Regulate((Number % 100) / 10);
+   923  000AD4  0E00               	movlw	0
+   924  000AD6  6E35               	movwf	___lwmod@divisor+1,c
+   925  000AD8  0E64               	movlw	100
+   926  000ADA  6E34               	movwf	___lwmod@divisor,c
+   927  000ADC  C03E  F032         	movff	LCM_PutNumber@Number,___lwmod@dividend
+   928  000AE0  C03F  F033         	movff	LCM_PutNumber@Number+1,___lwmod@dividend+1
+   929  000AE4  EC4A  F006         	call	___lwmod	;wreg free
+   930  000AE8  C032  F037         	movff	?___lwmod,___lwdiv@dividend
+   931  000AEC  C033  F038         	movff	?___lwmod+1,___lwdiv@dividend+1
+   932  000AF0  0E00               	movlw	0
+   933  000AF2  6E3A               	movwf	___lwdiv@divisor+1,c
+   934  000AF4  0E0A               	movlw	10
+   935  000AF6  6E39               	movwf	___lwdiv@divisor,c
+   936  000AF8  EC21  F006         	call	___lwdiv	;wreg free
+   937  000AFC  5037               	movf	?___lwdiv,w,c
+   938  000AFE  ECF4  F006         	call	_LCM_BCD_Regulate
+   939  000B02  6E41               	movwf	LCM_PutNumber@Temporary,c
+   940                           
+   941                           ;APP001_LCM.c: 269: IntLCM_WriteData(Temporary);
+   942  000B04  5041               	movf	LCM_PutNumber@Temporary,w,c
+   943  000B06  ECE2  F006         	call	_IntLCM_WriteData
+   944  000B0A                     l1315:
+   945                           
+   946                           ;APP001_LCM.c: 272: Disable_Zero = 0;
+   947  000B0A  0E00               	movlw	0
+   948  000B0C  6E48               	movwf	_Disable_Zero,c
+   949                           
+   950                           ;APP001_LCM.c: 273: Temporary = LCM_BCD_Regulate(Number % 10);
+   951  000B0E  C03E  F032         	movff	LCM_PutNumber@Number,___lwmod@dividend
+   952  000B12  C03F  F033         	movff	LCM_PutNumber@Number+1,___lwmod@dividend+1
+   953  000B16  0E00               	movlw	0
+   954  000B18  6E35               	movwf	___lwmod@divisor+1,c
+   955  000B1A  0E0A               	movlw	10
+   956  000B1C  6E34               	movwf	___lwmod@divisor,c
+   957  000B1E  EC4A  F006         	call	___lwmod	;wreg free
+   958  000B22  5032               	movf	?___lwmod,w,c
+   959  000B24  ECF4  F006         	call	_LCM_BCD_Regulate
+   960  000B28  6E41               	movwf	LCM_PutNumber@Temporary,c
+   961                           
+   962                           ;APP001_LCM.c: 274: IntLCM_WriteData(Temporary);
+   963  000B2A  5041               	movf	LCM_PutNumber@Temporary,w,c
+   964  000B2C  ECE2  F006         	call	_IntLCM_WriteData
+   965                           
+   966                           ;APP001_LCM.c: 275: }
+   967  000B30  0012               	return	
+   968  000B32                     l1321:
+   969  000B32  5040               	movf	LCM_PutNumber@Digit,w,c
+   970                           
+   971                           ; Switch size 1, requested type "space"
+   972                           ; Number of cases is 4, Range of values is 1 to 4
+   973                           ; switch strategies available:
+   974                           ; Name         Instructions Cycles
+   975                           ; simple_byte           13     7 (average)
+   976                           ;	Chosen strategy is simple_byte
+   977  000B34  0A01               	xorlw	1	; case 1
+   978  000B36  B4D8               	btfsc	status,2,c
+   979  000B38  D7E8               	goto	l1315
+   980  000B3A  0A03               	xorlw	3	; case 2
+   981  000B3C  B4D8               	btfsc	status,2,c
+   982  000B3E  D7CA               	goto	l100
+   983  000B40  0A01               	xorlw	1	; case 3
+   984  000B42  B4D8               	btfsc	status,2,c
+   985  000B44  D7AC               	goto	l99
+   986  000B46  0A07               	xorlw	7	; case 4
+   987  000B48  D78F               	goto	l1313
+   988  000B4A                     __end_of_LCM_PutNumber:
+   989                           	opt stack 0
+   990                           tblptru	equ	0xFF8
+   991                           tblptrh	equ	0xFF7
+   992                           tblptrl	equ	0xFF6
+   993                           tablat	equ	0xFF5
+   994                           prodl	equ	0xFF3
+   995                           intcon	equ	0xFF2
+   996                           postinc0	equ	0xFEE
+   997                           wreg	equ	0xFE8
+   998                           postdec1	equ	0xFE5
+   999                           fsr1l	equ	0xFE1
+  1000                           status	equ	0xFD8
+  1001                           
+  1002 ;; *************** function ___lwmod *****************
+  1003 ;; Defined at:
+  1004 ;;		line 8 in file "C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\lwmod.c"
+  1005 ;; Parameters:    Size  Location     Type
+  1006 ;;  dividend        2   14[COMRAM] unsigned int 
+  1007 ;;  divisor         2   16[COMRAM] unsigned int 
+  1008 ;; Auto vars:     Size  Location     Type
+  1009 ;;  counter         1   18[COMRAM] unsigned char 
+  1010 ;; Return value:  Size  Location     Type
+  1011 ;;                  2   14[COMRAM] unsigned int 
+  1012 ;; Registers used:
+  1013 ;;		wreg, status,2, status,0
+  1014 ;; Tracked objects:
+  1015 ;;		On entry : 0/0
+  1016 ;;		On exit  : 0/0
+  1017 ;;		Unchanged: 0/0
+  1018 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
+  1019 ;;      Params:         4       0       0       0       0       0       0       0       0
+  1020 ;;      Locals:         1       0       0       0       0       0       0       0       0
+  1021 ;;      Temps:          0       0       0       0       0       0       0       0       0
+  1022 ;;      Totals:         5       0       0       0       0       0       0       0       0
+  1023 ;;Total ram usage:        5 bytes
+  1024 ;; Hardware stack levels used:    1
+  1025 ;; Hardware stack levels required when called:    1
+  1026 ;; This function calls:
+  1027 ;;		Nothing
+  1028 ;; This function is called by:
+  1029 ;;		_LCM_PutNumber
+  1030 ;; This function uses a non-reentrant model
+  1031 ;;
+  1032                           
+  1033                           	psect	text5
+  1034  000C94                     __ptext5:
+  1035                           	opt stack 0
+  1036  000C94                     ___lwmod:
+  1037                           	opt stack 28
+  1038                           
+  1039                           ;incstack = 0
+  1040  000C94  5034               	movf	___lwmod@divisor,w,c
+  1041  000C96  1035               	iorwf	___lwmod@divisor+1,w,c
+  1042  000C98  B4D8               	btfsc	status,2,c
+  1043  000C9A  D018               	goto	l586
+  1044  000C9C  0E01               	movlw	1
+  1045  000C9E  6E36               	movwf	___lwmod@counter,c
+  1046  000CA0  D004               	goto	l1239
+  1047  000CA2                     l1237:
+  1048  000CA2  90D8               	bcf	status,0,c
+  1049  000CA4  3634               	rlcf	___lwmod@divisor,f,c
+  1050  000CA6  3635               	rlcf	___lwmod@divisor+1,f,c
+  1051  000CA8  2A36               	incf	___lwmod@counter,f,c
+  1052  000CAA                     l1239:
+  1053  000CAA  AE35               	btfss	___lwmod@divisor+1,7,c
+  1054  000CAC  D7FA               	goto	l1237
+  1055  000CAE                     l1241:
+  1056  000CAE  5034               	movf	___lwmod@divisor,w,c
+  1057  000CB0  5C32               	subwf	___lwmod@dividend,w,c
+  1058  000CB2  5035               	movf	___lwmod@divisor+1,w,c
+  1059  000CB4  5833               	subwfb	___lwmod@dividend+1,w,c
+  1060  000CB6  A0D8               	btfss	status,0,c
+  1061  000CB8  D004               	goto	l1245
+  1062  000CBA  5034               	movf	___lwmod@divisor,w,c
+  1063  000CBC  5E32               	subwf	___lwmod@dividend,f,c
+  1064  000CBE  5035               	movf	___lwmod@divisor+1,w,c
+  1065  000CC0  5A33               	subwfb	___lwmod@dividend+1,f,c
+  1066  000CC2                     l1245:
+  1067  000CC2  90D8               	bcf	status,0,c
+  1068  000CC4  3235               	rrcf	___lwmod@divisor+1,f,c
+  1069  000CC6  3234               	rrcf	___lwmod@divisor,f,c
+  1070  000CC8  2E36               	decfsz	___lwmod@counter,f,c
+  1071  000CCA  D7F1               	goto	l1241
+  1072  000CCC                     l586:
+  1073  000CCC  C032  F032         	movff	___lwmod@dividend,?___lwmod
+  1074  000CD0  C033  F033         	movff	___lwmod@dividend+1,?___lwmod+1
+  1075  000CD4  0012               	return		;funcret
+  1076  000CD6                     __end_of___lwmod:
+  1077                           	opt stack 0
+  1078                           tblptru	equ	0xFF8
+  1079                           tblptrh	equ	0xFF7
+  1080                           tblptrl	equ	0xFF6
+  1081                           tablat	equ	0xFF5
+  1082                           prodl	equ	0xFF3
+  1083                           intcon	equ	0xFF2
+  1084                           postinc0	equ	0xFEE
+  1085                           wreg	equ	0xFE8
+  1086                           postdec1	equ	0xFE5
+  1087                           fsr1l	equ	0xFE1
+  1088                           status	equ	0xFD8
+  1089                           
+  1090 ;; *************** function ___lwdiv *****************
+  1091 ;; Defined at:
+  1092 ;;		line 8 in file "C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\lwdiv.c"
+  1093 ;; Parameters:    Size  Location     Type
+  1094 ;;  dividend        2   19[COMRAM] unsigned int 
+  1095 ;;  divisor         2   21[COMRAM] unsigned int 
+  1096 ;; Auto vars:     Size  Location     Type
+  1097 ;;  quotient        2   23[COMRAM] unsigned int 
+  1098 ;;  counter         1   25[COMRAM] unsigned char 
+  1099 ;; Return value:  Size  Location     Type
+  1100 ;;                  2   19[COMRAM] unsigned int 
+  1101 ;; Registers used:
+  1102 ;;		wreg, status,2, status,0
+  1103 ;; Tracked objects:
+  1104 ;;		On entry : 0/0
+  1105 ;;		On exit  : 0/0
+  1106 ;;		Unchanged: 0/0
+  1107 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
+  1108 ;;      Params:         4       0       0       0       0       0       0       0       0
+  1109 ;;      Locals:         3       0       0       0       0       0       0       0       0
+  1110 ;;      Temps:          0       0       0       0       0       0       0       0       0
+  1111 ;;      Totals:         7       0       0       0       0       0       0       0       0
+  1112 ;;Total ram usage:        7 bytes
+  1113 ;; Hardware stack levels used:    1
+  1114 ;; Hardware stack levels required when called:    1
+  1115 ;; This function calls:
+  1116 ;;		Nothing
+  1117 ;; This function is called by:
+  1118 ;;		_LCM_PutNumber
+  1119 ;; This function uses a non-reentrant model
+  1120 ;;
+  1121                           
+  1122                           	psect	text6
+  1123  000C42                     __ptext6:
+  1124                           	opt stack 0
+  1125  000C42                     ___lwdiv:
+  1126                           	opt stack 28
+  1127                           
+  1128                           ;incstack = 0
+  1129  000C42  0E00               	movlw	0
+  1130  000C44  6E3C               	movwf	___lwdiv@quotient+1,c
+  1131  000C46  0E00               	movlw	0
+  1132  000C48  6E3B               	movwf	___lwdiv@quotient,c
+  1133  000C4A  5039               	movf	___lwdiv@divisor,w,c
+  1134  000C4C  103A               	iorwf	___lwdiv@divisor+1,w,c
+  1135  000C4E  B4D8               	btfsc	status,2,c
+  1136  000C50  D01C               	goto	l576
+  1137  000C52  0E01               	movlw	1
+  1138  000C54  6E3D               	movwf	___lwdiv@counter,c
+  1139  000C56  D004               	goto	l1219
+  1140  000C58                     l1217:
+  1141  000C58  90D8               	bcf	status,0,c
+  1142  000C5A  3639               	rlcf	___lwdiv@divisor,f,c
+  1143  000C5C  363A               	rlcf	___lwdiv@divisor+1,f,c
+  1144  000C5E  2A3D               	incf	___lwdiv@counter,f,c
+  1145  000C60                     l1219:
+  1146  000C60  AE3A               	btfss	___lwdiv@divisor+1,7,c
+  1147  000C62  D7FA               	goto	l1217
+  1148  000C64                     l1221:
+  1149  000C64  90D8               	bcf	status,0,c
+  1150  000C66  363B               	rlcf	___lwdiv@quotient,f,c
+  1151  000C68  363C               	rlcf	___lwdiv@quotient+1,f,c
+  1152  000C6A  5039               	movf	___lwdiv@divisor,w,c
+  1153  000C6C  5C37               	subwf	___lwdiv@dividend,w,c
+  1154  000C6E  503A               	movf	___lwdiv@divisor+1,w,c
+  1155  000C70  5838               	subwfb	___lwdiv@dividend+1,w,c
+  1156  000C72  A0D8               	btfss	status,0,c
+  1157  000C74  D005               	goto	l1229
+  1158  000C76  5039               	movf	___lwdiv@divisor,w,c
+  1159  000C78  5E37               	subwf	___lwdiv@dividend,f,c
+  1160  000C7A  503A               	movf	___lwdiv@divisor+1,w,c
+  1161  000C7C  5A38               	subwfb	___lwdiv@dividend+1,f,c
+  1162  000C7E  803B               	bsf	___lwdiv@quotient,0,c
+  1163  000C80                     l1229:
+  1164  000C80  90D8               	bcf	status,0,c
+  1165  000C82  323A               	rrcf	___lwdiv@divisor+1,f,c
+  1166  000C84  3239               	rrcf	___lwdiv@divisor,f,c
+  1167  000C86  2E3D               	decfsz	___lwdiv@counter,f,c
+  1168  000C88  D7ED               	goto	l1221
+  1169  000C8A                     l576:
+  1170  000C8A  C03B  F037         	movff	___lwdiv@quotient,?___lwdiv
+  1171  000C8E  C03C  F038         	movff	___lwdiv@quotient+1,?___lwdiv+1
+  1172  000C92  0012               	return		;funcret
+  1173  000C94                     __end_of___lwdiv:
+  1174                           	opt stack 0
+  1175                           tblptru	equ	0xFF8
+  1176                           tblptrh	equ	0xFF7
+  1177                           tblptrl	equ	0xFF6
+  1178                           tablat	equ	0xFF5
+  1179                           prodl	equ	0xFF3
+  1180                           intcon	equ	0xFF2
+  1181                           postinc0	equ	0xFEE
+  1182                           wreg	equ	0xFE8
+  1183                           postdec1	equ	0xFE5
+  1184                           fsr1l	equ	0xFE1
+  1185                           status	equ	0xFD8
+  1186                           
+  1187 ;; *************** function _LCM_BCD_Regulate *****************
+  1188 ;; Defined at:
+  1189 ;;		line 234 in file "APP001_LCM.c"
+  1190 ;; Parameters:    Size  Location     Type
+  1191 ;;  BCD             1    wreg     unsigned char 
+  1192 ;; Auto vars:     Size  Location     Type
+  1193 ;;  BCD             1   14[COMRAM] unsigned char 
+  1194 ;; Return value:  Size  Location     Type
+  1195 ;;                  1    wreg      unsigned char 
+  1196 ;; Registers used:
+  1197 ;;		wreg, status,2, status,0
+  1198 ;; Tracked objects:
+  1199 ;;		On entry : 0/0
+  1200 ;;		On exit  : 0/0
+  1201 ;;		Unchanged: 0/0
+  1202 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
+  1203 ;;      Params:         0       0       0       0       0       0       0       0       0
+  1204 ;;      Locals:         1       0       0       0       0       0       0       0       0
+  1205 ;;      Temps:          0       0       0       0       0       0       0       0       0
+  1206 ;;      Totals:         1       0       0       0       0       0       0       0       0
+  1207 ;;Total ram usage:        1 bytes
+  1208 ;; Hardware stack levels used:    1
+  1209 ;; Hardware stack levels required when called:    1
+  1210 ;; This function calls:
+  1211 ;;		Nothing
+  1212 ;; This function is called by:
+  1213 ;;		_LCM_PutNumber
+  1214 ;; This function uses a non-reentrant model
+  1215 ;;
+  1216                           
+  1217                           	psect	text7
+  1218  000DE8                     __ptext7:
+  1219                           	opt stack 0
+  1220  000DE8                     _LCM_BCD_Regulate:
+  1221                           	opt stack 28
+  1222                           
+  1223                           ;incstack = 0
+  1224                           ;LCM_BCD_Regulate@BCD stored from wreg
+  1225  000DE8  6E32               	movwf	LCM_BCD_Regulate@BCD,c
+  1226                           
+  1227                           ;APP001_LCM.c: 236: if (BCD == 0)
+  1228  000DEA  5032               	movf	LCM_BCD_Regulate@BCD,w,c
+  1229  000DEC  A4D8               	btfss	status,2,c
+  1230  000DEE  D007               	goto	l903
+  1231                           
+  1232                           ;APP001_LCM.c: 237: {
+  1233                           ;APP001_LCM.c: 238: if (Disable_Zero == 1)
+  1234  000DF0  0448               	decf	_Disable_Zero,w,c
+  1235  000DF2  A4D8               	btfss	status,2,c
+  1236  000DF4  D002               	goto	l899
+  1237                           
+  1238                           ;APP001_LCM.c: 239: return ' ';
+  1239  000DF6  0E20               	movlw	32
+  1240  000DF8  0012               	return	
+  1241  000DFA                     l899:
+  1242                           
+  1243                           ;APP001_LCM.c: 240: else
+  1244                           ;APP001_LCM.c: 241: return '0';
+  1245  000DFA  0E30               	movlw	48
+  1246                           
+  1247                           ;APP001_LCM.c: 242: }
+  1248  000DFC  0012               	return	
+  1249  000DFE                     l903:
+  1250                           
+  1251                           ;APP001_LCM.c: 244: else
+  1252                           ;APP001_LCM.c: 245: {
+  1253                           ;APP001_LCM.c: 246: Disable_Zero = 0;
+  1254  000DFE  0E00               	movlw	0
+  1255  000E00  6E48               	movwf	_Disable_Zero,c
+  1256                           
+  1257                           ;APP001_LCM.c: 247: return ( BCD += '0');
+  1258  000E02  0E30               	movlw	48
+  1259  000E04  2632               	addwf	LCM_BCD_Regulate@BCD,f,c
+  1260  000E06  5032               	movf	LCM_BCD_Regulate@BCD,w,c
+  1261  000E08  0012               	return	
+  1262  000E0A                     __end_of_LCM_BCD_Regulate:
+  1263                           	opt stack 0
+  1264                           tblptru	equ	0xFF8
+  1265                           tblptrh	equ	0xFF7
+  1266                           tblptrl	equ	0xFF6
+  1267                           tablat	equ	0xFF5
+  1268                           prodl	equ	0xFF3
+  1269                           intcon	equ	0xFF2
+  1270                           postinc0	equ	0xFEE
+  1271                           wreg	equ	0xFE8
+  1272                           postdec1	equ	0xFE5
+  1273                           fsr1l	equ	0xFE1
+  1274                           status	equ	0xFD8
+  1275                           
+  1276 ;; *************** function _IntLCM_WriteData *****************
+  1277 ;; Defined at:
+  1278 ;;		line 130 in file "APP001_LCM.c"
+  1279 ;; Parameters:    Size  Location     Type
+  1280 ;;  Data            1    wreg     unsigned char 
+  1281 ;; Auto vars:     Size  Location     Type
+  1282 ;;  Data            1   22[COMRAM] unsigned char 
+  1283 ;; Return value:  Size  Location     Type
+  1284 ;;		None               void
+  1285 ;; Registers used:
+  1286 ;;		wreg, status,2, status,0, cstack
+  1287 ;; Tracked objects:
+  1288 ;;		On entry : 0/0
+  1289 ;;		On exit  : 0/0
+  1290 ;;		Unchanged: 0/0
+  1291 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
+  1292 ;;      Params:         0       0       0       0       0       0       0       0       0
+  1293 ;;      Locals:         1       0       0       0       0       0       0       0       0
+  1294 ;;      Temps:          0       0       0       0       0       0       0       0       0
+  1295 ;;      Totals:         1       0       0       0       0       0       0       0       0
+  1296 ;;Total ram usage:        1 bytes
+  1297 ;; Hardware stack levels used:    1
+  1298 ;; Hardware stack levels required when called:    3
+  1299 ;; This function calls:
+  1300 ;;		_IntLCM_Communication
+  1301 ;;		_LCM_IsBusy
+  1302 ;; This function is called by:
+  1303 ;;		_LCM_PutROMString
+  1304 ;;		_LCM_PutNumber
+  1305 ;;		_LCM_PutASCII
+  1306 ;;		_LCM_PutHex
+  1307 ;;		_LCM_PutRAMString
+  1308 ;; This function uses a non-reentrant model
+  1309 ;;
+  1310                           
+  1311                           	psect	text8
+  1312  000DC4                     __ptext8:
+  1313                           	opt stack 0
+  1314  000DC4                     _IntLCM_WriteData:
+  1315                           	opt stack 26
+  1316                           
+  1317                           ;incstack = 0
+  1318                           ;IntLCM_WriteData@Data stored from wreg
+  1319  000DC4  6E3A               	movwf	IntLCM_WriteData@Data,c
+  1320  000DC6                     l1201:
+  1321  000DC6  EC05  F007         	call	_LCM_IsBusy	;wreg free
+  1322  000DCA  0900               	iorlw	0
+  1323  000DCC  A4D8               	btfss	status,2,c
+  1324  000DCE  D7FB               	goto	l1201
+  1325                           
+  1326                           ;APP001_LCM.c: 133: RB5 = 1;
+  1327  000DD0  8A81               	bsf	3969,5,c	;volatile
+  1328                           
+  1329                           ;APP001_LCM.c: 134: RB4 = 0;
+  1330  000DD2  9881               	bcf	3969,4,c	;volatile
+  1331                           
+  1332                           ;APP001_LCM.c: 136: IntLCM_Communication((Data >> 4) & 0x0f);
+  1333  000DD4  383A               	swapf	IntLCM_WriteData@Data,w,c
+  1334  000DD6  0B0F               	andlw	15
+  1335  000DD8  0B0F               	andlw	15
+  1336  000DDA  ECE7  F005         	call	_IntLCM_Communication
+  1337                           
+  1338                           ;APP001_LCM.c: 137: IntLCM_Communication(Data & 0x0f);
+  1339  000DDE  503A               	movf	IntLCM_WriteData@Data,w,c
+  1340  000DE0  0B0F               	andlw	15
+  1341  000DE2  ECE7  F005         	call	_IntLCM_Communication
+  1342  000DE6  0012               	return		;funcret
+  1343  000DE8                     __end_of_IntLCM_WriteData:
+  1344                           	opt stack 0
+  1345                           tblptru	equ	0xFF8
+  1346                           tblptrh	equ	0xFF7
+  1347                           tblptrl	equ	0xFF6
+  1348                           tablat	equ	0xFF5
+  1349                           prodl	equ	0xFF3
+  1350                           intcon	equ	0xFF2
+  1351                           postinc0	equ	0xFEE
+  1352                           wreg	equ	0xFE8
+  1353                           postdec1	equ	0xFE5
+  1354                           fsr1l	equ	0xFE1
+  1355                           status	equ	0xFD8
+  1356                           
+  1357 ;; *************** function _LCM_IsBusy *****************
+  1358 ;; Defined at:
+  1359 ;;		line 107 in file "APP001_LCM.c"
+  1360 ;; Parameters:    Size  Location     Type
+  1361 ;;		None
+  1362 ;; Auto vars:     Size  Location     Type
+  1363 ;;  i               2   14[COMRAM] unsigned int 
+  1364 ;; Return value:  Size  Location     Type
+  1365 ;;                  1    wreg      unsigned char 
+  1366 ;; Registers used:
+  1367 ;;		wreg, status,2, status,0
+  1368 ;; Tracked objects:
+  1369 ;;		On entry : 0/0
+  1370 ;;		On exit  : 0/0
+  1371 ;;		Unchanged: 0/0
+  1372 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
+  1373 ;;      Params:         0       0       0       0       0       0       0       0       0
+  1374 ;;      Locals:         2       0       0       0       0       0       0       0       0
+  1375 ;;      Temps:          0       0       0       0       0       0       0       0       0
+  1376 ;;      Totals:         2       0       0       0       0       0       0       0       0
+  1377 ;;Total ram usage:        2 bytes
+  1378 ;; Hardware stack levels used:    1
+  1379 ;; Hardware stack levels required when called:    1
+  1380 ;; This function calls:
+  1381 ;;		Nothing
+  1382 ;; This function is called by:
+  1383 ;;		_IntLCM_WriteData
+  1384 ;;		_IntLCM_WriteInstruction
+  1385 ;; This function uses a non-reentrant model
+  1386 ;;
+  1387                           
+  1388                           	psect	text9
+  1389  000E0A                     __ptext9:
+  1390                           	opt stack 0
+  1391  000E0A                     _LCM_IsBusy:
+  1392                           	opt stack 27
+  1393                           
+  1394                           ;APP001_LCM.c: 124: unsigned int i;
+  1395                           ;APP001_LCM.c: 126: for (i = 0; i < 1000; i++);
+  1396                           
+  1397                           ;incstack = 0
+  1398  000E0A  0E00               	movlw	0
+  1399  000E0C  6E33               	movwf	LCM_IsBusy@i+1,c
+  1400  000E0E  0E00               	movlw	0
+  1401  000E10  6E32               	movwf	LCM_IsBusy@i,c
+  1402  000E12                     l835:
+  1403  000E12  0EE8               	movlw	232
+  1404  000E14  5C32               	subwf	LCM_IsBusy@i,w,c
+  1405  000E16  0E03               	movlw	3
+  1406  000E18  5833               	subwfb	LCM_IsBusy@i+1,w,c
+  1407  000E1A  B0D8               	btfsc	status,0,c
+  1408  000E1C  D003               	goto	l843
+  1409  000E1E  4A32               	infsnz	LCM_IsBusy@i,f,c
+  1410  000E20  2A33               	incf	LCM_IsBusy@i+1,f,c
+  1411  000E22  D7F7               	goto	l835
+  1412  000E24                     l843:
+  1413                           
+  1414                           ;APP001_LCM.c: 127: return 0;
+  1415  000E24  0E00               	movlw	0
+  1416  000E26  0012               	return	
+  1417  000E28                     __end_of_LCM_IsBusy:
+  1418                           	opt stack 0
+  1419                           tblptru	equ	0xFF8
+  1420                           tblptrh	equ	0xFF7
+  1421                           tblptrl	equ	0xFF6
+  1422                           tablat	equ	0xFF5
+  1423                           prodl	equ	0xFF3
+  1424                           intcon	equ	0xFF2
+  1425                           postinc0	equ	0xFEE
+  1426                           wreg	equ	0xFE8
+  1427                           postdec1	equ	0xFE5
+  1428                           fsr1l	equ	0xFE1
+  1429                           status	equ	0xFD8
+  1430                           
+  1431 ;; *************** function _LCM_Init *****************
+  1432 ;; Defined at:
+  1433 ;;		line 150 in file "APP001_LCM.c"
+  1434 ;; Parameters:    Size  Location     Type
+  1435 ;;		None
+  1436 ;; Auto vars:     Size  Location     Type
+  1437 ;;		None
+  1438 ;; Return value:  Size  Location     Type
+  1439 ;;		None               void
+  1440 ;; Registers used:
+  1441 ;;		wreg, status,2, status,0, cstack
+  1442 ;; Tracked objects:
+  1443 ;;		On entry : 0/0
+  1444 ;;		On exit  : 0/0
+  1445 ;;		Unchanged: 0/0
+  1446 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
+  1447 ;;      Params:         0       0       0       0       0       0       0       0       0
+  1448 ;;      Locals:         0       0       0       0       0       0       0       0       0
+  1449 ;;      Temps:          0       0       0       0       0       0       0       0       0
+  1450 ;;      Totals:         0       0       0       0       0       0       0       0       0
+  1451 ;;Total ram usage:        0 bytes
+  1452 ;; Hardware stack levels used:    1
+  1453 ;; Hardware stack levels required when called:    3
+  1454 ;; This function calls:
+  1455 ;;		_IntLCM_Communication
+  1456 ;;		_LCM_Delay
+  1457 ;;		_LCM_IOSetup
+  1458 ;; This function is called by:
+  1459 ;;		_main
+  1460 ;; This function uses a non-reentrant model
+  1461 ;;
+  1462                           
+  1463                           	psect	text10
+  1464  000950                     __ptext10:
+  1465                           	opt stack 0
+  1466  000950                     _LCM_Init:
+  1467                           	opt stack 27
+  1468                           
+  1469                           ;APP001_LCM.c: 152: LCM_IOSetup();
+  1470                           
+  1471                           ;incstack = 0
+  1472  000950  ECBD  F006         	call	_LCM_IOSetup	;wreg free
+  1473                           
+  1474                           ;APP001_LCM.c: 154: RB5 = 0;
+  1475  000954  9A81               	bcf	3969,5,c	;volatile
+  1476                           
+  1477                           ;APP001_LCM.c: 155: RB4 = 0;
+  1478  000956  9881               	bcf	3969,4,c	;volatile
+  1479                           
+  1480                           ;APP001_LCM.c: 157: IntLCM_Communication(0x03);
+  1481  000958  0E03               	movlw	3
+  1482  00095A  ECE7  F005         	call	_IntLCM_Communication
+  1483                           
+  1484                           ;APP001_LCM.c: 158: LCM_Delay(( 16000000L / 4 * 1 ) / 1000L / 10 * 4.1);
+  1485  00095E  0E67               	movlw	103
+  1486  000960  6E32               	movwf	LCM_Delay@Count,c
+  1487  000962  0E06               	movlw	6
+  1488  000964  6E33               	movwf	LCM_Delay@Count+1,c
+  1489  000966  0E00               	movlw	0
+  1490  000968  6E34               	movwf	LCM_Delay@Count+2,c
+  1491  00096A  0E00               	movlw	0
+  1492  00096C  6E35               	movwf	LCM_Delay@Count+3,c
+  1493  00096E  EC6B  F006         	call	_LCM_Delay	;wreg free
+  1494                           
+  1495                           ;APP001_LCM.c: 160: IntLCM_Communication(0x03);
+  1496  000972  0E03               	movlw	3
+  1497  000974  ECE7  F005         	call	_IntLCM_Communication
+  1498                           
+  1499                           ;APP001_LCM.c: 161: LCM_Delay(( 16000000L / 4 * 100 ) / 1000000L / 10);
+  1500  000978  0E28               	movlw	40
+  1501  00097A  6E32               	movwf	LCM_Delay@Count,c
+  1502  00097C  0E00               	movlw	0
+  1503  00097E  6E33               	movwf	LCM_Delay@Count+1,c
+  1504  000980  0E00               	movlw	0
+  1505  000982  6E34               	movwf	LCM_Delay@Count+2,c
+  1506  000984  0E00               	movlw	0
+  1507  000986  6E35               	movwf	LCM_Delay@Count+3,c
+  1508  000988  EC6B  F006         	call	_LCM_Delay	;wreg free
+  1509                           
+  1510                           ;APP001_LCM.c: 163: IntLCM_Communication(0x03);
+  1511  00098C  0E03               	movlw	3
+  1512  00098E  ECE7  F005         	call	_IntLCM_Communication
+  1513                           
+  1514                           ;APP001_LCM.c: 164: LCM_Delay(( 16000000L / 4 * 100 ) / 1000000L / 10);
+  1515  000992  0E28               	movlw	40
+  1516  000994  6E32               	movwf	LCM_Delay@Count,c
+  1517  000996  0E00               	movlw	0
+  1518  000998  6E33               	movwf	LCM_Delay@Count+1,c
+  1519  00099A  0E00               	movlw	0
+  1520  00099C  6E34               	movwf	LCM_Delay@Count+2,c
+  1521  00099E  0E00               	movlw	0
+  1522  0009A0  6E35               	movwf	LCM_Delay@Count+3,c
+  1523  0009A2  EC6B  F006         	call	_LCM_Delay	;wreg free
+  1524                           
+  1525                           ;APP001_LCM.c: 166: IntLCM_Communication(0x02);
+  1526  0009A6  0E02               	movlw	2
+  1527  0009A8  ECE7  F005         	call	_IntLCM_Communication
+  1528                           
+  1529                           ;APP001_LCM.c: 167: LCM_Delay(( 16000000L / 4 * 100 ) / 1000000L / 10);
+  1530  0009AC  0E28               	movlw	40
+  1531  0009AE  6E32               	movwf	LCM_Delay@Count,c
+  1532  0009B0  0E00               	movlw	0
+  1533  0009B2  6E33               	movwf	LCM_Delay@Count+1,c
+  1534  0009B4  0E00               	movlw	0
+  1535  0009B6  6E34               	movwf	LCM_Delay@Count+2,c
+  1536  0009B8  0E00               	movlw	0
+  1537  0009BA  6E35               	movwf	LCM_Delay@Count+3,c
+  1538  0009BC  EC6B  F006         	call	_LCM_Delay	;wreg free
+  1539                           
+  1540                           ;APP001_LCM.c: 169: IntLCM_Communication((0x28 >> 4) & 0x0f);
+  1541  0009C0  0E02               	movlw	2
+  1542  0009C2  ECE7  F005         	call	_IntLCM_Communication
+  1543                           
+  1544                           ;APP001_LCM.c: 170: IntLCM_Communication(0x28 & 0xf);
+  1545  0009C6  0E08               	movlw	8
+  1546  0009C8  ECE7  F005         	call	_IntLCM_Communication
+  1547                           
+  1548                           ;APP001_LCM.c: 171: LCM_Delay(( 16000000L / 4 * 10 ) / 1000000L / 10 * 3.7);
+  1549  0009CC  0E0E               	movlw	14
+  1550  0009CE  6E32               	movwf	LCM_Delay@Count,c
+  1551  0009D0  0E00               	movlw	0
+  1552  0009D2  6E33               	movwf	LCM_Delay@Count+1,c
+  1553  0009D4  0E00               	movlw	0
+  1554  0009D6  6E34               	movwf	LCM_Delay@Count+2,c
+  1555  0009D8  0E00               	movlw	0
+  1556  0009DA  6E35               	movwf	LCM_Delay@Count+3,c
+  1557  0009DC  EC6B  F006         	call	_LCM_Delay	;wreg free
+  1558                           
+  1559                           ;APP001_LCM.c: 173: IntLCM_Communication((0x08 >> 4) & 0x0f);
+  1560  0009E0  0E00               	movlw	0
+  1561  0009E2  ECE7  F005         	call	_IntLCM_Communication
+  1562                           
+  1563                           ;APP001_LCM.c: 174: IntLCM_Communication(0x08 & 0xf);
+  1564  0009E6  0E08               	movlw	8
+  1565  0009E8  ECE7  F005         	call	_IntLCM_Communication
+  1566                           
+  1567                           ;APP001_LCM.c: 175: LCM_Delay(( 16000000L / 4 * 10 ) / 1000000L / 10 * 3.7);
+  1568  0009EC  0E0E               	movlw	14
+  1569  0009EE  6E32               	movwf	LCM_Delay@Count,c
+  1570  0009F0  0E00               	movlw	0
+  1571  0009F2  6E33               	movwf	LCM_Delay@Count+1,c
+  1572  0009F4  0E00               	movlw	0
+  1573  0009F6  6E34               	movwf	LCM_Delay@Count+2,c
+  1574  0009F8  0E00               	movlw	0
+  1575  0009FA  6E35               	movwf	LCM_Delay@Count+3,c
+  1576  0009FC  EC6B  F006         	call	_LCM_Delay	;wreg free
+  1577                           
+  1578                           ;APP001_LCM.c: 177: IntLCM_Communication((0x01 >> 4) & 0x0f);
+  1579  000A00  0E00               	movlw	0
+  1580  000A02  ECE7  F005         	call	_IntLCM_Communication
+  1581                           
+  1582                           ;APP001_LCM.c: 178: IntLCM_Communication(0x01 & 0xf);
+  1583  000A06  0E01               	movlw	1
+  1584  000A08  ECE7  F005         	call	_IntLCM_Communication
+  1585                           
+  1586                           ;APP001_LCM.c: 179: LCM_Delay(( 16000000L / 4 * 1 ) / 1000L / 10 * 1.52);
+  1587  000A0C  0E60               	movlw	96
+  1588  000A0E  6E32               	movwf	LCM_Delay@Count,c
+  1589  000A10  0E02               	movlw	2
+  1590  000A12  6E33               	movwf	LCM_Delay@Count+1,c
+  1591  000A14  0E00               	movlw	0
+  1592  000A16  6E34               	movwf	LCM_Delay@Count+2,c
+  1593  000A18  0E00               	movlw	0
+  1594  000A1A  6E35               	movwf	LCM_Delay@Count+3,c
+  1595  000A1C  EC6B  F006         	call	_LCM_Delay	;wreg free
+  1596                           
+  1597                           ;APP001_LCM.c: 181: IntLCM_Communication((0x06 >> 4) & 0x0f);
+  1598  000A20  0E00               	movlw	0
+  1599  000A22  ECE7  F005         	call	_IntLCM_Communication
+  1600                           
+  1601                           ;APP001_LCM.c: 182: IntLCM_Communication(0x06 & 0xf);
+  1602  000A26  0E06               	movlw	6
+  1603  000A28  ECE7  F005         	call	_IntLCM_Communication
+  1604                           
+  1605                           ;APP001_LCM.c: 183: LCM_Delay(( 16000000L / 4 * 10 ) / 1000000L / 10 * 3.7);
+  1606  000A2C  0E0E               	movlw	14
+  1607  000A2E  6E32               	movwf	LCM_Delay@Count,c
+  1608  000A30  0E00               	movlw	0
+  1609  000A32  6E33               	movwf	LCM_Delay@Count+1,c
+  1610  000A34  0E00               	movlw	0
+  1611  000A36  6E34               	movwf	LCM_Delay@Count+2,c
+  1612  000A38  0E00               	movlw	0
+  1613  000A3A  6E35               	movwf	LCM_Delay@Count+3,c
+  1614  000A3C  EC6B  F006         	call	_LCM_Delay	;wreg free
+  1615                           
+  1616                           ;APP001_LCM.c: 185: IntLCM_Communication((0x0c >> 4) & 0x0f);
+  1617  000A40  0E00               	movlw	0
+  1618  000A42  ECE7  F005         	call	_IntLCM_Communication
+  1619                           
+  1620                           ;APP001_LCM.c: 186: IntLCM_Communication(0x0c & 0xf);
+  1621  000A46  0E0C               	movlw	12
+  1622  000A48  ECE7  F005         	call	_IntLCM_Communication
+  1623                           
+  1624                           ;APP001_LCM.c: 187: LCM_Delay(( 16000000L / 4 * 10 ) / 1000000L / 10 * 3.7);
+  1625  000A4C  0E0E               	movlw	14
+  1626  000A4E  6E32               	movwf	LCM_Delay@Count,c
+  1627  000A50  0E00               	movlw	0
+  1628  000A52  6E33               	movwf	LCM_Delay@Count+1,c
+  1629  000A54  0E00               	movlw	0
+  1630  000A56  6E34               	movwf	LCM_Delay@Count+2,c
+  1631  000A58  0E00               	movlw	0
+  1632  000A5A  6E35               	movwf	LCM_Delay@Count+3,c
+  1633  000A5C  EC6B  F006         	call	_LCM_Delay	;wreg free
+  1634  000A60  0012               	return		;funcret
+  1635  000A62                     __end_of_LCM_Init:
+  1636                           	opt stack 0
+  1637                           tblptru	equ	0xFF8
+  1638                           tblptrh	equ	0xFF7
+  1639                           tblptrl	equ	0xFF6
+  1640                           tablat	equ	0xFF5
+  1641                           prodl	equ	0xFF3
+  1642                           intcon	equ	0xFF2
+  1643                           postinc0	equ	0xFEE
+  1644                           wreg	equ	0xFE8
+  1645                           postdec1	equ	0xFE5
+  1646                           fsr1l	equ	0xFE1
+  1647                           status	equ	0xFD8
+  1648                           
+  1649 ;; *************** function _LCM_IOSetup *****************
+  1650 ;; Defined at:
+  1651 ;;		line 38 in file "APP001_LCM.c"
+  1652 ;; Parameters:    Size  Location     Type
+  1653 ;;		None
+  1654 ;; Auto vars:     Size  Location     Type
+  1655 ;;		None
+  1656 ;; Return value:  Size  Location     Type
+  1657 ;;		None               void
+  1658 ;; Registers used:
+  1659 ;;		wreg, status,2
+  1660 ;; Tracked objects:
+  1661 ;;		On entry : 0/0
+  1662 ;;		On exit  : 0/0
+  1663 ;;		Unchanged: 0/0
+  1664 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
+  1665 ;;      Params:         0       0       0       0       0       0       0       0       0
+  1666 ;;      Locals:         0       0       0       0       0       0       0       0       0
+  1667 ;;      Temps:          0       0       0       0       0       0       0       0       0
+  1668 ;;      Totals:         0       0       0       0       0       0       0       0       0
+  1669 ;;Total ram usage:        0 bytes
+  1670 ;; Hardware stack levels used:    1
+  1671 ;; Hardware stack levels required when called:    1
+  1672 ;; This function calls:
+  1673 ;;		Nothing
+  1674 ;; This function is called by:
+  1675 ;;		_LCM_Init
+  1676 ;; This function uses a non-reentrant model
+  1677 ;;
+  1678                           
+  1679                           	psect	text11
+  1680  000D7A                     __ptext11:
+  1681                           	opt stack 0
+  1682  000D7A                     _LCM_IOSetup:
+  1683                           	opt stack 28
+  1684                           
+  1685                           ;APP001_LCM.c: 40: ADCON1bits.PCFG = 0x0d;
+  1686                           
+  1687                           ;incstack = 0
+  1688  000D7A  50C1               	movf	4033,w,c	;volatile
+  1689  000D7C  0BF0               	andlw	-16
+  1690  000D7E  090D               	iorlw	13
+  1691  000D80  6EC1               	movwf	4033,c	;volatile
+  1692                           
+  1693                           ;APP001_LCM.c: 42: TRISBbits.TRISB5 = 0;
+  1694  000D82  9A93               	bcf	3987,5,c	;volatile
+  1695                           
+  1696                           ;APP001_LCM.c: 43: TRISBbits.TRISB4 = 0;
+  1697  000D84  9893               	bcf	3987,4,c	;volatile
+  1698                           
+  1699                           ;APP001_LCM.c: 44: TRISBbits.TRISB3 = 0;
+  1700  000D86  9693               	bcf	3987,3,c	;volatile
+  1701                           
+  1702                           ;APP001_LCM.c: 46: TRISDbits.TRISD4 = 0;
+  1703  000D88  9895               	bcf	3989,4,c	;volatile
+  1704                           
+  1705                           ;APP001_LCM.c: 47: TRISDbits.TRISD5 = 0;
+  1706  000D8A  9A95               	bcf	3989,5,c	;volatile
+  1707                           
+  1708                           ;APP001_LCM.c: 48: TRISDbits.TRISD6 = 0;
+  1709  000D8C  9C95               	bcf	3989,6,c	;volatile
+  1710                           
+  1711                           ;APP001_LCM.c: 49: TRISDbits.TRISD7 = 0;
+  1712  000D8E  9E95               	bcf	3989,7,c	;volatile
+  1713                           
+  1714                           ;APP001_LCM.c: 51: RB5 = 0;
+  1715  000D90  9A81               	bcf	3969,5,c	;volatile
+  1716                           
+  1717                           ;APP001_LCM.c: 52: RB4 = 0;
+  1718  000D92  9881               	bcf	3969,4,c	;volatile
+  1719                           
+  1720                           ;APP001_LCM.c: 53: RB3 = 0;
+  1721  000D94  9681               	bcf	3969,3,c	;volatile
+  1722                           
+  1723                           ;APP001_LCM.c: 55: RD7 = 0;
+  1724  000D96  9E83               	bcf	3971,7,c	;volatile
+  1725                           
+  1726                           ;APP001_LCM.c: 56: RD6 = 0;
+  1727  000D98  9C83               	bcf	3971,6,c	;volatile
+  1728                           
+  1729                           ;APP001_LCM.c: 57: RD5 = 0;
+  1730  000D9A  9A83               	bcf	3971,5,c	;volatile
+  1731                           
+  1732                           ;APP001_LCM.c: 58: RD4 = 0;
+  1733  000D9C  9883               	bcf	3971,4,c	;volatile
+  1734  000D9E  0012               	return		;funcret
+  1735  000DA0                     __end_of_LCM_IOSetup:
+  1736                           	opt stack 0
+  1737                           tblptru	equ	0xFF8
+  1738                           tblptrh	equ	0xFF7
+  1739                           tblptrl	equ	0xFF6
+  1740                           tablat	equ	0xFF5
+  1741                           prodl	equ	0xFF3
+  1742                           intcon	equ	0xFF2
+  1743                           postinc0	equ	0xFEE
+  1744                           wreg	equ	0xFE8
+  1745                           postdec1	equ	0xFE5
+  1746                           fsr1l	equ	0xFE1
+  1747                           status	equ	0xFD8
+  1748                           
+  1749 ;; *************** function _IntLCM_Communication *****************
+  1750 ;; Defined at:
+  1751 ;;		line 72 in file "APP001_LCM.c"
+  1752 ;; Parameters:    Size  Location     Type
+  1753 ;;  NibbleByte      1    wreg     unsigned char 
+  1754 ;; Auto vars:     Size  Location     Type
+  1755 ;;  NibbleByte      1   20[COMRAM] unsigned char 
+  1756 ;;  Temporary       1   21[COMRAM] unsigned char 
+  1757 ;; Return value:  Size  Location     Type
+  1758 ;;		None               void
+  1759 ;; Registers used:
+  1760 ;;		wreg, status,2, status,0, cstack
+  1761 ;; Tracked objects:
+  1762 ;;		On entry : 0/0
+  1763 ;;		On exit  : 0/0
+  1764 ;;		Unchanged: 0/0
+  1765 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
+  1766 ;;      Params:         0       0       0       0       0       0       0       0       0
+  1767 ;;      Locals:         2       0       0       0       0       0       0       0       0
+  1768 ;;      Temps:          0       0       0       0       0       0       0       0       0
+  1769 ;;      Totals:         2       0       0       0       0       0       0       0       0
+  1770 ;;Total ram usage:        2 bytes
+  1771 ;; Hardware stack levels used:    1
+  1772 ;; Hardware stack levels required when called:    2
+  1773 ;; This function calls:
+  1774 ;;		_LCM_Delay
+  1775 ;; This function is called by:
+  1776 ;;		_IntLCM_WriteData
+  1777 ;;		_IntLCM_WriteInstruction
+  1778 ;;		_LCM_Init
+  1779 ;; This function uses a non-reentrant model
+  1780 ;;
+  1781                           
+  1782                           	psect	text12
+  1783  000BCE                     __ptext12:
+  1784                           	opt stack 0
+  1785  000BCE                     _IntLCM_Communication:
+  1786                           	opt stack 26
+  1787                           
+  1788                           ;incstack = 0
+  1789                           ;IntLCM_Communication@NibbleByte stored from wreg
+  1790  000BCE  6E38               	movwf	IntLCM_Communication@NibbleByte,c
+  1791                           
+  1792                           ;APP001_LCM.c: 74: unsigned char Temporary;
+  1793                           ;APP001_LCM.c: 77: LCM_Delay(( 16000000L / 4 * 10 ) / 1000000000L / 10 * 4);
+  1794  000BD0  0E00               	movlw	0
+  1795  000BD2  6E32               	movwf	LCM_Delay@Count,c
+  1796  000BD4  0E00               	movlw	0
+  1797  000BD6  6E33               	movwf	LCM_Delay@Count+1,c
+  1798  000BD8  0E00               	movlw	0
+  1799  000BDA  6E34               	movwf	LCM_Delay@Count+2,c
+  1800  000BDC  0E00               	movlw	0
+  1801  000BDE  6E35               	movwf	LCM_Delay@Count+3,c
+  1802  000BE0  EC6B  F006         	call	_LCM_Delay	;wreg free
+  1803                           
+  1804                           ;APP001_LCM.c: 79: RD7 = 0;
+  1805  000BE4  9E83               	bcf	3971,7,c	;volatile
+  1806                           
+  1807                           ;APP001_LCM.c: 80: RD6 = 0;
+  1808  000BE6  9C83               	bcf	3971,6,c	;volatile
+  1809                           
+  1810                           ;APP001_LCM.c: 81: RD5 = 0;
+  1811  000BE8  9A83               	bcf	3971,5,c	;volatile
+  1812                           
+  1813                           ;APP001_LCM.c: 82: RD4 = 0;
+  1814  000BEA  9883               	bcf	3971,4,c	;volatile
+  1815                           
+  1816                           ;APP001_LCM.c: 84: Temporary = NibbleByte & 0x0f;
+  1817  000BEC  5038               	movf	IntLCM_Communication@NibbleByte,w,c
+  1818  000BEE  0B0F               	andlw	15
+  1819  000BF0  6E39               	movwf	IntLCM_Communication@Temporary,c
+  1820                           
+  1821                           ;APP001_LCM.c: 85: if ((Temporary & 0x08) == 0x08)
+  1822  000BF2  B639               	btfsc	IntLCM_Communication@Temporary,3,c
+  1823                           
+  1824                           ;APP001_LCM.c: 86: RD7 = 1;
+  1825  000BF4  8E83               	bsf	3971,7,c	;volatile
+  1826                           
+  1827                           ;APP001_LCM.c: 88: Temporary = NibbleByte & 0x0f;
+  1828  000BF6  5038               	movf	IntLCM_Communication@NibbleByte,w,c
+  1829  000BF8  0B0F               	andlw	15
+  1830  000BFA  6E39               	movwf	IntLCM_Communication@Temporary,c
+  1831                           
+  1832                           ;APP001_LCM.c: 89: if ((Temporary & 0x04) == 0x04)
+  1833  000BFC  B439               	btfsc	IntLCM_Communication@Temporary,2,c
+  1834                           
+  1835                           ;APP001_LCM.c: 90: RD6 = 1;
+  1836  000BFE  8C83               	bsf	3971,6,c	;volatile
+  1837                           
+  1838                           ;APP001_LCM.c: 92: Temporary = NibbleByte & 0x0f;
+  1839  000C00  5038               	movf	IntLCM_Communication@NibbleByte,w,c
+  1840  000C02  0B0F               	andlw	15
+  1841  000C04  6E39               	movwf	IntLCM_Communication@Temporary,c
+  1842                           
+  1843                           ;APP001_LCM.c: 93: if ((Temporary & 0x02) == 0x02)
+  1844  000C06  B239               	btfsc	IntLCM_Communication@Temporary,1,c
+  1845                           
+  1846                           ;APP001_LCM.c: 94: RD5 = 1;
+  1847  000C08  8A83               	bsf	3971,5,c	;volatile
+  1848                           
+  1849                           ;APP001_LCM.c: 96: Temporary = NibbleByte & 0x0f;
+  1850  000C0A  5038               	movf	IntLCM_Communication@NibbleByte,w,c
+  1851  000C0C  0B0F               	andlw	15
+  1852  000C0E  6E39               	movwf	IntLCM_Communication@Temporary,c
+  1853                           
+  1854                           ;APP001_LCM.c: 97: if ((Temporary & 0x01) == 0x01)
+  1855  000C10  B039               	btfsc	IntLCM_Communication@Temporary,0,c
+  1856                           
+  1857                           ;APP001_LCM.c: 98: RD4 = 1;
+  1858  000C12  8883               	bsf	3971,4,c	;volatile
+  1859                           
+  1860                           ;APP001_LCM.c: 100: RB3 = 1;
+  1861  000C14  8681               	bsf	3969,3,c	;volatile
+  1862                           
+  1863                           ;APP001_LCM.c: 101: LCM_Delay(( 16000000L / 4 * 100 ) / 1000000000L / 10 * 2.3);
+  1864  000C16  0E00               	movlw	0
+  1865  000C18  6E32               	movwf	LCM_Delay@Count,c
+  1866  000C1A  0E00               	movlw	0
+  1867  000C1C  6E33               	movwf	LCM_Delay@Count+1,c
+  1868  000C1E  0E00               	movlw	0
+  1869  000C20  6E34               	movwf	LCM_Delay@Count+2,c
+  1870  000C22  0E00               	movlw	0
+  1871  000C24  6E35               	movwf	LCM_Delay@Count+3,c
+  1872  000C26  EC6B  F006         	call	_LCM_Delay	;wreg free
+  1873                           
+  1874                           ;APP001_LCM.c: 103: RB3 = 0;
+  1875  000C2A  9681               	bcf	3969,3,c	;volatile
+  1876                           
+  1877                           ;APP001_LCM.c: 104: LCM_Delay(( 16000000L / 4 * 10 ) / 1000000000L / 10);
+  1878  000C2C  0E00               	movlw	0
+  1879  000C2E  6E32               	movwf	LCM_Delay@Count,c
+  1880  000C30  0E00               	movlw	0
+  1881  000C32  6E33               	movwf	LCM_Delay@Count+1,c
+  1882  000C34  0E00               	movlw	0
+  1883  000C36  6E34               	movwf	LCM_Delay@Count+2,c
+  1884  000C38  0E00               	movlw	0
+  1885  000C3A  6E35               	movwf	LCM_Delay@Count+3,c
+  1886  000C3C  EC6B  F006         	call	_LCM_Delay	;wreg free
+  1887  000C40  0012               	return		;funcret
+  1888  000C42                     __end_of_IntLCM_Communication:
+  1889                           	opt stack 0
+  1890                           tblptru	equ	0xFF8
+  1891                           tblptrh	equ	0xFF7
+  1892                           tblptrl	equ	0xFF6
+  1893                           tablat	equ	0xFF5
+  1894                           prodl	equ	0xFF3
+  1895                           intcon	equ	0xFF2
+  1896                           postinc0	equ	0xFEE
+  1897                           wreg	equ	0xFE8
+  1898                           postdec1	equ	0xFE5
+  1899                           fsr1l	equ	0xFE1
+  1900                           status	equ	0xFD8
+  1901                           
+  1902 ;; *************** function _LCM_Delay *****************
+  1903 ;; Defined at:
+  1904 ;;		line 61 in file "APP001_LCM.c"
+  1905 ;; Parameters:    Size  Location     Type
+  1906 ;;  Count           4   14[COMRAM] unsigned long 
+  1907 ;; Auto vars:     Size  Location     Type
+  1908 ;;  i               2   18[COMRAM] unsigned int 
+  1909 ;; Return value:  Size  Location     Type
+  1910 ;;		None               void
+  1911 ;; Registers used:
+  1912 ;;		wreg, status,2, status,0
+  1913 ;; Tracked objects:
+  1914 ;;		On entry : 0/0
+  1915 ;;		On exit  : 0/0
+  1916 ;;		Unchanged: 0/0
+  1917 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
+  1918 ;;      Params:         4       0       0       0       0       0       0       0       0
+  1919 ;;      Locals:         2       0       0       0       0       0       0       0       0
+  1920 ;;      Temps:          0       0       0       0       0       0       0       0       0
+  1921 ;;      Totals:         6       0       0       0       0       0       0       0       0
+  1922 ;;Total ram usage:        6 bytes
+  1923 ;; Hardware stack levels used:    1
+  1924 ;; Hardware stack levels required when called:    1
+  1925 ;; This function calls:
+  1926 ;;		Nothing
+  1927 ;; This function is called by:
+  1928 ;;		_IntLCM_Communication
+  1929 ;;		_LCM_Init
+  1930 ;; This function uses a non-reentrant model
+  1931 ;;
+  1932                           
+  1933                           	psect	text13
+  1934  000CD6                     __ptext13:
+  1935                           	opt stack 0
+  1936  000CD6                     _LCM_Delay:
+  1937                           	opt stack 26
+  1938                           
+  1939                           ;APP001_LCM.c: 63: unsigned int i = 0;
+  1940                           
+  1941                           ;incstack = 0
+  1942  000CD6  0E00               	movlw	0
+  1943  000CD8  6E37               	movwf	LCM_Delay@i+1,c
+  1944  000CDA  0E00               	movlw	0
+  1945  000CDC  6E36               	movwf	LCM_Delay@i,c
+  1946                           
+  1947                           ;APP001_LCM.c: 65: while (Count--)
+  1948  000CDE  D00C               	goto	l1159
+  1949  000CE0                     l1155:
+  1950                           
+  1951                           ;APP001_LCM.c: 66: {
+  1952                           ;APP001_LCM.c: 67: i = 100;
+  1953  000CE0  0E00               	movlw	0
+  1954  000CE2  6E37               	movwf	LCM_Delay@i+1,c
+  1955  000CE4  0E64               	movlw	100
+  1956  000CE6  6E36               	movwf	LCM_Delay@i,c
+  1957  000CE8                     l1157:
+  1958  000CE8  0636               	decf	LCM_Delay@i,f,c
+  1959  000CEA  A0D8               	btfss	status,0,c
+  1960  000CEC  0637               	decf	LCM_Delay@i+1,f,c
+  1961  000CEE  2836               	incf	LCM_Delay@i,w,c
+  1962  000CF0  E1FB               	bnz	l1157
+  1963  000CF2  2837               	incf	LCM_Delay@i+1,w,c
+  1964  000CF4  A4D8               	btfss	status,2,c
+  1965  000CF6  D7F8               	goto	l1157
+  1966  000CF8                     l1159:
+  1967  000CF8  0632               	decf	LCM_Delay@Count,f,c
+  1968  000CFA  0E00               	movlw	0
+  1969  000CFC  5A33               	subwfb	LCM_Delay@Count+1,f,c
+  1970  000CFE  5A34               	subwfb	LCM_Delay@Count+2,f,c
+  1971  000D00  5A35               	subwfb	LCM_Delay@Count+3,f,c
+  1972  000D02  2832               	incf	LCM_Delay@Count,w,c
+  1973  000D04  E1ED               	bnz	l1155
+  1974  000D06  2833               	incf	LCM_Delay@Count+1,w,c
+  1975  000D08  E1EB               	bnz	l1155
+  1976  000D0A  2834               	incf	LCM_Delay@Count+2,w,c
+  1977  000D0C  E1E9               	bnz	l1155
+  1978  000D0E  2835               	incf	LCM_Delay@Count+3,w,c
+  1979  000D10  B4D8               	btfsc	status,2,c
+  1980  000D12  0012               	return	
+  1981  000D14  D7E5               	goto	l1155
+  1982  000D16                     __end_of_LCM_Delay:
+  1983                           	opt stack 0
+  1984                           tblptru	equ	0xFF8
+  1985                           tblptrh	equ	0xFF7
+  1986                           tblptrl	equ	0xFF6
+  1987                           tablat	equ	0xFF5
+  1988                           prodl	equ	0xFF3
+  1989                           intcon	equ	0xFF2
+  1990                           postinc0	equ	0xFEE
+  1991                           wreg	equ	0xFE8
+  1992                           postdec1	equ	0xFE5
+  1993                           fsr1l	equ	0xFE1
+  1994                           status	equ	0xFD8
+  1995                           
+  1996 ;; *************** function _HighISR *****************
+  1997 ;; Defined at:
+  1998 ;;		line 105 in file "Lab9 PWM Output By VR Value.c"
+  1999 ;; Parameters:    Size  Location     Type
+  2000 ;;		None
+  2001 ;; Auto vars:     Size  Location     Type
+  2002 ;;		None
+  2003 ;; Return value:  Size  Location     Type
+  2004 ;;		None               void
+  2005 ;; Registers used:
+  2006 ;;		wreg, status,2
+  2007 ;; Tracked objects:
+  2008 ;;		On entry : 0/0
+  2009 ;;		On exit  : 0/0
+  2010 ;;		Unchanged: 0/0
+  2011 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
+  2012 ;;      Params:         0       0       0       0       0       0       0       0       0
+  2013 ;;      Locals:         0       0       0       0       0       0       0       0       0
+  2014 ;;      Temps:         14       0       0       0       0       0       0       0       0
+  2015 ;;      Totals:        14       0       0       0       0       0       0       0       0
+  2016 ;;Total ram usage:       14 bytes
+  2017 ;; Hardware stack levels used:    1
+  2018 ;; This function calls:
+  2019 ;;		Nothing
+  2020 ;; This function is called by:
+  2021 ;;		Interrupt level 2
+  2022 ;; This function uses a non-reentrant model
+  2023 ;;
+  2024                           
+  2025                           	psect	intcode
+  2026  000008                     __pintcode:
+  2027                           	opt stack 0
+  2028  000008                     _HighISR:
+  2029                           	opt stack 26
+  2030                           
+  2031                           ;incstack = 0
+  2032  000008  8249               	bsf	btemp,1,c	;set compiler interrupt flag (level 2)
+  2033  00000A  CFFA F024          	movff	pclath,??_HighISR
+  2034  00000E  CFFB F025          	movff	pclatu,??_HighISR+1
+  2035  000012  EDA5  F005         	call	int_func,f	;refresh shadow registers
+  2036                           pclatu	equ	0xFFB
+  2037                           pclath	equ	0xFFA
+  2038                           tblptru	equ	0xFF8
+  2039                           tblptrh	equ	0xFF7
+  2040                           tblptrl	equ	0xFF6
+  2041                           tablat	equ	0xFF5
+  2042                           prodl	equ	0xFF3
+  2043                           intcon	equ	0xFF2
+  2044                           postinc0	equ	0xFEE
+  2045                           wreg	equ	0xFE8
+  2046                           postdec1	equ	0xFE5
+  2047                           fsr1l	equ	0xFE1
+  2048                           status	equ	0xFD8
+  2049                           
+  2050                           	psect	intcode_body
+  2051  000B4A                     __pintcode_body:
+  2052                           	opt stack 26
+  2053  000B4A                     int_func:
+  2054                           	opt stack 26
+  2055  000B4A  0006               	pop		; remove dummy address from shadow register refresh
+  2056  000B4C  CFE9 F026          	movff	fsr0l,??_HighISR+2
+  2057  000B50  CFEA F027          	movff	fsr0h,??_HighISR+3
+  2058  000B54  CFE1 F028          	movff	fsr1l,??_HighISR+4
+  2059  000B58  CFE2 F029          	movff	fsr1h,??_HighISR+5
+  2060  000B5C  CFD9 F02A          	movff	fsr2l,??_HighISR+6
+  2061  000B60  CFDA F02B          	movff	fsr2h,??_HighISR+7
+  2062  000B64  CFF3 F02C          	movff	prodl,??_HighISR+8
+  2063  000B68  CFF4 F02D          	movff	prodh,??_HighISR+9
+  2064  000B6C  CFF6 F02E          	movff	tblptrl,??_HighISR+10
+  2065  000B70  CFF7 F02F          	movff	tblptrh,??_HighISR+11
+  2066  000B74  CFF8 F030          	movff	tblptru,??_HighISR+12
+  2067  000B78  CFF5 F031          	movff	tablat,??_HighISR+13
+  2068                           
+  2069                           ;Lab9 PWM Output By VR Value.c: 107: if (TMR0IE && TMR0IF && RB0)
+  2070  000B7C  BAF2               	btfsc	intcon,5,c	;volatile
+  2071  000B7E  A4F2               	btfss	intcon,2,c	;volatile
+  2072  000B80  D008               	goto	i2l173
+  2073  000B82  A081               	btfss	3969,0,c	;volatile
+  2074  000B84  D006               	goto	i2l173
+  2075                           
+  2076                           ;Lab9 PWM Output By VR Value.c: 108: {
+  2077                           ;Lab9 PWM Output By VR Value.c: 110: TMR0H = ( ( ( 65536 - ( 4000000 / 4 / 256 / 100 )) 
+      +                          >> 8 ) & 0xff );
+  2078  000B86  68D7               	setf	4055,c	;volatile
+  2079                           
+  2080                           ;Lab9 PWM Output By VR Value.c: 111: TMR0L = ( ( 65536 - ( 4000000 / 4 / 256 / 100 )) & 
+      +                          0xff );
+  2081  000B88  0ED9               	movlw	217
+  2082  000B8A  6ED6               	movwf	4054,c	;volatile
+  2083                           
+  2084                           ;Lab9 PWM Output By VR Value.c: 112: TMR0IF=0;
+  2085  000B8C  94F2               	bcf	intcon,2,c	;volatile
+  2086                           
+  2087                           ;Lab9 PWM Output By VR Value.c: 113: Timer0Flag = 1;
+  2088  000B8E  0E01               	movlw	1
+  2089  000B90  6E23               	movwf	_Timer0Flag,c	;volatile
+  2090  000B92                     i2l173:
+  2091  000B92  C031  FFF5         	movff	??_HighISR+13,tablat
+  2092  000B96  C030  FFF8         	movff	??_HighISR+12,tblptru
+  2093  000B9A  C02F  FFF7         	movff	??_HighISR+11,tblptrh
+  2094  000B9E  C02E  FFF6         	movff	??_HighISR+10,tblptrl
+  2095  000BA2  C02D  FFF4         	movff	??_HighISR+9,prodh
+  2096  000BA6  C02C  FFF3         	movff	??_HighISR+8,prodl
+  2097  000BAA  C02B  FFDA         	movff	??_HighISR+7,fsr2h
+  2098  000BAE  C02A  FFD9         	movff	??_HighISR+6,fsr2l
+  2099  000BB2  C029  FFE2         	movff	??_HighISR+5,fsr1h
+  2100  000BB6  C028  FFE1         	movff	??_HighISR+4,fsr1l
+  2101  000BBA  C027  FFEA         	movff	??_HighISR+3,fsr0h
+  2102  000BBE  C026  FFE9         	movff	??_HighISR+2,fsr0l
+  2103  000BC2  C025  FFFB         	movff	??_HighISR+1,pclatu
+  2104  000BC6  C024  FFFA         	movff	??_HighISR,pclath
+  2105  000BCA  9249               	bcf	btemp,1,c	;clear compiler interrupt flag (level 2)
+  2106  000BCC  0011               	retfie		f
+  2107  000BCE                     __end_of_HighISR:
+  2108                           	opt stack 0
+  2109                           pclatu	equ	0xFFB
+  2110                           pclath	equ	0xFFA
+  2111                           tblptru	equ	0xFF8
+  2112                           tblptrh	equ	0xFF7
+  2113                           tblptrl	equ	0xFF6
+  2114                           tablat	equ	0xFF5
+  2115                           prodh	equ	0xFF4
+  2116                           prodl	equ	0xFF3
+  2117                           intcon	equ	0xFF2
+  2118                           postinc0	equ	0xFEE
+  2119                           fsr0h	equ	0xFEA
+  2120                           fsr0l	equ	0xFE9
+  2121                           wreg	equ	0xFE8
+  2122                           postdec1	equ	0xFE5
+  2123                           fsr1h	equ	0xFE2
+  2124                           fsr1l	equ	0xFE1
+  2125                           fsr2h	equ	0xFDA
+  2126                           fsr2l	equ	0xFD9
+  2127                           status	equ	0xFD8
+  2128                           pclatu	equ	0xFFB
+  2129                           pclath	equ	0xFFA
+  2130                           tblptru	equ	0xFF8
+  2131                           tblptrh	equ	0xFF7
+  2132                           tblptrl	equ	0xFF6
+  2133                           tablat	equ	0xFF5
+  2134                           prodh	equ	0xFF4
+  2135                           prodl	equ	0xFF3
+  2136                           intcon	equ	0xFF2
+  2137                           postinc0	equ	0xFEE
+  2138                           fsr0h	equ	0xFEA
+  2139                           fsr0l	equ	0xFE9
+  2140                           wreg	equ	0xFE8
+  2141                           postdec1	equ	0xFE5
+  2142                           fsr1h	equ	0xFE2
+  2143                           fsr1l	equ	0xFE1
+  2144                           fsr2h	equ	0xFDA
+  2145                           fsr2l	equ	0xFD9
+  2146                           status	equ	0xFD8
+  2147                           
+  2148                           	psect	rparam
+  2149  0000                     pclatu	equ	0xFFB
+  2150                           pclath	equ	0xFFA
+  2151                           tblptru	equ	0xFF8
+  2152                           tblptrh	equ	0xFF7
+  2153                           tblptrl	equ	0xFF6
+  2154                           tablat	equ	0xFF5
+  2155                           prodh	equ	0xFF4
+  2156                           prodl	equ	0xFF3
+  2157                           intcon	equ	0xFF2
+  2158                           postinc0	equ	0xFEE
+  2159                           fsr0h	equ	0xFEA
+  2160                           fsr0l	equ	0xFE9
+  2161                           wreg	equ	0xFE8
+  2162                           postdec1	equ	0xFE5
+  2163                           fsr1h	equ	0xFE2
+  2164                           fsr1l	equ	0xFE1
+  2165                           fsr2h	equ	0xFDA
+  2166                           fsr2l	equ	0xFD9
+  2167                           status	equ	0xFD8
+  2168                           
+  2169                           	psect	temp
+  2170  000049                     btemp:
+  2171                           	opt stack 0
+  2172  000049                     	ds	1
+  2173  0000                     int$flags	set	btemp
+  2174                           pclatu	equ	0xFFB
+  2175                           pclath	equ	0xFFA
+  2176                           tblptru	equ	0xFF8
+  2177                           tblptrh	equ	0xFF7
+  2178                           tblptrl	equ	0xFF6
+  2179                           tablat	equ	0xFF5
+  2180                           prodh	equ	0xFF4
+  2181                           prodl	equ	0xFF3
+  2182                           intcon	equ	0xFF2
+  2183                           postinc0	equ	0xFEE
+  2184                           fsr0h	equ	0xFEA
+  2185                           fsr0l	equ	0xFE9
+  2186                           wreg	equ	0xFE8
+  2187                           postdec1	equ	0xFE5
+  2188                           fsr1h	equ	0xFE2
+  2189                           fsr1l	equ	0xFE1
+  2190                           fsr2h	equ	0xFDA
+  2191                           fsr2l	equ	0xFD9
+  2192                           status	equ	0xFD8
+
+
+Data Sizes:
+    Strings     0
+    Constant    11
+    Data        7
+    BSS         35
+    Persistent  0
+    Stack       0
+
+Auto Spaces:
+    Space          Size  Autos    Used
+    COMRAM           94     30      72
+    BANK0           160      0       0
+    BANK1           256      0       0
+    BANK2           256      0       0
+    BANK3           256      0       0
+    BANK4           256      0       0
+    BANK5           256      0       0
+    BANK6           256      0       0
+    BANK7           256      0       0
+
+Pointer List with Targets:
+
+    LCM_PutROMString@String	PTR const unsigned char  size(2) Largest target is 9
+		 -> String1(CODE[2]), MyName(CODE[9]), 
+
+
+Critical Paths under _main in COMRAM
+
+    _main->_LCM_PutNumber
+    _LCM_SetCursor->_IntLCM_WriteInstruction
+    _IntLCM_WriteInstruction->_IntLCM_Communication
+    _LCM_PutROMString->_IntLCM_WriteData
+    _LCM_PutNumber->___lwdiv
+    ___lwdiv->___lwmod
+    _IntLCM_WriteData->_IntLCM_Communication
+    _LCM_Init->_IntLCM_Communication
+    _IntLCM_Communication->_LCM_Delay
+
+Critical Paths under _HighISR in COMRAM
+
+    None.
+
+Critical Paths under _main in BANK0
+
+    None.
+
+Critical Paths under _HighISR in BANK0
+
+    None.
+
+Critical Paths under _main in BANK1
+
+    None.
+
+Critical Paths under _HighISR in BANK1
+
+    None.
+
+Critical Paths under _main in BANK2
+
+    None.
+
+Critical Paths under _HighISR in BANK2
+
+    None.
+
+Critical Paths under _main in BANK3
+
+    None.
+
+Critical Paths under _HighISR in BANK3
+
+    None.
+
+Critical Paths under _main in BANK4
+
+    None.
+
+Critical Paths under _HighISR in BANK4
+
+    None.
+
+Critical Paths under _main in BANK5
+
+    None.
+
+Critical Paths under _HighISR in BANK5
+
+    None.
+
+Critical Paths under _main in BANK6
+
+    None.
+
+Critical Paths under _HighISR in BANK6
+
+    None.
+
+Critical Paths under _main in BANK7
+
+    None.
+
+Critical Paths under _HighISR in BANK7
+
+    None.
+
+Call Graph Tables:
+
+ ---------------------------------------------------------------------------------
+ (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
+ ---------------------------------------------------------------------------------
+ (0) _main                                                 0     0      0    7510
+                           _LCM_Init
+                      _LCM_PutNumber
+                   _LCM_PutROMString
+                      _LCM_SetCursor
+ ---------------------------------------------------------------------------------
+ (1) _LCM_SetCursor                                        2     1      1    1496
+                                             23 COMRAM     2     1      1
+            _IntLCM_WriteInstruction
+ ---------------------------------------------------------------------------------
+ (2) _IntLCM_WriteInstruction                              1     1      0    1068
+                                             22 COMRAM     1     1      0
+               _IntLCM_Communication
+                         _LCM_IsBusy
+ ---------------------------------------------------------------------------------
+ (1) _LCM_PutROMString                                     2     0      2    1305
+                                             23 COMRAM     2     0      2
+                   _IntLCM_WriteData
+ ---------------------------------------------------------------------------------
+ (1) _LCM_PutNumber                                        4     1      3    2901
+                                             26 COMRAM     4     1      3
+                   _IntLCM_WriteData
+                   _LCM_BCD_Regulate
+                            ___lwdiv
+                            ___lwmod
+ ---------------------------------------------------------------------------------
+ (2) ___lwmod                                              5     1      4     671
+                                             14 COMRAM     5     1      4
+ ---------------------------------------------------------------------------------
+ (2) ___lwdiv                                              7     3      4     546
+                                             19 COMRAM     7     3      4
+                            ___lwmod (ARG)
+ ---------------------------------------------------------------------------------
+ (2) _LCM_BCD_Regulate                                     1     1      0      30
+                                             14 COMRAM     1     1      0
+ ---------------------------------------------------------------------------------
+ (2) _IntLCM_WriteData                                     1     1      0    1068
+                                             22 COMRAM     1     1      0
+               _IntLCM_Communication
+                         _LCM_IsBusy
+ ---------------------------------------------------------------------------------
+ (3) _LCM_IsBusy                                           2     2      0      30
+                                             14 COMRAM     2     2      0
+ ---------------------------------------------------------------------------------
+ (1) _LCM_Init                                             0     0      0    1808
+               _IntLCM_Communication
+                          _LCM_Delay
+                        _LCM_IOSetup
+ ---------------------------------------------------------------------------------
+ (2) _LCM_IOSetup                                          0     0      0       0
+ ---------------------------------------------------------------------------------
+ (3) _IntLCM_Communication                                 2     2      0     994
+                                             20 COMRAM     2     2      0
+                          _LCM_Delay
+ ---------------------------------------------------------------------------------
+ (4) _LCM_Delay                                            6     2      4     814
+                                             14 COMRAM     6     2      4
+ ---------------------------------------------------------------------------------
+ Estimated maximum stack depth 4
+ ---------------------------------------------------------------------------------
+ (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
+ ---------------------------------------------------------------------------------
+ (5) _HighISR                                             14    14      0       0
+                                              0 COMRAM    14    14      0
+ ---------------------------------------------------------------------------------
+ Estimated maximum stack depth 5
+ ---------------------------------------------------------------------------------
+
+ Call Graph Graphs:
+
+ _main (ROOT)
+   _LCM_Init
+     _IntLCM_Communication
+       _LCM_Delay
+     _LCM_Delay
+     _LCM_IOSetup
+   _LCM_PutNumber
+     _IntLCM_WriteData
+       _IntLCM_Communication
+         _LCM_Delay
+       _LCM_IsBusy
+     _LCM_BCD_Regulate
+     ___lwdiv
+       ___lwmod (ARG)
+     ___lwmod
+   _LCM_PutROMString
+     _IntLCM_WriteData
+       _IntLCM_Communication
+         _LCM_Delay
+       _LCM_IsBusy
+   _LCM_SetCursor
+     _IntLCM_WriteInstruction
+       _IntLCM_Communication
+         _LCM_Delay
+       _LCM_IsBusy
+
+ _HighISR (ROOT)
+
+ Address spaces:
+Name               Size   Autos  Total    Cost      Usage
+BIGRAM             7FF      0       0      21        0.0%
+EEDATA             100      0       0       0        0.0%
+BITBANK7           100      0       0      18        0.0%
+BANK7              100      0       0      19        0.0%
+BITBANK6           100      0       0      16        0.0%
+BANK6              100      0       0      17        0.0%
+BITBANK5           100      0       0      14        0.0%
+BANK5              100      0       0      15        0.0%
+BITBANK4           100      0       0      12        0.0%
+BANK4              100      0       0      13        0.0%
+BITBANK3           100      0       0      10        0.0%
+BANK3              100      0       0      11        0.0%
+BITBANK2           100      0       0       8        0.0%
+BANK2              100      0       0       9        0.0%
+BITBANK1           100      0       0       6        0.0%
+BANK1              100      0       0       7        0.0%
+BITBANK0            A0      0       0       4        0.0%
+BANK0               A0      0       0       5        0.0%
+BITCOMRAM           5E      0       0       0        0.0%
+COMRAM              5E     1E      48       1       76.6%
+BITSFR               0      0       0      40        0.0%
+SFR                  0      0       0      40        0.0%
+STACK                0      0       0       2        0.0%
+NULL                 0      0       0       0        0.0%
+ABS                  0      0      48      20        0.0%
+DATA                 0      0      48       3        0.0%
+CODE                 0      0       0       0        0.0%
+
+
+Microchip Technology PIC18 Macro Assembler V1.35 build -356382666 
+Symbol Table                                                                                   Thu Sep 03 08:45:22 2015
+
+                                 _h 0042                                   _m 0044  
+                                 _s 0046                                  l99 0A9E  
+                       __CFG_BORV$1 000000                                 l100 0AD4  
+                               l903 0DFE                                 l576 0C8A  
+                               l586 0CCC                                 l843 0E24  
+                               l835 0E12                                 l899 0DFA  
+                               _RB0 007C08                                 _RB1 007C09  
+                               _RB2 007C0A                                 _RB3 007C0B  
+                               _RB4 007C0C                                 _RB5 007C0D  
+                               _RD4 007C1C                                 _RD5 007C1D  
+                               _RD6 007C1E                                 _RD7 007C1F  
+                               u530 0898                         ?_LCM_IsBusy 0024  
+                               wreg 000FE8                        __CFG_FOSC$HS 000000  
+                      ?_LCM_IOSetup 0024                        __CFG_LVP$OFF 000000  
+                      __CFG_WDT$OFF 000000                                l1201 0DC6  
+                              l1221 0C64                                l1207 0DA2  
+                              l1217 0C58                                l1241 0CAE  
+                              l1313 0A68                                l1321 0B32  
+                              l1305 0D52                                l1155 0CE0  
+                              l1219 0C60                                l1315 0B0A  
+                              l1403 08A6                                l1157 0CE8  
+                              l1229 0C80                                l1245 0CC2  
+                              l1237 0CA2                                l1309 0D66  
+                              l1159 0CF8                                l1239 0CAA  
+                              l1431 0900                                l1423 08EC  
+                              l1415 08D2                                l1409 08BC  
+                              l1427 08F6                                l1419 08E2  
+                              l1391 087E                                l1397 088C  
+                              _LATD 000F8C                                _Duty 0021  
+                      _StringBuffer 0001                                _main 080E  
+                              fsr0h 000FEA                                fsr1h 000FE2  
+                              fsr0l 000FE9                                fsr2h 000FDA  
+                              fsr1l 000FE1                                fsr2l 000FD9  
+                              btemp 0049                                pclat 000FFA  
+                              prodh 000FF4                                prodl 000FF3  
+                              start 0016                  __size_of_LCM_Delay 0040  
+                   __end_of_HighISR 0BCE                       __CFG_MCLRE$ON 000000  
+          __end_of_LCM_BCD_Regulate 0E0A                        ___param_bank 000010  
+            __size_of_LCM_SetCursor 0012                    __end_of_LCM_Init 0A62  
+                             ?_main 0024                     __end_of_String1 080C  
+                   __end_of___lwdiv 0C94                     __end_of___lwmod 0CD6  
+                             i2l173 0B92                               _TMR0H 000FD7  
+                             _TMR0L 000FD6                               _TRISD 000F95  
+            __size_of_LCM_PutNumber 00E8                               tablat 000FF5  
+         __size_of_IntLCM_WriteData 0024                               status 000FD8  
+               __size_of_LCM_IsBusy 001E                  LCM_PutNumber@Digit 0040  
+                       LCM_IsBusy@i 0032                     __initialization 0D16  
+                      __end_of_main 0950                              ??_main 0042  
+                     __activetblptr 000002      IntLCM_Communication@NibbleByte 0038  
+                 __end_of_LCM_Delay 0D16              LCM_PutNumber@Temporary 0041  
+                     _LCM_SetCursor 0E28                           ??_HighISR 0024  
+                            _TMR0IE 007F95                              _TMR0IF 007F92  
+                     _LCM_PutNumber 0A62                          _Timer0Flag 0023  
+                            _MyName 0801                      __CFG_XINST$OFF 000000  
+                         ??___lwdiv 003B                           ??___lwmod 0036  
+                            clear_0 0D1C                      LCM_SetCursor@X 003C  
+                    LCM_SetCursor@Y 003B                        __pdataCOMRAM 0042  
+                      __mediumconst 0000                              tblptrh 000FF7  
+                            tblptrl 000FF6                              tblptru 000FF8  
+                    ?_LCM_SetCursor 003B                __size_of_LCM_IOSetup 0026  
+                        __accesstop 0060             __end_of__initialization 0D42  
+                   __CFG_PBADEN$OFF 000000                           ?_LCM_Init 0024  
+                     ___rparam_used 000001                      ?_LCM_PutNumber 003E  
+         __size_of_LCM_PutROMString 002A                      __pcstackCOMRAM 0024  
+               LCM_PutNumber@Number 003E                        ??_LCM_IsBusy 0032  
+          ?_IntLCM_WriteInstruction 0024       __size_of_IntLCM_Communication 0074  
+                  _IntLCM_WriteData 0DC4                        _Disable_Zero 0048  
+                        ??_LCM_Init 003A                  __end_of_LCM_IsBusy 0E28  
+                 ?_LCM_BCD_Regulate 0024                  ??_LCM_BCD_Regulate 0032  
+                   ??_LCM_SetCursor 003C                             _HighISR 0008  
+                   ??_LCM_PutNumber 0041                             __Hparam 0000  
+                           __Lparam 0000                             _String1 080A  
+                           ___lwdiv 0C42                             ___lwmod 0C94  
+                      __psmallconst 0800                             __pcinit 0D16  
+                           __ramtop 0800                             __ptext0 080E  
+                           __ptext1 0E28                             __ptext2 0DA0  
+                           __ptext3 0D50                             __ptext4 0A62  
+                           __ptext5 0C94                             __ptext6 0C42  
+                           __ptext7 0DE8                             __ptext8 0DC4  
+                           __ptext9 0E0A     __end_of_IntLCM_WriteInstruction 0DC4  
+                         _T0CONbits 000FD5                      __pintcode_body 0B4A  
+              end_of_initialization 0D42                           _LCM_Delay 0CD6  
+                     __Lmediumconst 0000                             int_func 0B4A  
+                  _LCM_PutROMString 0D50                             postdec1 000FE5  
+                           postinc0 000FEE                           _TRISBbits 000F93  
+                         _TRISCbits 000F94                           _TRISDbits 000F95  
+                        ?_LCM_Delay 0032                   __size_of_LCM_Init 0112  
+                    __end_of_MyName 080A                       __pidataCOMRAM 0E3A  
+          __end_of_IntLCM_WriteData 0DE8                          LCM_Delay@i 0036  
+               start_initialization 0D16                       ??_LCM_IOSetup 0032  
+  __size_of_IntLCM_WriteInstruction 0024              LCM_PutROMString@String 003B  
+      __end_of_IntLCM_Communication 0C42                 LCM_BCD_Regulate@BCD 0032  
+                __CFG_BOR$ON_ACTIVE 000000                         __pbssCOMRAM 0001  
+         __size_of_LCM_BCD_Regulate 0022                         ??_LCM_Delay 0036  
+               __end_of_LCM_IOSetup 0DA0                            ?_HighISR 0024  
+                  ___lwdiv@dividend 0037                           __pintcode 0008  
+                          ?___lwdiv 0037                            ?___lwmod 0032  
+              IntLCM_WriteData@Data 003A                         __smallconst 0800  
+          __end_of_LCM_PutROMString 0D7A               __end_of_LCM_SetCursor 0E3A  
+                  ___lwdiv@quotient 003B                            _LATCbits 000F8B  
+                          _LCM_Init 0950               __end_of_LCM_PutNumber 0B4A  
+                        _ADCON1bits 000FC1                         _LCM_IOSetup 0D7A  
+IntLCM_WriteInstruction@Instruction 003A                           copy_data0 0D36  
+              _IntLCM_Communication 0BCE             _IntLCM_WriteInstruction 0DA0  
+                  __size_of_HighISR 0BC6                            __Hrparam 0000  
+                          __Lrparam 0000                    __size_of___lwdiv 0052  
+                  __size_of___lwmod 0042                   ?_IntLCM_WriteData 0024  
+     IntLCM_Communication@Temporary 0039                  ??_IntLCM_WriteData 003A  
+                  _LCM_BCD_Regulate 0DE8                     ___lwdiv@divisor 0039  
+                   ___lwdiv@counter 003D                            __ptext10 0950  
+                          __ptext11 0D7A                            __ptext12 0BCE  
+                          __ptext13 0CD6               ?_IntLCM_Communication 0024  
+                     __size_of_main 0142                            int$flags 0049  
+                        _LCM_IsBusy 0E0A                          _INTCONbits 000FF2  
+         ??_IntLCM_WriteInstruction 003A                            intlevel2 0000  
+                  ___lwmod@dividend 0032                     ___lwmod@divisor 0034  
+                   ___lwmod@counter 0036                      LCM_Delay@Count 0032  
+                 ?_LCM_PutROMString 003B              ??_IntLCM_Communication 0038  
+                ??_LCM_PutROMString 003D  

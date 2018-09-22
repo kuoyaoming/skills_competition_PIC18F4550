@@ -1,0 +1,404 @@
+[p LITE_MODE AUTOSTATIC LFSROK EMI_WORD ]
+[d version 1.1 ]
+[d edition pro ]
+[d chip 18F4550 ]
+[d frameptr 4065 ]
+"38 C:\kuotest\lcd clock kuo.X\APP001_LCM.c
+[v _LCM_IOSetup LCM_IOSetup `(v  1 e 0 0 ]
+"61
+[v _LCM_Delay LCM_Delay `(v  1 e 0 0 ]
+"72
+[v _IntLCM_Communication IntLCM_Communication `(v  1 e 0 0 ]
+"107
+[v _LCM_IsBusy LCM_IsBusy `(uc  1 e 1 0 ]
+"130
+[v _IntLCM_WriteData IntLCM_WriteData `(v  1 e 0 0 ]
+"140
+[v _IntLCM_WriteInstruction IntLCM_WriteInstruction `(v  1 e 0 0 ]
+"150
+[v _LCM_Init LCM_Init `(v  1 e 0 0 ]
+"190
+[v _LCM_SetCursor LCM_SetCursor `(v  1 e 0 0 ]
+"220
+[v _LCM_PutROMString LCM_PutROMString `(v  1 e 0 0 ]
+"234
+[v _LCM_BCD_Regulate LCM_BCD_Regulate `(uc  1 e 1 0 ]
+"251
+[v _LCM_PutNumber LCM_PutNumber `(v  1 e 0 0 ]
+"62 C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\float.c
+[v ___ftpack __ftpack `(f  1 e 3 0 ]
+"86 C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\ftadd.c
+[v ___ftadd __ftadd `(f  1 e 3 0 ]
+"54 C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\ftdiv.c
+[v ___ftdiv __ftdiv `(f  1 e 3 0 ]
+"62 C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\ftmul.c
+[v ___ftmul __ftmul `(f  1 e 3 0 ]
+"20 C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\ftsub.c
+[v ___ftsub __ftsub `(f  1 e 3 0 ]
+"8 C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\lwdiv.c
+[v ___lwdiv __lwdiv `(ui  1 e 2 0 ]
+"8 C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\lwmod.c
+[v ___lwmod __lwmod `(ui  1 e 2 0 ]
+"10 C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\sprcadd.c
+[v ___fladd __fladd `(d  1 e 3 0 ]
+"245
+[v ___flsub __flsub `(d  1 e 3 0 ]
+"11 C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\sprcdiv.c
+[v ___fldiv __fldiv `(d  1 e 3 0 ]
+"8 C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\sprcmul.c
+[v ___flmul __flmul `(d  1 e 3 0 ]
+"15 C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\Umul32.c
+[v ___lmul __lmul `(ul  1 e 4 0 ]
+"41 C:\kuotest\lcd clock kuo.X\Lab9 PWM Output By VR Value.c
+[v _main main `(v  1 e 0 0 ]
+"137
+[v _HighISR HighISR `II(v  1 e 0 0 ]
+"232 C:\kuotest\lcd clock kuo.X\APP001_LCM.c
+[v _Disable_Zero Disable_Zero `uc  1 s 1 Disable_Zero ]
+[s S21 . 1 `uc 1 LATC0 1 0 :1:0 
+`uc 1 LATC1 1 0 :1:1 
+`uc 1 LATC2 1 0 :1:2 
+`uc 1 . 1 0 :3:3 
+`uc 1 LATC6 1 0 :1:6 
+`uc 1 LATC7 1 0 :1:7 
+]
+"3673 C:\Program Files (x86)\Microchip\xc8\v1.35\include\pic18f4550.h
+[s S28 . 1 `uc 1 LC0 1 0 :1:0 
+]
+[s S30 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 LC1 1 0 :1:1 
+]
+[s S33 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 LC2 1 0 :1:2 
+]
+[s S36 . 1 `uc 1 . 1 0 :3:0 
+`uc 1 LC3 1 0 :1:3 
+]
+[s S39 . 1 `uc 1 . 1 0 :4:0 
+`uc 1 LC4 1 0 :1:4 
+]
+[s S42 . 1 `uc 1 . 1 0 :5:0 
+`uc 1 LC5 1 0 :1:5 
+]
+[s S45 . 1 `uc 1 . 1 0 :6:0 
+`uc 1 LC6 1 0 :1:6 
+]
+[s S48 . 1 `uc 1 . 1 0 :7:0 
+`uc 1 LC7 1 0 :1:7 
+]
+[u S51 . 1 `S21 1 . 1 0 `S28 1 . 1 0 `S30 1 . 1 0 `S33 1 . 1 0 `S36 1 . 1 0 `S39 1 . 1 0 `S42 1 . 1 0 `S45 1 . 1 0 `S48 1 . 1 0 ]
+[v _LATCbits LATCbits `VES51  1 e 1 @3979 ]
+"3742
+[v _LATD LATD `VEuc  1 e 1 @3980 ]
+[s S367 . 1 `uc 1 TRISB0 1 0 :1:0 
+`uc 1 TRISB1 1 0 :1:1 
+`uc 1 TRISB2 1 0 :1:2 
+`uc 1 TRISB3 1 0 :1:3 
+`uc 1 TRISB4 1 0 :1:4 
+`uc 1 TRISB5 1 0 :1:5 
+`uc 1 TRISB6 1 0 :1:6 
+`uc 1 TRISB7 1 0 :1:7 
+]
+"4205
+[s S376 . 1 `uc 1 RB0 1 0 :1:0 
+`uc 1 RB1 1 0 :1:1 
+`uc 1 RB2 1 0 :1:2 
+`uc 1 RB3 1 0 :1:3 
+`uc 1 RB4 1 0 :1:4 
+`uc 1 RB5 1 0 :1:5 
+`uc 1 RB6 1 0 :1:6 
+`uc 1 RB7 1 0 :1:7 
+]
+[u S385 . 1 `S367 1 . 1 0 `S376 1 . 1 0 ]
+[v _TRISBbits TRISBbits `VES385  1 e 1 @3987 ]
+[s S92 . 1 `uc 1 TRISC0 1 0 :1:0 
+`uc 1 TRISC1 1 0 :1:1 
+`uc 1 TRISC2 1 0 :1:2 
+`uc 1 . 1 0 :3:3 
+`uc 1 TRISC6 1 0 :1:6 
+`uc 1 TRISC7 1 0 :1:7 
+]
+"4426
+[s S99 . 1 `uc 1 RC0 1 0 :1:0 
+`uc 1 RC1 1 0 :1:1 
+`uc 1 RC2 1 0 :1:2 
+`uc 1 . 1 0 :3:3 
+`uc 1 RC6 1 0 :1:6 
+`uc 1 RC7 1 0 :1:7 
+]
+[s S106 . 1 `uc 1 . 1 0 :3:0 
+`uc 1 TRISC3 1 0 :1:3 
+]
+[u S109 . 1 `S92 1 . 1 0 `S99 1 . 1 0 `S106 1 . 1 0 ]
+[v _TRISCbits TRISCbits `VES109  1 e 1 @3988 ]
+"4565
+[v _TRISD TRISD `VEuc  1 e 1 @3989 ]
+[s S407 . 1 `uc 1 TRISD0 1 0 :1:0 
+`uc 1 TRISD1 1 0 :1:1 
+`uc 1 TRISD2 1 0 :1:2 
+`uc 1 TRISD3 1 0 :1:3 
+`uc 1 TRISD4 1 0 :1:4 
+`uc 1 TRISD5 1 0 :1:5 
+`uc 1 TRISD6 1 0 :1:6 
+`uc 1 TRISD7 1 0 :1:7 
+]
+"4597
+[s S416 . 1 `uc 1 RD0 1 0 :1:0 
+`uc 1 RD1 1 0 :1:1 
+`uc 1 RD2 1 0 :1:2 
+`uc 1 RD3 1 0 :1:3 
+`uc 1 RD4 1 0 :1:4 
+`uc 1 RD5 1 0 :1:5 
+`uc 1 RD6 1 0 :1:6 
+`uc 1 RD7 1 0 :1:7 
+]
+[u S425 . 1 `S407 1 . 1 0 `S416 1 . 1 0 ]
+[v _TRISDbits TRISDbits `VES425  1 e 1 @3989 ]
+[s S322 . 1 `uc 1 PCFG 1 0 :4:0 
+`uc 1 VCFG 1 0 :2:4 
+]
+"7204
+[s S325 . 1 `uc 1 PCFG0 1 0 :1:0 
+`uc 1 PCFG1 1 0 :1:1 
+`uc 1 PCFG2 1 0 :1:2 
+`uc 1 PCFG3 1 0 :1:3 
+`uc 1 VCFG0 1 0 :1:4 
+`uc 1 VCFG1 1 0 :1:5 
+]
+[s S332 . 1 `uc 1 . 1 0 :3:0 
+`uc 1 CHSN3 1 0 :1:3 
+]
+[s S335 . 1 `uc 1 . 1 0 :4:0 
+`uc 1 VCFG01 1 0 :1:4 
+]
+[s S338 . 1 `uc 1 . 1 0 :5:0 
+`uc 1 VCFG11 1 0 :1:5 
+]
+[u S341 . 1 `S322 1 . 1 0 `S325 1 . 1 0 `S332 1 . 1 0 `S335 1 . 1 0 `S338 1 . 1 0 ]
+[v _ADCON1bits ADCON1bits `VES341  1 e 1 @4033 ]
+[s S133 . 1 `uc 1 T0PS 1 0 :3:0 
+`uc 1 PSA 1 0 :1:3 
+`uc 1 T0SE 1 0 :1:4 
+`uc 1 T0CS 1 0 :1:5 
+`uc 1 T08BIT 1 0 :1:6 
+`uc 1 TMR0ON 1 0 :1:7 
+]
+"8691
+[s S140 . 1 `uc 1 T0PS0 1 0 :1:0 
+`uc 1 T0PS1 1 0 :1:1 
+`uc 1 T0PS2 1 0 :1:2 
+]
+[u S144 . 1 `S133 1 . 1 0 `S140 1 . 1 0 ]
+[v _T0CONbits T0CONbits `VES144  1 e 1 @4053 ]
+"8746
+[v _TMR0L TMR0L `VEuc  1 e 1 @4054 ]
+"8752
+[v _TMR0H TMR0H `VEuc  1 e 1 @4055 ]
+[s S161 . 1 `uc 1 RBIF 1 0 :1:0 
+`uc 1 INT0IF 1 0 :1:1 
+`uc 1 TMR0IF 1 0 :1:2 
+`uc 1 RBIE 1 0 :1:3 
+`uc 1 INT0IE 1 0 :1:4 
+`uc 1 TMR0IE 1 0 :1:5 
+`uc 1 PEIE_GIEL 1 0 :1:6 
+`uc 1 GIE_GIEH 1 0 :1:7 
+]
+"9211
+[s S170 . 1 `uc 1 RBIF 1 0 :1:0 
+`uc 1 INT0IF 1 0 :1:1 
+`uc 1 TMR0IF 1 0 :1:2 
+`uc 1 RBIE 1 0 :1:3 
+`uc 1 INT0IE 1 0 :1:4 
+`uc 1 TMR0IE 1 0 :1:5 
+`uc 1 PEIE 1 0 :1:6 
+`uc 1 GIE 1 0 :1:7 
+]
+[s S179 . 1 `uc 1 RBIF 1 0 :1:0 
+`uc 1 INT0IF 1 0 :1:1 
+`uc 1 TMR0IF 1 0 :1:2 
+`uc 1 RBIE 1 0 :1:3 
+`uc 1 INT0IE 1 0 :1:4 
+`uc 1 TMR0IE 1 0 :1:5 
+`uc 1 GIEL 1 0 :1:6 
+`uc 1 GIEH 1 0 :1:7 
+]
+[s S188 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 INT0F 1 0 :1:1 
+`uc 1 T0IF 1 0 :1:2 
+`uc 1 . 1 0 :1:3 
+`uc 1 INT0E 1 0 :1:4 
+`uc 1 T0IE 1 0 :1:5 
+`uc 1 PEIE 1 0 :1:6 
+`uc 1 GIE 1 0 :1:7 
+]
+[s S197 . 1 `uc 1 . 1 0 :6:0 
+`uc 1 GIEL 1 0 :1:6 
+`uc 1 GIEH 1 0 :1:7 
+]
+[u S201 . 1 `S161 1 . 1 0 `S170 1 . 1 0 `S179 1 . 1 0 `S188 1 . 1 0 `S197 1 . 1 0 ]
+[v _INTCONbits INTCONbits `VES201  1 e 1 @4082 ]
+"10493
+[v _RB3 RB3 `VEb  1 e 0 @31755 ]
+"10495
+[v _RB4 RB4 `VEb  1 e 0 @31756 ]
+"10497
+[v _RB5 RB5 `VEb  1 e 0 @31757 ]
+"10511
+[v _RC0 RC0 `VEb  1 e 0 @31760 ]
+"10563
+[v _RD4 RD4 `VEb  1 e 0 @31772 ]
+"10565
+[v _RD5 RD5 `VEb  1 e 0 @31773 ]
+"10567
+[v _RD6 RD6 `VEb  1 e 0 @31774 ]
+"10569
+[v _RD7 RD7 `VEb  1 e 0 @31775 ]
+"10799
+[v _TMR0IE TMR0IE `VEb  1 e 0 @32661 ]
+"10801
+[v _TMR0IF TMR0IF `VEb  1 e 0 @32658 ]
+"23 C:\kuotest\lcd clock kuo.X\Lab9 PWM Output By VR Value.c
+[v _MyName MyName `C[9]uc  1 e 9 0 ]
+"24
+[v _String1 String1 `C[2]uc  1 e 2 0 ]
+"27
+[v _Timer0Flag Timer0Flag `VEuc  1 e 1 0 ]
+"28
+[v _Duty Duty `ui  1 e 2 0 ]
+"29
+[v _s s `ui  1 e 2 0 ]
+"30
+[v _m m `ui  1 e 2 0 ]
+"31
+[v _h h `ui  1 e 2 0 ]
+"33
+[v _lastDebounceTime lastDebounceTime `l  1 e 4 0 ]
+"34
+[v _debounceDelay debounceDelay `l  1 e 4 0 ]
+"35
+[v _ledState ledState `i  1 e 2 0 ]
+"36
+[v _buttonState buttonState `i  1 e 2 0 ]
+"37
+[v _lastButtonState lastButtonState `i  1 e 2 0 ]
+"41
+[v _main main `(v  1 e 0 0 ]
+{
+"135
+} 0
+"190 C:\kuotest\lcd clock kuo.X\APP001_LCM.c
+[v _LCM_SetCursor LCM_SetCursor `(v  1 e 0 0 ]
+{
+[v LCM_SetCursor@X X `uc  1 a 1 wreg ]
+[v LCM_SetCursor@X X `uc  1 a 1 wreg ]
+[v LCM_SetCursor@Y Y `uc  1 p 1 23 ]
+"192
+[v LCM_SetCursor@X X `uc  1 a 1 24 ]
+"193
+} 0
+"140
+[v _IntLCM_WriteInstruction IntLCM_WriteInstruction `(v  1 e 0 0 ]
+{
+[v IntLCM_WriteInstruction@Instruction Instruction `uc  1 a 1 wreg ]
+[v IntLCM_WriteInstruction@Instruction Instruction `uc  1 a 1 wreg ]
+[v IntLCM_WriteInstruction@Instruction Instruction `uc  1 a 1 22 ]
+"148
+} 0
+"220
+[v _LCM_PutROMString LCM_PutROMString `(v  1 e 0 0 ]
+{
+[v LCM_PutROMString@String String `*.25Cuc  1 p 2 23 ]
+"224
+} 0
+"251
+[v _LCM_PutNumber LCM_PutNumber `(v  1 e 0 0 ]
+{
+"253
+[v LCM_PutNumber@Temporary Temporary `uc  1 a 1 29 ]
+"251
+[v LCM_PutNumber@Number Number `ui  1 p 2 26 ]
+[v LCM_PutNumber@Digit Digit `uc  1 p 1 28 ]
+"276
+} 0
+"8 C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\lwmod.c
+[v ___lwmod __lwmod `(ui  1 e 2 0 ]
+{
+"11
+[v ___lwmod@counter counter `uc  1 a 1 18 ]
+"8
+[v ___lwmod@dividend dividend `ui  1 p 2 14 ]
+[v ___lwmod@divisor divisor `ui  1 p 2 16 ]
+"26
+} 0
+"8 C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\lwdiv.c
+[v ___lwdiv __lwdiv `(ui  1 e 2 0 ]
+{
+"11
+[v ___lwdiv@quotient quotient `ui  1 a 2 23 ]
+"12
+[v ___lwdiv@counter counter `uc  1 a 1 25 ]
+"8
+[v ___lwdiv@dividend dividend `ui  1 p 2 19 ]
+[v ___lwdiv@divisor divisor `ui  1 p 2 21 ]
+"31
+} 0
+"234 C:\kuotest\lcd clock kuo.X\APP001_LCM.c
+[v _LCM_BCD_Regulate LCM_BCD_Regulate `(uc  1 e 1 0 ]
+{
+[v LCM_BCD_Regulate@BCD BCD `uc  1 a 1 wreg ]
+[v LCM_BCD_Regulate@BCD BCD `uc  1 a 1 wreg ]
+"236
+[v LCM_BCD_Regulate@BCD BCD `uc  1 a 1 14 ]
+"249
+} 0
+"130
+[v _IntLCM_WriteData IntLCM_WriteData `(v  1 e 0 0 ]
+{
+[v IntLCM_WriteData@Data Data `uc  1 a 1 wreg ]
+[v IntLCM_WriteData@Data Data `uc  1 a 1 wreg ]
+[v IntLCM_WriteData@Data Data `uc  1 a 1 22 ]
+"138
+} 0
+"107
+[v _LCM_IsBusy LCM_IsBusy `(uc  1 e 1 0 ]
+{
+"124
+[v LCM_IsBusy@i i `ui  1 a 2 14 ]
+"128
+} 0
+"150
+[v _LCM_Init LCM_Init `(v  1 e 0 0 ]
+{
+"188
+} 0
+"38
+[v _LCM_IOSetup LCM_IOSetup `(v  1 e 0 0 ]
+{
+"59
+} 0
+"72
+[v _IntLCM_Communication IntLCM_Communication `(v  1 e 0 0 ]
+{
+[v IntLCM_Communication@NibbleByte NibbleByte `uc  1 a 1 wreg ]
+"74
+[v IntLCM_Communication@Temporary Temporary `uc  1 a 1 21 ]
+"72
+[v IntLCM_Communication@NibbleByte NibbleByte `uc  1 a 1 wreg ]
+"77
+[v IntLCM_Communication@NibbleByte NibbleByte `uc  1 a 1 20 ]
+"105
+} 0
+"61
+[v _LCM_Delay LCM_Delay `(v  1 e 0 0 ]
+{
+"63
+[v LCM_Delay@i i `ui  1 a 2 18 ]
+"61
+[v LCM_Delay@Count Count `ul  1 p 4 14 ]
+"70
+} 0
+"137 C:\kuotest\lcd clock kuo.X\Lab9 PWM Output By VR Value.c
+[v _HighISR HighISR `II(v  1 e 0 0 ]
+{
+"147
+} 0

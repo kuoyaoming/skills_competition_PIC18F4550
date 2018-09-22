@@ -1,0 +1,141 @@
+[p LITE_MODE AUTOSTATIC LFSROK EMI_WORD ]
+[d version 1.1 ]
+[d edition pro ]
+[d chip 18F4550 ]
+[d frameptr 4065 ]
+"62 C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\float.c
+[v ___ftpack __ftpack `(f  1 e 3 0 ]
+"86 C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\ftadd.c
+[v ___ftadd __ftadd `(f  1 e 3 0 ]
+"54 C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\ftdiv.c
+[v ___ftdiv __ftdiv `(f  1 e 3 0 ]
+"62 C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\ftmul.c
+[v ___ftmul __ftmul `(f  1 e 3 0 ]
+"20 C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\ftsub.c
+[v ___ftsub __ftsub `(f  1 e 3 0 ]
+"10 C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\sprcadd.c
+[v ___fladd __fladd `(d  1 e 3 0 ]
+"245
+[v ___flsub __flsub `(d  1 e 3 0 ]
+"11 C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\sprcdiv.c
+[v ___fldiv __fldiv `(d  1 e 3 0 ]
+"8 C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\sprcmul.c
+[v ___flmul __flmul `(d  1 e 3 0 ]
+"15 C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\Umul32.c
+[v ___lmul __lmul `(ul  1 e 4 0 ]
+"54 C:\kuotest\8x8rg.X\DotMatrix_8x8.c
+[v _reverse_DATA reverse_DATA `(uc  1 e 1 0 ]
+"66
+[v _delay_ms delay_ms `(v  1 e 0 0 ]
+"90
+[v _PAE_WR PAE_WR `(v  1 e 0 0 ]
+"105
+[v _main main `(v  1 e 0 0 ]
+"3495 C:\Program Files (x86)\Microchip\xc8\v1.35\include\pic18f4550.h
+[v _LATB LATB `VEuc  1 e 1 @3978 ]
+"3742
+[v _LATD LATD `VEuc  1 e 1 @3980 ]
+"4173
+[v _TRISB TRISB `VEuc  1 e 1 @3987 ]
+"4565
+[v _TRISD TRISD `VEuc  1 e 1 @3989 ]
+"6187
+[v _CMCON CMCON `VEuc  1 e 1 @4020 ]
+"7173
+[v _ADCON1 ADCON1 `VEuc  1 e 1 @4033 ]
+"10173
+[v _LATA0 LATA0 `VEb  1 e 0 @31816 ]
+"10175
+[v _LATA1 LATA1 `VEb  1 e 0 @31817 ]
+"10177
+[v _LATA2 LATA2 `VEb  1 e 0 @31818 ]
+"10179
+[v _LATA3 LATA3 `VEb  1 e 0 @31819 ]
+"10183
+[v _LATA5 LATA5 `VEb  1 e 0 @31821 ]
+"10231
+[v _LATE0 LATE0 `VEb  1 e 0 @31848 ]
+"10233
+[v _LATE1 LATE1 `VEb  1 e 0 @31849 ]
+"10235
+[v _LATE2 LATE2 `VEb  1 e 0 @31850 ]
+"10471
+[v _RA0 RA0 `VEb  1 e 0 @31744 ]
+"10473
+[v _RA1 RA1 `VEb  1 e 0 @31745 ]
+"10475
+[v _RA2 RA2 `VEb  1 e 0 @31746 ]
+"10477
+[v _RA3 RA3 `VEb  1 e 0 @31747 ]
+"10481
+[v _RA5 RA5 `VEb  1 e 0 @31749 ]
+"10577
+[v _RE0 RE0 `VEb  1 e 0 @31776 ]
+"10579
+[v _RE1 RE1 `VEb  1 e 0 @31777 ]
+"10581
+[v _RE2 RE2 `VEb  1 e 0 @31778 ]
+"10845
+[v _TRISA0 TRISA0 `VEb  1 e 0 @31888 ]
+"10847
+[v _TRISA1 TRISA1 `VEb  1 e 0 @31889 ]
+"10849
+[v _TRISA2 TRISA2 `VEb  1 e 0 @31890 ]
+"10851
+[v _TRISA3 TRISA3 `VEb  1 e 0 @31891 ]
+"10855
+[v _TRISA5 TRISA5 `VEb  1 e 0 @31893 ]
+"10903
+[v _TRISE0 TRISE0 `VEb  1 e 0 @31920 ]
+"10905
+[v _TRISE1 TRISE1 `VEb  1 e 0 @31921 ]
+"10907
+[v _TRISE2 TRISE2 `VEb  1 e 0 @31922 ]
+"39 C:\kuotest\8x8rg.X\DotMatrix_8x8.c
+[v _TABLE TABLE `C[88]uc  1 e 88 0 ]
+"52
+[v _SCAN_TABLE SCAN_TABLE `C[8]uc  1 e 8 0 ]
+"105
+[v _main main `(v  1 e 0 0 ]
+{
+"127
+[v main@ROW_DATA ROW_DATA `uc  1 a 1 11 ]
+"107
+[v main@SCAN_COUNT SCAN_COUNT `uc  1 a 1 10 ]
+[v main@INDEX INDEX `uc  1 a 1 9 ]
+[v main@COLOR_SELECT COLOR_SELECT `uc  1 a 1 8 ]
+[v main@DELAY_COUNT DELAY_COUNT `uc  1 a 1 7 ]
+"189
+} 0
+"54
+[v _reverse_DATA reverse_DATA `(uc  1 e 1 0 ]
+{
+[v reverse_DATA@a a `uc  1 a 1 wreg ]
+"57
+[v reverse_DATA@i i `uc  1 a 1 3 ]
+"56
+[v reverse_DATA@b b `uc  1 a 1 4 ]
+"54
+[v reverse_DATA@a a `uc  1 a 1 wreg ]
+"56
+[v reverse_DATA@a a `uc  1 a 1 2 ]
+"64
+} 0
+"66
+[v _delay_ms delay_ms `(v  1 e 0 0 ]
+{
+"68
+[v delay_ms@i i `i  1 a 2 3 ]
+"66
+[v delay_ms@a a `i  1 p 2 0 ]
+"70
+} 0
+"90
+[v _PAE_WR PAE_WR `(v  1 e 0 0 ]
+{
+[v PAE_WR@data data `uc  1 a 1 wreg ]
+[v PAE_WR@data data `uc  1 a 1 wreg ]
+"92
+[v PAE_WR@data data `uc  1 a 1 2 ]
+"103
+} 0

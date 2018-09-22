@@ -1,0 +1,168 @@
+[p LITE_MODE AUTOSTATIC LFSROK EMI_WORD ]
+[d version 1.1 ]
+[d edition pro ]
+[d chip 18F4550 ]
+[d frameptr 4065 ]
+"62 C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\float.c
+[v ___ftpack __ftpack `(f  1 e 3 0 ]
+"86 C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\ftadd.c
+[v ___ftadd __ftadd `(f  1 e 3 0 ]
+"54 C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\ftdiv.c
+[v ___ftdiv __ftdiv `(f  1 e 3 0 ]
+"62 C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\ftmul.c
+[v ___ftmul __ftmul `(f  1 e 3 0 ]
+"20 C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\ftsub.c
+[v ___ftsub __ftsub `(f  1 e 3 0 ]
+"10 C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\sprcadd.c
+[v ___fladd __fladd `(d  1 e 3 0 ]
+"245
+[v ___flsub __flsub `(d  1 e 3 0 ]
+"11 C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\sprcdiv.c
+[v ___fldiv __fldiv `(d  1 e 3 0 ]
+"8 C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\sprcmul.c
+[v ___flmul __flmul `(d  1 e 3 0 ]
+"15 C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\Umul32.c
+[v ___lmul __lmul `(ul  1 e 4 0 ]
+"74 C:\kuotest\task_befrienf.X\newfile.c
+[v _delay_ms delay_ms `(v  1 e 0 0 ]
+"79
+[v _waitlcd waitlcd `(v  1 e 0 0 ]
+"96
+[v _Command Command `(v  1 e 0 0 ]
+"109
+[v _Data Data `(v  1 e 0 0 ]
+"123
+[v _KB_ROW_WR KB_ROW_WR `(v  1 e 0 0 ]
+"138
+[v _KB_COL_RD KB_COL_RD `(uc  1 e 1 0 ]
+"155
+[v _main main `(v  1 e 0 0 ]
+"2989 C:\Program Files (x86)\Microchip\xc8\v1.35\include\pic18f4550.h
+[v _PORTD PORTD `VEuc  1 e 1 @3971 ]
+"3742
+[v _LATD LATD `VEuc  1 e 1 @3980 ]
+"4565
+[v _TRISD TRISD `VEuc  1 e 1 @3989 ]
+"6187
+[v _CMCON CMCON `VEuc  1 e 1 @4020 ]
+"7173
+[v _ADCON1 ADCON1 `VEuc  1 e 1 @4033 ]
+"10189
+[v _LATB0 LATB0 `VEb  1 e 0 @31824 ]
+"10191
+[v _LATB1 LATB1 `VEb  1 e 0 @31825 ]
+"10193
+[v _LATB2 LATB2 `VEb  1 e 0 @31826 ]
+"10195
+[v _LATB3 LATB3 `VEb  1 e 0 @31827 ]
+"10197
+[v _LATB4 LATB4 `VEb  1 e 0 @31828 ]
+"10199
+[v _LATB5 LATB5 `VEb  1 e 0 @31829 ]
+"10201
+[v _LATB6 LATB6 `VEb  1 e 0 @31830 ]
+"10203
+[v _LATB7 LATB7 `VEb  1 e 0 @31831 ]
+"10471
+[v _RA0 RA0 `VEb  1 e 0 @31744 ]
+"10473
+[v _RA1 RA1 `VEb  1 e 0 @31745 ]
+"10475
+[v _RA2 RA2 `VEb  1 e 0 @31746 ]
+"10477
+[v _RA3 RA3 `VEb  1 e 0 @31747 ]
+"10845
+[v _TRISA0 TRISA0 `VEb  1 e 0 @31888 ]
+"10847
+[v _TRISA1 TRISA1 `VEb  1 e 0 @31889 ]
+"10849
+[v _TRISA2 TRISA2 `VEb  1 e 0 @31890 ]
+"10851
+[v _TRISA3 TRISA3 `VEb  1 e 0 @31891 ]
+"10859
+[v _TRISB0 TRISB0 `VEb  1 e 0 @31896 ]
+"10861
+[v _TRISB1 TRISB1 `VEb  1 e 0 @31897 ]
+"10863
+[v _TRISB2 TRISB2 `VEb  1 e 0 @31898 ]
+"10865
+[v _TRISB3 TRISB3 `VEb  1 e 0 @31899 ]
+"10867
+[v _TRISB4 TRISB4 `VEb  1 e 0 @31900 ]
+"10869
+[v _TRISB5 TRISB5 `VEb  1 e 0 @31901 ]
+"10871
+[v _TRISB6 TRISB6 `VEb  1 e 0 @31902 ]
+"10873
+[v _TRISB7 TRISB7 `VEb  1 e 0 @31903 ]
+"59 C:\kuotest\task_befrienf.X\newfile.c
+[v _mes mes `[11]uc  1 e 11 0 ]
+"61
+[v _IdxCol IdxCol `C[16]uc  1 e 16 0 ]
+"67
+[v _keycode keycode `[20]*.32Cuc  1 e 40 0 ]
+"155
+[v _main main `(v  1 e 0 0 ]
+{
+"214
+[v main@ptr ptr `*.32Cuc  1 a 2 11 ]
+"210
+[v main@row row `uc  1 a 1 14 ]
+"211
+[v main@keyflag keyflag `uc  1 a 1 13 ]
+"212
+[v main@tROW tROW `uc  1 a 1 8 ]
+"213
+[v main@key key `uc  1 a 1 7 ]
+"201
+[v main@pp pp `*.39uc  1 a 2 9 ]
+"244
+} 0
+"74
+[v _delay_ms delay_ms `(v  1 e 0 0 ]
+{
+"76
+[v delay_ms@i i `ui  1 a 2 3 ]
+"74
+[v delay_ms@a a `ui  1 p 2 0 ]
+"77
+} 0
+"123
+[v _KB_ROW_WR KB_ROW_WR `(v  1 e 0 0 ]
+{
+[v KB_ROW_WR@a a `uc  1 a 1 wreg ]
+[v KB_ROW_WR@a a `uc  1 a 1 wreg ]
+"125
+[v KB_ROW_WR@a a `uc  1 a 1 1 ]
+"136
+} 0
+"138
+[v _KB_COL_RD KB_COL_RD `(uc  1 e 1 0 ]
+{
+"140
+[v KB_COL_RD@a a `uc  1 a 1 1 ]
+"153
+} 0
+"109
+[v _Data Data `(v  1 e 0 0 ]
+{
+[v Data@data1 data1 `uc  1 a 1 wreg ]
+[v Data@data1 data1 `uc  1 a 1 wreg ]
+[v Data@data1 data1 `uc  1 a 1 1 ]
+"121
+} 0
+"96
+[v _Command Command `(v  1 e 0 0 ]
+{
+[v Command@cmd cmd `uc  1 a 1 wreg ]
+[v Command@cmd cmd `uc  1 a 1 wreg ]
+[v Command@cmd cmd `uc  1 a 1 1 ]
+"108
+} 0
+"79
+[v _waitlcd waitlcd `(v  1 e 0 0 ]
+{
+"81
+[v waitlcd@status status `uc  1 a 1 0 ]
+"94
+} 0
